@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12765,        279]
-NotebookOptionsPosition[     12368,        264]
-NotebookOutlinePosition[     12810,        281]
-CellTagsIndexPosition[     12767,        278]
+NotebookDataLength[     12987,        283]
+NotebookOptionsPosition[     12590,        268]
+NotebookOutlinePosition[     13032,        285]
+CellTagsIndexPosition[     12989,        282]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,20 +23,23 @@ Cell[BoxData[
   RowBox[{"(*", " ", 
    RowBox[{
    "Parse", " ", "text", " ", "input", " ", "given", " ", "file", " ", 
-    "path"}], " ", "*)"}], "\[IndentingNewLine]", 
+    "name"}], " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{"Parse", "[", "s_", "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-       RowBox[{"path", "=", "s"}], ",", "input", ",", "i", ",", "j", ",", 
+       RowBox[{"name", "=", "s"}], ",", "input", ",", "i", ",", "j", ",", 
        "strassoc"}], "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"input", "=", 
        RowBox[{"Import", "[", 
-        RowBox[{"path", ",", " ", "\"\<Lines\>\""}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"StringJoin", "[", 
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], ",", "name"}], "]"}], ",",
+          " ", "\"\<Lines\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"(*", " ", 
        RowBox[{"Process", " ", "the", " ", "configs", " ", 
         RowBox[{"(", 
@@ -259,8 +262,9 @@ Cell[BoxData[
    3.8062477016162863`*^9, 3.8062477680522203`*^9}, {3.8062478220821753`*^9, 
    3.806247832236843*^9}, {3.806247890346686*^9, 3.8062479141955743`*^9}, {
    3.8062480104881954`*^9, 3.806248095854864*^9}, 3.8062496110746098`*^9, {
-   3.8062496604667587`*^9, 3.806249680484228*^9}},
- CellLabel->"In[2]:=",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
+   3.8062496604667587`*^9, 3.806249680484228*^9}, {3.806335611516925*^9, 
+   3.806335637466295*^9}, {3.806335699801903*^9, 3.806335699894001*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
 },
 WindowSize->{1142.1, 576.9},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
@@ -280,7 +284,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 11806, 242, 813, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
+Cell[558, 20, 12028, 246, 813, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
 }
 ]
 *)
