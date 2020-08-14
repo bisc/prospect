@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13346,        289]
-NotebookOptionsPosition[     12949,        274]
-NotebookOutlinePosition[     13391,        291]
-CellTagsIndexPosition[     13348,        288]
+NotebookDataLength[     13665,        294]
+NotebookOptionsPosition[     13268,        279]
+NotebookOutlinePosition[     13710,        296]
+CellTagsIndexPosition[     13667,        293]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -159,8 +159,11 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"input", "[", 
                    RowBox[{"[", "i", "]"}], "]"}], ",", 
-                  RowBox[{"\"\<=\>\"", "\[Rule]", "\"\<==\>\""}]}], "]"}], 
-                "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"\"\<=\>\"", "\[Rule]", "\"\<==\>\""}], ",", 
+                    RowBox[{"\"\<|\>\"", "\[Rule]", "\"\<,\>\""}]}], "}"}]}], 
+                 "]"}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
             RowBox[{"i", "++"}]}]}], "\[IndentingNewLine]", "]"}]}], 
         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
        "\[IndentingNewLine]", 
@@ -268,9 +271,11 @@ Cell[BoxData[
    3.8062480104881954`*^9, 3.806248095854864*^9}, 3.8062496110746098`*^9, {
    3.8062496604667587`*^9, 3.806249680484228*^9}, {3.806335611516925*^9, 
    3.806335637466295*^9}, {3.806335699801903*^9, 3.806335699894001*^9}, {
-   3.8064088010798087`*^9, 
-   3.8064088939626617`*^9}},ExpressionUUID->"bf1aace9-6417-4e22-8ab8-\
-6a3e84ff7c63"]
+   3.8064088010798087`*^9, 3.8064088939626617`*^9}, {3.806416023075705*^9, 
+   3.806416032767438*^9}, {3.8064164675680995`*^9, 3.806416472186304*^9}, {
+   3.8064165826472254`*^9, 3.8064165864426975`*^9}},
+ CellLabel->
+  "In[114]:=",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
 },
 WindowSize->{1142.1, 576.9},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
@@ -290,7 +295,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 12387, 252, 832, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
+Cell[558, 20, 12706, 257, 832, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
 }
 ]
 *)
