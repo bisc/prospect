@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11279,        260]
-NotebookOptionsPosition[     10910,        246]
-NotebookOutlinePosition[     11324,        262]
-CellTagsIndexPosition[     11281,        259]
+NotebookDataLength[     11482,        265]
+NotebookOptionsPosition[     11112,        251]
+NotebookOutlinePosition[     11526,        267]
+CellTagsIndexPosition[     11483,        264]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,6 +36,10 @@ Cell[BoxData[
   RowBox[{
   "(*", " ", "\"\</Users/alanismaiel/Desktop/StaticExUnder.txt\>\"", " ", 
    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Pass", " ", "file", " ", "name", " ", "into", " ", "staticGenerate"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{"staticGenerate", "[", "s_", "]"}], ":=", 
    RowBox[{"Module", "[", 
@@ -240,8 +244,9 @@ specifications\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.806429629262438*^9}, {3.806429673790893*^9, 3.80642970392975*^9}, {
    3.806429737280301*^9, 3.806429737959501*^9}, {3.8064297848387675`*^9, 
    3.8064298288290586`*^9}, {3.8064299877978797`*^9, 3.8064299923687*^9}, {
-   3.8064301244754925`*^9, 3.8064301439132214`*^9}, 
-   3.8064303185904713`*^9},ExpressionUUID->"7a35983a-2079-45ed-b03e-\
+   3.8064301244754925`*^9, 3.8064301439132214`*^9}, 3.8064303185904713`*^9, {
+   3.8064313652239823`*^9, 
+   3.806431375566052*^9}},ExpressionUUID->"7a35983a-2079-45ed-b03e-\
 16c052fc27f1"]
 },
 WindowSize->{1142.7, 581.6999999999999},
@@ -261,7 +266,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10348, 224, 985, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
+Cell[558, 20, 10550, 229, 1004, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
 }
 ]
 *)
