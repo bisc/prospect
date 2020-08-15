@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11482,        265]
-NotebookOptionsPosition[     11112,        251]
-NotebookOutlinePosition[     11526,        267]
-CellTagsIndexPosition[     11483,        264]
+NotebookDataLength[     11542,        266]
+NotebookOptionsPosition[     11192,        252]
+NotebookOutlinePosition[     11586,        268]
+CellTagsIndexPosition[     11543,        265]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -76,7 +76,7 @@ Cell[BoxData[
             RowBox[{"StringJoin", "[", 
              RowBox[{
               RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-              "\"\<specConversion.nb\>\""}], "]"}], ",", 
+              "\"\<Independence.nb\>\""}], "]"}], ",", 
             RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";",
           "\[IndentingNewLine]", 
          RowBox[{"NotebookEvaluate", "[", 
@@ -173,6 +173,7 @@ Cell[BoxData[
             RowBox[{"Length", "[", 
              RowBox[{"oSolve", "[", 
               RowBox[{"[", "1", "]"}], "]"}], "]"}], " ", "\[NotEqual]", " ", 
+            
             RowBox[{"Length", "[", "oOutput", "]"}]}]}], ",", " ", 
           "\[IndentingNewLine]", 
           RowBox[{
@@ -245,13 +246,13 @@ specifications\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.806429737280301*^9, 3.806429737959501*^9}, {3.8064297848387675`*^9, 
    3.8064298288290586`*^9}, {3.8064299877978797`*^9, 3.8064299923687*^9}, {
    3.8064301244754925`*^9, 3.8064301439132214`*^9}, 3.8064303185904713`*^9, {
-   3.8064313652239823`*^9, 
-   3.806431375566052*^9}},ExpressionUUID->"7a35983a-2079-45ed-b03e-\
-16c052fc27f1"]
+   3.8064313652239823`*^9, 3.806431375566052*^9}, {3.8064543868015614`*^9, 
+   3.806454388210734*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
 },
-WindowSize->{1142.7, 581.6999999999999},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
-FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
+WindowSize->{899, 582},
+WindowMargins->{{16, Automatic}, {Automatic, 43}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"7fd964e2-56ce-4396-9485-f3abe5275eda"
 ]
@@ -266,7 +267,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10550, 229, 1004, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
+Cell[558, 20, 10630, 230, 1228, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
 }
 ]
 *)
