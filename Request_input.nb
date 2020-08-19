@@ -1,0 +1,77 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2258,         69]
+NotebookOptionsPosition[      1863,         54]
+NotebookOutlinePosition[      2305,         71]
+CellTagsIndexPosition[      2262,         68]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "filename", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"filename", "=", 
+   RowBox[{"InputString", "[", "\"\<Type file name here\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"FileExistsQ", "[", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], ",", "input"}], "]"}], "]"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"NotebookEvaluate", "[", 
+      RowBox[{"NotebookOpen", "[", 
+       RowBox[{
+        RowBox[{"StringJoin", "[", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+          "\"\<Main_Static_Generator.nb\>\""}], "]"}], ",", 
+        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"staticGenerate", "[", "filename", "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.80683581907298*^9, 3.8068359010600348`*^9}, {
+   3.80683593386444*^9, 3.8068359535379596`*^9}, {3.806836068638945*^9, 
+   3.8068360963453846`*^9}, 3.806836149476992*^9, {3.8068361921247644`*^9, 
+   3.8068362206309195`*^9}, 
+   3.8068371952866783`*^9},ExpressionUUID->"a1917d02-e626-423b-a9fb-\
+31c977d521a5"]
+},
+WindowSize->{1152., 586.5},
+WindowMargins->{{
+  Automatic, -4.7999999999999545`}, {-4.7999999999999545`, Automatic}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"53a246bf-ac3b-41f7-8734-d2adc3c71f2c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1301, 32, 124, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"]
+}
+]
+*)
+
