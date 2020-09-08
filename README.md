@@ -1,9 +1,7 @@
 # Time Series Data Generation
 Time series data generation from probabilistic and independence specifications.
 
-Currently, only static case time series is operational: to perform, do the following.
-1) Open the Main_Static_Generator.nb notebook, and run it
-2) When prompted to enter file name for input, select a valid input file from the same directory as the Main_Static_Generator.nb and Parsing_input.nb notebooks.
+## Input File
 
 A valid input file is a txt of the following form, containing three sections separated by blank lines:
 
@@ -18,3 +16,7 @@ numsamples: (NUMBER OF SAMPLES TO GENERATE)
 (PROBABILITY SPECIFICATIONS LINE BY LINE: Equations with left and right hand sides that utilize inputs of the form P[event] or P[event | event])\*
 
 \*At this time, events should not contain any logical OR operators (e.g. ||, ∨).
+
+## Running Program
+1) Open the Request_input.nb notebook, and run it
+2) When prompted to enter file name for input, select a valid input file from the same directory as the Request_input.nb notebook. Note that only static case files are currently accepted.
