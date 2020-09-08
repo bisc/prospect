@@ -10,52 +10,153 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2258,         69]
-NotebookOptionsPosition[      1863,         54]
-NotebookOutlinePosition[      2305,         71]
-CellTagsIndexPosition[      2262,         68]
+NotebookDataLength[      6723,        171]
+NotebookOptionsPosition[      6280,        156]
+NotebookOutlinePosition[      6674,        172]
+CellTagsIndexPosition[      6631,        169]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{"Clear", "[", "filename", "]"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"filename", "=", 
-   RowBox[{"InputString", "[", "\"\<Type file name here\>\"", "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"If", "[", 
+  RowBox[{"(*", " ", 
    RowBox[{
-    RowBox[{"FileExistsQ", "[", 
-     RowBox[{"StringJoin", "[", 
+   "Evaluating", " ", "all", " ", "notebooks", " ", "prior", " ", "to", " ", 
+    "running", " ", "the", " ", "function"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookEvaluate", "[", 
+     RowBox[{"NotebookOpen", "[", 
       RowBox[{
-       RowBox[{"NotebookDirectory", "[", "]"}], ",", "input"}], "]"}], "]"}], 
-    ",", "\[IndentingNewLine]", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<prob-rules.nb\>\""}], "]"}], ",", 
+       RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NotebookEvaluate", "[", 
+     RowBox[{"NotebookOpen", "[", 
+      RowBox[{
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<Independence.nb\>\""}], "]"}], ",", 
+       RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NotebookEvaluate", "[", 
+     RowBox[{"NotebookOpen", "[", 
+      RowBox[{
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<oGenerator.nb\>\""}], "]"}], ",", 
+       RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NotebookEvaluate", "[", 
+     RowBox[{"NotebookOpen", "[", 
+      RowBox[{
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<Parsing_input.nb\>\""}], "]"}], ",", 
+       RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"NotebookEvaluate", "[", 
+     RowBox[{"NotebookOpen", "[", 
+      RowBox[{
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+         "\"\<Main_Static_Generator.nb\>\""}], "]"}], ",", 
+       RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
     RowBox[{
-     RowBox[{"NotebookEvaluate", "[", 
-      RowBox[{"NotebookOpen", "[", 
-       RowBox[{
-        RowBox[{"StringJoin", "[", 
-         RowBox[{
-          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-          "\"\<Main_Static_Generator.nb\>\""}], "]"}], ",", 
-        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"staticGenerate", "[", "filename", "]"}]}]}], 
-   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+     RowBox[{"testing", "/", "static"}], "/", 
+     RowBox[{"StaticEx3", ".", "txt"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"testing", "/", "static"}], "/", 
+     RowBox[{"StaticEx2", ".", "txt"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"testing", "/", "static"}], "/", 
+     RowBox[{"StaticEx", ".", "txt"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.80683581907298*^9, 3.8068359010600348`*^9}, {
    3.80683593386444*^9, 3.8068359535379596`*^9}, {3.806836068638945*^9, 
    3.8068360963453846`*^9}, 3.806836149476992*^9, {3.8068361921247644`*^9, 
-   3.8068362206309195`*^9}, 
-   3.8068371952866783`*^9},ExpressionUUID->"a1917d02-e626-423b-a9fb-\
-31c977d521a5"]
+   3.8068362206309195`*^9}, 3.8068371952866783`*^9, 3.808515616987946*^9, {
+   3.808516067347849*^9, 3.8085161142811337`*^9}, {3.808516150047551*^9, 
+   3.8085161502313643`*^9}, {3.8085185304023457`*^9, 3.808518540865572*^9}, {
+   3.808519287245606*^9, 3.808519287742292*^9}, {3.8085197075309477`*^9, 
+   3.808519707691061*^9}, {3.808521188149271*^9, 3.808521193180676*^9}, {
+   3.808522765714641*^9, 3.808522791496922*^9}, {3.8085229733852*^9, 
+   3.808522991753731*^9}, {3.8085231936032333`*^9, 
+   3.808523206486915*^9}},ExpressionUUID->"a1917d02-e626-423b-a9fb-\
+31c977d521a5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"generateData", "[", "]"}], " ", ":=", " ", "\[IndentingNewLine]", 
+   
+   RowBox[{"Module", "[", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"filename", ",", " ", 
+       RowBox[{"result", " ", "=", " ", 
+        RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"filename", "=", 
+       RowBox[{"InputString", "[", "\"\<Type file name here\>\"", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"FileExistsQ", "[", 
+         RowBox[{"StringJoin", "[", 
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], ",", "filename"}], "]"}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"parse", "[", "filename", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"casetype", " ", "\[Equal]", " ", "\"\<static\>\""}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"result", " ", "=", " ", 
+          RowBox[{"staticGenerate", "[", "]"}]}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", "result"}]}],
+     "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"generateData", "[", "]"}]}], "Input",
+ CellChangeTimes->{{3.80683581907298*^9, 3.8068359010600348`*^9}, {
+   3.80683593386444*^9, 3.8068359535379596`*^9}, {3.806836068638945*^9, 
+   3.8068360963453846`*^9}, 3.806836149476992*^9, {3.8068361921247644`*^9, 
+   3.8068362206309195`*^9}, 3.8068371952866783`*^9, 3.808515616987946*^9, {
+   3.808516067347849*^9, 3.8085161142811337`*^9}, {3.808516154974812*^9, 
+   3.808516155182826*^9}, 3.8085162655031033`*^9, {3.80851630298505*^9, 
+   3.808516318757921*^9}, {3.808516356262295*^9, 3.8085164197155247`*^9}, {
+   3.808516455581761*^9, 3.80851645616896*^9}, {3.8085165311369343`*^9, 
+   3.8085165728235207`*^9}, {3.808516715297435*^9, 3.808516730983665*^9}, {
+   3.808522295694029*^9, 3.808522365612246*^9}, {3.808522399967495*^9, 
+   3.8085224037083187`*^9}, {3.808522443029303*^9, 3.808522449419792*^9}, {
+   3.808522498160931*^9, 3.8085227270499563`*^9}, 3.808522929977026*^9},
+ CellLabel->"",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
 },
-WindowSize->{1152., 586.5},
-WindowMargins->{{
-  Automatic, -4.7999999999999545`}, {-4.7999999999999545`, Automatic}},
-FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
+WindowSize->{993, 587},
+WindowMargins->{{42, Automatic}, {Automatic, 71}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"53a246bf-ac3b-41f7-8734-d2adc3c71f2c"
 ]
@@ -70,7 +171,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 1301, 32, 124, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"]
+Cell[558, 20, 3385, 84, 241, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
+Cell[3946, 106, 2330, 48, 283, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
 }
 ]
 *)

@@ -1,0 +1,13 @@
+casetype: "static"
+variables: {X, Y, Z}
+values: {{"his", "her"}, {"big", "small"}, {"cat", "dog"}}
+numsamples: 30
+
+indep[{X, Y}]
+
+P[X = "his"] = .3
+P[Y = "big"] = .4
+P[Z = "cat"] = .5
+P[X = "his" && Z = "cat"] = .2
+P[Y = "big" && Z = "cat"] = .3
+P[X = "his" && Y = "big" && Z = "cat"] = .05

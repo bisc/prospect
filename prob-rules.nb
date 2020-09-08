@@ -1,0 +1,2973 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[    126477,       2972]
+NotebookOptionsPosition[    123979,       2930]
+NotebookOutlinePosition[    124403,       2947]
+CellTagsIndexPosition[    124360,       2944]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "This", " ", "notebook", " ", "contains", " ", "probability", " ", 
+     "defitions", " ", "and", " ", 
+     RowBox[{"reasoning", "/", "transformation"}], " ", 
+     RowBox[{"rules", ".", " ", "Some"}], " ", "rules", " ", "are", " ", 
+     "definitional", " ", 
+     RowBox[{"(", 
+      RowBox[{"applied", " ", "automatically"}], ")"}]}], ",", " ", 
+    RowBox[{
+    "others", " ", "are", " ", "transformations", " ", "and", " ", "applied", 
+     " ", "in", " ", "simplification", " ", "functions", " ", "helper", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"defined", " ", "after", " ", "the", " ", "rules"}], ")"}], 
+      ".", " ", "More"}], " ", "specific", " ", "definitional", " ", "rules", 
+     " ", "come", " ", "first"}], ",", " ", 
+    RowBox[{
+     RowBox[{"more", " ", "general", " ", "ones"}], " ", "-", " ", 
+     "later"}]}], " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Important", " ", 
+    RowBox[{"symbols", ":", " ", "\[IndentingNewLine]", 
+     RowBox[{"-", " ", "myIndep"}], ":", " ", 
+     RowBox[{
+      RowBox[{
+      "the", " ", "unconditional", " ", "independence", " ", "function"}], 
+      "\[IndentingNewLine]", "-", " ", 
+      RowBox[{"myCondIndep", ":", " ", 
+       RowBox[{
+        RowBox[{
+        "the", " ", "conditional", " ", "independence", " ", "function"}], 
+        "\[IndentingNewLine]", "-", " ", "myProb"}], ":", " ", 
+       RowBox[{
+        RowBox[{
+        "the", " ", "unconditional", " ", "probability", " ", "function"}], 
+        "\[IndentingNewLine]", "-", " ", 
+        RowBox[{"myCondProb", ":", " ", 
+         RowBox[{
+          RowBox[{
+          "the", " ", "conditional", " ", "probability", " ", "function"}], 
+          "\[IndentingNewLine]", "-", " ", "mySimplify"}], ":", " ", 
+         RowBox[{
+         "the", " ", "customized", " ", "simplification", " ", 
+          "procedure"}]}]}]}]}]}]}], "\[IndentingNewLine]", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "FUNDAMENTAL", " ", "TWEAKS"}], " ", "**)"}], " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Unprotect", "[", "And", "]"}], ";", 
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"And", ",", " ", "Orderless"}], "]"}], ";", "\n", 
+    RowBox[{"Protect", "[", "And", "]"}], ";"}], " ", "*)"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.770478698766479*^9, 3.77047870492421*^9}, {
+   3.771683327706685*^9, 3.77168332944868*^9}, {3.772206056438559*^9, 
+   3.772206082998344*^9}, {3.772207903325*^9, 3.7722079219525623`*^9}, {
+   3.772210828708311*^9, 3.772210831909335*^9}, {3.7740928831095457`*^9, 
+   3.774092891033215*^9}, {3.774092955402506*^9, 3.7740930248428593`*^9}, 
+   3.7765980434349546`*^9, {3.776604772879393*^9, 3.776604773924171*^9}, {
+   3.800793718152528*^9, 3.800793748522118*^9}, {3.800793818898714*^9, 
+   3.800793820659851*^9}, {3.8007941443489513`*^9, 3.800794147973546*^9}, {
+   3.8007942017540092`*^9, 3.8007942751089354`*^9}, {3.80079432196736*^9, 
+   3.800794371135764*^9}, {3.8011586551918383`*^9, 3.801158675986404*^9}, {
+   3.806064439428932*^9, 3.8060644435862494`*^9}},
+ FontSize->14,ExpressionUUID->"c3f78832-7f93-4d16-b4bb-07b69b883775"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"myIndep", ",", " ", "Orderless"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"myCondIndep", ",", " ", "Orderless"}], "]"}], ";"}]}], "Input",
+ FontSize->14,
+ CellLabel->"In[3]:=",ExpressionUUID->"e91b1304-d990-434e-bc78-e2ab343e49e2"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", " ", "PROBABILITY"}], " ", "DEFINITIONAL", " ", "RULES"}], 
+   " ", "***)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Clear", "[", 
+     RowBox[{
+     "myProb", ",", " ", "myCondProb", ",", " ", "myIndep", ",", " ", 
+      "myCondIndep", ",", "myVariables", ",", " ", "onlyAboutDet"}], "]"}], 
+    " ", ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "*", " ", "Vanilla", " ", "probability", " ", "reduction", " ", "rules"}],
+     " ", "**)"}]}]}]], "Input",
+ CellChangeTimes->{{3.7703850930513287`*^9, 3.770385095503367*^9}, {
+   3.770394803236209*^9, 3.770394811267569*^9}, {3.770462569180225*^9, 
+   3.770462573348097*^9}, 3.770478712341701*^9, {3.7711570538979187`*^9, 
+   3.771157088293795*^9}, {3.771157222186144*^9, 3.7711572334555893`*^9}, {
+   3.771157700405088*^9, 3.771157721125576*^9}, {3.771162065256048*^9, 
+   3.7711620855039053`*^9}, {3.771675322141136*^9, 3.771675325251124*^9}, {
+   3.771683351768546*^9, 3.771683359472967*^9}, {3.771683394655149*^9, 
+   3.771683398141198*^9}, {3.771685470629345*^9, 3.771685473971861*^9}, {
+   3.771687623210108*^9, 3.771687623727901*^9}, {3.77220605082333*^9, 
+   3.772206051016756*^9}, 3.772206225749118*^9, 3.772207894339641*^9, {
+   3.7740904086983957`*^9, 3.774090411654314*^9}, {3.774090446702763*^9, 
+   3.774090448958933*^9}, {3.774092852894888*^9, 3.774092881882492*^9}, {
+   3.774093037276404*^9, 3.774093069082076*^9}, {3.774093108801399*^9, 
+   3.7740931241319237`*^9}, {3.774093410419372*^9, 3.774093415500266*^9}, {
+   3.7740941327936897`*^9, 3.774094134179941*^9}, {3.800794386378971*^9, 
+   3.800794390148848*^9}},
+ FontSize->14,
+ CellLabel->"In[5]:=",ExpressionUUID->"28029f20-147e-4c10-bb6b-58e310ebddeb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"myProb", "[", "True", "]"}], " ", ":=", " ", "1"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"myProb", "[", "False", "]"}], " ", ":=", " ", "0"}], ";"}], 
+  "\[IndentingNewLine]", " ", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "automatic", " ", "vanilla", " ", "disjunction", " ", "breakup", " ", 
+     RowBox[{"rule", " ", "--"}], " ", "disable", " ", "this", " ", "for", 
+     " ", "finer"}], "-", 
+    RowBox[{"grained", " ", "control"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"myProb", "/:", " ", 
+    RowBox[{"myProb", "[", 
+     RowBox[{"a_", " ", "\[Or]", " ", "b_"}], "]"}], " ", ":=", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"myProb", "[", "a", "]"}], " ", "+", " ", 
+      RowBox[{"myProb", "[", "b", "]"}], " ", "-", " ", 
+      RowBox[{"myProb", "[", 
+       RowBox[{"Simplify", "[", 
+        RowBox[{"a", " ", "\[And]", "b"}], "]"}], "]"}]}], ")"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"conditional", " ", "reductions"}], " ", "*)"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"myCondProb", "[", 
+    RowBox[{"True", " ", "\[Conditioned]", " ", "_"}], "]"}], " ", ":=", " ", 
+   "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"myCondProb", "[", 
+    RowBox[{"False", " ", "\[Conditioned]", " ", "_"}], "]"}], " ", ":=", " ",
+    "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"myCondProb", "[", 
+    RowBox[{"a_", " ", "\[Conditioned]", " ", "True"}], "]"}], " ", ":=", " ", 
+   RowBox[{"myProb", "[", "a", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"myCondProb", "[", 
+    RowBox[{"Except", "[", " ", 
+     RowBox[{
+      RowBox[{"__", "\[Conditioned]", "__"}], ",", " ", "a_"}], "]"}], "]"}], 
+   " ", ":=", " ", 
+   RowBox[{"myProb", "[", "a", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"myCondProb", "[", 
+     RowBox[{"a_", " ", "\[Conditioned]", " ", "False"}], "]"}], " ", ":=", 
+    " ", 
+    RowBox[{
+    "Throw", "[", "\"\<Cannot condition on zero-probability events\>\"", 
+     "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "automatic", " ", "conditional", " ", "disjunction", " ", "breakup", " ", 
+     
+     RowBox[{"rule", " ", "--"}], " ", "disable", " ", "this", " ", "for", 
+     " ", "finer"}], "-", 
+    RowBox[{"grained", " ", "control"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"myCondProb", "[", 
+      RowBox[{
+       RowBox[{"a_", " ", "\[Or]", " ", "b_"}], " ", "\[Conditioned]", " ", 
+       "c_"}], "]"}], " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"a", "\[Conditioned]", "c"}], "]"}], " ", "+", " ", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"b", "\[Conditioned]", "c"}], "]"}], " ", "-", " ", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"Simplify", "[", 
+          RowBox[{"a", "\[And]", "b"}], "]"}], "\[Conditioned]", "c"}], 
+        "]"}]}], ")"}]}], ";"}], "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.770385097690922*^9, 3.7703851272453747`*^9}, {
+   3.7703859601155233`*^9, 3.770385960326078*^9}, {3.770386368006975*^9, 
+   3.7703863767502003`*^9}, {3.770388327490736*^9, 3.770388344622758*^9}, {
+   3.770389968606859*^9, 3.7703899833702106`*^9}, {3.770392706017788*^9, 
+   3.770392713946381*^9}, 3.770393118190214*^9, {3.770399770199403*^9, 
+   3.7703997758620443`*^9}, {3.770462486309186*^9, 3.770462497942576*^9}, {
+   3.770462576838822*^9, 3.77046269070547*^9}, {3.770463193032208*^9, 
+   3.770463234157014*^9}, {3.770463340037593*^9, 3.770463347028661*^9}, {
+   3.770463527781201*^9, 3.770463532024672*^9}, {3.770465858832662*^9, 
+   3.7704659141246023`*^9}, {3.770548979198842*^9, 3.770549067074555*^9}, {
+   3.7705662122462587`*^9, 3.770566282416638*^9}, 3.7705673938193083`*^9, {
+   3.770994376761738*^9, 3.770994458189075*^9}, {3.771154601349389*^9, 
+   3.771154646178193*^9}, {3.771156375754505*^9, 3.771156410926016*^9}, 
+   3.771156546780732*^9, {3.771157051571837*^9, 3.77115705537094*^9}, {
+   3.771164360048283*^9, 3.771164391141127*^9}, {3.771164517510202*^9, 
+   3.771164562880783*^9}, {3.771165339893997*^9, 3.7711653753141613`*^9}, {
+   3.7711654516265583`*^9, 3.7711654543455057`*^9}, {3.771165554480173*^9, 
+   3.771165565264855*^9}, {3.771165595677972*^9, 3.771165610234585*^9}, {
+   3.7716732789222593`*^9, 3.771673279356889*^9}, {3.7716735032579937`*^9, 
+   3.771673511256116*^9}, {3.77167362987729*^9, 3.771673643024473*^9}, 
+   3.77167368831715*^9, {3.771673719355693*^9, 3.771673743264967*^9}, {
+   3.771673781763479*^9, 3.771673804803372*^9}, {3.771673879735435*^9, 
+   3.771673913588111*^9}, 3.771674968763649*^9, {3.771675358589452*^9, 
+   3.7716754460716877`*^9}, {3.771687293087789*^9, 3.771687329213202*^9}, {
+   3.771687493577361*^9, 3.771687542150694*^9}, {3.7716875868381844`*^9, 
+   3.7716876321088*^9}, {3.771687705273965*^9, 3.771687762107605*^9}, {
+   3.771687794692363*^9, 3.771687797536524*^9}, {3.7716881864584703`*^9, 
+   3.771688204333465*^9}, {3.7716887077716703`*^9, 3.7716887131389523`*^9}, {
+   3.77168956248071*^9, 3.771689577861763*^9}, {3.771756694203743*^9, 
+   3.771756703631268*^9}, {3.7722061925572443`*^9, 3.772206211333602*^9}, {
+   3.772279655254167*^9, 3.772279710075491*^9}, {3.772279828276956*^9, 
+   3.7722798343698063`*^9}, {3.772280495443324*^9, 3.772280575490995*^9}, {
+   3.772280612588324*^9, 3.772280615269253*^9}, {3.77228070840965*^9, 
+   3.772280734361782*^9}, {3.772280790140332*^9, 3.7722807924613523`*^9}, {
+   3.77228084619858*^9, 3.772280849602619*^9}, {3.772281010538048*^9, 
+   3.772281024048656*^9}, 3.772281057593193*^9, {3.7722811576068897`*^9, 
+   3.7722811617560987`*^9}, {3.772281201316217*^9, 3.77228122942516*^9}, {
+   3.772281391010399*^9, 3.7722814069386873`*^9}, {3.772281464300403*^9, 
+   3.772281509227847*^9}, {3.772283343012608*^9, 3.772283344950818*^9}, {
+   3.772283405373513*^9, 3.7722834217048273`*^9}, {3.772283512706666*^9, 
+   3.77228351675567*^9}, {3.772283813306258*^9, 3.772283821242085*^9}, {
+   3.772283895366768*^9, 3.772283905927302*^9}, {3.772283971328323*^9, 
+   3.772283982885148*^9}, {3.772286958621014*^9, 3.772286958781458*^9}, {
+   3.772286990225172*^9, 3.772287064955757*^9}, {3.7722871975257463`*^9, 
+   3.7722873092167673`*^9}, {3.772287410732575*^9, 3.7722875169777327`*^9}, {
+   3.772288289841188*^9, 3.772288293335032*^9}, {3.772297543202838*^9, 
+   3.772297555112862*^9}, {3.774091926187666*^9, 3.774091938693369*^9}, 
+   3.7740924228098497`*^9, {3.774092463702327*^9, 3.774092471374392*^9}, {
+   3.774093071335396*^9, 3.7740932027842827`*^9}, {3.7740932725413713`*^9, 
+   3.7740932872560663`*^9}, {3.774093333342564*^9, 3.774093333963336*^9}, {
+   3.774093394841222*^9, 3.774093395536437*^9}, {3.774093670075653*^9, 
+   3.774093691366267*^9}, {3.774094088749192*^9, 3.774094193263549*^9}, {
+   3.774094232049564*^9, 3.774094251816986*^9}, {3.774271708785655*^9, 
+   3.774271741063345*^9}, {3.775217460396407*^9, 3.775217460616098*^9}, {
+   3.775217503838097*^9, 3.775217537378408*^9}, {3.7770484302724323`*^9, 
+   3.777048441127944*^9}, {3.777048490689378*^9, 3.7770485067016582`*^9}, {
+   3.777048787190585*^9, 3.777048804045679*^9}, 3.800795754422102*^9, {
+   3.800795791114821*^9, 3.800795791581909*^9}, {3.8007967563123827`*^9, 
+   3.800796802272867*^9}, {3.801348502092286*^9, 3.801348541470203*^9}, {
+   3.801348596642027*^9, 3.801348600928591*^9}, {3.8013487214604483`*^9, 
+   3.801348741102459*^9}},
+ FontSize->14,
+ CellLabel->"In[6]:=",ExpressionUUID->"0f7d6d25-2a72-4ff5-8103-8bccbc7ff427"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Sanity", " ", "checks", " ", "for", " ", "notation"}], " ", 
+   "*)"}], " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"myProb", " ", "/:", " ", 
+     RowBox[{"myProb", "[", 
+      RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+     "Throw", "[", "\"\<Conditioned not allowed in vanilla probability\>\"", 
+      "]"}]}], ";"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myProb", " ", "/:", " ", 
+     RowBox[{"myProb", "[", 
+      RowBox[{"a_", ",", " ", "b_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+     "Throw", "[", "\"\<Commas not allowed in vanilla probability\>\"", 
+      "]"}]}], ";"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myCondProb", " ", "/:", " ", 
+     RowBox[{"myCondProb", "[", 
+      RowBox[{"a_", ",", " ", "b_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+     "Throw", "[", "\"\<Commas not allowed in conditioned probability\>\"", 
+      "]"}]}], ";"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myIndep", " ", "/:", " ", 
+     RowBox[{"myIndep", "[", 
+      RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], " ", ":=", " ", 
+     RowBox[{
+     "Throw", "[", "\"\<Conditioned not allowed in vanilla independence\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myIndep", " ", "/:", " ", 
+     RowBox[{"myIndep", "[", "args___", "]"}], " ", ":=", " ", 
+     RowBox[{
+      RowBox[{
+      "Throw", "[", 
+       "\"\<Need at least 2 arguments in vanilla independence\>\"", "]"}], "/;",
+       " ", 
+      RowBox[{
+       RowBox[{"Length", "[", 
+        RowBox[{"List", "[", "args", "]"}], "]"}], "\[LessEqual]", " ", 
+       "1"}]}]}], " ", ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myCondIndep", " ", "/:", " ", 
+     RowBox[{"myCondIndep", "[", "args___", "]"}], ":=", " ", 
+     RowBox[{
+      RowBox[{
+      "Throw", "[", 
+       "\"\<Need at least 2 arguments in conditional independence\>\"", "]"}],
+       "/;", " ", 
+      RowBox[{
+       RowBox[{"Length", "[", 
+        RowBox[{"List", "[", "args", "]"}], "]"}], "\[LessEqual]", " ", 
+       "1"}]}]}], " ", ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.771687402498309*^9, 3.771687446594449*^9}, {
+   3.774093704540577*^9, 3.7740937053877993`*^9}, {3.800796804827334*^9, 
+   3.8007968058369217`*^9}, 3.801256322510886*^9},
+ FontSize->14,
+ CellLabel->"In[14]:=",ExpressionUUID->"17906426-8676-494f-b507-96fdd48d6fd8"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", " ", "PROBABILITY"}], " ", "REASONING", " ", "RULES"}], " ",
+    "***)"}], " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", 
+    RowBox[{
+    "disjBreakRule", ",", " ", "disjCondBreakRule", ",", " ", "allProbRules", 
+     ",", "  ", "definizeRule", ",", "  ", "bayesRule", ",", "negateRule", 
+     ",", " ", "renegateRule", ",", "negateCondRule", ",", " ", 
+     "renegateCondRule", ",", " ", "removeIrrelevantGeneralRule", ",", " ", 
+     "introCondRule", ",", "introCondRuleCond", ",", "introMargRule", ",", 
+     " ", "introDetCondRule", ",", " ", "introDetMargRule", ",", " ", 
+     "eventsToDNFExtRule", ",", "eventsToDNFCondExtRule", ",", "  ", 
+     "eventsToCNFExtRule", ",", " ", "eventsToCNFCondExtRule", ",", 
+     "eventReasoningRule1", ",", " ", "eventReasoningRule2", ",", " ", 
+     "eventCondReasoningRule1", ",", "eventCondReasoningRule2"}], "]"}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.770554667794222*^9, 3.770554699386595*^9}, {
+   3.770566661402954*^9, 3.770566669032916*^9}, {3.770567501531502*^9, 
+   3.770567508097574*^9}, {3.771156747257698*^9, 3.771156749498887*^9}, 
+   3.771674981457637*^9, {3.771687343844945*^9, 3.7716873494151087`*^9}, {
+   3.7716874352029753`*^9, 3.771687435360938*^9}, {3.771692505372958*^9, 
+   3.7716925112241096`*^9}, {3.7716925644846687`*^9, 3.771692567768656*^9}, 
+   3.771760183022112*^9, {3.7718640404170513`*^9, 3.77186404094154*^9}, {
+   3.772205581114935*^9, 3.7722055819864273`*^9}, {3.7722058142973757`*^9, 
+   3.772205814540979*^9}, 3.7722878392119703`*^9, {3.772289160427155*^9, 
+   3.772289164349489*^9}, {3.772289974900722*^9, 3.7722899786099377`*^9}, {
+   3.774030475654911*^9, 3.774030476994972*^9}, {3.774093421892839*^9, 
+   3.774093423348106*^9}, {3.774093779415825*^9, 3.774093790001823*^9}, {
+   3.774094009168581*^9, 3.774094015950244*^9}, 3.774182165729292*^9, {
+   3.774274908959155*^9, 3.774274913322693*^9}, {3.7742795609531612`*^9, 
+   3.774279568332876*^9}, {3.800796814771509*^9, 3.800796826032488*^9}, {
+   3.800821366754517*^9, 3.8008213667586613`*^9}, {3.8009831087037153`*^9, 
+   3.800983109257056*^9}, {3.801235962233061*^9, 3.80123596483279*^9}, {
+   3.801348624335083*^9, 3.801348630183415*^9}},
+ FontSize->14,
+ CellLabel->"In[20]:=",ExpressionUUID->"ee26cbbe-e304-482e-9046-cb23f377b9d8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "CONSERVATIVE", " ", "PROBABILITY", " ", "RULES"}], " ", 
+   "**)"}], " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"disjBreakRule", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myProb", "[", 
+        RowBox[{"a_", " ", "\[Or]", " ", "b_"}], "]"}], " ", "\[RuleDelayed]",
+        " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myProb", "[", "a", "]"}], " ", "+", " ", 
+         RowBox[{"myProb", "[", "b", "]"}], " ", "-", " ", 
+         RowBox[{"myProb", "[", 
+          RowBox[{"Simplify", "[", 
+           RowBox[{"a", " ", "\[And]", "b"}], "]"}], "]"}]}], ")"}]}], 
+      ")"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"disjCondBreakRule", " ", "=", " ", "\[IndentingNewLine]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"a_", " ", "\[Or]", " ", "b_"}], " ", "\[Conditioned]", " ", 
+         "c_"}], "]"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondProb", "[", 
+          RowBox[{"a", "\[Conditioned]", "c"}], "]"}], " ", "+", " ", 
+         RowBox[{"myCondProb", "[", 
+          RowBox[{"b", "\[Conditioned]", "c"}], "]"}], " ", "-", " ", 
+         RowBox[{"myCondProb", "[", 
+          RowBox[{
+           RowBox[{"Simplify", "[", 
+            RowBox[{"a", "\[And]", "b"}], "]"}], "\[Conditioned]", "c"}], 
+          "]"}]}], ")"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"conditional", " ", "probability", " ", "definition"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"definizeRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a", " ", "\[And]", " ", "b"}], "]"}], " ", "/", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "the", " ", "\"\<reverse\>\"", " ", "of", " ", "the", " ", "previous"}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeRule1", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myProb", "[", 
+        RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", "b"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeRule2", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myProb", "[", 
+        RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", " ", "\[Conditioned]", " ", "a"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "a", "]"}]}]}], ")"}]}], ";"}], " ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"conditional", " ", "reverses"}], ",", " ", 
+     RowBox[{"similar", " ", "to", " ", "above"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeCondRule1", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", " ",
+          "c_"}], " ", "]"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", 
+          RowBox[{"b", " ", "\[And]", "c"}]}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", 
+          RowBox[{"b", "\[And]", "c"}], "]"}], "/", 
+         RowBox[{"myProb", "[", "c", "]"}]}]}]}], ")"}]}], ";"}], " ", "\n", 
+   RowBox[{
+    RowBox[{"reversizeCondRule2", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", " ",
+          "c_"}], " ", "]"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", " ", "\[Conditioned]", " ", 
+          RowBox[{"a", " ", "\[And]", "c"}]}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", 
+          RowBox[{"a", "\[And]", "c"}], "]"}], "/", 
+         RowBox[{"myProb", "[", "c", "]"}]}]}]}], ")"}]}], ";"}], " ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "smart", " ", "reverses", " ", "that", " ", "only", " ", "push", " ", 
+     "GT", " ", "to", " ", "the", " ", "right"}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeOnlyH1Rule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{"onlyGTs", "[", "b", "]"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", "b"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeCondOnlyH1Rule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", 
+          " ", "c_"}], " ", "]"}], " ", "/;", " ", 
+        RowBox[{"onlyGTs", "[", "b", "]"}]}], "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", 
+          RowBox[{"b", " ", "\[And]", "c"}]}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", 
+          RowBox[{"b", "\[And]", "c"}], "]"}], "/", 
+         RowBox[{"myProb", "[", "c", "]"}]}]}]}], ")"}]}], ";"}], "  ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "smart", " ", "reversizes", " ", "that", " ", "leave", " ", "no", " ", 
+     "GTs", " ", "on", " ", "the", " ", "left"}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeAllH1Rule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{"noGTs", "[", "a", "]"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", "b"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeCondAllH1Rule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", 
+          " ", "c_"}], " ", "]"}], " ", "/;", " ", 
+        RowBox[{"noGTs", "[", "a", "]"}]}], "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", 
+          RowBox[{"b", " ", "\[And]", "c"}]}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", 
+          RowBox[{"b", "\[And]", "c"}], "]"}], "/", 
+         RowBox[{"myProb", "[", "c", "]"}]}]}]}], ")"}]}], ";"}], "  ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"merger", " ", "of", " ", "the", " ", "above"}], " ", "*)"}], " ",
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeAllOnlyH1Rule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{
+         RowBox[{"noGTs", "[", "a", "]"}], " ", "\[And]", " ", 
+         RowBox[{"onlyGTs", "[", "b", "]"}]}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", "b"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeCondAllOnlyH1Rule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", 
+          " ", "c_"}], " ", "]"}], " ", "/;", " ", 
+        RowBox[{
+         RowBox[{"noGTs", "[", "a", "]"}], "\[And]", " ", 
+         RowBox[{"onlyGTs", "[", "b", "]"}]}]}], "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", 
+          RowBox[{"b", " ", "\[And]", "c"}]}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", 
+          RowBox[{"b", "\[And]", "c"}], "]"}], "/", 
+         RowBox[{"myProb", "[", "c", "]"}]}]}]}], ")"}]}], ";"}], "  ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"ordered", " ", "reversize", " ", "for", " ", 
+     RowBox[{"pairs", ":", " ", 
+      RowBox[{
+      "only", " ", "reverse", " ", "if", " ", "the", " ", "condition", " ", 
+       "is", " ", "earlier", " ", "in", " ", "the", " ", "event", " ", 
+       "list"}]}]}], "  ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"reversizeH1OrderRule", "[", "orderList_", "]"}], " ", ":=", 
+     "  ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"MemberQ", "[", 
+           RowBox[{"orderList", ",", " ", "a"}], "]"}], "\[And]", 
+          RowBox[{"MemberQ", "[", 
+           RowBox[{"orderList", ",", " ", "b"}], "]"}], "\[And]", 
+          RowBox[{"onlyGTs", "[", "b", "]"}], " ", "\[And]", "  ", 
+          RowBox[{"earlierInOrder", "[", 
+           RowBox[{"orderList", ",", " ", "b", ",", "a"}], "]"}]}], "  ", 
+         ")"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", "b"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"ordered", " ", "reversize", " ", "for", " ", 
+      RowBox[{"lists", ":", " ", 
+       RowBox[{
+       "if", " ", "all", " ", "indices", " ", "from", " ", "one", " ", "list",
+         " ", "are", " ", "less", " ", "than", " ", "the", " ", "other"}]}]}],
+      ",", " ", 
+     RowBox[{
+      RowBox[{"then", " ", "fine", " ", "to", " ", "reversize"}], ";", " ", 
+      RowBox[{"subsumes", " ", "the", " ", "previous", " ", "one"}]}]}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"reversizeH1OrderListRule", "[", "orderList_", "]"}], " ", ":=", 
+     "  ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"SubsetQ", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "a"}]}], "]"}], "\[And]", 
+          RowBox[{"SubsetQ", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}]}], "]"}], "\[And]", 
+          RowBox[{"onlyGTs", "[", "a", "]"}], "\[And]", " ", 
+          RowBox[{"onlyGTs", "[", "b", "]"}], " ", "\[And]", "  ", 
+          RowBox[{"earlierInOrderLists", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}], ",", 
+            RowBox[{"listifyAnd", "@", "a"}]}], "]"}]}], "  ", ")"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", "b"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "same", " ", "but", " ", "for", " ", "conditioned", " ", "instead", " ", 
+     "of", " ", "vanilla"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"reversizeCondH1OrderListRule", "[", "orderList_", "]"}], "  ", ":=",
+      " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", 
+          " ", "c_"}], " ", "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"SubsetQ", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "a"}]}], "]"}], "\[And]", 
+          RowBox[{"SubsetQ", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}]}], "]"}], "\[And]", 
+          RowBox[{"onlyGTs", "[", "b", "]"}], " ", "\[And]", "  ", 
+          RowBox[{"earlierInOrderLists", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}], ",", 
+            RowBox[{"listifyAnd", "@", "a"}]}], "]"}]}], ")"}]}], 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", 
+          RowBox[{"b", " ", "\[And]", "c"}]}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", 
+          RowBox[{"b", "\[And]", "c"}], "]"}], "/", 
+         RowBox[{"myProb", "[", "c", "]"}]}]}]}], ")"}]}], ";"}], "  ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Modification", ":", " ", 
+     RowBox[{
+     "not", " ", "requiring", " ", "\"\<a\>\"", " ", "to", " ", "be", " ", 
+      "all", " ", "part", " ", "of", " ", "the", " ", "order", " ", "or", " ",
+       "have", " ", "all", " ", 
+      RowBox[{"GTs", ".", " ", "Should"}], " ", "allow", " ", "reversizing", 
+      " ", "when", " ", "\"\<a\>\"", " ", "has", " ", "CH1s", " ", "and", " ",
+       "NCs"}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"reversizeH1RelaxedOrderListRule", "[", "orderList_", "]"}], " ",
+      ":=", "  ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"SubsetQ", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}]}], "]"}], "\[And]", 
+          RowBox[{"onlyGTs", "[", "b", "]"}], " ", "\[And]", "  ", 
+          RowBox[{"earlierInOrderLists", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}], ",", 
+            RowBox[{"listifyAnd", "@", "a"}]}], "]"}]}], "  ", ")"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", "b"}], "]"}], " ", "*", " ", 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "same", " ", "modification", " ", "but", " ", "for", " ", "conditioned", 
+     " ", "instead", " ", "of", " ", "vanilla"}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"reversizeCondH1RelaxedOrderListRule", "[", "orderList_", "]"}], 
+     "  ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", 
+          " ", "c_"}], " ", "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"SubsetQ", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}]}], "]"}], "\[And]", 
+          RowBox[{"onlyGTs", "[", "b", "]"}], " ", "\[And]", "  ", 
+          RowBox[{"earlierInOrderLists", "[", 
+           RowBox[{"orderList", ",", " ", 
+            RowBox[{"listifyAnd", "@", "b"}], ",", 
+            RowBox[{"listifyAnd", "@", "a"}]}], "]"}]}], ")"}]}], 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", " ", "\[Conditioned]", " ", 
+          RowBox[{"b", " ", "\[And]", "c"}]}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", 
+          RowBox[{"b", "\[And]", "c"}], "]"}], "/", 
+         RowBox[{"myProb", "[", "c", "]"}]}]}]}], ")"}]}], ";"}], "  ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"an", " ", 
+      RowBox[{"imperative", "/", "prescriptive"}], " ", "way", " ", "to", " ",
+       "reversize"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "by", " ", "specifying", " ", "exactly", " ", "how", " ", "to", " ", 
+       "build", " ", "the", " ", "lists", " ", "of", " ", 
+       RowBox[{"GTs", "/", "non"}]}], "-", 
+      RowBox[{"GTs", ":"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeAllOnlyH1ImperativeRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "exp_And", "]"}], " ", "/;", " ", 
+        RowBox[{
+         RowBox[{"Length", "@", 
+          RowBox[{"listifyAnd", "@", "exp"}]}], " ", ">", " ", "1"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h1sAnd", " ", "=", "  ", 
+           RowBox[{"Select", "[", 
+            RowBox[{"exp", ",", " ", "onlyGTs"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{
+          RowBox[{"myCondProb", "[", 
+           RowBox[{
+            RowBox[{"Select", "[", 
+             RowBox[{"exp", ",", " ", "noGTs"}], "]"}], " ", "\[Conditioned]",
+             "h1sAnd"}], "]"}], " ", "*", " ", 
+          RowBox[{"myProb", "[", "h1sAnd", "]"}]}]}], "]"}]}], ")"}]}], ";"}],
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"same", " ", "as", " ", "above"}], ",", " ", 
+     RowBox[{"but", " ", "for", " ", "conditional"}]}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"reversizeCondAllOnlyH1ImperativeRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"exp_And", " ", "\[Conditioned]", " ", "c_"}], " ", "]"}], 
+        " ", "/;", " ", 
+        RowBox[{
+         RowBox[{"Length", "@", 
+          RowBox[{"listifyAnd", "@", "exp"}]}], " ", ">", " ", "1"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h1sAnd", " ", "=", "  ", 
+           RowBox[{"Select", "[", 
+            RowBox[{"exp", ",", " ", "onlyGTs"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{
+          RowBox[{"myCondProb", "[", 
+           RowBox[{
+            RowBox[{"Select", "[", 
+             RowBox[{"exp", ",", " ", "noGTs"}], "]"}], " ", "\[Conditioned]", 
+            RowBox[{"(", 
+             RowBox[{"h1sAnd", " ", "\[And]", " ", "c"}], ")"}]}], "]"}], " ",
+           "*", 
+          RowBox[{
+           RowBox[{"myProb", "[", 
+            RowBox[{"h1sAnd", " ", "\[And]", "c"}], "]"}], " ", "/", " ", 
+           RowBox[{"myProb", "[", "c", "]"}]}]}]}], "]"}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"bayes", " ", "as", " ", "a", " ", "rule"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bayesRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], " ", 
+       "\[RuleDelayed]", "  ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", " ", "\[Conditioned]", " ", "a"}], "]"}], " ", "*", " ", 
+        RowBox[{
+         RowBox[{"myProb", "[", "a", "]"}], " ", "/", " ", 
+         RowBox[{"myProb", "[", "b", "]"}]}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"negation", "-", 
+     RowBox[{"related", " ", "rules"}]}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"negateRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myProb", "[", " ", 
+        RowBox[{"\[Not]", "a_"}], "]"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"1", " ", "-", " ", 
+        RowBox[{"myProb", "[", "a", "]"}]}]}], ")"}]}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"renegateRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "a_", "]"}], " ", "/;", " ", 
+        RowBox[{"Not", "[", 
+         RowBox[{
+          RowBox[{"Head", "[", "a", "]"}], "===", "Not"}], "]"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{"1", "-", " ", 
+        RowBox[{"myProb", "[", 
+         RowBox[{"\[Not]", "a"}], " ", "]"}]}]}], " ", ")"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"negateCondRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", " ", 
+        RowBox[{
+         RowBox[{"\[Not]", "a_"}], " ", "\[Conditioned]", " ", "b_"}], " ", 
+        "]"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"1", " ", "-", " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", "\[Conditioned]", "b"}], "]"}]}]}], ")"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"used", " ", "to", " ", "be", " ", "a", " ", "def"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"renegateCondRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], " ", "/;", 
+        " ", 
+        RowBox[{"Not", "[", 
+         RowBox[{
+          RowBox[{"Head", "[", "a", "]"}], "===", "Not"}], "]"}]}], " ", " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{"1", "-", " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"\[Not]", " ", "a"}], " ", "\[Conditioned]", " ", "b"}], 
+         "]"}]}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"putting", " ", "events", " ", "in", " ", "standard", " ", 
+     RowBox[{"forms", ":", " ", 
+      RowBox[{"DNF", " ", "and", " ", "CNF"}]}]}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eventsToDNFExtRule", "  ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"myProb", "[", "a_", "]"}], ")"}], " ", "/;", 
+       RowBox[{"(", " ", 
+        RowBox[{"\[Not]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"BooleanConvert", "[", 
+            RowBox[{"a", ",", " ", "\"\<DNF\>\""}], "]"}], " ", "===", " ", 
+           "a"}], ")"}]}], ")"}]}], "\[RuleDelayed]", 
+      RowBox[{"(", 
+       RowBox[{"myProb", "[", 
+        RowBox[{"BooleanConvert", "[", 
+         RowBox[{"a", ",", " ", "\"\<DNF\>\""}], "]"}], "]"}], ")"}]}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eventsToDNFCondExtRule", "  ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a_", "\[Conditioned]", "b_"}], "]"}], ")"}], " ", "/;", 
+       RowBox[{"(", " ", 
+        RowBox[{"\[Not]", " ", 
+         RowBox[{"(", " ", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"BooleanConvert", "[", 
+              RowBox[{"a", ",", " ", "\"\<DNF\>\""}], "]"}], " ", "===", " ", 
+             "a"}], ")"}], " ", "\[And]", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"BooleanConvert", "[", 
+              RowBox[{"b", ",", " ", "\"\<DNF\>\""}], "]"}], " ", "===", " ", 
+             "b"}], ")"}]}], " ", ")"}]}], ")"}]}], "\[RuleDelayed]", 
+      RowBox[{"(", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"BooleanConvert", "[", 
+          RowBox[{"a", ",", " ", "\"\<DNF\>\""}], "]"}], "\[Conditioned]", 
+         RowBox[{"BooleanConvert", "[", 
+          RowBox[{"b", ",", " ", "\"\<DNF\>\""}], "]"}]}], "]"}], ")"}]}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"CNF", " ", "--"}], " ", "generally", " ", 
+     RowBox[{"isn", "'"}], "t", " ", "as", " ", "useful", " ", "as", " ", 
+     "DNF", " ", "due", " ", "to", " ", "trapping", " ", "disjunctions", " ", 
+     "inside", " ", "larger", " ", "conjunctions"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eventsToCNFExtRule", "  ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"myProb", "[", "a_", "]"}], ")"}], " ", "/;", 
+       RowBox[{"(", " ", 
+        RowBox[{"\[Not]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"BooleanConvert", "[", 
+            RowBox[{"a", ",", " ", "\"\<CNF\>\""}], "]"}], " ", "===", " ", 
+           "a"}], ")"}]}], ")"}]}], "\[RuleDelayed]", 
+      RowBox[{"(", 
+       RowBox[{"myProb", "[", 
+        RowBox[{"BooleanConvert", "[", 
+         RowBox[{"a", ",", " ", "\"\<CNF\>\""}], "]"}], "]"}], ")"}]}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eventsToCNFCondExtRule", "  ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a_", "\[Conditioned]", "b_"}], "]"}], ")"}], " ", "/;", 
+       RowBox[{"(", " ", 
+        RowBox[{"\[Not]", " ", 
+         RowBox[{"(", " ", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"BooleanConvert", "[", 
+              RowBox[{"a", ",", " ", "\"\<CNF\>\""}], "]"}], " ", "===", " ", 
+             "a"}], ")"}], " ", "\[And]", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"BooleanConvert", "[", 
+              RowBox[{"b", ",", " ", "\"\<CNF\>\""}], "]"}], " ", "===", " ", 
+             "b"}], ")"}]}], " ", ")"}]}], ")"}]}], "\[RuleDelayed]", 
+      RowBox[{"(", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"BooleanConvert", "[", 
+          RowBox[{"a", ",", " ", "\"\<CNF\>\""}], "]"}], "\[Conditioned]", 
+         RowBox[{"BooleanConvert", "[", 
+          RowBox[{"b", ",", " ", "\"\<CNF\>\""}], "]"}]}], "]"}], ")"}]}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"EVENT", " ", 
+     RowBox[{"ALGEBRA", ":", " ", 
+      RowBox[{
+      "to", " ", "DNF", " ", "plus", " ", "reasoning", " ", "NCs", " ", "and",
+        " ", "contradictions", " ", 
+       RowBox[{"away", ".", " ", "Uses"}], " ", "a", " ", "global", " ", 
+       "variable", " ", "detAssns"}]}]}], "  ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eventReasoningRule1", " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myProb", "[", "exp_", "]"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"myProb", "[", 
+        RowBox[{"BooleanMinimize", "[", 
+         RowBox[{
+          RowBox[{"LogicalExpand", "[", 
+           RowBox[{
+            RowBox[{"LogicalExpand", "@", "exp"}], " ", "\[And]", 
+            "detAssns"}], "]"}], ",", "\"\<DNF\>\"", ",", " ", "detAssns"}], 
+         "]"}], "]"}]}], " ", ")"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eventReasoningRule2", " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myProb", "[", "exp_", "]"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"myProb", "[", 
+        RowBox[{"BooleanMinimize", "[", 
+         RowBox[{
+          RowBox[{"LogicalExpand", "[", 
+           RowBox[{
+            RowBox[{"LogicalExpand", "@", "exp"}], " ", "\[Or]", 
+            RowBox[{"\[Not]", "detAssns"}]}], "]"}], ",", "\"\<DNF\>\"", ",", 
+          " ", "detAssns"}], "]"}], "]"}]}], " ", ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eventCondReasoningRule1", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"exp1_", "\[Conditioned]", "exp2_"}], "]"}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"BooleanMinimize", "[", 
+          RowBox[{
+           RowBox[{"LogicalExpand", "[", 
+            RowBox[{
+             RowBox[{"LogicalExpand", "@", "exp1"}], "\[And]", "detAssns"}], 
+            "]"}], ",", "\"\<DNF\>\"", ",", " ", "detAssns"}], "]"}], 
+         "\[Conditioned]", 
+         RowBox[{"BooleanMinimize", "[", 
+          RowBox[{
+           RowBox[{"LogicalExpand", "[", 
+            RowBox[{
+             RowBox[{"LogicalExpand", "@", "exp2"}], " ", "\[And]", 
+             "detAssns"}], "]"}], ",", "\"\<DNF\>\"", ",", " ", "detAssns"}], 
+          "]"}]}], "]"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{"eventCondReasoningRule2", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"exp1_", "\[Conditioned]", "exp2_"}], "]"}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{
+         RowBox[{"BooleanMinimize", "[", 
+          RowBox[{
+           RowBox[{"LogicalExpand", "[", 
+            RowBox[{
+             RowBox[{"LogicalExpand", "@", "exp1"}], "\[Or]", 
+             RowBox[{"\[Not]", "detAssns"}]}], "]"}], ",", "\"\<DNF\>\"", ",",
+            " ", "detAssns"}], "]"}], "\[Conditioned]", 
+         RowBox[{"BooleanMinimize", "[", 
+          RowBox[{
+           RowBox[{"LogicalExpand", "[", 
+            RowBox[{
+             RowBox[{"LogicalExpand", "@", "exp2"}], " ", "\[Or]", 
+             RowBox[{"\[Not]", "detAssns"}]}], "]"}], ",", "\"\<DNF\>\"", ",",
+            " ", "detAssns"}], "]"}]}], "]"}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "a", " ", "generalization", " ", "of", " ", "vanilla", " ", "and", " ", 
+     "conditional", " ", "irrelevance"}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"removeIrrelevantGeneralRule", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"myCondProb", "[", 
+       RowBox[{"a_", " ", "\[Conditioned]", " ", "conds__And"}], "]"}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"myCondProb", "[", 
+       RowBox[{"a", " ", "\[Conditioned]", " ", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"conds", ",", "  ", 
+          RowBox[{"_", "?", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"myIndep", "[", 
+                RowBox[{"a", ",", " ", "#"}], "]"}], ")"}], " ", "\[Or]", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"myCondIndep", "[", 
+                 RowBox[{"a", ",", " ", "#"}], "]"}], "\[Conditioned]", 
+                RowBox[{"(", 
+                 RowBox[{"DeleteCases", "[", 
+                  RowBox[{"conds", ",", " ", "#"}], "]"}], ")"}]}], ")"}]}], 
+             "&"}], ")"}]}]}], "]"}]}], "]"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "tries", " ", "conditions", " ", "from", " ", "the", " ", "right", " ", 
+       "part", " ", "of", " ", "myCondProb", " ", "for", " ", "conditional", 
+       " ", "independence", " ", "with", " ", "the", " ", "left", " ", 
+       "part"}], ";", " ", 
+      RowBox[{"if", " ", "independent"}]}], ",", " ", 
+     RowBox[{"removes", " ", "them"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"removeIrrelevantGeneralInferenceRule", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"myCondProb", "[", 
+       RowBox[{"a_", " ", "\[Conditioned]", " ", "conds__And"}], "]"}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"myCondProb", "[", 
+       RowBox[{"a", " ", "\[Conditioned]", " ", 
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"conds", ",", "  ", 
+          RowBox[{"_", "?", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Or", "@@", 
+              RowBox[{"mySimplify", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"myIndep", "[", 
+                    RowBox[{"a", ",", " ", "#"}], "]"}], ")"}], " ", "\[Or]", 
+                  
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"myCondIndep", "[", 
+                    RowBox[{"a", ",", " ", "#"}], "]"}], "\[Conditioned]", 
+                    RowBox[{"(", 
+                    RowBox[{"DeleteCases", "[", 
+                    RowBox[{"conds", ",", " ", "#"}], "]"}], ")"}]}], ")"}]}],
+                  ")"}], ",", 
+                RowBox[{"Subsets", "@", "allIndepRules"}], ",", " ", 
+                "indepIndefenceIterLimit"}], "]"}]}], "&"}], ")"}]}]}], 
+         "]"}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "an", " ", "augmented", " ", "version", " ", "of", " ", "the", " ", 
+     "previous", " ", "one"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "removeIrrelevantGeneralInferenceRuleAug", "[", "extraRule_", "]"}], " ", 
+    ":=", " ", 
+    RowBox[{
+     RowBox[{"myCondProb", "[", 
+      RowBox[{"a_", " ", "\[Conditioned]", " ", "conds__And"}], "]"}], " ", 
+     "\[RuleDelayed]", " ", 
+     RowBox[{"myCondProb", "[", 
+      RowBox[{"a", " ", "\[Conditioned]", " ", 
+       RowBox[{"DeleteCases", "[", 
+        RowBox[{"conds", ",", "  ", 
+         RowBox[{"_", "?", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Or", "@@", 
+             RowBox[{"mySimplify", "[", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"myIndep", "[", 
+                   RowBox[{"a", ",", " ", "#"}], "]"}], ")"}], " ", "\[Or]", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"myCondIndep", "[", 
+                    RowBox[{"a", ",", " ", "#"}], "]"}], "\[Conditioned]", 
+                   RowBox[{"(", 
+                    RowBox[{"DeleteCases", "[", 
+                    RowBox[{"conds", ",", " ", "#"}], "]"}], ")"}]}], ")"}]}],
+                 ")"}], ",", 
+               RowBox[{"Subsets", "@", 
+                RowBox[{"Join", "[", 
+                 RowBox[{
+                  RowBox[{"{", "extraRule", "}"}], ",", "allIndepRules"}], 
+                 "]"}]}], ",", " ", "indepIndefenceIterLimit"}], "]"}]}], 
+            "&"}], ")"}]}]}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "need", " ", "conditional", " ", "inference", " ", "with", " ", 
+     "exhaustive", " ", "search"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indepIndefenceIterLimit", " ", "=", " ", "10"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indepInferenceTotalRule", "=", "  ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "seq__And", "]"}], "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{"Or", "@@", 
+          RowBox[{"mySimplify", "[", 
+           RowBox[{
+            RowBox[{"Apply", "[", 
+             RowBox[{"myIndep", ",", "  ", "seq"}], "]"}], ",", 
+            RowBox[{"{", "allIndepRules", "}"}], ",", " ", 
+            "indepIndefenceIterLimit"}], "]"}]}], " ", ")"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{"Apply", "[", 
+        RowBox[{"Times", ",", 
+         RowBox[{"myProb", "/@", " ", 
+          RowBox[{"Apply", "[", 
+           RowBox[{"List", ",", "seq"}], "]"}]}]}], "]"}]}], ")"}]}], " ", 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "a", " ", "very", " ", "weak", " ", "version", " ", "of", " ", "the", " ",
+      "above"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indepInferenceTwoRule", " ", "=", "  ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a_", " ", "\[And]", " ", "b_"}], "]"}], "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{"Or", "@@", 
+          RowBox[{"mySimplify", "[", 
+           RowBox[{
+            RowBox[{"myIndep", "[", 
+             RowBox[{"a", ",", "b"}], "]"}], ",", 
+            RowBox[{"{", "allIndepRules", "}"}], ",", 
+            "indepIndefenceIterLimit"}], "]"}]}], " ", ")"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myProb", "[", "a", "]"}], 
+        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"a", " ", "broadly", " ", "applicable", " ", "rule"}], ",", " ", 
+     
+     RowBox[{"may", " ", "cost", " ", "computation"}]}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indepCondSplitTwoRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_"}], "\[Conditioned]", " ", 
+          "seq2_"}], "]"}], " ", "/;", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", " ", "b"}], "]"}], "\[Conditioned]", " ", 
+          RowBox[{"(", "seq2", ")"}]}], ")"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", "\[Conditioned]", " ", "seq2"}], "]"}], " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", "\[Conditioned]", "seq2"}], "]"}]}]}], " ", ")"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "maybe", " ", "this", " ", "is", " ", "automated", " ", "already", " ", 
+     "in", " ", "the", " ", "definitions"}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indepCondSplitRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_And"}], " ", "\[Conditioned]", 
+          " ", "seq2_And"}], "]"}], " ", "/;", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", " ", "b"}], "]"}], "\[Conditioned]", " ", 
+          RowBox[{"(", "seq2", ")"}]}], ")"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", "\[Conditioned]", " ", "seq2"}], "]"}], " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", "\[Conditioned]", "seq2"}], "]"}]}]}], " ", ")"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indepCondSplitRuleOr", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_Or"}], " ", "\[Conditioned]", 
+          " ", "seq2_And"}], "]"}], " ", "/;", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", " ", "b"}], "]"}], "\[Conditioned]", " ", 
+          RowBox[{"(", "seq2", ")"}]}], ")"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", "\[Conditioned]", " ", "seq2"}], "]"}], " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", "\[Conditioned]", "seq2"}], "]"}]}]}], " ", ")"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"note", ":", " ", 
+      RowBox[{
+      "this", " ", "rule", " ", "has", " ", "requirements", " ", "for", " ", 
+       "And", " ", "to", " ", "not", " ", "apply", " ", "it", " ", 
+       "extraneously"}]}], ";", " ", 
+     RowBox[{
+     "in", " ", "those", " ", "cases", " ", "definitional", " ", "rules", " ",
+       "should", " ", "do", " ", "the", " ", "trick"}]}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"indepInferenceCondSplitRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_And"}], " ", "\[Conditioned]", 
+          " ", "seq2_And"}], "]"}], " ", "/;", 
+        RowBox[{"(", 
+         RowBox[{"Or", "@@", 
+          RowBox[{"mySimplify", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"myCondIndep", "[", 
+              RowBox[{"a", ",", " ", "b"}], "]"}], "\[Conditioned]", " ", 
+             RowBox[{"(", "seq2", ")"}]}], ",", "  ", 
+            RowBox[{"Subsets", "@", "allIndepRules"}], ",", " ", 
+            "indepIndefenceIterLimit"}], "]"}]}], ")"}]}], " ", 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", "\[Conditioned]", " ", "seq2"}], "]"}], " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", "\[Conditioned]", "seq2"}], "]"}]}]}], " ", ")"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"augmenting", " ", "with", " ", "extra", " ", "rules"}], ",", 
+     " ", 
+     RowBox[{"usually", " ", "the", " ", "constructive", " ", "ones"}]}], " ",
+     "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"indepInferenceCondSplitRuleAug", "[", "extraRule_", "]"}], " ", 
+     ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a_", " ", "\[And]", " ", "b_"}], " ", "\[Conditioned]", 
+          " ", "seq2_"}], "]"}], " ", "/;", 
+        RowBox[{"(", 
+         RowBox[{"Or", "@@", 
+          RowBox[{"mySimplify", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"myCondIndep", "[", 
+              RowBox[{"a", ",", " ", "b"}], "]"}], "\[Conditioned]", " ", 
+             RowBox[{"(", "seq2", ")"}]}], ",", "  ", 
+            RowBox[{"Subsets", "@", 
+             RowBox[{"Join", "[", 
+              RowBox[{
+               RowBox[{"{", "extraRule", "}"}], ",", "allIndepRules"}], 
+              "]"}]}], ",", " ", "indepIndefenceIterLimit"}], "]"}]}], 
+         ")"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a", "\[Conditioned]", " ", "seq2"}], "]"}], " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"b", "\[Conditioned]", "seq2"}], "]"}]}]}], " ", ")"}]}], 
+    ";"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.770395316056265*^9, 3.770395327988851*^9}, 
+   3.770395530843853*^9, {3.770395607722821*^9, 3.77039560788011*^9}, {
+   3.7703966543892117`*^9, 3.770396662223556*^9}, {3.77039754544744*^9, 
+   3.770397560431582*^9}, {3.7704003690849867`*^9, 3.7704003733507957`*^9}, 
+   3.7704020917421017`*^9, {3.7704635068986464`*^9, 3.770463507838204*^9}, {
+   3.7704638183967123`*^9, 3.770463826234267*^9}, {3.7704638879703007`*^9, 
+   3.770463896901369*^9}, {3.7704640052963448`*^9, 3.7704640125501547`*^9}, {
+   3.770472657950879*^9, 3.7704726610613537`*^9}, {3.770472712735708*^9, 
+   3.7704727154777393`*^9}, {3.7704741246157*^9, 3.7704741607453127`*^9}, {
+   3.770474241537982*^9, 3.770474264849906*^9}, {3.770477760822505*^9, 
+   3.770477760960129*^9}, {3.7704836910426493`*^9, 3.770483753554118*^9}, {
+   3.770553332495225*^9, 3.770553345538686*^9}, 3.770554063600198*^9, {
+   3.770566224020074*^9, 3.7705662463804893`*^9}, {3.770566310231431*^9, 
+   3.770566327646854*^9}, {3.770566366953597*^9, 3.7705663677239857`*^9}, {
+   3.770566413221168*^9, 3.770566441763339*^9}, {3.770566553920246*^9, 
+   3.770566609426608*^9}, 3.770566707994238*^9, {3.77056674057192*^9, 
+   3.770566754157527*^9}, {3.770566805917788*^9, 3.770566842655232*^9}, {
+   3.770567123649695*^9, 3.770567167973874*^9}, {3.770567199650758*^9, 
+   3.7705672011088247`*^9}, {3.7705672431040173`*^9, 3.770567310642679*^9}, {
+   3.7705674898476257`*^9, 3.7705675214385557`*^9}, {3.7705687318855677`*^9, 
+   3.770568757455854*^9}, {3.770568811144113*^9, 3.770568813731737*^9}, 
+   3.7716739400136414`*^9, {3.771675732967259*^9, 3.771675734967507*^9}, {
+   3.771692460134839*^9, 3.771692476698501*^9}, {3.771692551578835*^9, 
+   3.77169255722552*^9}, {3.7717569944736347`*^9, 3.7717570133210783`*^9}, {
+   3.7717609818839493`*^9, 3.771760983529853*^9}, {3.771864016258772*^9, 
+   3.771864016535761*^9}, {3.772207554112563*^9, 3.7722075673937883`*^9}, {
+   3.772207811707799*^9, 3.772207842301919*^9}, {3.772288027719119*^9, 
+   3.7722880286307983`*^9}, {3.7722880623147697`*^9, 3.772288069691062*^9}, {
+   3.772288325129258*^9, 3.7722883275368843`*^9}, 3.77228851486117*^9, {
+   3.7722899660868187`*^9, 3.7722899683100367`*^9}, {3.772292130310575*^9, 
+   3.772292137632009*^9}, {3.7722944488417664`*^9, 3.772294531985681*^9}, {
+   3.7722945705639553`*^9, 3.772294608612541*^9}, {3.772294710250661*^9, 
+   3.772294761379829*^9}, {3.774030463594509*^9, 3.7740305039450274`*^9}, {
+   3.774090897651845*^9, 3.774090898184465*^9}, {3.774090996413835*^9, 
+   3.774091033675151*^9}, {3.774091064693467*^9, 3.77409110064116*^9}, {
+   3.774091159130342*^9, 3.774091195396429*^9}, 3.774093326322064*^9, {
+   3.774093436082508*^9, 3.7740934461936703`*^9}, {3.774093799588463*^9, 
+   3.774093826051711*^9}, {3.774093932933*^9, 3.774094002640951*^9}, {
+   3.774181964785741*^9, 3.774181965123516*^9}, {3.774182097438078*^9, 
+   3.774182125622587*^9}, {3.774274856530787*^9, 3.774274899304367*^9}, {
+   3.774277597596315*^9, 3.774277608365015*^9}, {3.774277667079104*^9, 
+   3.7742776724729853`*^9}, {3.774279489444591*^9, 3.774279489902442*^9}, {
+   3.7742795525451927`*^9, 3.774279555774873*^9}, {3.774279937477672*^9, 
+   3.774280004192718*^9}, {3.77428013001665*^9, 3.774280157306635*^9}, {
+   3.7742802387022123`*^9, 3.774280262587091*^9}, {3.774281332631706*^9, 
+   3.77428137613274*^9}, {3.774284293581661*^9, 3.774284297765904*^9}, {
+   3.7742843589876213`*^9, 3.774284492301176*^9}, {3.77435644188558*^9, 
+   3.77435644804286*^9}, {3.774357855579804*^9, 3.774357894389835*^9}, {
+   3.77437033147507*^9, 3.77437035066118*^9}, {3.774370509064371*^9, 
+   3.77437050917354*^9}, {3.7743721564784307`*^9, 3.774372159192698*^9}, {
+   3.774373263257599*^9, 3.774373278920891*^9}, {3.774783000107428*^9, 
+   3.774783033608042*^9}, {3.774784030029974*^9, 3.774784034474164*^9}, {
+   3.774794418035501*^9, 3.774794467628111*^9}, {3.774794516307415*^9, 
+   3.774794540307988*^9}, {3.7748885655464563`*^9, 3.7748886031859217`*^9}, {
+   3.7748946946369*^9, 3.7748947327342577`*^9}, 3.774894795094602*^9, {
+   3.774895007561964*^9, 3.7748950347014723`*^9}, {3.7752246198680077`*^9, 
+   3.77522463903163*^9}, {3.775476296428316*^9, 3.7754763107990713`*^9}, {
+   3.775479613644305*^9, 3.775479625035692*^9}, {3.775486001267972*^9, 
+   3.7754860944486723`*^9}, {3.775486179613289*^9, 3.7754862850522842`*^9}, {
+   3.7754866504908133`*^9, 3.775486661273488*^9}, 3.775486706230857*^9, {
+   3.77549169328531*^9, 3.7754916987434683`*^9}, {3.775566031679821*^9, 
+   3.77556606090539*^9}, {3.77556724707086*^9, 3.7755672531985693`*^9}, {
+   3.77670349715103*^9, 3.7767035152946177`*^9}, {3.776704154660359*^9, 
+   3.7767041614542007`*^9}, {3.776704210607176*^9, 3.776704211174575*^9}, {
+   3.776704767154811*^9, 3.776704787363346*^9}, {3.7770449779944983`*^9, 
+   3.777045008084441*^9}, {3.7770472239045277`*^9, 3.777047235582612*^9}, {
+   3.800796928414896*^9, 3.800796941470874*^9}, {3.8007970249358797`*^9, 
+   3.800797047469141*^9}, {3.800821366767189*^9, 3.80082136678299*^9}, {
+   3.800877720411975*^9, 3.800877748315444*^9}, {3.800915715722076*^9, 
+   3.8009157635497*^9}, {3.8009158076337023`*^9, 3.800915809743959*^9}, {
+   3.801235919440629*^9, 3.801235922599792*^9}, {3.801235982880505*^9, 
+   3.801235997749238*^9}, 3.801236047309988*^9, {3.801348551215136*^9, 
+   3.8013485819950523`*^9}, {3.801348617433208*^9, 3.801348679160885*^9}, {
+   3.801350960277876*^9, 3.8013509723791037`*^9}},
+ FontSize->14,ExpressionUUID->"28db145c-7c24-4c77-915e-d30069bda815"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"vanillaProbRules", " ", "=", " ", 
+    RowBox[{"{", " ", 
+     RowBox[{
+     "negateRule", ",", " ", "renegateRule", ",", " ", "eventsToDNFExtRule", 
+      ",", "indepInferenceTwoRule", ",", " ", "indepInferenceTotalRule"}], 
+     "}"}]}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"condProbRules", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "removeIrrelevantGeneralRule", ",", "definizeRule", ",", " ", 
+     "reversizeRule1", ",", "reversizeRule2", ",", " ", "negateCondRule", ",",
+      " ", "renegateCondRule", ",", " ", "bayesRule", ",", " ", 
+     "eventsToDNFCondExtRule"}], " ", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allProbRules", " ", "=", " ", 
+   RowBox[{"Union", "[", 
+    RowBox[{"vanillaProbRules", ",", " ", "condProbRules"}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.771692482996814*^9, 3.771692575839499*^9}, {
+   3.7716926091773157`*^9, 3.771692609976705*^9}, {3.7717570007000103`*^9, 
+   3.771757014823442*^9}, {3.771864021529825*^9, 3.771864025584365*^9}, {
+   3.7719361942284803`*^9, 3.7719361981893053`*^9}, {3.771936725954652*^9, 
+   3.771936730706465*^9}, {3.7719408399808283`*^9, 3.771940864571679*^9}, {
+   3.771940925824428*^9, 3.771940936979171*^9}, {3.772207574710861*^9, 
+   3.772207577214611*^9}, {3.7722079575850983`*^9, 3.772208012430538*^9}, {
+   3.7722111033337193`*^9, 3.772211118146739*^9}, {3.772288631492882*^9, 
+   3.772288643089013*^9}, {3.772293760713635*^9, 3.7722937984862843`*^9}, {
+   3.774093891518847*^9, 3.7740938974351377`*^9}, 3.774182176441544*^9, {
+   3.774357872406324*^9, 3.7743578750273*^9}, {3.800821366786734*^9, 
+   3.80082136678979*^9}},
+ FontSize->14,
+ CellLabel->"In[63]:=",ExpressionUUID->"1b5fdc9f-b08b-4eb7-a60f-5dc3d05959c8"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"INDEPENDENCE", " ", "DEFINITIONAL", " ", "RULES"}], " ", "*)"}], 
+  " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Removing", " ", "NOTs", " ", "from", " ", "independence"}], ";", 
+    " ", 
+    RowBox[{
+    "somehow", " ", "the", " ", "below", " ", "works", " ", "for", " ", "any",
+      " ", "arguments"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"myIndep", "[", 
+      RowBox[{"a_Not", ",", " ", "args__"}], "]"}], ":=", " ", 
+     RowBox[{"myIndep", "[", 
+      RowBox[{
+       RowBox[{"a", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", " ", "args"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"myIndep", "[", 
+      RowBox[{"a_", ",", " ", "b_Not", ",", " ", "args___"}], "]"}], ":=", 
+     " ", 
+     RowBox[{"myIndep", "[", 
+      RowBox[{"a", ",", " ", 
+       RowBox[{"b", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", " ", "args"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"myIndep", "[", 
+      RowBox[{"a_", ",", " ", "b_", ",", "c_Not", ",", " ", "args___"}], 
+      "]"}], ":=", " ", 
+     RowBox[{"myIndep", "[", 
+      RowBox[{"a", ",", " ", "b", ",", " ", 
+       RowBox[{"c", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", " ", "args"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "reduction", " ", "from", " ", "conditional", " ", "to", " ", "vanilla", 
+     " ", "independence"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myCondIndep", " ", "/:", " ", 
+     RowBox[{
+      RowBox[{"myCondIndep", "[", 
+       RowBox[{"a_", ",", "b_"}], " ", "]"}], " ", "\[Conditioned]", " ", 
+      "True"}], " ", ":=", " ", 
+     RowBox[{"myIndep", "[", 
+      RowBox[{"a", ",", "b"}], "]"}]}], " ", ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"removing", " ", "NOTs", " ", "for", " ", "conditional"}], " ", 
+    "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myCondIndep", "/:", 
+     RowBox[{
+      RowBox[{"myCondIndep", "[", 
+       RowBox[{"a_Not", ",", " ", "args__"}], "]"}], " ", "\[Conditioned]", 
+      " ", "c_"}], ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondIndep", "[", 
+        RowBox[{
+         RowBox[{"a", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", " ", "args"}], "]"}], " ", 
+       "\[Conditioned]", "c"}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myCondIndep", "/:", 
+     RowBox[{
+      RowBox[{"myCondIndep", "[", 
+       RowBox[{"a_", ",", "b_Not", ",", " ", "args__"}], "]"}], " ", 
+      "\[Conditioned]", " ", "c_"}], ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondIndep", "[", 
+        RowBox[{"a", ",", " ", 
+         RowBox[{"b", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", " ", "args"}], "]"}], " ", 
+       "\[Conditioned]", "c"}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"myCondIndep", "/:", " ", 
+     RowBox[{
+      RowBox[{"myCondIndep", "[", 
+       RowBox[{"a_", ",", "b_", ",", " ", "d_Not", ",", " ", "args__"}], 
+       "]"}], " ", "\[Conditioned]", " ", "c_"}], ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myCondIndep", "[", 
+        RowBox[{"a", ",", " ", "b", ",", " ", 
+         RowBox[{"d", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", " ", "args"}], "]"}], " ", 
+       "\[Conditioned]", "c"}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"CONSERVATIVE", " ", "INDEPENDENCE", " ", "RULES"}], " ", "*)"}], 
+   " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", " ", 
+     RowBox[{
+     "contractFwdRule", ",", " ", "contractFwdCondRule1", ",", " ", 
+      "contractFwdCondRule2", ",", " ", "contractBackRule1", ",", " ", 
+      "contractBackRule2", ",", " ", "contractBackCondRule1", ",", " ", 
+      "contractBackCondRule2", ",", " ", "intersectRule", ",", " ", 
+      "intersectCondRule1", ",", " ", "intersectCondRule2"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"contractFwdRule", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a_", ",", " ", "c_"}], "]"}], "\[Conditioned]", "b_"}], 
+         ")"}], " ", "/;", " ", 
+        RowBox[{"myIndep", "[", 
+         RowBox[{"a", ",", " ", "b"}], "]"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"myIndep", "[", 
+        RowBox[{"a", ",", " ", 
+         RowBox[{"b", "\[And]", "c"}]}], "]"}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"contractFwdCondRule1", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a_", ",", " ", "c_"}], "]"}], "\[Conditioned]", 
+          RowBox[{"(", 
+           RowBox[{"b_", " ", "\[And]", " ", "d_"}], ")"}]}], ")"}], " ", "/;",
+         " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", " ", "b"}], "]"}], "\[Conditioned]", "d"}], 
+         ")"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a", ",", " ", 
+           RowBox[{"b", "\[And]", "c"}]}], "]"}], " ", "\[Conditioned]", " ", 
+         "d"}], ")"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"contractFwdCondRule2", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a_", ",", " ", "c_"}], "]"}], "\[Conditioned]", 
+          RowBox[{"(", 
+           RowBox[{"b_", " ", "\[And]", " ", "d_"}], ")"}]}], ")"}], " ", "/;",
+         " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", " ", "d"}], "]"}], "\[Conditioned]", "b"}], 
+         ")"}]}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a", ",", " ", 
+           RowBox[{"d", "\[And]", "c"}]}], "]"}], " ", "\[Conditioned]", " ", 
+         "b"}], ")"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"contractBackRule1", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myIndep", "[", 
+        RowBox[{"a_", ",", 
+         RowBox[{"b_", "\[And]", "c_"}]}], "]"}], " ", "\[RuleDelayed]", " ", 
+       
+       RowBox[{
+        RowBox[{"myIndep", "[", 
+         RowBox[{"a", ",", " ", "b"}], "]"}], " ", "\[And]", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", "c"}], "]"}], " ", "\[Conditioned]", "b"}], 
+         ")"}]}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"contractBackRule2", " ", "=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"myIndep", "[", 
+        RowBox[{"a_", ",", 
+         RowBox[{"b_", "\[And]", "c_"}]}], "]"}], " ", "\[RuleDelayed]", " ", 
+       
+       RowBox[{
+        RowBox[{"myIndep", "[", 
+         RowBox[{"a", ",", " ", "c"}], "]"}], " ", "\[And]", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", "b"}], "]"}], " ", "\[Conditioned]", "c"}], 
+         ")"}]}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"contractBackCondRule1", " ", "=", " ", 
+     RowBox[{"(", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a_", ",", 
+           RowBox[{"b_", "\[And]", "c_"}]}], "]"}], "\[Conditioned]", "d_"}], 
+        ")"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", " ", "b"}], "]"}], " ", "\[Conditioned]", "d"}], 
+         ")"}], " ", "\[And]", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", "c"}], "]"}], " ", "\[Conditioned]", 
+          RowBox[{"b", " ", "\[And]", "d"}]}], ")"}]}]}], 
+      "\[IndentingNewLine]", ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"contractBackCondRule2", "=", " ", 
+     RowBox[{"(", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a_", ",", 
+           RowBox[{"b_", "\[And]", "c_"}]}], "]"}], "\[Conditioned]", "d_"}], 
+        ")"}], " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", " ", "c"}], "]"}], " ", "\[Conditioned]", "d"}], 
+         ")"}], " ", "\[And]", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"a", ",", "b"}], "]"}], " ", "\[Conditioned]", 
+          RowBox[{"c", " ", "\[And]", "d"}]}], ")"}]}]}], 
+      "\[IndentingNewLine]", ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "these", " ", "three", " ", "assume", " ", "all", " ", "distributions", 
+     " ", "are", " ", "positive"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"intersectRule", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a_", ",", "b_"}], " ", "]"}], "\[Conditioned]", "c_"}], 
+        " ", ")"}], " ", "/;", 
+       RowBox[{"(", " ", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a", ",", "c"}], "]"}], "\[Conditioned]", "b"}], " ", 
+        ")"}]}], " ", "\[RuleDelayed]", " ", 
+      RowBox[{"myIndep", "[", 
+       RowBox[{"a", ",", 
+        RowBox[{"b", "\[And]", "c"}]}], "]"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"intersectCondRule1", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a_", ",", "b_"}], " ", "]"}], "\[Conditioned]", 
+         RowBox[{"(", 
+          RowBox[{"c_", " ", "\[And]", " ", "d_"}], ")"}]}], " ", ")"}], " ", 
+       "/;", 
+       RowBox[{"(", " ", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a", ",", "c"}], "]"}], "\[Conditioned]", 
+         RowBox[{"(", 
+          RowBox[{"b", "\[And]", "d"}], ")"}]}], ")"}]}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"myCondIndep", "[", 
+         RowBox[{"a", ",", 
+          RowBox[{"b", "\[And]", "c"}]}], "]"}], "\[Conditioned]", "d"}], 
+       ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"intersectCondRule2", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a_", ",", "b_"}], " ", "]"}], "\[Conditioned]", 
+         RowBox[{"(", 
+          RowBox[{"c_", " ", "\[And]", " ", "d_"}], ")"}]}], ")"}], " ", "/;", 
+       RowBox[{"(", " ", 
+        RowBox[{
+         RowBox[{"myCondIndep", "[", 
+          RowBox[{"a", ",", "d"}], "]"}], "\[Conditioned]", 
+         RowBox[{"(", 
+          RowBox[{"b", "\[And]", "c"}], ")"}]}], ")"}]}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"myCondIndep", "[", 
+         RowBox[{"a", ",", 
+          RowBox[{"b", "\[And]", "d"}]}], "]"}], "\[Conditioned]", "c"}], 
+       ")"}]}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "*", " ", "The", " ", "only", " ", "constructive", " ", "indep", " ", 
+      "reasoning", " ", "rules"}], ";", " ", 
+     RowBox[{
+     "Has", " ", "to", " ", "have", " ", "unique", " ", "variable", " ", 
+      "names"}]}], " ", "**)"}], " ", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"contractAndDecomposeRule", "[", "newExpr_", "]"}], " ", ":=", 
+     " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"thingOne_", ",", " ", "thingThree_"}], "]"}], 
+          "\[Conditioned]", "thingTwo_"}], "  ", ")"}], "/;", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"myCondIndep", "[", 
+           RowBox[{"thingOne", ",", " ", "newExpr"}], "]"}], "\[Conditioned]", 
+          RowBox[{"(", 
+           RowBox[{"thingTwo", "\[And]", "thingThree"}], ")"}]}], ")"}]}], 
+       " ", "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"myCondIndep", "[", 
+         RowBox[{"thingOne", ",", " ", "newExpr"}], "]"}], "\[Conditioned]", 
+        "thingTwo"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"allIndepRules", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "contractFwdRule", ",", "contractFwdCondRule1", ",", " ", 
+       "contractFwdCondRule2", ",", "  ", "contractBackRule1", ",", " ", 
+       "contractBackRule2", ",", " ", "contractBackCondRule1", ",", " ", 
+       "contractBackCondRule2", ",", " ", "intersectRule", ",", " ", 
+       "intersectCondRule1", ",", " ", "intersectCondRule2"}], "}"}]}], ";"}],
+    "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.771757002359639*^9, 3.771757007974598*^9}, {
+   3.771760099190215*^9, 3.771760252317881*^9}, {3.771760462849424*^9, 
+   3.771760485297222*^9}, {3.771760988118037*^9, 3.771760994588129*^9}, {
+   3.771761850697865*^9, 3.7717618899298964`*^9}, {3.77176202396554*^9, 
+   3.771762055592189*^9}, {3.771762395567915*^9, 3.771762415614891*^9}, {
+   3.7717625310931473`*^9, 3.7717625414623413`*^9}, {3.77176280835798*^9, 
+   3.771762885661644*^9}, {3.7717629288376627`*^9, 3.771762978913972*^9}, 
+   3.7717728666251907`*^9, {3.771776241739443*^9, 3.7717762739476357`*^9}, {
+   3.771776650695922*^9, 3.771776676096013*^9}, 3.772295904496283*^9, 
+   3.7740920425783*^9, {3.774092440970654*^9, 3.774092488976158*^9}, {
+   3.774093226799584*^9, 3.774093238344117*^9}, 3.7740934634434423`*^9, {
+   3.774370467253028*^9, 3.774370471021524*^9}, {3.7743735936845493`*^9, 
+   3.774373597259666*^9}, 3.774373817598411*^9, {3.7743739789998407`*^9, 
+   3.774373980468244*^9}, {3.7747935952744703`*^9, 3.774793612721752*^9}, {
+   3.774794496635078*^9, 3.7747945082283783`*^9}, {3.7748025101778927`*^9, 
+   3.7748025469355917`*^9}, {3.774889207746129*^9, 3.774889254759727*^9}, {
+   3.8009167558668127`*^9, 3.8009167764003553`*^9}},
+ FontSize->14,
+ CellLabel->"In[66]:=",ExpressionUUID->"81eadf7c-16dd-4646-a3c5-825f6e91d676"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"CONSTRUCTIVE", " ", "PROBABILITY", " ", "RULES"}], ",", " ", 
+    RowBox[{
+    "parameterized", " ", "and", " ", "need", " ", "application", " ", 
+     "limits", " ", "to", " ", "avoid", " ", "infinite", " ", "loops"}]}], 
+   " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"introducing", " ", "conditional"}], ",", " ", 
+    RowBox[{
+    "constructive", " ", "version", " ", "of", " ", "definize", " ", "and", 
+     " ", 
+     RowBox[{"reversize", ".", " ", "Only"}], " ", "applies", " ", "until", 
+     " ", "certain", " ", "depth", " ", "and", " ", "if", " ", "the", " ", 
+     "introduced", " ", "expression", " ", "is", " ", "not", " ", "part", " ",
+      "of", " ", "the", " ", "existing", " ", "one"}]}], " ", "*)"}], " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"introCondRule", "[", 
+      RowBox[{"introExp_", ",", " ", 
+       RowBox[{"leafCount_:", "30"}]}], "]"}], " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "a_", "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"LeafCount", "[", "a", "]"}], " ", "\[LessEqual]", " ", 
+           "leafCount"}], "  ", "\[And]", " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"a", ",", "introExp"}], "]"}]}], " ", ")"}]}], " ", 
+       "\[RuleDelayed]", "  ", 
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"introExp", " ", "\[And]", " ", "a"}], " ", "]"}], " ", "/", 
+        " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"introExp", " ", "\[Conditioned]", " ", "a"}], "]"}]}]}], 
+      " ", ")"}]}], ";"}], " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{
+     RowBox[{"introCondRuleCond", "[", 
+      RowBox[{"introExp_", ",", " ", 
+       RowBox[{"leafCount_:", "30"}]}], "]"}], " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a_", " ", "\[Conditioned]", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"LeafCount", "[", "a", "]"}], " ", "\[LessEqual]", " ", 
+           "leafCount"}], "  ", "\[And]", " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"a", ",", "introExp"}], "]"}], " ", "\[And]", " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"b", ",", "introExp"}], "]"}]}], "  ", ")"}]}], " ", 
+       "\[RuleDelayed]", "  ", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"introExp", " ", "\[And]", " ", "a"}], " ", 
+          "\[Conditioned]", " ", "b"}], " ", "]"}], " ", "/", " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"introExp", " ", "\[Conditioned]", " ", 
+          RowBox[{"(", 
+           RowBox[{"a", " ", "\[And]", " ", "b"}], ")"}]}], "]"}]}]}], " ", 
+      ")"}]}], ";"}], " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"introducing", " ", "a", " ", "marginal", " ", "variable", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"doesn", "'"}], "t", " ", "have", " ", "an", " ", 
+         "inverse"}], ",", " ", 
+        RowBox[{"TODO", " ", "add", " ", "one"}]}], ")"}]}], ";", " ", 
+     RowBox[{
+     "Only", " ", "applies", " ", "until", " ", "certain", " ", "depth", " ", 
+      "and", " ", "if", " ", "the", " ", "introduced", " ", "expression", " ",
+       "is", " ", "not", " ", "part", " ", "of", " ", "the", " ", "existing", 
+      " ", "one"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"introMargRule", "[", 
+      RowBox[{"introExp_", ",", " ", 
+       RowBox[{"leafCount_:", " ", "Infinity"}]}], "]"}], " ", ":=", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "a_", "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"LeafCount", "[", "a", "]"}], " ", "\[LessEqual]", " ", 
+           "leafCount"}], "  ", "\[And]", " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"a", ",", "introExp"}], "]"}]}], " ", ")"}]}], " ", 
+       "\[RuleDelayed]", "  ", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a", " ", "\[And]", " ", "introExp"}], "]"}], " ", "+", " ", 
+        
+        RowBox[{"myProb", "[", 
+         RowBox[{"a", " ", "\[And]", " ", 
+          RowBox[{"\[Not]", "introExp"}]}], "]"}]}]}], ")"}]}], ";"}], " ", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "marginalize", " ", "in", " ", "extra", " ", "events", " ", "that", " ", 
+     "are", " ", "missing", " ", "from", " ", "the", " ", "given", " ", 
+     RowBox[{"list", ".", " ", "Uses"}], " ", 
+     RowBox[{"introMargRule", ".", " ", "Counts"}], " ", "negations", " ", 
+     "as", " ", "an", " ", "event", " ", "being", " ", "present"}], " ", 
+    "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"introMargAllEventsRule", "[", "allEventsList_List", "]"}], " ", 
+     ":=", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "exps_", "]"}], " ", "/;", 
+        RowBox[{"(*", 
+         RowBox[{
+         "only", " ", "for", " ", "Ands", " ", "or", " ", "single", " ", 
+          "terms"}], "*)"}], 
+        RowBox[{"(", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "@", "exps"}], " ", "<", " ", "2"}], " ", 
+          "\[Or]", " ", 
+          RowBox[{
+           RowBox[{"Head", "@", "exps"}], "===", "And"}]}], " ", ")"}]}], 
+       "\[RuleDelayed]", "  ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"RightComposition", "[", 
+          RowBox[{"Sequence", "@@", 
+           RowBox[{"(", 
+            RowBox[{"(*", 
+             RowBox[{"apply", " ", "consecutive", " ", "replacements"}], 
+             "*)"}], " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Function", "[", 
+               RowBox[{
+                RowBox[{"{", "x", "}"}], ",", 
+                RowBox[{"x", "//.", "#"}]}], " ", "]"}], " ", "&"}], "  ", "/@", 
+             RowBox[{"introMargRule", "/@", 
+              RowBox[{"(*", " ", 
+               RowBox[{
+                RowBox[{
+                "of", " ", "what", " ", "is", " ", "missing", " ", "from", 
+                 " ", "the", " ", "list"}], " ", "-", " ", 
+                RowBox[{"negations", " ", "count", " ", "too"}]}], " ", 
+               "*)"}], " ", 
+              RowBox[{"Complement", "[", 
+               RowBox[{"allEventsList", ",", 
+                RowBox[{"Join", "[", 
+                 RowBox[{"listifyAnd", "@", "exps"}], "]"}], ",", 
+                RowBox[{"Not", "/@", 
+                 RowBox[{"listifyAnd", "@", "exps"}]}]}], " ", "]"}]}]}], 
+            ")"}]}], "]"}], ")"}], "[", " ", 
+        RowBox[{"myProb", "[", "exps", "]"}], "]"}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"like", " ", "above"}], ",", " ", 
+     RowBox[{"but", " ", "with", " ", "condProb"}]}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"introMargCondRule", "[", 
+      RowBox[{"introExp_", ",", " ", 
+       RowBox[{"leafCount_:", "30"}]}], "]"}], " ", ":=", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"a_", "\[Conditioned]", "b_"}], "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"LeafCount", "[", "a", "]"}], " ", "\[LessEqual]", " ", 
+           "leafCount"}], " ", "\[And]", " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"a", ",", "introExp"}], "]"}], "\[And]", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"b", ",", " ", "introExp"}], "]"}]}], " ", ")"}]}], " ", 
+       "\[RuleDelayed]", "  ", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a", " ", "\[And]", " ", "introExp"}], "\[Conditioned]", 
+          "b"}], "]"}], " ", "+", " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{
+          RowBox[{"a", " ", "\[And]", " ", 
+           RowBox[{"\[Not]", "introExp"}]}], "\[Conditioned]", "b"}], 
+         "]"}]}]}], ")"}]}], ";"}], "  "}]}]], "Input",
+ CellChangeTimes->{{3.770553346692543*^9, 3.770553476042119*^9}, {
+   3.770553570422196*^9, 3.7705536046819763`*^9}, {3.770553635983768*^9, 
+   3.77055364289361*^9}, {3.770553751743243*^9, 3.7705537927855177`*^9}, {
+   3.770554160690586*^9, 3.770554222888844*^9}, {3.7705542585820208`*^9, 
+   3.7705542739436283`*^9}, {3.7705543352506313`*^9, 3.770554353720296*^9}, {
+   3.770554474866398*^9, 3.770554476464816*^9}, {3.770554524721957*^9, 
+   3.7705545274017363`*^9}, {3.770554568947877*^9, 3.7705545792241592`*^9}, {
+   3.770557143550502*^9, 3.77055714573103*^9}, 3.770557259925428*^9, {
+   3.770557866039712*^9, 3.770557890870016*^9}, {3.7705579569621353`*^9, 
+   3.7705579690783033`*^9}, {3.770559642652165*^9, 3.770559648767173*^9}, {
+   3.770559703822464*^9, 3.770559742776828*^9}, {3.770566449392959*^9, 
+   3.770566464623712*^9}, {3.770571175345187*^9, 3.770571181480461*^9}, {
+   3.770571261820756*^9, 3.770571272881795*^9}, {3.770571415334485*^9, 
+   3.7705714365714493`*^9}, {3.7705715067230253`*^9, 3.770571534091798*^9}, {
+   3.770642913604363*^9, 3.7706429636337976`*^9}, {3.770643014965826*^9, 
+   3.770643140779237*^9}, {3.771156758735468*^9, 3.7711567626270227`*^9}, 
+   3.771687380515067*^9, {3.771760998113983*^9, 3.7717609994767323`*^9}, 
+   3.772203093429352*^9, {3.772204226247437*^9, 3.7722042332476397`*^9}, {
+   3.7722788610609922`*^9, 3.772278882576921*^9}, {3.774093496278689*^9, 
+   3.774093496418215*^9}, {3.7748939388496647`*^9, 3.774893956440547*^9}, {
+   3.774894632753463*^9, 3.774894643870708*^9}, {3.775476181822073*^9, 
+   3.775476197992594*^9}, 3.775478183378315*^9, {3.775478228895891*^9, 
+   3.77547824336467*^9}, {3.7754782778261967`*^9, 3.775478282835848*^9}, {
+   3.775478449744431*^9, 3.775478450913398*^9}, 3.775478516485013*^9, {
+   3.77669272025254*^9, 3.7766927872506*^9}, {3.7766929766993933`*^9, 
+   3.776692983869575*^9}, {3.7766933644062223`*^9, 3.77669337951123*^9}, {
+   3.776693505147786*^9, 3.776693535451661*^9}, {3.776693570267277*^9, 
+   3.776693582305133*^9}, 3.800916786019335*^9, {3.800982932995202*^9, 
+   3.800982999383081*^9}},
+ FontSize->14,
+ CellLabel->"In[86]:=",ExpressionUUID->"c7702230-1d74-4352-9ded-f56f5096ea5f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "introduces", " ", "marginalization", " ", "in", " ", "a", " ", 
+    "conditional", " ", "for", " ", "all", " ", "events", " ", "in", " ", 
+    "the", " ", 
+    RowBox[{"list", ".", " ", "Uses"}], " ", 
+    RowBox[{"introMargCondRule", ".", " ", 
+     RowBox[{"Warning", ":", " ", 
+      RowBox[{
+      "works", " ", "well", " ", "with", " ", "H1s", " ", "and", " ", 
+       "negations", " ", "passed", " ", "as", " ", "a", " ", "list"}]}]}]}], 
+   " ", "*)"}], " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"introMargCondAllEventsRule", "[", "allEventsList_List", "]"}], 
+     " ", ":=", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"exps_", " ", "\[Conditioned]", " ", "seq_"}], "]"}], "/;", 
+        RowBox[{
+         RowBox[{"(", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Length", "@", "exps"}], " ", "<", " ", "2"}], " ", 
+           "\[Or]", " ", 
+           RowBox[{
+            RowBox[{"Head", "@", "exps"}], "===", "And"}]}], " ", ")"}], 
+         "\[And]", 
+         RowBox[{"(", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Length", "@", "seq"}], " ", "<", " ", "2"}], " ", 
+           "\[Or]", " ", 
+           RowBox[{
+            RowBox[{"Head", "@", "seq"}], "===", "And"}]}], " ", ")"}]}]}], 
+       "\[RuleDelayed]", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"RightComposition", "[", 
+          RowBox[{"Sequence", "@@", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Function", "[", 
+               RowBox[{
+                RowBox[{"{", "x", "}"}], ",", 
+                RowBox[{"x", "//.", "#"}]}], " ", "]"}], " ", "&"}], "  ", "/@", 
+             RowBox[{"introMargCondRule", "/@", 
+              RowBox[{"Complement", "[", 
+               RowBox[{"allEventsList", ",", 
+                RowBox[{"Join", "[", " ", 
+                 RowBox[{
+                  RowBox[{"listifyAnd", "@", "exps"}], ",", 
+                  RowBox[{"Not", "/@", 
+                   RowBox[{"listifyAnd", "@", "exps"}]}], ",", "  ", 
+                  RowBox[{"listifyAnd", "@", "seq"}], ",", " ", 
+                  RowBox[{"Not", "/@", 
+                   RowBox[{"listifyAnd", "@", "seq"}]}]}], "]"}]}], "]"}]}]}],
+             ")"}]}], "]"}], ")"}], "[", " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"exps", "\[Conditioned]", "seq"}], "]"}], "]"}]}], ")"}]}], 
+    ";"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.775478512955625*^9, 3.775478542221777*^9}, {
+  3.776693389311762*^9, 3.7766933897828093`*^9}, {3.776693598673544*^9, 
+  3.7766936109736423`*^9}},
+ CellLabel->"In[91]:=",ExpressionUUID->"a980a329-81c9-46d2-a2b3-1abe5b9173cf"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "smart", " ", "constructive", " ", "rules", " ", "for", " ", "detectors"}],
+    " ", "*)"}], " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"introDetCondRule", "[", 
+      RowBox[{"det_", ",", " ", "introExp_", ",", " ", 
+       RowBox[{"leafCount_:", "30"}]}], "]"}], " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "a_", "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"LeafCount", "[", "a", "]"}], " ", "\[LessEqual]", " ", 
+           "leafCount"}], "  ", "\[And]", " ", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"a", ",", "introExp"}], "]"}], "\[And]", 
+          RowBox[{"onlyAboutDet", "[", 
+           RowBox[{"det", ",", 
+            RowBox[{"myProb", "[", "a", "]"}]}], "]"}]}], " ", ")"}]}], " ", 
+       "\[RuleDelayed]", "  ", 
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"introExp", " ", "\[And]", " ", "a"}], " ", "]"}], " ", "/", 
+        " ", 
+        RowBox[{"myCondProb", "[", 
+         RowBox[{"introExp", " ", "\[Conditioned]", " ", "a"}], "]"}]}]}], 
+      " ", ")"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"introDetMargRule", "[", 
+      RowBox[{"det_", ",", " ", "introExp_", ",", " ", 
+       RowBox[{"leafCount_:", "30"}]}], "]"}], " ", ":=", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"myProb", "[", "a_", "]"}], " ", "/;", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"onlyAboutDet", "[", 
+           RowBox[{"det", ",", 
+            RowBox[{"myProb", "[", "a", "]"}]}], "]"}], "\[And]", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"LeafCount", "[", "a", "]"}], " ", "\[LessEqual]", " ", 
+            "leafCount"}], ")"}], "\[And]", 
+          RowBox[{"FreeQ", "[", 
+           RowBox[{"a", ",", "introExp"}], "]"}]}], ")"}]}], " ", 
+       "\[RuleDelayed]", "  ", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"myProb", "[", 
+         RowBox[{"a", " ", "\[And]", " ", "introExp"}], "]"}], 
+        RowBox[{"(*", 
+         RowBox[{"myProb", "[", "introExp", "]"}], "*)"}], " ", "+", " ", 
+        RowBox[{"myProb", "[", 
+         RowBox[{"a", " ", "\[And]", " ", 
+          RowBox[{"\[Not]", "introExp"}]}], "]"}]}]}], 
+      RowBox[{"(*", 
+       RowBox[{"myProb", "[", 
+        RowBox[{"\[Not]", "introExp"}], "]"}], "*)"}], ")"}]}], ";"}], "  ", 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.770397554198037*^9, 3.770397586356779*^9}, {
+   3.770463509704018*^9, 3.770463510502664*^9}, {3.770464030925776*^9, 
+   3.770464040544166*^9}, {3.772204222926244*^9, 3.7722042460586576`*^9}, {
+   3.772204972750531*^9, 3.772204989361535*^9}, {3.772205037299996*^9, 
+   3.7722050598696537`*^9}, {3.772205268975185*^9, 3.772205278701193*^9}, {
+   3.772205487720912*^9, 3.772205531817298*^9}, {3.772205770741667*^9, 
+   3.7722058028743153`*^9}, {3.7722111659312887`*^9, 3.772211174219287*^9}, {
+   3.7722115385950317`*^9, 3.772211540204014*^9}, {3.7722116164016733`*^9, 
+   3.772211682777472*^9}, {3.772211966921002*^9, 3.772211979730667*^9}, 
+   3.772212110409719*^9, {3.77221221417493*^9, 3.7722122453879128`*^9}, {
+   3.772278894788747*^9, 3.772278900995826*^9}, 3.774093482398003*^9, 
+   3.7740938557541428`*^9, {3.7742855128824663`*^9, 3.774285538780856*^9}, {
+   3.774894627248722*^9, 3.774894629356783*^9}, {3.775223402982482*^9, 
+   3.775223449069994*^9}, {3.775224192555291*^9, 3.775224194058753*^9}, 
+   3.7752242255666723`*^9, {3.775224343341563*^9, 3.775224359545673*^9}, {
+   3.775478332365716*^9, 3.775478333078801*^9}, {3.77548061846664*^9, 
+   3.775480634833292*^9}, {3.77548488805669*^9, 3.775484908008855*^9}, {
+   3.775485172240781*^9, 3.775485263650539*^9}, 3.775485331189405*^9, {
+   3.7754919621453114`*^9, 3.775491966664825*^9}, {3.7755659186877813`*^9, 
+   3.775565939566801*^9}, 3.7767019701171417`*^9, {3.776703867193511*^9, 
+   3.7767038673451014`*^9}, {3.77670410780578*^9, 3.776704127901523*^9}, {
+   3.777044234085952*^9, 3.777044255808597*^9}, {3.7770443282484827`*^9, 
+   3.777044341999824*^9}, {3.7770443921010838`*^9, 3.7770444096723022`*^9}, {
+   3.777044472276463*^9, 3.777044488688506*^9}, {3.8007939817313557`*^9, 
+   3.8007940295691557`*^9}, {3.800982851034398*^9, 3.800982877771983*^9}},
+ FontSize->14,
+ CellLabel->"In[92]:=",ExpressionUUID->"bd58c40d-86a0-4439-b36a-ad0f06594f89"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", " ", "HELPER"}], " ", "FUNCTIONS"}], " ", "***)"}], " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", 
+    RowBox[{
+    "mySimplify", ",", " ", "mySimplifyTrack", ",", "mySimplifySymb", ",", 
+     " ", "subAndPerm"}], "]"}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.77055462818371*^9, 3.7705546607377033`*^9}, {
+   3.770567357374423*^9, 3.770567361410027*^9}, {3.770985329768668*^9, 
+   3.77098533860602*^9}, 3.771674934809766*^9, {3.772205012445879*^9, 
+   3.77220501854075*^9}, {3.772207917770361*^9, 3.772207918183633*^9}, 
+   3.7740903602720757`*^9, 3.7740904267904577`*^9},
+ FontSize->14,
+ CellLabel->"In[94]:=",ExpressionUUID->"8611816f-0e6e-4c35-a27b-c38604b51f66"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "destroys", " ", "the", " ", "specific", " ", "assumptions", " ", "too"}], 
+   " ", "*)"}], " "}]], "Input",
+ CellChangeTimes->{{3.770567364769253*^9, 3.7705673779059563`*^9}, {
+   3.771156421670163*^9, 3.771156424997211*^9}, 3.771674935162222*^9, {
+   3.7722079084665747`*^9, 3.772207920170142*^9}, 3.774090403367631*^9},
+ FontSize->14,
+ CellLabel->"In[95]:=",ExpressionUUID->"9b0307cd-dd57-42ce-aaaf-d6834b69239b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "Apply", " ", "a", " ", "set", " ", "of", " ", "rules", " ", "from", " ", 
+     "the", " ", "list", " ", "to", " ", "the", " ", "expression", " ", "and",
+      " ", "return", " ", "only", " ", "numbers"}], ",", " ", 
+    RowBox[{
+    "up", " ", "to", " ", "a", " ", "maximum", " ", "number", " ", "of", " ", 
+     "iterations"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"mySimplify", "::", "argnotlist"}], " ", "=", " ", 
+     "\"\<The rule list argument is not a list of lists, beware\>\""}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"mySimplify", "[", 
+      RowBox[{"exp_", ",", " ", 
+       RowBox[{"ruleList_:", 
+        RowBox[{"Subsets", "@", "allProbRules"}]}], ",", " ", 
+       RowBox[{"iters_:", "250"}]}], "]"}], " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"\[Not]", 
+          RowBox[{"ListQ", "@", 
+           RowBox[{"ruleList", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], ",", " ", 
+         RowBox[{"Message", "[", 
+          RowBox[{"mySimplify", "::", "argnotlist"}], " ", "]"}]}], "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ReplaceRepeated", "[", 
+             RowBox[{"exp", ",", " ", "#", " ", ",", " ", 
+              RowBox[{"MaxIterations", "\[Rule]", "iters"}]}], "]"}], " ", 
+            "&"}], " ", "/@", " ", "ruleList"}], ")"}], ",", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NumericQ", "@", "#"}], " ", "||", " ", 
+           RowBox[{"BooleanQ", "@", "#"}]}], " ", "&"}]}], "]"}]}], ")"}]}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQLSXms2iB+BvHIpnZS0B0zNOZK0D0pGnX14PoOXk3
+d4DoZj+HvSA6xIzd4gCQtt5uB6ZfXl3kB6LXHdkEpgOYspgPAumgtzlgWqhq
+GQeI/iASzQmizZcnioHoeU6K4iC6JDtKBkRXizDLg+guzcldR4D06ikyvSD6
+U89RBgmJN45enQ/AdItbV9FUIH3sh0EJiJZQnvjjOZBe3qr5E0S/0mu6zC/1
+xtEn8SKYFnadKCEApE9oGUmCaOfQUMk0IM0WPAlMO5laPn0GpC/vXfkGRH+b
+0iX3HEhzaZUqgehr90+pgejmXxcMQXTQNX8/EL1SnzMARH+SPhwNoq0qYmNB
+NAB+8JxT
+  "],
+ FontSize->14,
+ CellLabel->"In[96]:=",ExpressionUUID->"3d7dd6cc-5332-46ab-8138-16693d5a5e1b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Apply", " ", "mySimplify", " ", "and"}], ",", " ", 
+    RowBox[{"when", " ", "aborted"}], ",", " ", 
+    RowBox[{"output", " ", "results", " ", "so", " ", "far"}]}], " ", "*)"}], 
+  " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"mySimplifyTrack", "[", " ", 
+     RowBox[{"exp_", ",", " ", 
+      RowBox[{"ruleList_:", "allProbRules"}], ",", " ", 
+      RowBox[{"iters_:", "250"}]}], "]"}], " ", ":=", "\[IndentingNewLine]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"\[Not]", 
+         RowBox[{"ListQ", "@", 
+          RowBox[{"ruleList", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}]}], ",", " ", 
+        RowBox[{"Message", "[", 
+         RowBox[{"mySimplify", "::", "argnotlist"}], " ", "]"}]}], "]"}], ";", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Flatten", "@", 
+         RowBox[{"Last", "@", 
+          RowBox[{"Reap", "@", 
+           RowBox[{"CheckAbort", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Sow", "[", 
+                 RowBox[{"ReplaceRepeated", "[", 
+                  RowBox[{"exp", ",", " ", "#", " ", ",", " ", 
+                   RowBox[{"MaxIterations", "\[Rule]", "iters"}]}], "]"}], 
+                 " ", "]"}], "&"}], " ", "/@", " ", "ruleList"}], ")"}], ",", 
+             " ", "\"\<aborted\>\""}], "]"}]}]}]}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"NumericQ", "@", "#"}], " ", "||", " ", 
+          RowBox[{"BooleanQ", "@", "#"}]}], " ", "&"}]}], "]"}]}], ")"}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.770985356909371*^9, 3.770985395812043*^9}, {
+   3.771154808672553*^9, 3.771154809075656*^9}, 3.7717608614871883`*^9, {
+   3.772201650092868*^9, 3.772201655647792*^9}, {3.7722016978779297`*^9, 
+   3.772201698033888*^9}, {3.772201735665319*^9, 3.772201736609894*^9}},
+ FontSize->14,
+ CellLabel->"In[98]:=",ExpressionUUID->"fb50eca4-7993-40dc-98ff-912451396a22"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"apply", " ", "mysimplify", " ", "symbolically"}], " ", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.7711544386865187`*^9, 3.7711544502270107`*^9}},
+ FontSize->14,
+ CellLabel->"In[99]:=",ExpressionUUID->"67937f3b-6144-437f-9365-f900642d4c72"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"mySimplifySymb", "[", " ", 
+    RowBox[{"exp_", ",", " ", 
+     RowBox[{"ruleList_:", 
+      RowBox[{"Subsets", "@", "allProbRules"}]}], ",", " ", 
+     RowBox[{"iters_:", "250"}]}], "]"}], " ", ":=", "\[IndentingNewLine]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"\[Not]", 
+        RowBox[{"ListQ", "@", 
+         RowBox[{"ruleList", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}]}], ",", " ", 
+       RowBox[{"Message", "[", 
+        RowBox[{"mySimplify", "::", "argnotlist"}], "]"}]}], "]"}], ";", " ", 
+     
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ReplaceRepeated", "[", 
+          RowBox[{"exp", ",", " ", "#", " ", ",", " ", 
+           RowBox[{"MaxIterations", "\[Rule]", "iters"}]}], "]"}], " ", "&"}],
+         " ", "/@", " ", "ruleList"}], ")"}], "//", "DeleteDuplicates"}]}], 
+    ")"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7711544255934*^9, 3.7711544342447042`*^9}, {
+   3.772201762773593*^9, 3.7722017702961493`*^9}, 3.7722800602456913`*^9, {
+   3.772280236644063*^9, 3.772280261094433*^9}},
+ FontSize->14,
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"68524f11-611c-4345-b1a3-e9f67a2e9e09"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"returns", " ", "non"}], "-", 
+    RowBox[{
+    "trivial", " ", "subsets", " ", "and", " ", "permutations", " ", "of", 
+     " ", "the", " ", "arg", " ", "list"}]}], " ", "*)"}], " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"subAndPerm", "[", "l_", "]"}], " ", ":=", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"Delete", "[", 
+        RowBox[{
+         RowBox[{"Delete", "[", 
+          RowBox[{
+           RowBox[{"Subsets", "[", "l", "]"}], ",", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "[", "l", "]"}], "^", "2"}], " ", "-", "1"}]}],
+           " ", "]"}], ",", " ", "1"}], "]"}], ",", " ", 
+       RowBox[{"Permutations", "[", "l", "]"}]}], "]"}]}], ";"}], 
+   RowBox[{"(*", "  ", 
+    RowBox[{"removing", " ", "the", " ", "empty", " ", 
+     RowBox[{"set", " ", "--"}], " ", "and", " ", "full", " ", "set", " ", 
+     "to", " ", "avoid", " ", "duplicates"}], " ", "*)"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.7704787146249523`*^9, 3.7704787215844727`*^9}, {
+  3.7711660289049473`*^9, 3.771166029547649*^9}},
+ FontSize->14,
+ CellLabel->
+  "In[101]:=",ExpressionUUID->"b1f11bf9-6281-4f95-8309-581d2a5a6adb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "makes", " ", "all", " ", "arguments", " ", "mutually", " ", 
+     "independent"}], ",", " ", 
+    RowBox[{
+     RowBox[{"and", " ", "therefore", " ", "subset"}], "-", 
+     RowBox[{"wise", " ", "independent"}]}]}], " ", "*)"}], " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"makeIndep", "[", "args__", "]"}], " ", ":=", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Evaluate", "@", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Apply", "[", 
+           RowBox[{"myIndep", ",", " ", "#"}], "]"}], " ", "&"}], "/@", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Subsets", "[", 
+            RowBox[{"List", "@", "args"}], "]"}], " ", "//", " ", 
+           RowBox[{"Delete", "[", 
+            RowBox[{"List", "/@", 
+             RowBox[{"Range", "[", 
+              RowBox[{"1", ",", 
+               RowBox[{
+                RowBox[{"Length", "@", 
+                 RowBox[{"List", "@", "args"}]}], " ", "+", " ", "1"}]}], 
+              "]"}]}], "]"}]}], ")"}]}], ")"}]}], ")"}], " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{"True", ",", " ", 
+       RowBox[{
+        RowBox[{"Length", "@", 
+         RowBox[{"Subsets", "[", 
+          RowBox[{"List", "@", "args"}], "]"}]}], " ", "-", " ", 
+        RowBox[{"Length", "@", 
+         RowBox[{"Range", "[", 
+          RowBox[{"1", ",", 
+           RowBox[{
+            RowBox[{"Length", "@", 
+             RowBox[{"List", "@", "args"}]}], " ", "+", " ", "1"}]}], 
+          "]"}]}]}]}], " ", "]"}]}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.771166030808167*^9, 3.771166049870037*^9}, {
+   3.771167840582367*^9, 3.7711678689876738`*^9}, {3.771168172014529*^9, 
+   3.77116818291486*^9}, 3.771674957724544*^9},
+ FontSize->14,
+ CellLabel->
+  "In[102]:=",ExpressionUUID->"d8676fb4-e58a-4c71-b71a-58445f11650a"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", " ", "HELPER"}], " ", "FUNCTIONS"}], " ", "***)"}], " ", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "helper", " ", "function", " ", "to", " ", "get", " ", "all", " ", "the", 
+    " ", "variables", " ", "of", " ", "a", " ", "generalized", " ", 
+    "expression"}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"myVariables", "[", "expr_", "]"}], " ", ":=", " ", 
+     RowBox[{"DeleteDuplicates", "@", 
+      RowBox[{"Cases", "[", 
+       RowBox[{"expr", ",", "_Symbol", ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "\[Infinity]"}], "}"}]}], "]"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"helper", " ", "function"}], ",", " ", 
+     RowBox[{
+     "returns", " ", "a", " ", "list", " ", "of", " ", "all", " ", "And", " ",
+       "arguments"}], ",", " ", 
+     RowBox[{
+     "or", " ", "just", " ", "a", " ", "list", " ", "of", " ", "one", " ", 
+      "item"}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"listifyAnd", "[", "exp_", "]"}], " ", ":=", " ", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Head", "[", "exp", "]"}], " ", "===", " ", "And"}], ",", " ", 
+       RowBox[{"List", "@@", "exp"}], ",", " ", 
+       RowBox[{"{", "exp", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"helper", " ", "function"}], ",", " ", 
+     RowBox[{
+     "return", " ", "true", " ", "if", " ", "x", " ", "is", " ", "earlier", 
+      " ", "than", " ", "y", " ", "in", " ", "the", " ", "provided", " ", 
+      "list"}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"earlierInOrder", "[", 
+      RowBox[{"lst_", ",", " ", "x_", ",", " ", "y_"}], "]"}], " ", ":=", 
+     "  ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"FirstPosition", "[", 
+        RowBox[{"lst", ",", " ", "x"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], " ", "<", " ", 
+      RowBox[{
+       RowBox[{"FirstPosition", "[", 
+        RowBox[{"lst", ",", " ", "y"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "all", " ", "list", " ", "indices", " ", "of", " ", "elements", " ", 
+      "in", " ", "x", " ", "are", " ", "less", " ", "than", " ", "those", " ",
+       "in", " ", 
+      RowBox[{"y", ".", " ", "If"}], " ", "either", " ", "is", " ", "not", 
+      " ", "present", " ", "in", " ", "the", " ", "order", " ", "list"}], ",",
+      " ", 
+     RowBox[{"returns", " ", "true"}]}], " ", "*)"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"earlierInOrderLists", "[", 
+      RowBox[{"lst_", ",", " ", "xlist_", ",", " ", "ylist_"}], "]"}], " ", ":=",
+      "  ", 
+     RowBox[{"And", " ", "@@", 
+      RowBox[{"(", " ", 
+       RowBox[{
+        RowBox[{"Outer", "[", 
+         RowBox[{"Less", ",", " ", 
+          RowBox[{"Flatten", "@", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Position", "[", 
+               RowBox[{"lst", ",", " ", "#", ",", " ", 
+                RowBox[{"{", "1", "}"}]}], "]"}], " ", "&"}], " ", "/@", " ", 
+             "xlist"}], ")"}]}], ",", " ", 
+          RowBox[{"Flatten", "@", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Position", "[", 
+               RowBox[{"lst", ",", " ", "#", ",", " ", 
+                RowBox[{"{", "1", "}"}]}], "]"}], " ", "&"}], " ", "/@", " ", 
+             "ylist"}], ")"}]}]}], "]"}], " ", "//", " ", "Flatten"}], " ", 
+       ")"}]}]}], " ", ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"helper", " ", "function"}], ",", " ", 
+     RowBox[{
+     "determines", " ", "if", " ", "the", " ", "expression", " ", "only", " ",
+       "has", " ", "variables", " ", "from", " ", "the", " ", 
+      RowBox[{"detector", " ", "--"}], " ", "no", " ", "more", " ", "and", 
+      " ", "no", " ", "less"}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"onlyAboutDet", "[", 
+      RowBox[{"d_", ",", " ", "exp_"}], "]"}], " ", ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{"_", "?", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"\[Not]", 
+              RowBox[{"FreeQ", "[", 
+               RowBox[{"#", ",", 
+                RowBox[{"d", "[", "\"\<ch1\>\"", "]"}]}], "]"}]}], "\[Or]", 
+             " ", 
+             RowBox[{"\[Not]", 
+              RowBox[{"FreeQ", "[", 
+               RowBox[{"#", ",", " ", 
+                RowBox[{"d", "[", "\"\<h1\>\"", "]"}]}], "]"}]}], "\[Or]", 
+             " ", 
+             RowBox[{"\[Not]", 
+              RowBox[{"FreeQ", "[", 
+               RowBox[{"#", ",", " ", 
+                RowBox[{"d", "[", "\"\<nc\>\"", "]"}]}], "]"}]}]}], "&"}], 
+           ")"}]}], " ", "]"}], "@", 
+        RowBox[{"myVariables", "@", "exp"}]}], " ", "\[Equal]", " ", 
+       RowBox[{"{", "}"}]}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"helper", " ", "function"}], ",", " ", 
+     RowBox[{
+     "checks", " ", "if", " ", "an", " ", "expression", " ", "has", " ", 
+      "anything", " ", "from", " ", "a", " ", "detector"}]}], " ", "*)"}], 
+   " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"mentionsDet", "[", 
+      RowBox[{"d_", ",", " ", "exp_"}], "]"}], ":=", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"\[Not]", 
+        RowBox[{"FreeQ", "[", 
+         RowBox[{"exp", ",", 
+          RowBox[{"d", "[", "\"\<ch1\>\"", "]"}]}], "]"}]}], "\[Or]", " ", 
+       RowBox[{"\[Not]", 
+        RowBox[{"FreeQ", "[", 
+         RowBox[{"exp", ",", " ", 
+          RowBox[{"d", "[", "\"\<h1\>\"", "]"}]}], "]"}]}], "\[Or]", " ", 
+       RowBox[{"\[Not]", 
+        RowBox[{"FreeQ", "[", 
+         RowBox[{"exp", ",", " ", 
+          RowBox[{"d", "[", "\"\<nc\>\"", "]"}]}], "]"}]}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"helper", " ", "function"}], ",", " ", 
+     RowBox[{
+     "returns", " ", "true", " ", "if", " ", "only", " ", "h1", " ", 
+      "variables", " ", "are", " ", "present", " ", "in", " ", "an", " ", 
+      RowBox[{"expression", ".", " ", "Uses"}], " ", "symbol", " ", 
+      "manipulation"}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"onlyGTs", "[", "exp_", "]"}], ":=", 
+     RowBox[{"And", "@@", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringLength", "@", 
+              RowBox[{"SymbolName", "[", "#", "]"}]}], "\[GreaterEqual]", 
+             "3"}], ",", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"StringTake", "[", 
+               RowBox[{
+                RowBox[{"SymbolName", "[", "#", "]"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "2"}], ",", " ", 
+                  RowBox[{"-", "1"}]}], "}"}]}], "]"}], "\[Equal]", " ", 
+              "\"\<h1\>\""}], " ", "\[And]", " ", 
+             RowBox[{
+              RowBox[{"StringTake", "[", 
+               RowBox[{
+                RowBox[{"SymbolName", "[", "#", "]"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "3"}], ",", " ", 
+                  RowBox[{"-", "1"}]}], "}"}]}], "]"}], "\[NotEqual]", " ", 
+              "\"\<ch1\>\""}]}], ",", " ", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"StringLength", "@", 
+                RowBox[{"SymbolName", "[", "#", "]"}]}], "\[GreaterEqual]", 
+               "2"}], ",", 
+              RowBox[{
+               RowBox[{"StringTake", "[", 
+                RowBox[{
+                 RowBox[{"SymbolName", "[", "#", "]"}], ",", " ", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "2"}], ",", " ", 
+                   RowBox[{"-", "1"}]}], "}"}]}], "]"}], "==", " ", 
+               "\"\<h1\>\""}], ",", " ", "False"}], "]"}]}], "]"}], " ", 
+          "&"}], ")"}], " ", "/@", 
+        RowBox[{"myVariables", "[", "exp", "]"}]}], ")"}]}]}], " ", ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"a", " ", "converse", " ", "of", " ", "the", " ", 
+     RowBox[{"above", ":", " ", 
+      RowBox[{
+      "true", " ", "when", " ", "expression", " ", "has", " ", "no", " ", 
+       RowBox[{"GTs", ".", " ", "Based"}], " ", "on", " ", "symbol", " ", 
+       "names"}]}]}], " ", "*)"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"noGTs", "[", "exp_", "]"}], ":=", 
+     RowBox[{"And", "@@", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringLength", "@", 
+              RowBox[{"SymbolName", "[", "#", "]"}]}], "\[GreaterEqual]", 
+             "3"}], ",", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"StringTake", "[", 
+               RowBox[{
+                RowBox[{"SymbolName", "[", "#", "]"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "2"}], ",", " ", 
+                  RowBox[{"-", "1"}]}], "}"}]}], "]"}], "\[NotEqual]", " ", 
+              "\"\<h1\>\""}], " ", "\[Or]", " ", 
+             RowBox[{
+              RowBox[{"StringTake", "[", 
+               RowBox[{
+                RowBox[{"SymbolName", "[", "#", "]"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "3"}], ",", " ", 
+                  RowBox[{"-", "1"}]}], "}"}]}], "]"}], "\[Equal]", " ", 
+              "\"\<ch1\>\""}]}], ",", " ", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"StringLength", "@", 
+                RowBox[{"SymbolName", "[", "#", "]"}]}], "\[GreaterEqual]", 
+               "2"}], ",", 
+              RowBox[{
+               RowBox[{"StringTake", "[", 
+                RowBox[{
+                 RowBox[{"SymbolName", "[", "#", "]"}], ",", " ", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"-", "2"}], ",", " ", 
+                   RowBox[{"-", "1"}]}], "}"}]}], "]"}], "\[NotEqual]", " ", 
+               "\"\<h1\>\""}], ",", " ", "True"}], "]"}]}], "]"}], " ", "&"}],
+          ")"}], " ", "/@", 
+        RowBox[{"myVariables", "[", "exp", "]"}]}], ")"}]}]}], " ", 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{3.800794037634873*^9},
+ CellLabel->
+  "In[103]:=",ExpressionUUID->"72040419-48be-4b78-996e-bdaaeaed6200"]
+},
+WindowSize->{929, 728},
+WindowMargins->{{48, Automatic}, {35, Automatic}},
+Magnification:>1.2 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7f248e93-5cdb-49a1-83be-57c565c54aaf"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 3354, 70, 526, "Input",ExpressionUUID->"c3f78832-7f93-4d16-b4bb-07b69b883775"],
+Cell[3757, 85, 357, 9, 67, "Input",ExpressionUUID->"e91b1304-d990-434e-bc78-e2ab343e49e2"],
+Cell[4117, 96, 1854, 34, 175, "Input",ExpressionUUID->"28029f20-147e-4c10-bb6b-58e310ebddeb"],
+Cell[5974, 132, 7865, 154, 553, "Input",ExpressionUUID->"0f7d6d25-2a72-4ff5-8103-8bccbc7ff427"],
+Cell[13842, 288, 2494, 62, 391, "Input",ExpressionUUID->"17906426-8676-494f-b507-96fdd48d6fd8"],
+Cell[16339, 352, 2417, 39, 283, "Input",ExpressionUUID->"ee26cbbe-e304-482e-9046-cb23f377b9d8"],
+Cell[18759, 393, 48554, 1141, 6088, "Input",ExpressionUUID->"28db145c-7c24-4c77-915e-d30069bda815"],
+Cell[67316, 1536, 1797, 35, 330, "Input",ExpressionUUID->"1b5fdc9f-b08b-4eb7-a60f-5dc3d05959c8"],
+Cell[69116, 1573, 14938, 379, 2737, "Input",ExpressionUUID->"81eadf7c-16dd-4646-a3c5-825f6e91d676"],
+Cell[84057, 1954, 10812, 243, 2070, "Input",ExpressionUUID->"c7702230-1d74-4352-9ded-f56f5096ea5f"],
+Cell[94872, 2199, 2842, 70, 571, "Input",ExpressionUUID->"a980a329-81c9-46d2-a2b3-1abe5b9173cf"],
+Cell[97717, 2271, 4572, 94, 649, "Input",ExpressionUUID->"bd58c40d-86a0-4439-b36a-ad0f06594f89"],
+Cell[102292, 2367, 784, 17, 127, "Input",ExpressionUUID->"8611816f-0e6e-4c35-a27b-c38604b51f66"],
+Cell[103079, 2386, 477, 10, 69, "Input",ExpressionUUID->"9b0307cd-dd57-42ce-aaaf-d6834b69239b"],
+Cell[103559, 2398, 2346, 59, 446, "Input",ExpressionUUID->"3d7dd6cc-5332-46ab-8138-16693d5a5e1b"],
+Cell[105908, 2459, 2068, 50, 417, "Input",ExpressionUUID->"fb50eca4-7993-40dc-98ff-912451396a22"],
+Cell[107979, 2511, 285, 6, 39, "Input",ExpressionUUID->"67937f3b-6144-437f-9365-f900642d4c72"],
+Cell[108267, 2519, 1248, 33, 243, "Input",ExpressionUUID->"68524f11-611c-4345-b1a3-e9f67a2e9e09"],
+Cell[109518, 2554, 1327, 35, 301, "Input",ExpressionUUID->"b1f11bf9-6281-4f95-8309-581d2a5a6adb"],
+Cell[110848, 2591, 1918, 52, 330, "Input",ExpressionUUID->"d8676fb4-e58a-4c71-b71a-58445f11650a"],
+Cell[112769, 2645, 11206, 283, 2167, "Input",ExpressionUUID->"72040419-48be-4b78-996e-bdaaeaed6200"]
+}
+]
+*)
+
