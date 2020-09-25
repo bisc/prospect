@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11238,        262]
-NotebookOptionsPosition[     10888,        248]
-NotebookOutlinePosition[     11282,        264]
-CellTagsIndexPosition[     11239,        261]
+NotebookDataLength[     11647,        274]
+NotebookOptionsPosition[     11296,        260]
+NotebookOutlinePosition[     11691,        276]
+CellTagsIndexPosition[     11648,        273]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,6 +22,17 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"Clear", "[", "switchEquals", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"equalityPairNorm", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"Equal", "[", 
+       RowBox[{"var0_", ",", " ", "val0_"}], "]"}], ")"}], " ", 
+     "\[RuleDelayed]", " ", 
+     RowBox[{"{", 
+      RowBox[{"var0", ",", " ", "val0"}], "}"}]}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -154,7 +165,7 @@ values\>\""}], ";"}], "\[IndentingNewLine]",
        "\[IndentingNewLine]", "4", ",", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{"checkPair", " ", "=", " ", 
-         RowBox[{"eql", " ", "/.", " ", "equalityPair"}]}], ";", 
+         RowBox[{"eql", " ", "/.", " ", "equalityPairNorm"}]}], ";", 
         "\[IndentingNewLine]", 
         RowBox[{"a", " ", "=", " ", 
          RowBox[{"checkPair", "[", 
@@ -243,11 +254,12 @@ values\>\""}], ";"}], "\[IndentingNewLine]",
    3.8090469291623917`*^9, 3.809046940441833*^9}, {3.809047304963237*^9, 
    3.809047305285997*^9}, {3.809047371432558*^9, 3.809047371829171*^9}, {
    3.80904778995535*^9, 3.809047804316772*^9}, {3.809092041178533*^9, 
-   3.809092051726761*^9}},ExpressionUUID->"1f9ca4e4-199f-4706-a128-\
+   3.809092051726761*^9}, {3.809998658044516*^9, 
+   3.809998718315322*^9}},ExpressionUUID->"1f9ca4e4-199f-4706-a128-\
 96151c3b2665"]
 },
 WindowSize->{808, 706},
-WindowMargins->{{Automatic, 244}, {1, Automatic}},
+WindowMargins->{{Automatic, 179}, {49, Automatic}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"fc274a63-52f9-421e-9645-e052a1b8eb51"
@@ -263,7 +275,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10326, 226, 1228, "Input",ExpressionUUID->"1f9ca4e4-199f-4706-a128-96151c3b2665"]
+Cell[558, 20, 10734, 238, 1270, "Input",ExpressionUUID->"1f9ca4e4-199f-4706-a128-96151c3b2665"]
 }
 ]
 *)

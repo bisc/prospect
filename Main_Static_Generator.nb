@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11836,        260]
-NotebookOptionsPosition[     11468,        245]
-NotebookOutlinePosition[     11880,        262]
-CellTagsIndexPosition[     11837,        259]
+NotebookDataLength[     11930,        262]
+NotebookOptionsPosition[     11578,        248]
+NotebookOutlinePosition[     11974,        264]
+CellTagsIndexPosition[     11931,        261]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -94,6 +94,7 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"specs", " ", "/.", " ", "unconditionedProbability"}], " ", "/.",
         " ", "conditionedProbability"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "oEquations", "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"AppendTo", "[", 
       RowBox[{"oEquations", ",", " ", 
        RowBox[{"givenEquation", "[", "oParams", "]"}]}], "]"}], ";", 
@@ -240,12 +241,13 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.8090488054107857`*^9}, {3.809048863583962*^9, 3.809048871139038*^9}, {
    3.809048908272738*^9, 3.809048928673904*^9}, 3.809048961631089*^9, {
    3.8090491962052298`*^9, 3.809049203215123*^9}, {3.809049237825007*^9, 
-   3.809049250916463*^9}, {3.809049290376583*^9, 3.809049309689557*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
+   3.809049250916463*^9}, {3.809049290376583*^9, 3.809049309689557*^9}, {
+   3.810001368083746*^9, 
+   3.810001372180781*^9}},ExpressionUUID->"7a35983a-2079-45ed-b03e-\
+16c052fc27f1"]
 },
 WindowSize->{1017, 698},
 WindowMargins->{{Automatic, 111}, {46, Automatic}},
-Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"7fd964e2-56ce-4396-9485-f3abe5275eda"
@@ -261,7 +263,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10906, 223, 1039, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
+Cell[558, 20, 11016, 226, 1060, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
 }
 ]
 *)
