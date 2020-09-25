@@ -1,0 +1,12 @@
+casetype: "invariant"
+variables: {A, B}
+values: {{1, 2, 3}, {"H", "T"}}
+timesteps: {0, 1}
+numsamples: 10
+
+indep[{A[t], B[t-1], B[t]}]
+
+P[B[t-1] = "T"] = .5
+P[A[t] != 1] = .5
+P[A[t] = 2] = .3
+P[B[t]] = P[B[t-1]]
