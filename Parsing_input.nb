@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15815,        347]
-NotebookOptionsPosition[     15423,        332]
-NotebookOutlinePosition[     15859,        349]
-CellTagsIndexPosition[     15816,        346]
+NotebookDataLength[     14191,        306]
+NotebookOptionsPosition[     13800,        291]
+NotebookOutlinePosition[     14235,        308]
+CellTagsIndexPosition[     14192,        305]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,48 +22,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"Clear", "[", "parse", "]"}], ";"}], "\[IndentingNewLine]", 
-  RowBox[{"(*", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"Clear", "[", 
-     RowBox[{
-     "definizeRule", ",", " ", "eventsToDNFExtRule", ",", " ", "parse"}], 
-     "]"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"conditional", " ", "probability", " ", "definition"}], " ", 
-     "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"definizeRule", " ", "=", " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"myCondProb", "[", 
-        RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], " ", 
-       "\[RuleDelayed]", " ", 
-       RowBox[{
-        RowBox[{"myProb", "[", 
-         RowBox[{"a", " ", "\[And]", " ", "b"}], "]"}], " ", "/", " ", 
-        RowBox[{"myProb", "[", "b", "]"}]}]}], ")"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"putting", " ", "events", " ", "in", " ", "standard", " ", 
-      RowBox[{"forms", ":", " ", 
-       RowBox[{"DNF", " ", "and", " ", "CNF"}]}]}], " ", "*)"}], " ", 
-    "\[IndentingNewLine]", 
-    RowBox[{"eventsToDNFExtRule", "  ", "=", " ", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{"myProb", "[", "a_", "]"}], ")"}], " ", "/;", 
-       RowBox[{"(", " ", 
-        RowBox[{"\[Not]", " ", 
-         RowBox[{"(", 
-          RowBox[{
-           RowBox[{"BooleanConvert", "[", 
-            RowBox[{"a", ",", " ", "\"\<DNF\>\""}], "]"}], " ", "===", " ", 
-           "a"}], ")"}]}], ")"}]}], "\[RuleDelayed]", 
-      RowBox[{"(", 
-       RowBox[{"myProb", "[", 
-        RowBox[{"BooleanConvert", "[", 
-         RowBox[{"a", ",", " ", "\"\<DNF\>\""}], "]"}], "]"}], ")"}]}]}], 
-    ";"}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
    "Parse", " ", "text", " ", "input", " ", "given", " ", "file", " ", 
@@ -326,12 +285,12 @@ Cell[BoxData[{
    3.808519449587742*^9, 3.808519518110468*^9}, {3.808520095389318*^9, 
    3.808520107307247*^9}, {3.808520804588161*^9, 3.808520826840789*^9}, {
    3.808521154887104*^9, 3.808521173224072*^9}, {3.8099990521576014`*^9, 
-   3.809999062651512*^9}, {3.8099991580210648`*^9, 
-   3.8099992131720247`*^9}},ExpressionUUID->"bf1aace9-6417-4e22-8ab8-\
+   3.809999062651512*^9}, {3.8099991580210648`*^9, 3.8099992131720247`*^9}, 
+   3.810838255017973*^9},ExpressionUUID->"bf1aace9-6417-4e22-8ab8-\
 6a3e84ff7c63"]
 },
 WindowSize->{1143, 577},
-WindowMargins->{{Automatic, 132}, {Automatic, 48}},
+WindowMargins->{{Automatic, 30}, {Automatic, 90}},
 TaggingRules->{"TryRealOnly" -> False},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -348,7 +307,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 14861, 310, 1144, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
+Cell[558, 20, 13238, 269, 1018, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
 }
 ]
 *)

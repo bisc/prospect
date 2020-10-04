@@ -1,0 +1,148 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5530,        140]
+NotebookOptionsPosition[      5166,        125]
+NotebookOutlinePosition[      5576,        142]
+CellTagsIndexPosition[      5533,        139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", "timeVarVals", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"timeVarVals", "::", "unequalarg"}], "=", 
+    "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"timeVarVals", " ", "Function", "\[IndentingNewLine]", 
+     RowBox[{"Input", ":", " ", 
+      RowBox[{
+      "List", " ", "of", " ", "n", " ", "relevant", " ", "time", " ", "step", 
+       " ", "amounts"}]}]}], ",", " ", 
+    RowBox[{"list", " ", "of", " ", "n", " ", "variables"}], ",", " ", 
+    RowBox[{
+    "list", " ", "of", " ", "n", " ", "lists", " ", "of", " ", "random", " ", 
+     "variable", " ", "outputs", "\[IndentingNewLine]", 
+     RowBox[{"Output", ":", " ", 
+      RowBox[{"List", " ", "of", " ", "m", " ", "variables"}]}]}], ",", " ", 
+    RowBox[{
+    "list", " ", "of", " ", "m", " ", "lists", " ", "of", " ", "random", " ", 
+     "variable", " ", "outputs", "\[IndentingNewLine]", "m", " ", "is", " ", 
+     "the", " ", "number", " ", "of", " ", "random", " ", "variables", " ", 
+     "considered", " ", "in", " ", "the", " ", "time", " ", "dependent", " ", 
+     "cases"}]}], "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"timeVarVals", "[", 
+   RowBox[{"steps0_", ",", " ", "vars0_", ",", " ", "vals0_"}], "]"}], " ", ":=",
+   "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"steps", " ", "=", " ", "steps0"}], ",", " ", 
+      RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
+      RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "varL", ",", " ", 
+      "valL", ",", " ", "stepL", ",", " ", 
+      RowBox[{"varsR", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"valsR", " ", "=", " ", 
+       RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"varL", " ", "=", " ", 
+      RowBox[{"Length", "[", "vars", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"valL", " ", "=", " ", 
+      RowBox[{"Length", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"stepL", " ", "=", " ", 
+      RowBox[{"Length", "[", "steps", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"varL", " ", "\[NotEqual]", " ", "valL"}], " ", "||", " ", 
+        RowBox[{"varL", " ", "\[NotEqual]", " ", "stepL"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Message", "[", 
+          RowBox[{"timeVarVals", "::", "unequalarg"}], "]"}], ";", " ", 
+         "$Failed"}], ")"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Do", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"varsR", ",", " ", 
+                RowBox[{
+                 RowBox[{"vars", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"t", " ", "-", " ", "j"}], "]"}]}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"valsR", ",", " ", 
+                RowBox[{"vals", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", " ", "0", ",", " ", 
+               RowBox[{"steps", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "}"}]}], "]"}], ";"}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", "stepL"}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"varsR", ",", " ", "valsR"}], "}"}]}]}], 
+      "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.810841212837226*^9, 3.8108414311428823`*^9}, {
+  3.810841517796034*^9, 3.8108416478973017`*^9}, {3.810841707537919*^9, 
+  3.810841750173067*^9}, {3.810841788034309*^9, 3.810841828720283*^9}, {
+  3.8108418769133177`*^9, 3.810841881977837*^9}, {3.810841961772558*^9, 
+  3.8108420733360777`*^9}, {3.81084211562534*^9, 3.810842152923388*^9}, {
+  3.810842185827713*^9, 3.810842326207377*^9}, {3.8108423776532917`*^9, 
+  3.810842462741827*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"]
+},
+WindowSize->{808, 707},
+WindowMargins->{{Automatic, 79}, {Automatic, 46}},
+Visible->False,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"26e1fa24-111d-422f-bfd8-37dadf17c4b4"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4604, 103, 598, "Input",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"]
+}
+]
+*)
+
