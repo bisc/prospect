@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13470,        318]
-NotebookOptionsPosition[     13104,        303]
-NotebookOutlinePosition[     13514,        320]
-CellTagsIndexPosition[     13471,        317]
+NotebookDataLength[     14349,        338]
+NotebookOptionsPosition[     14000,        324]
+NotebookOutlinePosition[     14393,        340]
+CellTagsIndexPosition[     14350,        337]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,15 +33,17 @@ Cell[BoxData[{
    RowBox[{
     RowBox[{"{", 
      RowBox[{
-     "equalityAdjust", ",", "inequalityAdjust", ",", "  ", 
-      "myProbAdjustEquals", ",", "myProbAdjustUnequals", ",", " ", "oParams", 
-      ",", " ", "oOutput", ",", " ", "oEquations", ",", " ", "oConstraints", 
-      ",", " ", "oSolve", ",", " ", "oRules", ",", " ", "oFinalRules", ",", 
-      " ", "oD", ",", " ", "underCheck"}], "}"}], ",", "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", 
+     "classes", ",", " ", "equalityAdjust", ",", "inequalityAdjust", ",", 
+      "  ", "myProbAdjustEquals", ",", "myProbAdjustUnequals", ",", " ", 
+      "oParams", ",", " ", "oOutput", ",", " ", "oEquations", ",", " ", 
+      "oConstraints", ",", " ", "oSolve", ",", " ", "oRules", ",", " ", 
+      "oFinalRules", ",", " ", "oD", ",", " ", "underCheck"}], "}"}], ",", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"Print", "[", "\"\<Before\>\"", "]"}], ";", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"classes", " ", "=", " ", "variables"}], ";", 
+     "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"{", 
        RowBox[{"variables", ",", " ", "values"}], "}"}], " ", "=", " ", 
@@ -50,8 +52,16 @@ Cell[BoxData[{
        "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"Print", "[", "\"\<Adjust Lists\>\"", "]"}], ";", 
      "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "classes", "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"Print", "[", "variables", "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"Print", "[", "values", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"testAdjust", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"Equal", "[", 
+         RowBox[{"test1_", ",", " ", "test2_"}], "]"}], ")"}], " ", 
+       "\[RuleDelayed]", " ", "test1"}]}], ";", "\[IndentingNewLine]", 
      "\[IndentingNewLine]", 
      RowBox[{"equalityAdjust", " ", "=", " ", 
       RowBox[{
@@ -79,14 +89,14 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"myProb", "[", "test3_", "]"}], " ", "\[RuleDelayed]", " ", 
        RowBox[{"myProb", "[", " ", 
-        RowBox[{"test3", " ", "/.", " ", "equalityAdjust"}], "]"}]}]}], ";", 
+        RowBox[{"test3", " ", "//.", " ", "equalityAdjust"}], "]"}]}]}], ";", 
      "\[IndentingNewLine]", 
      RowBox[{"myProbAdjustUnequals", "=", " ", 
       RowBox[{
        RowBox[{"myProb", "[", "test3_", "]"}], " ", "\[RuleDelayed]", " ", 
        RowBox[{"myProb", "[", " ", 
-        RowBox[{"test3", " ", "/.", " ", "inequalityAdjust"}], "]"}]}]}], ";",
-      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"test3", " ", "//.", " ", "inequalityAdjust"}], "]"}]}]}], 
+     ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{"NOTE", ":", " ", 
        RowBox[{
@@ -95,20 +105,29 @@ Cell[BoxData[{
          " ", "wrong", " ", "with", " ", "using", " ", "the", " ", 
         "variables", " ", "as", " ", "lists", " ", "here"}]}], " ", "*)"}], 
      "\[IndentingNewLine]", 
-     RowBox[{"specs", " ", "=", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{"specs", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"specs", " ", "//.", "definizeRule"}], "//.", 
+         "myProbAdjustEquals"}]}], ";"}], " ", "*)"}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"specs", "  ", "=", " ", 
       RowBox[{
        RowBox[{
         RowBox[{
-         RowBox[{"specs", " ", "//.", " ", "myProbAdjustEquals"}], " ", "//.",
-          " ", "myProbAdjustUnequals"}], " ", "//.", "definizeRule"}], " ", "//.",
-        " ", "eventsToDNFExtRule"}]}], "  ", 
-     RowBox[{"(*", " ", 
-      RowBox[{
-       RowBox[{"//.", " ", "myProbAdjustEquals"}], " ", "//.", " ", 
-       "myProbAdjustUnequals"}], " ", "*)"}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"specs", " ", "//.", " ", "myProbAdjustEquals"}], "  ", "//.",
+              "definizeRule"}], " ", "//.", " ", "eventsToDNFExtRule"}], " ", 
+           "//.", " ", "myProbAdjustUnequals"}], " ", "//.", "definizeRule"}],
+          " ", "//.", " ", "eventsToDNFExtRule"}], "  ", "//.", " ", 
+        "myProbAdjustEquals"}], " ", "//.", " ", "myProbAdjustUnequals"}]}], 
+     ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"Print", "[", "\"\<After\>\"", "]"}], ";", "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "specs", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "specs", "]"}]}]}], "\[IndentingNewLine]", 
    RowBox[{"(*", "\[IndentingNewLine]", 
     RowBox[{"(*", " ", 
      RowBox[{
@@ -292,21 +311,22 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
        "Print", "[", "\"\<Invalid system: solver timed out\>\"", "]"}]}], 
       "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "*)"}], 
    "\[IndentingNewLine]", "]"}]}]}], "Input",
- CellChangeTimes->{{3.810838578830367*^9, 3.8108385831947412`*^9}, {
-  3.810838619699106*^9, 3.810838686918848*^9}, {3.810842604989357*^9, 
-  3.8108426763241863`*^9}, {3.810842757906061*^9, 3.810842768777169*^9}, {
-  3.810842948729786*^9, 3.810842951145462*^9}, {3.810843023662766*^9, 
-  3.810843039279393*^9}, {3.810843071584235*^9, 3.810843147239332*^9}, {
-  3.8108431888751574`*^9, 
-  3.810843247573083*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
-84c70916ed19"]
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGCQBGIQHTcpim1myhvHIOtnYFokvowbRJuk3xUG0RdWzP87
+C0jvie9imw2kS/7tEQDRk+5JCIHojKjpGiB6wfInYDrR9KshiD714YUxiObb
+9MkcRM9Zke4Ior0Y57iB6E1hn3xB9LV5PFd2Aemzuh5guvn34hcgumqa7EsQ
+PUk5fs2p1DeOeoLXwHSPcc5tEN3n7n8HRLd8tVY6B6SrCs+C6ZzpDeogWqp+
+ngaI1vmcaQWi9ykK2oLoFZ82OYLouocsniB6vpWpH4g+8NcXTLvk+AaB6Ds7
+ZoLpe69aokH0hRKOWBB96MbjBBAtE7c/DUSH9b6oBNHaHabVIPr1tafND4G0
+T/68FhAt8VJsOoh2+vseTH/b7L0SRG9WCwPTS3bMP/8h7Y0jb8jnKyAaAADC
+2OU=
+  "],ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 },
 WindowSize->{808, 706},
-WindowMargins->{{Automatic, 87}, {Automatic, 37}},
-Visible->False,
+WindowMargins->{{Automatic, 30}, {1, Automatic}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
-ExpressionUUID->"caf56096-45e1-4c60-af0d-f275ce84c557"
+ExpressionUUID->"1f2bddd3-45fd-4d1e-b6ad-5bf513510436"
 ]
 (* End of Notebook Content *)
 
@@ -319,7 +339,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 12542, 281, 1732, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+Cell[558, 20, 13438, 302, 1900, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 }
 ]
 *)
