@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12892,        283]
-NotebookOptionsPosition[     12542,        269]
-NotebookOutlinePosition[     12936,        285]
-CellTagsIndexPosition[     12893,        282]
+NotebookDataLength[     13853,        302]
+NotebookOptionsPosition[     13485,        287]
+NotebookOutlinePosition[     13897,        304]
+CellTagsIndexPosition[     13854,        301]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -198,15 +198,32 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
              "\"\<Invalid system: some specifications not consistent\>\"", 
              "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
           "\[IndentingNewLine]", "$Failed"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "List", " ", "of", " ", "rules", " ", "mapping", " ", "o", " ", 
+           "parameters", " ", "to", " ", "probabilities"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"oRules", " ", "=", " ", 
            RowBox[{"oSolve", "[", 
             RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "Editing", " ", "the", " ", "rules", " ", "such", " ", "that", " ",
+             "they", " ", "map", " ", "to", " ", "probabilities", " ", "and", 
+            " ", "not", " ", "a", " ", "list", " ", 
+            RowBox[{"w", "/", "single"}], " ", "probability"}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
           RowBox[{"oFinalRules", " ", "=", " ", 
            RowBox[{"oRules", "//.", 
             RowBox[{
              RowBox[{"{", "x_", "}"}], "\[RuleDelayed]", "x"}]}]}], ";", 
           "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "A", " ", "distribution", " ", "mapping", " ", "the", " ", 
+            "values", " ", "and", " ", "their", " ", "probabilities"}], " ", 
+           "*)"}], "\[IndentingNewLine]", 
           RowBox[{"oD", " ", "=", " ", 
            RowBox[{"CategoricalDistribution", "[", 
             RowBox[{"values", ",", " ", 
@@ -263,12 +280,14 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.809049250916463*^9}, {3.809049290376583*^9, 3.809049309689557*^9}, {
    3.810001368083746*^9, 3.810001372180781*^9}, {3.810836584949131*^9, 
    3.810836662474546*^9}, {3.810836732589663*^9, 3.810836766475417*^9}, {
-   3.8108386697639923`*^9, 
-   3.810838677257696*^9}},ExpressionUUID->"7a35983a-2079-45ed-b03e-\
+   3.8108386697639923`*^9, 3.810838677257696*^9}, {3.8132420864701223`*^9, 
+   3.813242150821072*^9}, {3.813242234778734*^9, 
+   3.813242247941966*^9}},ExpressionUUID->"7a35983a-2079-45ed-b03e-\
 16c052fc27f1"]
 },
 WindowSize->{1017, 698},
-WindowMargins->{{Automatic, 30}, {0, Automatic}},
+WindowMargins->{{Automatic, -14}, {47, Automatic}},
+Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"7fd964e2-56ce-4396-9485-f3abe5275eda"
@@ -284,7 +303,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 11980, 247, 1102, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
+Cell[558, 20, 12923, 265, 1165, "Input",ExpressionUUID->"7a35983a-2079-45ed-b03e-16c052fc27f1"]
 }
 ]
 *)

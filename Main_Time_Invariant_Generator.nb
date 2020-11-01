@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11578,        277]
-NotebookOptionsPosition[     11211,        262]
-NotebookOutlinePosition[     11622,        279]
-CellTagsIndexPosition[     11579,        276]
+NotebookDataLength[     17493,        392]
+NotebookOptionsPosition[     17126,        377]
+NotebookOutlinePosition[     17537,        394]
+CellTagsIndexPosition[     17494,        391]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,12 +33,14 @@ Cell[BoxData[{
    RowBox[{
     RowBox[{"{", 
      RowBox[{
-     "classes", ",", " ", "equalityAdjust", ",", "inequalityAdjust", ",", 
-      "  ", "myProbAdjustEquals", ",", "myProbAdjustUnequals", ",", " ", 
+     "classes", ",", "isPastStep", ",", "pastStepVars", ",", " ", 
+      "pastStepValues", ",", " ", "equalityAdjust", ",", "inequalityAdjust", 
+      ",", "  ", "myProbAdjustEquals", ",", "myProbAdjustUnequals", ",", " ", 
       "oParams", ",", " ", "oOutput", ",", " ", "oEquations", ",", " ", 
       "oConstraints", ",", " ", "oSolve", ",", " ", "oRules", ",", " ", 
-      "oFinalRules", ",", " ", "oD", ",", " ", "underCheck"}], "}"}], ",", 
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "oFinalRules", ",", "oFinalArray", ",", " ", "oD", ",", " ", 
+      "underCheck", ",", " ", "baseCase"}], "}"}], ",", "\[IndentingNewLine]",
+     "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"Print", "[", "\"\<Before\>\"", "]"}], ";", 
      "\[IndentingNewLine]", 
@@ -46,7 +48,9 @@ Cell[BoxData[{
      "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"{", 
-       RowBox[{"variables", ",", " ", "values"}], "}"}], " ", "=", " ", 
+       RowBox[{
+       "variables", ",", " ", "values", ",", " ", "isPastStep", ",", " ", 
+        "pastStepVars", ",", " ", "pastStepValues"}], "}"}], " ", "=", " ", 
       RowBox[{"timeVarVals", "[", 
        RowBox[{"timesteps", ",", " ", "variables", ",", " ", "values"}], 
        "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -54,6 +58,11 @@ Cell[BoxData[{
      "\[IndentingNewLine]", 
      RowBox[{"Print", "[", "classes", "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"Print", "[", "variables", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "isPastStep", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "pastStepVars", "]"}], ";", "\[IndentingNewLine]", 
+     
+     RowBox[{"Print", "[", "pastStepValues", "]"}], ";", 
+     "\[IndentingNewLine]", 
      RowBox[{"Print", "[", "values", "]"}], ";", "\[IndentingNewLine]", 
      "\[IndentingNewLine]", 
      RowBox[{"testAdjust", " ", "=", " ", 
@@ -231,37 +240,143 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
              "\"\<Invalid system: some specifications not consistent\>\"", 
              "]"}]}], "\[IndentingNewLine]", "]"}], ";", 
           "\[IndentingNewLine]", "$Failed"}], ",", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "List", " ", "of", " ", "rules", " ", "mapping", " ", "o", " ", 
+           "parameters", " ", "to", " ", "probabilities"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"oRules", " ", "=", " ", 
            RowBox[{"oSolve", "[", 
             RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "Editing", " ", "the", " ", "rules", " ", "such", " ", "that", " ",
+             "they", " ", "map", " ", "to", " ", "probabilities", " ", "and", 
+            " ", "not", " ", "a", " ", "list", " ", 
+            RowBox[{"w", "/", "single"}], " ", "probability"}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
           RowBox[{"oFinalRules", " ", "=", " ", 
            RowBox[{"oRules", "//.", 
             RowBox[{
              RowBox[{"{", "x_", "}"}], "\[RuleDelayed]", "x"}]}]}], ";", 
           "\[IndentingNewLine]", "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "oSolve", "]"}], ";"}]}], 
-        "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], ",", 
-       "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "A", " ", "distribution", " ", "mapping", " ", "the", " ", 
+            "values", " ", "and", " ", "their", " ", "probabilities"}], " ", 
+           "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"oFinalArray", " ", "=", " ", 
+           RowBox[{"oParams", " ", "/.", " ", "oFinalRules"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "\"\<Final Array\>\"", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "oFinalArray", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"oD", " ", "=", " ", 
+           RowBox[{"CategoricalDistribution", "[", 
+            RowBox[{"values", ",", " ", "oFinalArray"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"Information", "[", 
+           RowBox[{"oD", ",", " ", "\"\<ProbabilityTable\>\""}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"baseCase", " ", "=", " ", 
+           RowBox[{"RandomVariate", "[", 
+            RowBox[{"oD", ",", " ", "1"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", "baseCase"}]}], "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"What", " ", "to", " ", 
+            RowBox[{"do", ":"}]}], " ", ";", "\[IndentingNewLine]", 
+           RowBox[{
+           "1.", " ", "Create", " ", "a", " ", "function", " ", "f1", " ", 
+            "that", " ", "when", " ", "given", " ", "the", " ", "values", " ",
+             "of", " ", "the", " ", "past", " ", "time", " ", "steps"}]}], 
+          ",", " ", 
+          RowBox[{
+           RowBox[{
+           "return", " ", "a", " ", "conditional", " ", "categorical", " ", 
+            "distribution"}], " ", ";", "\[IndentingNewLine]", "\t", 
+           RowBox[{
+            RowBox[{"a", ".", " ", "Note"}], " ", "that", " ", "this", " ", 
+            "distribution", " ", "must", " ", "generate", " ", "all", " ", 
+            "points", " ", "and", " ", "not", " ", "just", " ", "current", 
+            " ", "ones"}], " ", ";", "\[IndentingNewLine]", "\t", 
+           RowBox[{
+            RowBox[{"b", ".", " ", "Make"}], " ", "a", " ", "function", " ", 
+            "that", " ", "makes", " ", "this", " ", "function"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+           "2.", " ", "Create", " ", "a", " ", "function", " ", "f2", " ", 
+            "that", " ", "when", " ", "given", " ", "a", " ", "generation", 
+            " ", "of", " ", "all", " ", "points"}]}], ",", " ", 
+          RowBox[{
+           RowBox[{
+           "extract", " ", "the", " ", "base", " ", "case", " ", "values", 
+            " ", 
+            RowBox[{"(", "timeValExtraction", ")"}]}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"WORKING", " ", 
+            RowBox[{"LOOP", ":"}]}], " ", ";", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"-", " ", "Create"}], " ", "the", " ", "two", " ", 
+            "functions", " ", "above"}], " ", ";", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"-", " ", "Generate"}], " ", "a", " ", "base", " ", 
+            "case", " ", "using", " ", "the", " ", "original", " ", "oD"}], 
+           " ", ";", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", " ", "Repeat"}], " ", "numsamples"}], " ", "-", " ", 
+            RowBox[{"1", " ", 
+             RowBox[{"times", ":"}]}]}], " ", ";", "\[IndentingNewLine]", 
+           "\t", 
+           RowBox[{
+            RowBox[{"-", " ", "Use"}], " ", "f2", " ", "to", " ", "acquire", 
+            " ", "the", " ", "relevant", " ", "time", " ", "step", " ", 
+            "values", " ", "from", " ", "the", " ", "previous", " ", 
+            "sample"}], ";", "\[IndentingNewLine]", "\t\t", 
+           RowBox[{
+            RowBox[{"-", " ", "Denote"}], " ", "the", " ", "result", " ", 
+            "as", " ", "L"}], " ", ";", "\[IndentingNewLine]", "\t", 
+           RowBox[{
+            RowBox[{"-", " ", "Use"}], " ", "f1", " ", "to", " ", "acquire", 
+            " ", "the", " ", "conditional", " ", "categorical", " ", 
+            "distribution", " ", "based", " ", "on", " ", "input", " ", "L"}],
+            " ", ";", "\[IndentingNewLine]", "\t", 
+           RowBox[{
+            RowBox[{"-", " ", "Generate"}], " ", "a", " ", "new", " ", 
+            "timestep", " ", "based", " ", "on", " ", "the", " ", 
+            "categorical", " ", "distribution", " ", "acquired"}], " ", 
+           ";"}]}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+        "]"}], ",", "\[IndentingNewLine]", 
        RowBox[{
        "Print", "[", "\"\<Invalid system: solver timed out\>\"", "]"}]}], 
       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", "]"}]}]}], "Input",
+   "]"}]}]}], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdxUsow3EAB/B5tJRH80iIhLDyKDFqOPwlbIxaa2liaBtqWWopW6HsICHt
-YMxsCply2lJLMlwU5lEswiKvYWVt4aDJ//s7fPpkdauE8nAGg5FJwx16CXNe
-5qOElS/kJOlgNC7ruUvEZ1ZLyEi/LZ1gLtCr/7ZZWO9JScC9EgMbL609kbs4
-XyX40O8txXG2QAU2WXsozA8z1WGbOCDAbnPMxRa9q6iBPPa77MWa2Yw3rM+R
-bhzKfVRxvJs8Waq8wdP1LbdY91WZfUKvGXCRlYbRfJw2YmbjwmAfF+9kxVdj
-a8BG4eGHSB62cDnNeDckINcqBUJ865gne951bfhMHdWO968eO3F6h1OBxVPe
-IVwwztHiD/fz2AN9k8qswylvyQZcE/okf9sb17E9T0xecVhO/QofFSsKXmDR
-9Z5J1uujyvnti9i4erWJc50xO9gfeXSMtdX957j1h3eJq4IR93jpIOoVz1pS
-vXhmjiOT07MksSr8D9SeCVo=
-  
-  "],ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+1:eJwdyltMUgEAh3Eyx1yBYrFmLVdoFi4FlchNc+u4ZkBijRE5mtIFvBTF2ljz
+slULHlq3OWaSSsDMFq3LA9aixrSLq80wqBmTaSzXDexU7DCx2Wid/3n49nv5
+BEdMKkMGi8US0cFmm5bdrycJVfU3Rr7u9Eq4rfXjahjyuNIDtH7dRfYgrfmf
+nwdt0bxVsE1rF0L37S+Mh6UL5XAiEZPAbC9VCR2eVgIqljnqoFdDKWHYyZl6
+SjtZKmO0/L0Zg119+XFoK9TdmzCQhCg3zHhZYpyBV3fvnYXWheqCt7RdpyYZ
+jfZzW+C6s04hLEm2V8FRQW4N9FBeAp6Zy5RDV5W0AT5LKxl3GZUqOOvrZ4zO
+Ww/CkDmrCb6Y/nwIrm8ea4GaK7FOuPWCtBv+CH+1zNHWm5xWmBdfY4e16d+M
+qZE9d+DIZg3jsM8VTLSQBFednILqyHOHvo0ktiuabsCBW9OPYNEYZxQmMt8E
+YHfNyXewcVH+Ae5ILv8E3a+zvsM+19oY7Lku1RtoeVquCQoi+zmidpIQ5nTw
+IBX78xBek214DHt6G4Mw0BmKQFmHjYJ8lzEFGyR3l+CvB4X5YtrxTQU62Fvh
+Yxw69vM4PG9ePAE3krxBuK+S44b81PBLyC0WjMMVxSRRThu9H6+FnpJsGVQf
+9StgmbyuqALfq4AQsvkHSuGTSzlimFFfFpHQvqfcM9C2ZIlB8c7gPPwP9rl3
+dQ==
+  "],
+ CellLabel->"In[1]:=",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 },
-WindowSize->{808, 706},
-WindowMargins->{{Automatic, 296}, {44, Automatic}},
+WindowSize->{901, 706},
+WindowMargins->{{Automatic, 230}, {Automatic, 33}},
 Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -278,7 +393,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10649, 240, 1648, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+Cell[558, 20, 16564, 355, 2236, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 }
 ]
 *)

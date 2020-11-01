@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38646,        926]
-NotebookOptionsPosition[     37602,        899]
-NotebookOutlinePosition[     38013,        916]
-CellTagsIndexPosition[     37970,        913]
+NotebookDataLength[     63535,       1713]
+NotebookOptionsPosition[     62483,       1686]
+NotebookOutlinePosition[     62897,       1703]
+CellTagsIndexPosition[     62854,       1700]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -436,7 +436,7 @@ Cell[BoxData[
           RowBox[{"Flatten", "[", "addedEquations", "]"}]}], 
          "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
         "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", "\[IndentingNewLine]", 
+        RowBox[{"(*", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"OPTIMIZED", ";", "\[IndentingNewLine]", 
            RowBox[{
@@ -461,6 +461,7 @@ Cell[BoxData[
             RowBox[{"b", ".", " ", "Set"}], " ", "addedEquations", " ", "to", 
             " ", "the", " ", "result", " ", "and", " ", "break", " ", "out"}],
             ";"}]}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
         RowBox[{"Do", "[", "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{
@@ -516,8 +517,8 @@ Cell[BoxData[
             RowBox[{"Length", "[", "pSet", "]"}], ",", " ", "1", ",", " ", 
             RowBox[{"-", "1"}]}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
         "\[IndentingNewLine]", "addedEquations"}]}], "\[IndentingNewLine]", 
-      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   "\[IndentingNewLine]"}]}]], "Input",
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.812069411401389*^9, 3.8120694135795307`*^9}, {
    3.8120695176434793`*^9, 3.81206969826478*^9}, {3.812069745396487*^9, 
    3.812069863878633*^9}, {3.812069914890156*^9, 3.812070021895712*^9}, {
@@ -559,9 +560,9 @@ Cell[BoxData[
    3.812828277643077*^9, 3.812828302722145*^9}, {3.812828976198847*^9, 
    3.812828976535499*^9}, {3.8128297368630953`*^9, 3.812829780294263*^9}, {
    3.812829811454309*^9, 3.812829811880904*^9}, {3.812829887475615*^9, 
-   3.8128299128110857`*^9}},
- CellLabel->
-  "In[446]:=",ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-77cfa3974e9c"],
+   3.8128299128110857`*^9}, {3.8128925071933737`*^9, 3.812892544286768*^9}, {
+   3.8128925750535727`*^9, 3.812892586913316*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-77cfa3974e9c"],
 
 Cell[CellGroupData[{
 
@@ -572,7 +573,9 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"T", "[", "t", "]"}], ",", " ", 
      RowBox[{"T", "[", 
-      RowBox[{"t", "-", "1"}], "]"}], ",", " ", 
+      RowBox[{"t", "-", "1"}], "]"}], ",", 
+     RowBox[{"T", "[", 
+      RowBox[{"t", "-", "2"}], "]"}], ",", " ", 
      RowBox[{"F", "[", "t", "]"}], ",", " ", 
      RowBox[{"F", "[", 
       RowBox[{"t", "-", "1"}], "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
@@ -580,6 +583,9 @@ Cell[BoxData[{
   RowBox[{"tempVals", " ", "=", " ", 
    RowBox[{"{", 
     RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "1", ",", " ", "2", ",", " ", "3"}], "}"}], ",", 
+     " ", 
      RowBox[{"{", 
       RowBox[{"0", ",", " ", "1", ",", " ", "2", ",", " ", "3"}], "}"}], ",", 
      " ", 
@@ -624,87 +630,9 @@ Cell[BoxData[{
   3.812116512660153*^9}, {3.812116617461327*^9, 3.8121166202362432`*^9}, {
   3.812117538710403*^9, 3.812117569559704*^9}, {3.8121178220790462`*^9, 
   3.812117829779655*^9}, {3.81282430447003*^9, 3.812824309682445*^9}, {
-  3.812824531097962*^9, 3.812824534799741*^9}},
+  3.812824531097962*^9, 3.812824534799741*^9}, {3.812892681529037*^9, 
+  3.81289268653957*^9}},
  CellLabel->"In[9]:=",ExpressionUUID->"e6d85261-2bb6-4b47-8a18-2fb4168d64ab"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
-      RowBox[{
-       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
-    "\[Equal]", 
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"T", "[", 
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
-      RowBox[{
-       RowBox[{"F", "[", 
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
-      "]"}]}], ",", 
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
-      RowBox[{
-       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
-    "\[Equal]", 
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"T", "[", 
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
-      RowBox[{
-       RowBox[{"F", "[", 
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
-      "]"}]}], ",", 
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
-      RowBox[{
-       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
-    "\[Equal]", 
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"T", "[", 
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
-      RowBox[{
-       RowBox[{"F", "[", 
-        RowBox[{
-         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
-      "]"}]}]}], "}"}]], "Output",
- CellChangeTimes->{{3.8121141966255827`*^9, 3.812114201374586*^9}, {
-   3.8121142378746433`*^9, 3.812114276889525*^9}, 3.81211431192519*^9, {
-   3.81211437776366*^9, 3.8121143886827106`*^9}, 3.8121164783732567`*^9, 
-   3.8121165173269653`*^9, 3.8121166213516693`*^9, 3.812117831083494*^9, 
-   3.812824192418242*^9, 3.812824266777493*^9, 3.812824312582284*^9, {
-   3.812824511448145*^9, 3.8128245371061697`*^9}},
- CellLabel->"Out[64]=",ExpressionUUID->"80ba226b-1933-44bd-8821-5068148a7843"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"stationary", "[", 
-  RowBox[{"tempClasses", ",", " ", "tempVars", ",", " ", "tempVals"}], 
-  "]"}]], "Input",
- CellChangeTimes->{{3.81282420382292*^9, 3.812824219586487*^9}},
- CellLabel->
-  "In[454]:=",ExpressionUUID->"178135f8-7ec9-4c80-96ae-ad71e36a8924"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -842,6 +770,866 @@ Cell[BoxData[
         RowBox[{
          RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
       "]"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.8121141966255827`*^9, 3.812114201374586*^9}, {
+   3.8121142378746433`*^9, 3.812114276889525*^9}, 3.81211431192519*^9, {
+   3.81211437776366*^9, 3.8121143886827106`*^9}, 3.8121164783732567`*^9, 
+   3.8121165173269653`*^9, 3.8121166213516693`*^9, 3.812117831083494*^9, 
+   3.812824192418242*^9, 3.812824266777493*^9, 3.812824312582284*^9, {
+   3.812824511448145*^9, 3.8128245371061697`*^9}, 3.8128925020388327`*^9, {
+   3.8128926091781063`*^9, 3.812892610998548*^9}, {3.812892688449808*^9, 
+   3.81289269055199*^9}},
+ CellLabel->"Out[55]=",ExpressionUUID->"afbcbdcf-7e52-4b92-875b-71ac371aab64"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"stationary", "[", 
+  RowBox[{"tempClasses", ",", " ", "tempVars", ",", " ", "tempVals"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.81282420382292*^9, 3.812824219586487*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"178135f8-7ec9-4c80-96ae-ad71e36a8924"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "0"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "1"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"blue\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "2"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], 
+       "\[Equal]", "\<\"blue\"\>"}]}], "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", "t", "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", "t", "]"}], "\[Equal]", "\<\"red\"\>"}]}], "]"}], 
+    "\[Equal]", 
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"T", "[", 
+        RowBox[{
+         RowBox[{"-", "2"}], "+", "t"}], "]"}], "\[Equal]", "3"}], "&&", 
+      RowBox[{
+       RowBox[{"F", "[", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "t"}], "]"}], "\[Equal]", "\<\"red\"\>"}]}],
+      "]"}]}]}], "}"}]], "Output",
  CellChangeTimes->{
   3.812824232341907*^9, 3.8128242668141623`*^9, 3.812824314647636*^9, {
    3.812824517206109*^9, 3.812824542998211*^9}, 3.812824764726738*^9, 
@@ -854,9 +1642,9 @@ Cell[BoxData[
    3.812827544993312*^9, {3.812827631954896*^9, 3.812827655275826*^9}, {
    3.8128281988221617`*^9, 3.8128282239591017`*^9}, 3.812828306856659*^9, 
    3.812829527463166*^9, {3.812829791582922*^9, 3.812829825230369*^9}, 
-   3.812829917005453*^9},
- CellLabel->
-  "Out[454]=",ExpressionUUID->"f10bb17e-267c-454e-a51d-423bcfda6259"]
+   3.812829917005453*^9, 3.812892502052903*^9, 3.812892614238563*^9, 
+   3.812892692021796*^9},
+ CellLabel->"Out[56]=",ExpressionUUID->"32cb5b28-b66a-4dd3-afcf-2785e57a66cf"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -871,8 +1659,7 @@ Cell[BoxData[
       RowBox[{"t", "-", "1"}], "]"}]}], "}"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.812829529046092*^9, 3.81282955910849*^9}, {
   3.8128295904326057`*^9, 3.812829592778859*^9}},
- CellLabel->
-  "In[426]:=",ExpressionUUID->"a2646331-fe05-42d7-a75f-111131570eca"],
+ CellLabel->"In[14]:=",ExpressionUUID->"a2646331-fe05-42d7-a75f-111131570eca"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -892,13 +1679,13 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"F", "[", "2", "]"}], "\[Equal]", "\<\"red\"\>"}], "]"}]}]}], 
   "}"}]], "Output",
- CellChangeTimes->{3.812829559521978*^9, 3.812829594121378*^9},
- CellLabel->
-  "Out[426]=",ExpressionUUID->"2ad376c4-46c6-4078-bd02-1eb767ee1caf"]
+ CellChangeTimes->{3.812829559521978*^9, 3.812829594121378*^9, 
+  3.812892502070057*^9, 3.8128927437668133`*^9},
+ CellLabel->"Out[57]=",ExpressionUUID->"2283253a-06a4-4158-9c8b-3b1c5fe726d9"]
 }, Open  ]]
 },
 WindowSize->{1143, 705},
-WindowMargins->{{87, Automatic}, {13, Automatic}},
+WindowMargins->{{Automatic, -251}, {-48, Automatic}},
 Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -915,18 +1702,18 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 25725, 543, 3181, "Input",ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-77cfa3974e9c"],
+Cell[558, 20, 25893, 544, 3244, "Input",ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-77cfa3974e9c"],
 Cell[CellGroupData[{
-Cell[26308, 567, 2505, 60, 178, "Input",ExpressionUUID->"e6d85261-2bb6-4b47-8a18-2fb4168d64ab"],
-Cell[28816, 629, 2260, 66, 77, "Output",ExpressionUUID->"80ba226b-1933-44bd-8821-5068148a7843"]
+Cell[26476, 568, 2730, 66, 178, "Input",ExpressionUUID->"e6d85261-2bb6-4b47-8a18-2fb4168d64ab"],
+Cell[29209, 636, 4685, 144, 161, "Output",ExpressionUUID->"afbcbdcf-7e52-4b92-875b-71ac371aab64"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31113, 700, 281, 6, 30, "Input",ExpressionUUID->"178135f8-7ec9-4c80-96ae-ad71e36a8924"],
-Cell[31397, 708, 4995, 150, 161, "Output",ExpressionUUID->"f10bb17e-267c-454e-a51d-423bcfda6259"]
+Cell[33931, 785, 277, 5, 30, "Input",ExpressionUUID->"178135f8-7ec9-4c80-96ae-ad71e36a8924"],
+Cell[34211, 792, 27021, 854, 665, "Output",ExpressionUUID->"32cb5b28-b66a-4dd3-afcf-2785e57a66cf"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36429, 863, 466, 11, 30, "Input",ExpressionUUID->"a2646331-fe05-42d7-a75f-111131570eca"],
-Cell[36898, 876, 688, 20, 34, "Output",ExpressionUUID->"2ad376c4-46c6-4078-bd02-1eb767ee1caf"]
+Cell[61269, 1651, 462, 10, 30, "Input",ExpressionUUID->"a2646331-fe05-42d7-a75f-111131570eca"],
+Cell[61734, 1663, 733, 20, 34, "Output",ExpressionUUID->"2283253a-06a4-4158-9c8b-3b1c5fe726d9"]
 }, Open  ]]
 }
 ]
