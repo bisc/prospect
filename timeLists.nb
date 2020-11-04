@@ -10,23 +10,15 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26771,        607]
-NotebookOptionsPosition[     26131,        590]
-NotebookOutlinePosition[     26524,        606]
-CellTagsIndexPosition[     26481,        603]
+NotebookDataLength[     38822,        850]
+NotebookOptionsPosition[     38162,        832]
+NotebookOutlinePosition[     38573,        849]
+CellTagsIndexPosition[     38530,        846]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"Clear", "[", 
-    RowBox[{
-    "timeVarVals", ",", " ", "timeValExtraction", ",", " ", 
-     "timeDistsConditional", ",", " ", "validCoordinates", ",", " ", 
-     "tempCoordinate"}], "]"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"timeVarVals", "::", "unequalarg"}], "=", 
@@ -69,6 +61,11 @@ Cell[BoxData[{
       "a", " ", "past", " ", "one", " ", "or", " ", "not"}], " ", ";", 
      "\[IndentingNewLine]", 
      RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "m", " ", "booleans", " ", 
+      "indicating", " ", "whether", " ", "the", " ", "step", " ", "will", " ",
+       "be", " ", "a", " ", "past", " ", "step", " ", "on", " ", "a", " ", 
+      "following", " ", "iteration"}], " ", ";", "\[IndentingNewLine]", 
+     RowBox[{
       RowBox[{"-", " ", "List"}], " ", "of", " ", "k", " ", "lists", " ", 
       "of", " ", "values"}]}], ",", " ", 
     RowBox[{
@@ -80,104 +77,130 @@ Cell[BoxData[{
      " ", ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
    "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{
-   RowBox[{"timeVarVals", "[", 
-    RowBox[{"steps0_", ",", " ", "vars0_", ",", " ", "vals0_"}], "]"}], " ", ":=",
-    "\[IndentingNewLine]", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"steps", " ", "=", " ", "steps0"}], ",", " ", 
-       RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
-       RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "varL", ",", " ", 
-       "valL", ",", " ", "stepL", ",", " ", 
-       RowBox[{"varsR", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ",", " ", 
-       RowBox[{"valsR", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ",", " ", 
-       RowBox[{"isPastStep", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ",", " ", 
-       RowBox[{"pastStepVars", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ",", " ", 
-       RowBox[{"pastStepValues", " ", "=", " ", 
-        RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+  RowBox[{"Clear", "[", "timeVarVals", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"timeVarVals", "[", 
+   RowBox[{"steps0_", ",", " ", "vars0_", ",", " ", "vals0_"}], "]"}], " ", ":=",
+   "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
      RowBox[{
-      RowBox[{"varL", " ", "=", " ", 
-       RowBox[{"Length", "[", "vars", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"valL", " ", "=", " ", 
-       RowBox[{"Length", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"stepL", " ", "=", " ", 
-       RowBox[{"Length", "[", "steps", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"If", "[", " ", 
+      RowBox[{"steps", " ", "=", " ", "steps0"}], ",", " ", 
+      RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
+      RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "varL", ",", " ", 
+      "valL", ",", " ", "stepL", ",", " ", 
+      RowBox[{"varsR", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"valsR", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"isPastStep", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"isCurrStep", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"willBePastStep", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"pastStepVars", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ",", " ", 
+      RowBox[{"pastStepValues", " ", "=", " ", 
+       RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"varL", " ", "=", " ", 
+      RowBox[{"Length", "[", "vars", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"valL", " ", "=", " ", 
+      RowBox[{"Length", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"stepL", " ", "=", " ", 
+      RowBox[{"Length", "[", "steps", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", " ", 
+      RowBox[{
        RowBox[{
+        RowBox[{"varL", " ", "\[NotEqual]", " ", "valL"}], " ", "||", " ", 
+        RowBox[{"varL", " ", "\[NotEqual]", " ", "stepL"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(", 
         RowBox[{
-         RowBox[{"varL", " ", "\[NotEqual]", " ", "valL"}], " ", "||", " ", 
-         RowBox[{"varL", " ", "\[NotEqual]", " ", "stepL"}]}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{"(", 
+         RowBox[{"Message", "[", 
+          RowBox[{"timeVarVals", "::", "unequalarg"}], "]"}], ";", " ", 
+         "$Failed"}], ")"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Do", "[", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"Message", "[", 
-           RowBox[{"timeVarVals", "::", "unequalarg"}], "]"}], ";", " ", 
-          "$Failed"}], ")"}], ",", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"Do", "[", "\[IndentingNewLine]", 
           RowBox[{
-           RowBox[{
-            RowBox[{"Do", "[", "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
              RowBox[{
-              RowBox[{
-               RowBox[{"AppendTo", "[", 
-                RowBox[{"varsR", ",", " ", 
-                 RowBox[{
-                  RowBox[{"vars", "[", 
-                   RowBox[{"[", "i", "]"}], "]"}], "[", 
-                  RowBox[{"t", " ", "-", " ", "j"}], "]"}]}], "]"}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"AppendTo", "[", 
-                RowBox[{"valsR", ",", " ", 
-                 RowBox[{"vals", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"If", "[", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"varsR", ",", " ", 
                 RowBox[{
-                 RowBox[{"j", " ", "\[Equal]", " ", "0"}], ",", " ", 
+                 RowBox[{"vars", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"t", " ", "-", " ", "j"}], "]"}]}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"valsR", ",", " ", 
+                RowBox[{"vals", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"j", " ", "\[Equal]", " ", "0"}], ",", " ", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"isPastStep", ",", " ", "False"}], "]"}], ";", 
                  "\[IndentingNewLine]", 
                  RowBox[{"AppendTo", "[", 
-                  RowBox[{"isPastStep", ",", " ", "False"}], "]"}], ",", 
+                  RowBox[{"isCurrStep", ",", " ", "True"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"isPastStep", ",", " ", "True"}], "]"}], ";", 
                  "\[IndentingNewLine]", 
-                 RowBox[{
-                  RowBox[{"AppendTo", "[", 
-                   RowBox[{"isPastStep", ",", " ", "True"}], "]"}], ";", 
-                  "\[IndentingNewLine]", 
-                  RowBox[{"AppendTo", "[", 
-                   RowBox[{"pastStepValues", ",", " ", 
-                    RowBox[{"vals", "[", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"isCurrStep", ",", " ", "False"}], "]"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"pastStepValues", ",", " ", 
+                   RowBox[{"vals", "[", 
                     RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";", 
-                  "\[IndentingNewLine]", 
-                  RowBox[{"AppendTo", "[", 
-                   RowBox[{"pastStepVars", ",", " ", 
-                    RowBox[{
+                 "\[IndentingNewLine]", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"pastStepVars", ",", " ", 
+                   RowBox[{
                     RowBox[{"vars", "[", 
                     RowBox[{"[", "i", "]"}], "]"}], "[", 
                     RowBox[{"t", " ", "-", " ", "j"}], "]"}]}], "]"}]}]}], 
-                "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
-              ",", 
-              RowBox[{"{", 
-               RowBox[{"j", ",", " ", "0", ",", " ", 
-                RowBox[{"steps", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}]}], "}"}]}], "]"}], ";"}], 
-           "\[IndentingNewLine]", ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", " ", "stepL"}], "}"}]}], "]"}], ";", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-          "varsR", ",", " ", "valsR", ",", " ", "isPastStep", ",", " ", 
-           "pastStepVars", ",", " ", "pastStepValues"}], "}"}]}]}], 
-       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+               "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"j", " ", "\[Equal]", " ", 
+                 RowBox[{"steps", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+                "\[IndentingNewLine]", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"willBePastStep", ",", " ", "False"}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"willBePastStep", ",", " ", "True"}], "]"}], 
+                 ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", " ", "0", ",", " ", 
+               RowBox[{"steps", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "}"}]}], "]"}], ";"}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", "stepL"}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+         "varsR", ",", " ", "valsR", ",", " ", "isPastStep", ",", " ", 
+          "isCurrStep", ",", " ", "willBePastStep", ",", " ", "pastStepVars", 
+          ",", " ", "pastStepValues"}], "}"}]}]}], "\[IndentingNewLine]", 
+      "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.810841212837226*^9, 3.8108414311428823`*^9}, {
    3.810841517796034*^9, 3.8108416478973017`*^9}, {3.810841707537919*^9, 
    3.810841750173067*^9}, {3.810841788034309*^9, 3.810841828720283*^9}, {
@@ -189,9 +212,12 @@ Cell[BoxData[{
    3.813244177327548*^9}, {3.813246931344191*^9, 3.813246931561244*^9}, 
    3.813248555665851*^9, {3.813249959265088*^9, 3.813249977382329*^9}, {
    3.813250115779737*^9, 3.813250127312663*^9}, {3.8132527618779984`*^9, 
-   3.8132527925805187`*^9}, {3.813254518922409*^9, 3.813254521186607*^9}},
- CellLabel->
-  "In[325]:=",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"],
+   3.8132527925805187`*^9}, {3.813254518922409*^9, 3.813254521186607*^9}, {
+   3.813423771619238*^9, 3.813423795269678*^9}, {3.813423836562479*^9, 
+   3.813423840741323*^9}, {3.813423888392479*^9, 3.8134239064725037`*^9}, {
+   3.813423939405491*^9, 3.8134239545954103`*^9}, {3.813425488599401*^9, 
+   3.8134255283669853`*^9}, {3.813425824773851*^9, 3.8134258419520597`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"],
 
 Cell[BoxData[
  RowBox[{
@@ -200,11 +226,6 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"timeValExtraction", " ", "Function"}], " ", ";", 
      "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"TODO", ":", " ", 
-      RowBox[{
-      "THIS", " ", "NEEDS", " ", "DO", " ", "THE", " ", "OPERATION", " ", 
-       "ONE", " ", "STEP", " ", "LATER"}]}], " ", ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
      RowBox[{"Inputs", ":", " ", 
       RowBox[{"List", " ", "of", " ", "n", " ", "values", " ", 
        RowBox[{"(", 
@@ -212,55 +233,63 @@ Cell[BoxData[
      ",", " ", 
     RowBox[{"list", " ", "of", " ", "n", " ", "booleans", " ", 
      RowBox[{"(", 
-      RowBox[{"isPastStep", " ", "list"}], ")"}]}], ",", " ", 
+      RowBox[{"willBePastSet", " ", "list"}], ")"}]}], ",", " ", 
     RowBox[{
      RowBox[{
-     "checking", " ", "if", " ", "index", " ", "is", " ", "past", " ", "step",
-       " ", "or", " ", "not"}], " ", ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+     "checking", " ", "if", " ", "index", " ", "will", " ", "be", " ", "past",
+       " ", "step", " ", "on", " ", "next", " ", "iteration"}], " ", ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"Output", ":", " ", 
       RowBox[{"List", " ", "of", " ", "k", " ", "values"}]}]}], ",", " ", 
     RowBox[{"subset", " ", "of", " ", "the", " ", "input"}], ",", " ", 
     RowBox[{
      RowBox[{
-     "where", " ", "each", " ", "value", " ", "corresponds", " ", "to", " ", 
-      "a", " ", "past", " ", "step", " ", "variable"}], " ", ";"}]}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "*)"}], 
+      RowBox[{
+      "where", " ", "each", " ", "value", " ", "corresponds", " ", "to", " ", 
+       "a", " ", "t"}], "+", 
+      RowBox[{"1", " ", "past", " ", "step", " ", "variable"}]}], " ", 
+     ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "*)"}], 
   "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"timeValExtraction", "[", 
-    RowBox[{"observations_", ",", " ", "isPastStep_"}], "]"}], " ", ":=", 
+   RowBox[{
+    RowBox[{"Clear", "[", "timeValExtraction", "]"}], ";"}], 
    "\[IndentingNewLine]", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"pastSubset", " ", "=", " ", 
-       RowBox[{"{", "}"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeValExtraction", "[", 
+     RowBox[{"observation_", ",", " ", "willBePastStep_"}], "]"}], " ", ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
      RowBox[{
-      RowBox[{"Do", "[", "\[IndentingNewLine]", 
-       RowBox[{
+      RowBox[{"{", 
+       RowBox[{"pastSubset", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"If", "[", 
-          RowBox[{
-           RowBox[{"isPastStep", "[", 
-            RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
            RowBox[{
-            RowBox[{"AppendTo", "[", 
-             RowBox[{"pastSubset", ",", " ", 
-              RowBox[{"observations", "[", 
-               RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";"}]}], 
-          "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
-        RowBox[{"{", 
-         RowBox[{"i", ",", " ", 
-          RowBox[{"Length", "[", "observations", "]"}]}], "}"}]}], "]"}], ";",
-       "\[IndentingNewLine]", "pastSubset"}]}], "\[IndentingNewLine]", 
-    "]"}]}]}]], "Input",
+            RowBox[{"willBePastStep", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"pastSubset", ",", " ", 
+               RowBox[{"observation", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", 
+           RowBox[{"Length", "[", "observation", "]"}]}], "}"}]}], "]"}], ";",
+        "\[IndentingNewLine]", "pastSubset"}]}], "\[IndentingNewLine]", 
+     "]"}]}]}]}]], "Input",
  CellChangeTimes->{{3.813246925316745*^9, 3.813247163804718*^9}, {
    3.813247254287299*^9, 3.813247265425724*^9}, {3.813247295554369*^9, 
    3.81324736776759*^9}, 3.8132474620150537`*^9, {3.813249859474625*^9, 
-   3.813249871239348*^9}, {3.813256707018564*^9, 
-   3.813256749742374*^9}},ExpressionUUID->"5ff322ab-fab5-4817-ac0b-\
-5d3567b1245b"],
+   3.813249871239348*^9}, {3.813256707018564*^9, 3.813256749742374*^9}, {
+   3.81342438483912*^9, 3.813424428922439*^9}, {3.8134245453801537`*^9, 
+   3.813424548961483*^9}, {3.813425174328339*^9, 3.813425175303502*^9}, {
+   3.813425812605719*^9, 3.813425818618465*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"5ff322ab-fab5-4817-ac0b-5d3567b1245b"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
@@ -307,16 +336,18 @@ Cell[BoxData[
        "conditional", " ", "distribution"}]}], ";"}]}], "\[IndentingNewLine]",
     "\[IndentingNewLine]", "*)"}]}]], "Input",
  CellChangeTimes->{{3.8132485943138723`*^9, 3.813248617145088*^9}, {
-  3.813248688242629*^9, 3.8132486910220423`*^9}, {3.813248727176023*^9, 
-  3.813248744747837*^9}, {3.813248813035459*^9, 3.813248814637327*^9}, {
-  3.81324884829174*^9, 3.813248849814096*^9}, {3.813249108960476*^9, 
-  3.8132491369740143`*^9}, {3.8132491687163563`*^9, 3.813249249621163*^9}, {
-  3.813249851230028*^9, 3.813249851502446*^9}, {3.8132536996409597`*^9, 
-  3.813253713258692*^9}},
- CellLabel->
-  "In[330]:=",ExpressionUUID->"0c9c58d3-197c-4163-9dca-736fb962daf8"],
+   3.813248688242629*^9, 3.8132486910220423`*^9}, {3.813248727176023*^9, 
+   3.813248744747837*^9}, {3.813248813035459*^9, 3.813248814637327*^9}, {
+   3.81324884829174*^9, 3.813248849814096*^9}, {3.813249108960476*^9, 
+   3.8132491369740143`*^9}, {3.8132491687163563`*^9, 3.813249249621163*^9}, {
+   3.813249851230028*^9, 3.813249851502446*^9}, {3.8132536996409597`*^9, 
+   3.813253713258692*^9}, 3.81342577191726*^9},
+ CellLabel->"In[7]:=",ExpressionUUID->"0c9c58d3-197c-4163-9dca-736fb962daf8"],
 
 Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "timeDistsConditional", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"timeDistsConditional", "[", 
@@ -326,79 +357,247 @@ Cell[BoxData[{
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"f1", ",", " ", 
-       RowBox[{"coordinate", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ",", "currTuple", ",", "currArray", ",", " ", 
-       "tempCoord", ",", "tempVals", ",", " ", "conditionalVal", ",", " ", 
-       "valFix", ",", " ", "allTuples"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+      "f1", ",", "thisStepVals", ",", " ", "allTuples", ",", "allCoords", ",",
+        " ", "currDistribution"}], "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"allTuples", " ", "=", " ", 
        RowBox[{"Tuples", "[", "pastStepValues", "]"}]}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"valFix", "[", "x_", "]"}], " ", ":=", " ", 
-       RowBox[{"{", "x", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Going", " ", "through", " ", "all", " ", "possible", " ", "past", " ",
+         "step", " ", "conditions"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"allCoords", " ", "=", " ", 
+       RowBox[{"Tuples", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Range", "[", 
+           RowBox[{"1", ",", "#"}], "]"}], "&"}], "/@", 
+         RowBox[{"Dimensions", "@", "oFinalArray"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"Do", "[", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{
-         RowBox[{"currTuple", " ", "=", " ", 
+         RowBox[{"thisStepVals", " ", "=", " ", 
           RowBox[{"allTuples", "[", 
            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{"currArray", " ", "=", " ", "oFinalArray"}], ";", 
          "\[IndentingNewLine]", 
-         RowBox[{"tempCoord", " ", "=", " ", 
-          RowBox[{"tempCoordinate", "[", 
-           RowBox[{"isPastStep", ",", " ", "currTuple"}], "]"}]}], ";", 
-         "\[IndentingNewLine]", 
-         RowBox[{"tempVals", " ", "=", " ", 
-          RowBox[{"Map", "[", 
-           RowBox[{"valFix", ",", " ", "currTuple"}], "]"}]}], ";", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "Distribution", " ", "for", " ", "the", " ", "current", " ", 
+           "tuple"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"currDistribution", " ", "=", " ", 
+          RowBox[{"singleConditionalDist", "[", 
+           RowBox[{
+           "oFinalArray", ",", " ", "isPastStep", ",", " ", "pastStepVars", 
+            ",", " ", "pastStepValues", ",", " ", "thisStepVals", ",", " ", 
+            "allCoords"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", "currDistribution", "]"}], ";", 
          "\[IndentingNewLine]", "\[IndentingNewLine]", 
          RowBox[{"(*", " ", 
           RowBox[{
-          "The", " ", "probability", " ", "of", " ", "the", " ", "joint", " ",
-            "condition"}], " ", "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"conditionalVal", " ", "=", " ", 
-          RowBox[{"oDist", "[", 
            RowBox[{
-           "variables", ",", " ", "values", ",", " ", "pastStepVars", ",", 
-            " ", "tempVals", ",", " ", "oFinalArray"}], "]"}]}], ";"}], 
-        "\[IndentingNewLine]", "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
+            RowBox[{"TODO", ":"}], " ", ";", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"-", " ", "Go"}], " ", "through", " ", "all", " ", 
+             "coordinates", " ", "of", " ", "oFinalArray"}], " ", ";", 
+            "\[IndentingNewLine]", "\t", 
+            RowBox[{
+             RowBox[{"-", " ", "If"}], " ", 
+             RowBox[{"it", "'"}], "s", " ", "not", " ", "a", " ", "valid", 
+             " ", "coordinate"}]}], ",", " ", 
+           RowBox[{
+            RowBox[{
+            "set", " ", "its", " ", "position", " ", "to", " ", "0", " ", 
+             "in", " ", "currArray"}], " ", ";", "\[IndentingNewLine]", "\t", 
+            
+            RowBox[{
+             RowBox[{"-", " ", "If"}], " ", "it", " ", "is", " ", "a", " ", 
+             "valid", " ", "coordinate"}]}], ",", " ", 
+           RowBox[{
+            RowBox[{
+            "set", " ", "its", " ", "position", " ", "to", " ", "its", " ", 
+             "current", " ", "value", " ", "divided", " ", "by", " ", 
+             "conditionalVal"}], " ", ";", "\[IndentingNewLine]", "\t", 
+            RowBox[{
+             RowBox[{"-", " ", "Make"}], " ", "f1", " ", "return", " ", "the",
+              " ", "final", " ", "currArray", " ", "when", " ", "the", " ", 
+             "input", " ", "is", " ", "currTuple"}]}]}], 
+          "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{
-           RowBox[{"TODO", ":"}], " ", ";", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"-", " ", "Go"}], " ", "through", " ", "all", " ", 
-            "coordinates", " ", "of", " ", "oFinalArray"}], " ", ";", 
-           "\[IndentingNewLine]", "\t", 
-           RowBox[{
-            RowBox[{"-", " ", "If"}], " ", 
-            RowBox[{"it", "'"}], "s", " ", "not", " ", "a", " ", "valid", " ",
-             "coordinate"}]}], ",", " ", 
-          RowBox[{
-           RowBox[{
-           "set", " ", "its", " ", "position", " ", "to", " ", "0", " ", "in",
-             " ", "currArray"}], " ", ";", "\[IndentingNewLine]", "\t", 
-           RowBox[{
-            RowBox[{"-", " ", "If"}], " ", "it", " ", "is", " ", "a", " ", 
-            "valid", " ", "coordinate"}]}], ",", " ", 
-          RowBox[{
-           RowBox[{
-           "set", " ", "its", " ", "position", " ", "to", " ", "its", " ", 
-            "current", " ", "value", " ", "divided", " ", "by", " ", 
-            "conditionalVal"}], " ", ";", "\[IndentingNewLine]", "\t", 
-           RowBox[{
-            RowBox[{"-", " ", "Make"}], " ", "f1", " ", "return", " ", "the", 
-            " ", "final", " ", "currArray", " ", "when", " ", "the", " ", 
-            "input", " ", "is", " ", "currTuple"}]}]}], "\[IndentingNewLine]",
-          "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", ",", 
+          RowBox[{"f1", "[", "thisStepVals", "]"}], " ", "=", " ", 
+          RowBox[{"CategoricalDistribution", "[", 
+           RowBox[{"values", ",", " ", "currDistribution"}], "]"}]}], ";"}], 
+        "\[IndentingNewLine]", ",", 
         RowBox[{"{", 
          RowBox[{"i", ",", " ", 
           RowBox[{"Length", "[", "allTuples", "]"}]}], "}"}]}], "]"}], ";", 
       "\[IndentingNewLine]", "\[IndentingNewLine]", "f1"}]}], 
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"singleConditionalDist", " ", "Function"}], " ", ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+     "Calculate", " ", "the", " ", "conditional", " ", "distribution", " ", 
+      "for", " ", "a", " ", "single", " ", "conditioning"}], " ", ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Inputs", ":"}], " ", ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "n"}], " ", "dimensional", " ", "array", " ", "of", 
+      " ", "elementary", " ", "probabilities"}], " ", ";", 
+     "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "n", " ", "booleans", " ", 
+      RowBox[{"(", 
+       RowBox[{"isPastStep", " ", "list"}], ")"}]}]}], ",", " ", 
+    RowBox[{
+     RowBox[{
+     "checking", " ", "if", " ", "index", " ", "is", " ", "past", " ", "step",
+       " ", "or", " ", "not"}], " ", ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "m", " ", "variables", " ", 
+      
+      RowBox[{"(", 
+       RowBox[{"pastStepVars", " ", "list"}], ")"}]}]}], ",", " ", 
+    RowBox[{
+     RowBox[{
+     "giving", " ", "all", " ", "past", " ", "step", " ", "variables"}], " ", 
+     ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "m", " ", "lists", " ", 
+      RowBox[{"(", 
+       RowBox[{"pastStepValues", " ", "list"}], ")"}]}]}], ",", " ", 
+    RowBox[{
+     RowBox[{
+     "giving", " ", "values", " ", "of", " ", "all", " ", "past", " ", "step",
+       " ", "variables"}], " ", ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "m", " ", "values", " ", 
+      "that", " ", "represent", " ", "the", " ", "condition"}], " ", ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Output", ":", " ", 
+      RowBox[{
+      "A", " ", "conditional", " ", "distribution", " ", "based", " ", "on", 
+       " ", "the", " ", "values", " ", "of", " ", "thisStepVals"}]}], ";"}]}],
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "singleConditionalDist", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"singleConditionalDist", "[", 
+    RowBox[{
+    "oFinalArray_", ",", " ", "isPastStep_", ",", " ", "pastStepVars_", ",", 
+     " ", "pastStepValues_", ",", " ", "thisStepVals_", ",", " ", 
+     "allCoords_"}], "]"}], " ", ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"conditionedDist", " ", "=", " ", "oFinalArray"}], ",", " ", 
+       RowBox[{"condArray", " ", "=", " ", "oFinalArray"}], ",", " ", 
+       "currCoord", ",", " ", "indexCoord", ",", " ", "conditionedVal", ",", 
+       " ", "valFix", ",", " ", "oValList", ",", " ", "tempApply"}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"currCoord", " ", "=", " ", 
+       RowBox[{"tempCoordinate", "[", 
+        RowBox[{
+        "isPastStep", ",", " ", "thisStepVals", ",", " ", "pastStepValues"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "The", " ", "probability", " ", "of", " ", "the", " ", "joint", " ", 
+        "condition"}], " ", "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Printing", " ", "the", " ", "condition"}], " ", "*)"}], 
+      "\[IndentingNewLine]", " ", 
+      RowBox[{"Print", "[", 
+       RowBox[{"Thread", "[", 
+        RowBox[{"pastStepVars", " ", "\[Equal]", " ", "thisStepVals"}], "]"}],
+        "]"}], ";", " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Puts", " ", "all", " ", "the", " ", "values", " ", "in", " ", 
+        "thisStepVals", " ", "into", " ", "a", " ", "list", " ", "so", " ", 
+        "oDist", " ", "can", " ", "calculate"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"valFix", "[", "x_", "]"}], " ", ":=", " ", 
+       RowBox[{"{", "x", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"oValList", " ", "=", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{"valFix", ",", "thisStepVals"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"conditionedVal", " ", "=", " ", 
+       RowBox[{"oDist", "[", 
+        RowBox[{
+        "variables", ",", " ", "values", ",", " ", "pastStepVars", ",", " ", 
+         "oValList", ",", " ", "oFinalArray"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Print", "[", "oValList", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "conditionedVal", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "currCoord", "]"}], ";", "\[IndentingNewLine]", 
+        
+        RowBox[{"Print", "[", "]"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"indexCoord", " ", "=", " ", 
+          RowBox[{"allCoords", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"tempApply", " ", "=", " ", 
+          RowBox[{"Join", "[", 
+           RowBox[{
+            RowBox[{"{", "conditionedDist", "}"}], ",", " ", "indexCoord"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"validCoordinates", "[", 
+            RowBox[{
+            "currCoord", ",", " ", "indexCoord", ",", " ", "isPastStep"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"conditionedDist", "[", 
+              RowBox[{"[", 
+               RowBox[{"Sequence", "@@", "indexCoord"}], "]"}], "]"}], " ", 
+             "=", " ", 
+             RowBox[{
+              RowBox[{"conditionedDist", "[", 
+               RowBox[{"[", 
+                RowBox[{"Sequence", "@@", "indexCoord"}], "]"}], "]"}], " ", 
+              "/", " ", "conditionedVal"}]}], ";"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"conditionedDist", "[", 
+              RowBox[{"[", 
+               RowBox[{"Sequence", "@@", "indexCoord"}], "]"}], "]"}], " ", 
+             "=", " ", "0"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+        "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", " ", 
+          RowBox[{"Length", "[", "allCoords", "]"}]}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Print", "[", "conditionedDist", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "]"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "conditionedDist"}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{
@@ -434,6 +633,9 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"False", " ", "otherwise"}], " ", ";"}]}], "\[IndentingNewLine]",
     "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "validCoordinates", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"validCoordinates", "[", 
@@ -527,17 +729,20 @@ Cell[BoxData[{
      "it", " ", "just", " ", "has", " ", "to", " ", "be", " ", "something"}], 
      " ", ";"}]}], "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"Clear", "[", "tempCoordinate", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"tempCoordinate", "[", 
-    RowBox[{"isPastStep_", ",", " ", "currCondition_"}], "]"}], " ", ":=", 
-   " ", "\[IndentingNewLine]", 
+    RowBox[{
+    "isPastStep_", ",", " ", "currCondition_", ",", " ", "pastStepValues_"}], 
+    "]"}], " ", ":=", " ", "\[IndentingNewLine]", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
        RowBox[{"finalCoord", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ",", " ", "index"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
+        RowBox[{"{", "}"}]}], ",", " ", "index", ",", " ", "placeInValList"}],
+       "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"index", " ", "=", " ", "1"}], ";", "\[IndentingNewLine]", 
       RowBox[{"Do", "[", "\[IndentingNewLine]", 
@@ -548,10 +753,18 @@ Cell[BoxData[{
            RowBox[{"isPastStep", "[", 
             RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
            RowBox[{
+            RowBox[{"placeInValList", " ", "=", " ", 
+             RowBox[{
+              RowBox[{"Flatten", "[", 
+               RowBox[{"Position", "[", 
+                RowBox[{
+                 RowBox[{"pastStepValues", "[", 
+                  RowBox[{"[", "index", "]"}], "]"}], ",", " ", 
+                 RowBox[{"currCondition", "[", 
+                  RowBox[{"[", "index", "]"}], "]"}]}], "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
             RowBox[{"AppendTo", "[", 
-             RowBox[{"finalCoord", ",", " ", 
-              RowBox[{"currCondition", "[", 
-               RowBox[{"[", "index", "]"}], "]"}]}], "]"}], ";", 
+             RowBox[{"finalCoord", ",", " ", "placeInValList"}], "]"}], ";", 
             "\[IndentingNewLine]", 
             RowBox[{"index", " ", "=", " ", 
              RowBox[{"index", " ", "+", " ", "1"}]}], ";"}], ",", 
@@ -585,11 +798,41 @@ Cell[BoxData[{
    3.813254977293687*^9, 3.8132549886840982`*^9}, {3.813255158317132*^9, 
    3.813255173974419*^9}, {3.813255723377844*^9, 3.813255874176013*^9}, {
    3.813256026561028*^9, 3.8132560604489937`*^9}, {3.813256186868319*^9, 
-   3.8132562885053053`*^9}},ExpressionUUID->"382117d4-43c1-4fc6-a505-\
-127cd1b4746d"]
+   3.8132562885053053`*^9}, {3.8134252050980263`*^9, 3.813425220353766*^9}, {
+   3.813425769195912*^9, 3.813425805358508*^9}, {3.8134258895773163`*^9, 
+   3.8134262672168818`*^9}, {3.813426324287084*^9, 3.8134264558795156`*^9}, {
+   3.813426486413233*^9, 3.8134266572313957`*^9}, {3.813426823319357*^9, 
+   3.81342685153899*^9}, {3.813433233011929*^9, 3.8134332369140987`*^9}, {
+   3.8134332958193703`*^9, 3.813433353339781*^9}, {3.813433385046139*^9, 
+   3.8134334072185163`*^9}, {3.813433463531309*^9, 3.8134334690222273`*^9}, {
+   3.813433505528878*^9, 3.813433505897053*^9}, {3.8134337240053883`*^9, 
+   3.81343382958575*^9}, {3.813433868601778*^9, 3.813433873961636*^9}, {
+   3.813438119321148*^9, 3.813438161096902*^9}, {3.813438321797122*^9, 
+   3.81343833523982*^9}, {3.8134383895045643`*^9, 3.8134384030498953`*^9}, {
+   3.81343853125184*^9, 3.813438634223528*^9}, {3.813438687813785*^9, 
+   3.813438691690543*^9}, {3.813438725213565*^9, 3.813438730474122*^9}, {
+   3.813438767792536*^9, 3.813438792198922*^9}, {3.813439155132307*^9, 
+   3.81343915683676*^9}, {3.81343922246171*^9, 3.813439253123624*^9}, {
+   3.813439647971575*^9, 3.813439651176427*^9}, {3.8134396912122917`*^9, 
+   3.813439696746825*^9}, {3.813439764160923*^9, 3.81343984817848*^9}, 
+   3.813439888665616*^9, {3.8134399295132427`*^9, 3.813439939047839*^9}, {
+   3.813439999525721*^9, 3.813440001682617*^9}, {3.813440060867401*^9, 
+   3.8134400709172983`*^9}, {3.813440104924252*^9, 3.8134401128661833`*^9}, {
+   3.813440143950521*^9, 3.813440146710701*^9}, {3.813440180097672*^9, 
+   3.813440212358972*^9}, {3.813440250977516*^9, 3.8134402597776203`*^9}, {
+   3.8134403304642267`*^9, 3.813440331833205*^9}, {3.813440480079327*^9, 
+   3.813440502522572*^9}, {3.813440596048944*^9, 3.813440668392017*^9}, {
+   3.8134407608468018`*^9, 3.813440770690971*^9}, {3.813444898667324*^9, 
+   3.813444905483018*^9}, {3.8134449578069353`*^9, 3.813444967367437*^9}, {
+   3.81344503803433*^9, 3.8134450740338383`*^9}, {3.813445118325265*^9, 
+   3.8134451186100082`*^9}, {3.8134451676639137`*^9, 3.813445248907247*^9}, {
+   3.813445280957438*^9, 3.813445283174057*^9}, {3.8134453467341146`*^9, 
+   3.813445387999689*^9}, {3.813445747656971*^9, 3.813445788095005*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
 },
-WindowSize->{808, 707},
-WindowMargins->{{Automatic, 0}, {Automatic, 37}},
+WindowSize->{808, 718},
+WindowMargins->{{Automatic, 233}, {Automatic, 24}},
+Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"26e1fa24-111d-422f-bfd8-37dadf17c4b4"
@@ -605,10 +848,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 7991, 173, 976, "Input",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"],
-Cell[8552, 195, 2860, 67, 430, "Input",ExpressionUUID->"5ff322ab-fab5-4817-ac0b-5d3567b1245b"],
-Cell[11415, 264, 2406, 52, 262, "Input",ExpressionUUID->"0c9c58d3-197c-4163-9dca-736fb962daf8"],
-Cell[13824, 318, 12303, 270, 1690, "Input",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
+Cell[558, 20, 9500, 199, 1102, "Input",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"],
+Cell[10061, 221, 3084, 70, 430, "Input",ExpressionUUID->"5ff322ab-fab5-4817-ac0b-5d3567b1245b"],
+Cell[13148, 293, 2428, 51, 262, "Input",ExpressionUUID->"0c9c58d3-197c-4163-9dca-736fb962daf8"],
+Cell[15579, 346, 22579, 484, 2887, "Input",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
 }
 ]
 *)

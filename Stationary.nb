@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     63535,       1713]
-NotebookOptionsPosition[     62483,       1686]
-NotebookOutlinePosition[     62897,       1703]
-CellTagsIndexPosition[     62854,       1700]
+NotebookDataLength[     69953,       1856]
+NotebookOptionsPosition[     68922,       1830]
+NotebookOutlinePosition[     69315,       1846]
+CellTagsIndexPosition[     69272,       1843]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -309,6 +309,8 @@ Cell[BoxData[
         "stationary", " ", "assumption"}]}]}]}], "\[IndentingNewLine]", 
     "*)"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"Clear", "[", "stationary", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{
      RowBox[{"stationary", "[", 
       RowBox[{
@@ -518,6 +520,147 @@ Cell[BoxData[
             RowBox[{"-", "1"}]}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
         "\[IndentingNewLine]", "addedEquations"}]}], "\[IndentingNewLine]", 
       "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Input", ":", " ", 
+      RowBox[{"Classes", " ", "of", " ", "variables"}]}], ",", " ", 
+     RowBox[{"list", " ", "of", " ", "variables"}], ",", " ", 
+     RowBox[{
+      RowBox[{"list", " ", "of", " ", "lists", " ", "of", " ", "values"}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{
+       "List", " ", "of", " ", "equations", " ", "matching", " ", 
+        "stationary", " ", "assumption"}]}]}]}], "\[IndentingNewLine]", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "stationaryAll", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"stationaryAll", "[", 
+      RowBox[{
+      "classTotal0_", ",", " ", "varsTotal0_", ",", " ", "valsTotal0_"}], " ",
+       "]"}], " ", ":=", " ", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"addedEquations", " ", "=", " ", 
+          RowBox[{"{", "}"}]}], ",", " ", 
+         RowBox[{"classTotal", " ", "=", " ", "classTotal0"}], ",", " ", 
+         RowBox[{"varsTotal", " ", "=", " ", "varsTotal0"}], ",", " ", 
+         RowBox[{"valsTotal", " ", "=", " ", "valsTotal0"}], ",", " ", "pSet",
+          ",", " ", 
+         RowBox[{"allRules", " ", "=", " ", 
+          RowBox[{"{", "}"}]}], ",", " ", "tempRule", ",", " ", 
+         "tempSetShift", ",", " ", "tempSetNorm"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"pSet", " ", "=", " ", 
+         RowBox[{"Subsets", "[", "varsTotal", "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+          "Remove", " ", "empty", " ", "set", " ", "from", " ", "list"}], ",",
+           " ", 
+          RowBox[{
+          "no", " ", "reason", " ", "to", " ", "check", " ", "this"}]}], " ", 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"pSet", " ", "=", " ", 
+         RowBox[{"DeleteCases", "[", 
+          RowBox[{"pSet", ",", " ", 
+           RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{"Create", " ", "add", " ", "rules"}], ",", " ", 
+          RowBox[{
+          "includes", " ", "rules", " ", "for", " ", "all", " ", "variable", 
+           " ", "classes"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempRule", " ", "=", " ", 
+            RowBox[{"classRule", "[", 
+             RowBox[{"classTotal", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"allRules", ",", " ", "tempRule"}], "]"}], ";"}], 
+          "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", 
+            RowBox[{"Length", "[", "classTotal", "]"}]}], "}"}]}], "]"}], ";",
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"UNOPTIMIZED", ";", "\[IndentingNewLine]", 
+           RowBox[{
+           "For", " ", "each", " ", "subset", " ", "S", " ", "in", " ", 
+            RowBox[{"pSet", ":"}]}], " ", ";", "\[IndentingNewLine]", "\t", 
+           RowBox[{
+           "1.", " ", "Create", " ", "a", " ", "normal", " ", "and", " ", 
+            "shift", " ", "set"}], ";", "\[IndentingNewLine]", "\t", 
+           RowBox[{
+           "2.", " ", "Check", " ", "if", " ", "the", " ", "shifted", " ", 
+            "set", " ", "is", " ", "in", " ", "pSet"}], ";", 
+           "\[IndentingNewLine]", "\t\t", 
+           RowBox[{
+            RowBox[{"a", ".", " ", "If"}], " ", "so"}]}], ",", " ", 
+          RowBox[{
+           RowBox[{
+           "then", " ", "apply", " ", "acquireEquations", " ", "on", " ", 
+            "both", " ", "the", " ", "normal", " ", "and", " ", "shift", " ", 
+            "set"}], ";"}]}], " ", "\[IndentingNewLine]", "*)"}], 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempSetShift", " ", "=", " ", 
+            RowBox[{"pSet", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"tempSetNorm", " ", "=", " ", 
+            RowBox[{"pSet", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Apply", " ", "all", " ", "the", " ", "shift", " ", "rules"}], 
+            " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"tempSetShift", " ", "=", " ", 
+               RowBox[{"tempSetShift", " ", "/.", " ", 
+                RowBox[{"allRules", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}]}]}], ";"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", " ", 
+               RowBox[{"Length", "[", "allRules", "]"}]}], "}"}]}], "]"}], 
+           ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"MemberQ", "[", 
+              RowBox[{"pSet", ",", " ", "tempSetShift"}], "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"addedEquations", ",", " ", 
+                RowBox[{"acquireEquations", "[", 
+                 RowBox[{
+                 "varsTotal", ",", " ", "valsTotal", ",", " ", "tempSetNorm", 
+                  ",", " ", "tempSetShift"}], "]"}]}], "]"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", 
+            RowBox[{"Length", "[", "pSet", "]"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Flatten", "[", "addedEquations", "]"}]}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
  CellChangeTimes->{{3.812069411401389*^9, 3.8120694135795307`*^9}, {
    3.8120695176434793`*^9, 3.81206969826478*^9}, {3.812069745396487*^9, 
@@ -561,8 +704,9 @@ Cell[BoxData[
    3.812828976535499*^9}, {3.8128297368630953`*^9, 3.812829780294263*^9}, {
    3.812829811454309*^9, 3.812829811880904*^9}, {3.812829887475615*^9, 
    3.8128299128110857`*^9}, {3.8128925071933737`*^9, 3.812892544286768*^9}, {
-   3.8128925750535727`*^9, 3.812892586913316*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-77cfa3974e9c"],
+   3.8128925750535727`*^9, 3.812892586913316*^9}, {3.813425292292186*^9, 
+   3.8134253545358686`*^9}},ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-\
+77cfa3974e9c"],
 
 Cell[CellGroupData[{
 
@@ -1685,8 +1829,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{1143, 705},
-WindowMargins->{{Automatic, -251}, {-48, Automatic}},
-Visible->False,
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"414526d7-15ee-44f6-bf34-9b894d3ccf95"
@@ -1702,18 +1845,18 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 25893, 544, 3244, "Input",ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-77cfa3974e9c"],
+Cell[558, 20, 32332, 688, 4189, "Input",ExpressionUUID->"1e3763aa-95ff-49fc-9fd7-77cfa3974e9c"],
 Cell[CellGroupData[{
-Cell[26476, 568, 2730, 66, 178, "Input",ExpressionUUID->"e6d85261-2bb6-4b47-8a18-2fb4168d64ab"],
-Cell[29209, 636, 4685, 144, 161, "Output",ExpressionUUID->"afbcbdcf-7e52-4b92-875b-71ac371aab64"]
+Cell[32915, 712, 2730, 66, 178, "Input",ExpressionUUID->"e6d85261-2bb6-4b47-8a18-2fb4168d64ab"],
+Cell[35648, 780, 4685, 144, 161, "Output",ExpressionUUID->"afbcbdcf-7e52-4b92-875b-71ac371aab64"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33931, 785, 277, 5, 30, "Input",ExpressionUUID->"178135f8-7ec9-4c80-96ae-ad71e36a8924"],
-Cell[34211, 792, 27021, 854, 665, "Output",ExpressionUUID->"32cb5b28-b66a-4dd3-afcf-2785e57a66cf"]
+Cell[40370, 929, 277, 5, 30, "Input",ExpressionUUID->"178135f8-7ec9-4c80-96ae-ad71e36a8924"],
+Cell[40650, 936, 27021, 854, 665, "Output",ExpressionUUID->"32cb5b28-b66a-4dd3-afcf-2785e57a66cf"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[61269, 1651, 462, 10, 30, "Input",ExpressionUUID->"a2646331-fe05-42d7-a75f-111131570eca"],
-Cell[61734, 1663, 733, 20, 34, "Output",ExpressionUUID->"2283253a-06a4-4158-9c8b-3b1c5fe726d9"]
+Cell[67708, 1795, 462, 10, 30, "Input",ExpressionUUID->"a2646331-fe05-42d7-a75f-111131570eca"],
+Cell[68173, 1807, 733, 20, 34, "Output",ExpressionUUID->"2283253a-06a4-4158-9c8b-3b1c5fe726d9"]
 }, Open  ]]
 }
 ]

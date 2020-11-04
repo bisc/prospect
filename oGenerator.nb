@@ -10,306 +10,304 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     37850,        825]
-NotebookOptionsPosition[     37188,        807]
-NotebookOutlinePosition[     37601,        824]
-CellTagsIndexPosition[     37558,        821]
+NotebookDataLength[     53660,       1137]
+NotebookOptionsPosition[     52998,       1119]
+NotebookOutlinePosition[     53410,       1136]
+CellTagsIndexPosition[     53367,       1133]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"Clear", "[", 
-    RowBox[{
-    "oGen", ",", " ", "givenEquation", ",", " ", "oOutcomes", ",", " ", 
-     "oDist", ",", " ", "allOthers", ",", " ", "extractingANDEvents", ",", 
-     " ", "equalityPair", ",", "inEqualityPair", ",", " ", "getFirstElement", 
-     ",", " ", "getSecondElement", ",", " ", "unconditionedProbability", ",", 
-     " ", "conditionedProbability"}], "]"}], ";"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"Error", " ", "messages"}], " ", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"oGen", "::", "unequalarg"}], "=", 
-   "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"oDist", "::", "unequalarg"}], "=", 
-   "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"allOthers", "::", "unequalarg"}], "=", 
-   "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"oDist", "::", "invalidvalue"}], "=", 
-   "\"\<Values must coordinate with their variables\>\""}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"allOthers", "::", "invalidvalue"}], "=", 
-   "\"\<Value must coordinate with the variable\>\""}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
+   RowBox[{"Error", " ", "messages"}], " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
-    RowBox[{"allOthers", "::", "invalidvar"}], "=", 
-    "\"\<Variable must exist in list\>\""}], ";"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"oGen", "::", "unequalarg"}], "=", 
+     "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
-     RowBox[{"oGen", " ", "Function"}], " ", ";", "\[IndentingNewLine]", 
-     RowBox[{"Input", ":", " ", 
-      RowBox[{
-      "List", " ", "of", " ", "n", " ", "random", " ", "variables"}]}]}], ",",
-     " ", 
+     RowBox[{"oDist", "::", "unequalarg"}], "=", 
+     "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{
-     RowBox[{
-     "list", " ", "of", " ", "n", " ", "lists", " ", "of", " ", "random", " ",
-       "variable", " ", "outputs"}], " ", ";", "\[IndentingNewLine]", 
-     RowBox[{"Output", ":", " ", 
-      RowBox[{
-      "n", " ", "dimensional", " ", "array", " ", "with", " ", "numbered", 
-       " ", "o", " ", "parameters"}]}], " ", ";"}]}], "\[IndentingNewLine]", 
-   "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"oGen", "[", 
-    RowBox[{"vars0_", ",", " ", "vals0_"}], "]"}], " ", ":=", " ", 
+     RowBox[{"allOthers", "::", "unequalarg"}], "=", 
+     "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"oDist", "::", "invalidvalue"}], "=", 
+     "\"\<Values must coordinate with their variables\>\""}], ";"}], 
    "\[IndentingNewLine]", 
-   RowBox[{"Module", "[", 
+   RowBox[{
     RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
-       RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "varL", ",", " ", 
-       "valL", ",", " ", "dimsList", ",", " ", "oArray"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
+     RowBox[{"allOthers", "::", "invalidvalue"}], "=", 
+     "\"\<Value must coordinate with the variable\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"allOthers", "::", "invalidvar"}], "=", 
+     "\"\<Variable must exist in list\>\""}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
      RowBox[{
-      RowBox[{"varL", " ", "=", " ", 
-       RowBox[{"Length", "[", "vars", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"valL", " ", "=", " ", 
-       RowBox[{"Length", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"oGen", " ", "Function"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Input", ":", " ", 
+       RowBox[{
+       "List", " ", "of", " ", "n", " ", "random", " ", "variables"}]}]}], 
+     ",", " ", 
+     RowBox[{
+      RowBox[{
+      "list", " ", "of", " ", "n", " ", "lists", " ", "of", " ", "random", 
+       " ", "variable", " ", "outputs"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{
+       "n", " ", "dimensional", " ", "array", " ", "with", " ", "numbered", 
+        " ", "o", " ", "parameters"}]}], " ", ";"}]}], "\[IndentingNewLine]", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "oGen", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oGen", "[", 
+     RowBox[{"vars0_", ",", " ", "vals0_"}], "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
+        RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "varL", ",", " ", 
+        "valL", ",", " ", "dimsList", ",", " ", "oArray"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"varL", " ", "=", " ", 
+        RowBox[{"Length", "[", "vars", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"valL", " ", "=", " ", 
+        RowBox[{"Length", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"varL", " ", "\[NotEqual]", " ", "valL"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Message", "[", 
+            RowBox[{"oGen", "::", "unequalarg"}], "]"}], ";", " ", 
+           "$Failed"}], ")"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"dimsList", " ", "=", " ", 
+           RowBox[{"Map", "[", 
+            RowBox[{"Length", ",", " ", "vals"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"oArray", " ", "=", " ", 
+           RowBox[{"Array", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Subscript", "[", 
+               RowBox[{"o", ",", "##"}], "]"}], "&"}], ",", "dimsList"}], 
+            "]"}]}]}]}], "\[IndentingNewLine]", "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"givenEquation", " ", "Function"}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Input", ":", " ", 
+       RowBox[{
+       "n", " ", "dimensional", " ", "array", " ", "for", " ", "the", " ", 
+        "o", " ", "parameters"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "where", " ", "n", " ", "is", " ", "the", " ", "number", " ", "of", " ",
+        "variables"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{
+       "A", " ", "single", " ", "equation", " ", "summing", " ", "all", " ", 
+        "o", " ", "parameters", " ", "to", " ", "1"}]}], " ", ";"}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "givenEquation", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"givenEquation", "[", "oParams0_", "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", " ", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"oParams", " ", "=", " ", "oParams0"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{"Flatten", "[", "oParams", "]"}], "]"}], " ", "\[Equal]", " ",
+        "1"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"givenEquation", " ", "Function"}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Input", ":", " ", 
+       RowBox[{
+       "n", " ", "dimensional", " ", "array", " ", "for", " ", "the", " ", 
+        "o", " ", "parameters"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "where", " ", "n", " ", "is", " ", "the", " ", "number", " ", "of", " ",
+        "variables"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{
+       "A", " ", "single", " ", "equation", " ", "summing", " ", "all", " ", 
+        "o", " ", "parameters", " ", "to", " ", "1"}]}], " ", ";"}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "oOutcomes", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oOutcomes", "[", "oParams0_", "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", " ", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"oParams", " ", "=", " ", "oParams0"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", "oParams", "]"}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"oDist", " ", "Function", " ", 
+       RowBox[{"(", 
+        RowBox[{
+        "For", " ", "MARGINAL", " ", "and", " ", "INTERSECTING", " ", "JOINT",
+          " ", "distributions"}], ")"}]}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Input", ":"}], " ", ";", "\[IndentingNewLine]", "\t", 
+      RowBox[{
+       RowBox[{"-", " ", "List"}], " ", "of", " ", "n", " ", "random", " ", 
+       "variables"}], " ", ";", "\[IndentingNewLine]", "\t", 
+      RowBox[{
+       RowBox[{"-", " ", "List"}], " ", "of", " ", "n", " ", "lists", " ", 
+       "of", " ", "random", " ", "variable", " ", "outputs"}], ";", 
+      RowBox[{
+       RowBox[{"-", " ", "List"}], " ", "of", " ", "x", " ", "random", " ", 
+       "variables", " ", "included", " ", "in", " ", "the", " ", 
+       "distribution"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"-", " ", "List"}], " ", "of", " ", "x", " ", "lists", " ", 
+       "of", " ", "outputs", " ", "the", " ", "x", " ", "random", " ", 
+       "variables", " ", "respectively", " ", "take", " ", "on"}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"-", " ", "n"}], " ", "dimensional", " ", "array", " ", "to", 
+       " ", "map", " ", "the", " ", "result", " ", "to", " ", 
+       RowBox[{"(", 
+        RowBox[{
+        "either", " ", "will", " ", "be", " ", "parameter", " ", "array", " ",
+          "or", " ", "probability", " ", "array"}], ")"}]}], " ", ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{
+       "A", " ", "single", " ", "equation", " ", "summing", " ", "expected", 
+        " ", "o", " ", "parameters"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"CURRENT", " ", 
+       RowBox[{"CONSIDERATIONS", ":", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"-", " ", "Will"}], " ", "only", " ", "consider", " ", "a", 
+         " ", "single", " ", "value", " ", "per", " ", "variable", " ", 
+         RowBox[{"(", 
+          RowBox[{
+          "corresponding", " ", "to", " ", "distributions", " ", "without", 
+           " ", "any", " ", "or", " ", "statements"}], ")"}]}]}]}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"-", " ", "If"}], " ", "a", " ", "variable", " ", "X", " ", 
+       "is", " ", "stated", " ", "more", " ", "than", " ", "once", " ", "in", 
+       " ", "varsSelect"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "the", " ", "value", " ", "of", " ", "oDist", " ", "will", " ", "be", 
+       " ", "0", " ", "regardless", " ", "of", " ", "whether", " ", "its", 
+       " ", "values", " ", "are", " ", "valid"}], " ", ";"}]}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "oDist", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oDist", "[", 
+     RowBox[{
+     "varsTotal0_", ",", " ", "valsTotal0_", ",", " ", "varsSelect0_", ",", 
+      " ", "valsSelect0_", ",", " ", "dist_"}], "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"varsTotal", " ", "=", " ", "varsTotal0"}], ",", " ", 
+        RowBox[{"valsTotal", " ", "=", " ", "valsTotal0"}], ",", " ", 
+        RowBox[{"varsSelect", " ", "=", " ", "varsSelect0"}], ",", " ", 
+        RowBox[{"valsSelect", " ", "=", " ", "valsSelect0"}], ",", " ", 
+        RowBox[{"result", " ", "=", " ", 
+         RowBox[{"{", "}"}]}], ",", " ", 
+        RowBox[{"tempIndices", " ", "=", " ", 
+         RowBox[{"{", "}"}]}], ",", "checkPosition", ",", " ", 
+        RowBox[{"oArray", " ", "=", " ", "dist"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
       RowBox[{"If", "[", " ", 
        RowBox[{
-        RowBox[{"varL", " ", "\[NotEqual]", " ", "valL"}], ",", 
+        RowBox[{
+         RowBox[{"Length", "[", "varsSelect", "]"}], " ", "\[NotEqual]", " ", 
+         
+         RowBox[{"Length", "[", "valsSelect", "]"}]}], ",", 
         "\[IndentingNewLine]", 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"Message", "[", 
-           RowBox[{"oGen", "::", "unequalarg"}], "]"}], ";", " ", "$Failed"}],
-          ")"}], ",", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"dimsList", " ", "=", " ", 
-          RowBox[{"Map", "[", 
-           RowBox[{"Length", ",", " ", "vals"}], "]"}]}], ";", 
-         "\[IndentingNewLine]", 
-         RowBox[{"oArray", " ", "=", " ", 
-          RowBox[{"Array", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"Subscript", "[", 
-              RowBox[{"o", ",", "##"}], "]"}], "&"}], ",", "dimsList"}], 
-           "]"}]}]}]}], "\[IndentingNewLine]", "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"givenEquation", " ", "Function"}], " ", ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Input", ":", " ", 
-      RowBox[{
-      "n", " ", "dimensional", " ", "array", " ", "for", " ", "the", " ", "o",
-        " ", "parameters"}]}]}], ",", " ", 
-    RowBox[{
-     RowBox[{
-     "where", " ", "n", " ", "is", " ", "the", " ", "number", " ", "of", " ", 
-      "variables"}], " ", ";", "\[IndentingNewLine]", 
-     RowBox[{"Output", ":", " ", 
-      RowBox[{
-      "A", " ", "single", " ", "equation", " ", "summing", " ", "all", " ", 
-       "o", " ", "parameters", " ", "to", " ", "1"}]}], " ", ";"}]}], 
-   "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"givenEquation", "[", "oParams0_", "]"}], " ", ":=", " ", 
-   "\[IndentingNewLine]", 
-   RowBox[{"Module", "[", " ", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"oParams", " ", "=", " ", "oParams0"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"Total", "[", 
-       RowBox[{"Flatten", "[", "oParams", "]"}], "]"}], " ", "\[Equal]", " ", 
-      "1"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"givenEquation", " ", "Function"}], " ", ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Input", ":", " ", 
-      RowBox[{
-      "n", " ", "dimensional", " ", "array", " ", "for", " ", "the", " ", "o",
-        " ", "parameters"}]}]}], ",", " ", 
-    RowBox[{
-     RowBox[{
-     "where", " ", "n", " ", "is", " ", "the", " ", "number", " ", "of", " ", 
-      "variables"}], " ", ";", "\[IndentingNewLine]", 
-     RowBox[{"Output", ":", " ", 
-      RowBox[{
-      "A", " ", "single", " ", "equation", " ", "summing", " ", "all", " ", 
-       "o", " ", "parameters", " ", "to", " ", "1"}]}], " ", ";"}]}], 
-   "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"oOutcomes", "[", "oParams0_", "]"}], " ", ":=", " ", 
-   "\[IndentingNewLine]", 
-   RowBox[{"Module", "[", " ", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"oParams", " ", "=", " ", "oParams0"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Flatten", "[", "oParams", "]"}]}], "\[IndentingNewLine]", 
-    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"oDist", " ", "Function", " ", 
-      RowBox[{"(", 
-       RowBox[{
-       "For", " ", "MARGINAL", " ", "and", " ", "INTERSECTING", " ", "JOINT", 
-        " ", "distributions"}], ")"}]}], " ", ";", "\[IndentingNewLine]", 
-     RowBox[{"Input", ":"}], " ", ";", "\[IndentingNewLine]", "\t", 
-     RowBox[{
-      RowBox[{"-", " ", "List"}], " ", "of", " ", "n", " ", "random", " ", 
-      "variables"}], " ", ";", "\[IndentingNewLine]", "\t", 
-     RowBox[{
-      RowBox[{"-", " ", "List"}], " ", "of", " ", "n", " ", "lists", " ", 
-      "of", " ", "random", " ", "variable", " ", "outputs"}], ";", 
-     RowBox[{
-      RowBox[{"-", " ", "List"}], " ", "of", " ", "x", " ", "random", " ", 
-      "variables", " ", "included", " ", "in", " ", "the", " ", 
-      "distribution"}], " ", ";", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"-", " ", "List"}], " ", "of", " ", "x", " ", "lists", " ", 
-      "of", " ", "outputs", " ", "the", " ", "x", " ", "random", " ", 
-      "variables", " ", "respectively", " ", "take", " ", "on"}], " ", ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"-", " ", "n"}], " ", "dimensional", " ", "array", " ", "to", 
-      " ", "map", " ", "the", " ", "result", " ", "to", " ", 
-      RowBox[{"(", 
-       RowBox[{
-       "either", " ", "will", " ", "be", " ", "parameter", " ", "array", " ", 
-        "or", " ", "probability", " ", "array"}], ")"}]}], " ", ";", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"Output", ":", " ", 
-      RowBox[{
-      "A", " ", "single", " ", "equation", " ", "summing", " ", "expected", 
-       " ", "o", " ", "parameters"}]}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
-     RowBox[{"CURRENT", " ", 
-      RowBox[{"CONSIDERATIONS", ":", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"-", " ", "Will"}], " ", "only", " ", "consider", " ", "a", 
-        " ", "single", " ", "value", " ", "per", " ", "variable", " ", 
-        RowBox[{"(", 
-         RowBox[{
-         "corresponding", " ", "to", " ", "distributions", " ", "without", 
-          " ", "any", " ", "or", " ", "statements"}], ")"}]}]}]}], " ", ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"-", " ", "If"}], " ", "a", " ", "variable", " ", "X", " ", 
-      "is", " ", "stated", " ", "more", " ", "than", " ", "once", " ", "in", 
-      " ", "varsSelect"}]}], ",", " ", 
-    RowBox[{
-     RowBox[{
-     "the", " ", "value", " ", "of", " ", "oDist", " ", "will", " ", "be", 
-      " ", "0", " ", "regardless", " ", "of", " ", "whether", " ", "its", " ",
-       "values", " ", "are", " ", "valid"}], " ", ";"}]}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"oDist", "[", 
-   RowBox[{
-   "varsTotal0_", ",", " ", "valsTotal0_", ",", " ", "varsSelect0_", ",", " ",
-     "valsSelect0_", ",", " ", "dist_"}], "]"}], " ", ":=", " ", 
-  "\[IndentingNewLine]", 
-  RowBox[{"Module", "[", 
-   RowBox[{
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"varsTotal", " ", "=", " ", "varsTotal0"}], ",", " ", 
-      RowBox[{"valsTotal", " ", "=", " ", "valsTotal0"}], ",", " ", 
-      RowBox[{"varsSelect", " ", "=", " ", "varsSelect0"}], ",", " ", 
-      RowBox[{"valsSelect", " ", "=", " ", "valsSelect0"}], ",", " ", 
-      RowBox[{"result", " ", "=", " ", 
-       RowBox[{"{", "}"}]}], ",", " ", 
-      RowBox[{"tempIndices", " ", "=", " ", 
-       RowBox[{"{", "}"}]}], ",", "checkPosition", ",", " ", 
-      RowBox[{"oArray", " ", "=", " ", "dist"}]}], "}"}], ",", 
-    "\[IndentingNewLine]", 
-    RowBox[{"If", "[", " ", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"Length", "[", "varsSelect", "]"}], " ", "\[NotEqual]", " ", 
-       RowBox[{"Length", "[", "valsSelect", "]"}]}], ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"Message", "[", 
-         RowBox[{"oDist", "::", "unequalarg"}], "]"}], ";", " ", "$Failed"}], 
-       ")"}], ",", "\[IndentingNewLine]", 
-      RowBox[{"(*", " ", 
-       RowBox[{
-        RowBox[{
-        "If", " ", "there", " ", "are", " ", "multiple", " ", "instances", 
-         " ", "of", " ", "same", " ", "variable", " ", "in", " ", "AND", " ", 
-         "statement"}], ",", " ", 
-        RowBox[{
-         RowBox[{"return", " ", "0"}], ";", " ", 
-         RowBox[{
-         "that", " ", "is", " ", "an", " ", "impossible", " ", "event"}]}]}], 
-       " ", "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"!", 
-         RowBox[{"DuplicateFreeQ", "[", "varsSelect", "]"}]}], ",", 
-        "\[IndentingNewLine]", "0", ",", "\[IndentingNewLine]", 
+           RowBox[{"oDist", "::", "unequalarg"}], "]"}], ";", " ", 
+          "$Failed"}], ")"}], ",", "\[IndentingNewLine]", 
         RowBox[{"(*", " ", 
          RowBox[{
-          RowBox[{"Remove", " ", "this", " ", "call"}], ",", " ", 
           RowBox[{
-          "use", " ", "the", " ", "one", " ", "already", " ", "created"}]}], 
-         " ", "*)"}], "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"AppendTo", "[", 
-          RowBox[{"result", ",", " ", "oArray"}], "]"}], ";", 
-         "\[IndentingNewLine]", "\[IndentingNewLine]", 
-         RowBox[{"Do", "[", "\[IndentingNewLine]", 
+          "If", " ", "there", " ", "are", " ", "multiple", " ", "instances", 
+           " ", "of", " ", "same", " ", "variable", " ", "in", " ", "AND", 
+           " ", "statement"}], ",", " ", 
           RowBox[{
+           RowBox[{"return", " ", "0"}], ";", " ", 
            RowBox[{
-            RowBox[{"checkPosition", "=", 
-             RowBox[{"Position", "[", 
-              RowBox[{"varsSelect", ",", 
-               RowBox[{"varsTotal", "[", 
-                RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";", 
-            "\[IndentingNewLine]", "\[IndentingNewLine]", 
-            RowBox[{"(*", 
+           "that", " ", "is", " ", "an", " ", "impossible", " ", 
+            "event"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"!", 
+           RowBox[{"DuplicateFreeQ", "[", "varsSelect", "]"}]}], ",", 
+          "\[IndentingNewLine]", "0", ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{"Remove", " ", "this", " ", "call"}], ",", " ", 
+            RowBox[{
+            "use", " ", "the", " ", "one", " ", "already", " ", "created"}]}],
+            " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"result", ",", " ", "oArray"}], "]"}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
              RowBox[{
-              RowBox[{
+              RowBox[{"checkPosition", "=", 
+               RowBox[{"Position", "[", 
+                RowBox[{"varsSelect", ",", 
+                 RowBox[{"varsTotal", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              RowBox[{"(*", 
                RowBox[{
                 RowBox[{
                  RowBox[{
                   RowBox[{
                    RowBox[{
+                    RowBox[{
+                    RowBox[{
                     RowBox[{
                     RowBox[{
                     RowBox[{
@@ -328,72 +326,73 @@ Cell[BoxData[{
                      "determine", " ", "its", " ", "value", " ", "in", " ", 
                     "valsSelect"}], " ", ";", "\[IndentingNewLine]", "3"}], 
                     ")"}], " ", "Determine", " ", "the", " ", 
-                   RowBox[{"value", "'"}], "s", " ", "position", " ", "in", 
-                   " ", "the", " ", 
-                   RowBox[{"variable", "'"}], "s", " ", "valsTotal", " ", 
-                   "list"}], " ", ";", "\[IndentingNewLine]", "4"}], ")"}], 
-                " ", "Append", " ", "this", " ", "position", " ", "to", " ", 
-                "the", " ", "results", " ", "list"}], " ", ";", 
-               "\[IndentingNewLine]", "\[IndentingNewLine]", 
-               RowBox[{"If", " ", "the", " ", "current", " ", "variable", " ", 
-                RowBox[{"isn", "'"}], "t", " ", "in", " ", "the", " ", 
-                "list"}]}], ",", " ", 
-              RowBox[{
+                    RowBox[{"value", "'"}], "s", " ", "position", " ", "in", 
+                    " ", "the", " ", 
+                    RowBox[{"variable", "'"}], "s", " ", "valsTotal", " ", 
+                    "list"}], " ", ";", "\[IndentingNewLine]", "4"}], ")"}], 
+                  " ", "Append", " ", "this", " ", "position", " ", "to", " ",
+                   "the", " ", "results", " ", "list"}], " ", ";", 
+                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "If", " ", "the", " ", "current", " ", "variable", " ", 
+                  RowBox[{"isn", "'"}], "t", " ", "in", " ", "the", " ", 
+                  "list"}]}], ",", " ", 
+                RowBox[{
+                 RowBox[{
+                 "then", " ", "append", " ", "\"\<All\>\"", " ", "to", " ", 
+                  "the", " ", "list"}], " ", ";"}]}], "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
                RowBox[{
-               "then", " ", "append", " ", "\"\<All\>\"", " ", "to", " ", 
-                "the", " ", "list"}], " ", ";"}]}], "\[IndentingNewLine]", 
-             "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"Length", "[", "checkPosition", "]"}], ">", "0"}], ",",
-               "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"position", "=", 
                 RowBox[{
-                 RowBox[{"checkPosition", "[", 
-                  RowBox[{"[", "1", "]"}], "]"}], "[", 
-                 RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]",
-                "\[IndentingNewLine]", 
-               RowBox[{"(*", " ", 
+                 RowBox[{"Length", "[", "checkPosition", "]"}], ">", "0"}], 
+                ",", "\[IndentingNewLine]", 
                 RowBox[{
-                "Add", " ", "Do", " ", "Loop", " ", "for", " ", "all", " ", 
-                 "values", " ", "in", " ", "a", " ", "theoretical", " ", 
-                 "list"}], " ", "*)"}], "\[IndentingNewLine]", 
-               "\[IndentingNewLine]", 
-               RowBox[{"currValues", " ", "=", " ", 
-                RowBox[{"valsSelect", "[", 
-                 RowBox[{"[", "position", "]"}], "]"}]}], ";", 
-               "\[IndentingNewLine]", "\[IndentingNewLine]", 
-               RowBox[{"(*", " ", 
-                RowBox[{
-                "Reset", " ", "temp", " ", "indices", " ", "list", " ", "for",
-                  " ", "every", " ", "variable"}], " ", "*)"}], 
-               "\[IndentingNewLine]", 
-               RowBox[{"tempIndices", " ", "=", " ", 
-                RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-               RowBox[{"Do", "[", "\[IndentingNewLine]", 
-                RowBox[{"(*", " ", 
-                 RowBox[{
-                 "Produces", " ", "error", " ", "if", " ", "the", " ", 
-                  "value", " ", "in", " ", "the", " ", "valsSelect", " ", 
-                  "list", " ", 
-                  RowBox[{"isn", "'"}], "t", " ", "a", " ", "real", " ", 
-                  "value", " ", "for", " ", "the", " ", "expected", " ", 
-                  "variable"}], " ", "*)"}], "\[IndentingNewLine]", 
-                RowBox[{
-                 RowBox[{
-                  RowBox[{"valPosition", " ", "=", " ", 
-                   RowBox[{"Flatten", "[", 
+                 RowBox[{"position", "=", 
+                  RowBox[{
+                   RowBox[{"checkPosition", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "[", 
+                   RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"(*", " ", 
+                  RowBox[{
+                  "Add", " ", "Do", " ", "Loop", " ", "for", " ", "all", " ", 
+                   "values", " ", "in", " ", "a", " ", "theoretical", " ", 
+                   "list"}], " ", "*)"}], "\[IndentingNewLine]", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"currValues", " ", "=", " ", 
+                  RowBox[{"valsSelect", "[", 
+                   RowBox[{"[", "position", "]"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"(*", " ", 
+                  RowBox[{
+                  "Reset", " ", "temp", " ", "indices", " ", "list", " ", 
+                   "for", " ", "every", " ", "variable"}], " ", "*)"}], 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"tempIndices", " ", "=", " ", 
+                  RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Do", "[", "\[IndentingNewLine]", 
+                  RowBox[{"(*", " ", 
+                   RowBox[{
+                   "Produces", " ", "error", " ", "if", " ", "the", " ", 
+                    "value", " ", "in", " ", "the", " ", "valsSelect", " ", 
+                    "list", " ", 
+                    RowBox[{"isn", "'"}], "t", " ", "a", " ", "real", " ", 
+                    "value", " ", "for", " ", "the", " ", "expected", " ", 
+                    "variable"}], " ", "*)"}], "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"valPosition", " ", "=", " ", 
+                    RowBox[{"Flatten", "[", 
                     RowBox[{"Position", "[", 
                     RowBox[{
                     RowBox[{"valsTotal", "[", 
                     RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
                     RowBox[{"currValues", "[", 
                     RowBox[{"[", "r", "]"}], "]"}]}], "]"}], "]"}]}], ";", 
-                  "\[IndentingNewLine]", 
-                  RowBox[{"If", " ", "[", 
-                   RowBox[{
+                    "\[IndentingNewLine]", 
+                    RowBox[{"If", " ", "[", 
+                    RowBox[{
                     RowBox[{
                     RowBox[{"Length", "[", "valPosition", "]"}], " ", ">", 
                     " ", "0"}], ",", " ", "\[IndentingNewLine]", 
@@ -407,58 +406,348 @@ Cell[BoxData[{
                     RowBox[{"Message", "[", 
                     RowBox[{"oDist", "::", "invalidvalue"}], "]"}], ";", " ", 
                     "$Failed"}], ")"}]}], "]"}], ";", "\[IndentingNewLine]", 
-                  "\[IndentingNewLine]", 
-                  RowBox[{"(*", " ", 
-                   RowBox[{
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(*", " ", 
+                    RowBox[{
                     RowBox[{"Print", "[", "valPosition", "]"}], ";"}], " ", 
-                   "*)"}], "\[IndentingNewLine]", 
-                  RowBox[{"AppendTo", "[", 
-                   RowBox[{"tempIndices", ",", " ", "valPosition"}], "]"}], 
-                  ";"}], ",", "\[IndentingNewLine]", 
-                 RowBox[{"{", 
-                  RowBox[{"r", ",", " ", 
-                   RowBox[{"Length", "[", "currValues", "]"}]}], "}"}]}], 
-                "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-               RowBox[{"AppendTo", "[", 
-                RowBox[{"result", ",", "tempIndices"}], "]"}], ";"}], 
-              "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
-              RowBox[{"(*", " ", 
-               RowBox[{
-                RowBox[{"Print", "[", "\"\<No value\>\"", "]"}], ";"}], " ", 
-               "*)"}], "\[IndentingNewLine]", 
-              RowBox[{"(*", " ", 
-               RowBox[{
-                RowBox[{"Keeps", " ", "a", " ", "singleton", " ", "counter"}],
-                 ",", " ", 
+                    "*)"}], "\[IndentingNewLine]", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"tempIndices", ",", " ", "valPosition"}], "]"}], 
+                    ";"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"r", ",", " ", 
+                    RowBox[{"Length", "[", "currValues", "]"}]}], "}"}]}], 
+                  "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"result", ",", "tempIndices"}], "]"}], ";"}], 
+                "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "\"\<No value\>\"", "]"}], ";"}], " ",
+                  "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                  RowBox[{
+                  "Keeps", " ", "a", " ", "singleton", " ", "counter"}], ",", 
+                  " ", 
+                  RowBox[{
+                  "slightly", " ", "different", " ", "process", " ", "if", 
+                   " ", "there", " ", "only", " ", "ends", " ", "up", " ", 
+                   "being", " ", "a", " ", "single", " ", "o", " ", 
+                   "parameter"}]}], " ", "*)"}], "\[IndentingNewLine]", 
                 RowBox[{
-                "slightly", " ", "different", " ", "process", " ", "if", " ", 
-                 "there", " ", "only", " ", "ends", " ", "up", " ", "being", 
-                 " ", "a", " ", "single", " ", "o", " ", "parameter"}]}], " ",
-                "*)"}], "\[IndentingNewLine]", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"result", ",", "All"}], "]"}], ";"}]}], "]"}], 
+              ";"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"Length", "[", "varsTotal", "]"}]}], "}"}]}], 
+            "\[IndentingNewLine]", "]"}], ";", "\n", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"At", " ", "the", " ", "end"}], ",", " ", 
+             RowBox[{
               RowBox[{
-               RowBox[{"AppendTo", "[", 
-                RowBox[{"result", ",", "All"}], "]"}], ";"}]}], "]"}], ";"}], 
-           ",", "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", 
-             RowBox[{"Length", "[", "varsTotal", "]"}]}], "}"}]}], 
-          "\[IndentingNewLine]", "]"}], ";", "\n", "\[IndentingNewLine]", 
-         RowBox[{"totalList", " ", "=", " ", 
-          RowBox[{"Flatten", "[", 
-           RowBox[{"{", 
-            RowBox[{"Apply", "[", 
-             RowBox[{"Part", ",", " ", "result"}], "]"}], "}"}], "]"}]}], ";",
-          "\[IndentingNewLine]", 
-         RowBox[{"Total", "[", "totalList", "]"}]}]}], "\[IndentingNewLine]", 
-       "]"}]}], " ", 
+              "result", " ", "is", " ", "a", " ", "list", " ", "with", " ", 
+               RowBox[{"{", 
+                RowBox[{"dist", ",", " ", 
+                 RowBox[{
+                 "All", " ", "or", " ", "a", " ", "list", " ", "of", " ", 
+                  "indices"}]}], "}"}]}], " ", ";", "\[IndentingNewLine]", 
+              "\t", 
+              RowBox[{"Ex", ".", " ", 
+               RowBox[{"{", 
+                RowBox[{"dist", ",", " ", "All", ",", " ", 
+                 RowBox[{"{", 
+                  RowBox[{"2", ",", " ", "3"}], "}"}], ",", " ", 
+                 RowBox[{"{", "2", "}"}], ",", " ", "All", ",", " ", 
+                 RowBox[{"{", 
+                  RowBox[{"1", ",", " ", "5", ",", " ", "6"}], "}"}]}], 
+                "}"}]}], " ", ";", "\[IndentingNewLine]", "\t", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+              "dist", " ", "is", " ", "the", " ", "n", " ", "dimensional", 
+               " ", "array"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"totalList", " ", "=", " ", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{"{", 
+              RowBox[{"Apply", "[", 
+               RowBox[{"Part", ",", " ", "result"}], "]"}], "}"}], "]"}]}], 
+           ";", "\[IndentingNewLine]", 
+           RowBox[{"Total", "[", "totalList", "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}]}], " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"For", " ", "Inner", " ", "If"}], " ", "*)"}], 
+       "\[IndentingNewLine]", "]"}]}], " ", 
      RowBox[{"(*", " ", 
-      RowBox[{"For", " ", "Inner", " ", "If"}], " ", "*)"}], 
+      RowBox[{"For", " ", "Outer", " ", "If"}], " ", "*)"}], 
      "\[IndentingNewLine]", "]"}]}], " ", 
    RowBox[{"(*", " ", 
-    RowBox[{"For", " ", "Outer", " ", "If"}], " ", "*)"}], 
-   "\[IndentingNewLine]", "]"}], " ", 
-  RowBox[{"(*", " ", 
-   RowBox[{"For", " ", "Module"}], " ", "*)"}]}]}], "Input",
+    RowBox[{"For", " ", "Module"}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"oZeroOut", " ", "Function"}], " ", ";", "\[IndentingNewLine]", 
+     RowBox[{"Input", ":"}], " ", ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "n", " ", "random", " ", 
+      "variables"}], " ", ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "n", " ", "lists", " ", 
+      "of", " ", "random", " ", "variable", " ", "outputs"}], ";", 
+     "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "x", " ", "random", " ", 
+      "variables", " ", "included", " ", "in", " ", "the", " ", 
+      "distribution"}], ";", "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "List"}], " ", "of", " ", "x", " ", "lists", " ", 
+      "of", " ", "outputs", " ", "the", " ", "x", " ", "random", " ", 
+      "variables", " ", "should", " ", "take", " ", "on"}], " ", ";", 
+     "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "n"}], " ", "dimensional", " ", "array", " ", "to", 
+      " ", "map", " ", "the", " ", "results", " ", "to", " ", 
+      RowBox[{"(", 
+       RowBox[{
+       "should", " ", "only", " ", "be", " ", "probability", " ", "array"}], 
+       ")"}]}], " ", ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Output", ":", " ", 
+      RowBox[{
+      "An", " ", "n", " ", "dimensional", " ", "array", " ", "such", " ", 
+       "that", " ", "all", " ", "values", " ", "that", " ", 
+       RowBox[{"aren", "'"}], "t", " ", "the", " ", "selected", " ", "become",
+        " ", "0"}]}], " ", ";"}], "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "oZeroOut", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oZeroOut", "[", 
+     RowBox[{
+     "varsTotal0_", ",", " ", "valsTotal0_", ",", " ", "varsSelect0_", ",", 
+      " ", "valsSelect0_", ",", " ", "dist_"}], "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"varsTotal", " ", "=", " ", "varsTotal0"}], ",", " ", 
+        RowBox[{"valsTotal", " ", "=", " ", "valsTotal0"}], ",", " ", 
+        RowBox[{"varsSelect", " ", "=", " ", "varsSelect0"}], ",", " ", 
+        RowBox[{"valsSelect", " ", "=", " ", "valsSelect0"}], ",", " ", 
+        RowBox[{"result", " ", "=", " ", 
+         RowBox[{"{", "}"}]}], ",", " ", 
+        RowBox[{"tempIndices", " ", "=", " ", 
+         RowBox[{"{", "}"}]}], ",", "checkPosition", ",", " ", 
+        RowBox[{"oArray", " ", "=", " ", "dist"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "varsSelect", "]"}], " ", "\[NotEqual]", " ", 
+         
+         RowBox[{"Length", "[", "valsSelect", "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Message", "[", 
+           RowBox[{"oDist", "::", "unequalarg"}], "]"}], ";", " ", 
+          "$Failed"}], ")"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+          "If", " ", "there", " ", "are", " ", "multiple", " ", "instances", 
+           " ", "of", " ", "same", " ", "variable", " ", "in", " ", "AND", 
+           " ", "statement"}], ",", " ", 
+          RowBox[{
+           RowBox[{"return", " ", "0"}], ";", " ", 
+           RowBox[{
+           "that", " ", "is", " ", "an", " ", "impossible", " ", 
+            "event"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"!", 
+           RowBox[{"DuplicateFreeQ", "[", "varsSelect", "]"}]}], ",", 
+          "\[IndentingNewLine]", "0", ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{"Remove", " ", "this", " ", "call"}], ",", " ", 
+            RowBox[{
+            "use", " ", "the", " ", "one", " ", "already", " ", "created"}]}],
+            " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"result", ",", " ", "oArray"}], "]"}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"checkPosition", "=", 
+               RowBox[{"Position", "[", 
+                RowBox[{"varsSelect", ",", 
+                 RowBox[{"varsTotal", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              RowBox[{"(*", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{" ", 
+                    RowBox[{
+                    RowBox[{
+                    "If", " ", "the", " ", "current", " ", "variable", " ", 
+                    "is", " ", "in", " ", "the", " ", "list", " ", 
+                    "varsSelect"}], " ", ";", "\[IndentingNewLine]", "1"}], 
+                    ")"}], " ", "Determine", " ", "its", " ", "position", " ",
+                     "in", " ", "varsSelect"}], " ", ";", 
+                    "\[IndentingNewLine]", "2"}], ")"}], " ", "Use", " ", 
+                    "its", " ", "varsSelect", " ", "position", " ", "to", " ",
+                     "determine", " ", "its", " ", "value", " ", "in", " ", 
+                    "valsSelect"}], " ", ";", "\[IndentingNewLine]", "3"}], 
+                    ")"}], " ", "Determine", " ", "the", " ", 
+                    RowBox[{"value", "'"}], "s", " ", "position", " ", "in", 
+                    " ", "the", " ", 
+                    RowBox[{"variable", "'"}], "s", " ", "valsTotal", " ", 
+                    "list"}], " ", ";", "\[IndentingNewLine]", "4"}], ")"}], 
+                  " ", "Append", " ", "this", " ", "position", " ", "to", " ",
+                   "the", " ", "results", " ", "list"}], " ", ";", 
+                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "If", " ", "the", " ", "current", " ", "variable", " ", 
+                  RowBox[{"isn", "'"}], "t", " ", "in", " ", "the", " ", 
+                  "list"}]}], ",", " ", 
+                RowBox[{
+                 RowBox[{
+                 "then", " ", "append", " ", "\"\<All\>\"", " ", "to", " ", 
+                  "the", " ", "list"}], " ", ";"}]}], "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Length", "[", "checkPosition", "]"}], ">", "0"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"position", "=", 
+                  RowBox[{
+                   RowBox[{"checkPosition", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "[", 
+                   RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"(*", " ", 
+                  RowBox[{
+                  "Add", " ", "Do", " ", "Loop", " ", "for", " ", "all", " ", 
+                   "values", " ", "in", " ", "a", " ", "theoretical", " ", 
+                   "list"}], " ", "*)"}], "\[IndentingNewLine]", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"currValues", " ", "=", " ", 
+                  RowBox[{"valsSelect", "[", 
+                   RowBox[{"[", "position", "]"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                 RowBox[{"(*", " ", 
+                  RowBox[{
+                  "Reset", " ", "temp", " ", "indices", " ", "list", " ", 
+                   "for", " ", "every", " ", "variable"}], " ", "*)"}], 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"tempIndices", " ", "=", " ", 
+                  RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Do", "[", "\[IndentingNewLine]", 
+                  RowBox[{"(*", " ", 
+                   RowBox[{
+                   "Produces", " ", "error", " ", "if", " ", "the", " ", 
+                    "value", " ", "in", " ", "the", " ", "valsSelect", " ", 
+                    "list", " ", 
+                    RowBox[{"isn", "'"}], "t", " ", "a", " ", "real", " ", 
+                    "value", " ", "for", " ", "the", " ", "expected", " ", 
+                    "variable"}], " ", "*)"}], "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"valPosition", " ", "=", " ", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Position", "[", 
+                    RowBox[{
+                    RowBox[{"valsTotal", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+                    RowBox[{"currValues", "[", 
+                    RowBox[{"[", "r", "]"}], "]"}]}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"If", " ", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Length", "[", "valPosition", "]"}], " ", ">", 
+                    " ", "0"}], ",", " ", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"valPosition", " ", "=", " ", 
+                    RowBox[{"valPosition", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], ";"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Message", "[", 
+                    RowBox[{"oDist", "::", "invalidvalue"}], "]"}], ";", " ", 
+                    "$Failed"}], ")"}]}], "]"}], ";", "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(*", " ", 
+                    RowBox[{
+                    RowBox[{"Print", "[", "valPosition", "]"}], ";"}], " ", 
+                    "*)"}], "\[IndentingNewLine]", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"tempIndices", ",", " ", "valPosition"}], "]"}], 
+                    ";"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"r", ",", " ", 
+                    RowBox[{"Length", "[", "currValues", "]"}]}], "}"}]}], 
+                  "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"result", ",", "tempIndices"}], "]"}], ";"}], 
+                "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "\"\<No value\>\"", "]"}], ";"}], " ",
+                  "*)"}], "\[IndentingNewLine]", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                  RowBox[{
+                  "Keeps", " ", "a", " ", "singleton", " ", "counter"}], ",", 
+                  " ", 
+                  RowBox[{
+                  "slightly", " ", "different", " ", "process", " ", "if", 
+                   " ", "there", " ", "only", " ", "ends", " ", "up", " ", 
+                   "being", " ", "a", " ", "single", " ", "o", " ", 
+                   "parameter"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"result", ",", "All"}], "]"}], ";"}]}], "]"}], 
+              ";"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"Length", "[", "varsTotal", "]"}]}], "}"}]}], 
+            "\[IndentingNewLine]", "]"}], ";", "\n", "\[IndentingNewLine]", 
+           RowBox[{"totalList", " ", "=", " ", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{"{", 
+              RowBox[{"Apply", "[", 
+               RowBox[{"Part", ",", " ", "result"}], "]"}], "}"}], "]"}]}], 
+           ";", "\[IndentingNewLine]", 
+           RowBox[{"Total", "[", "totalList", "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}]}], " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"For", " ", "Inner", " ", "If"}], " ", "*)"}], 
+       "\[IndentingNewLine]", "]"}]}], " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"For", " ", "Outer", " ", "If"}], " ", "*)"}], 
+     "\[IndentingNewLine]", "]"}], " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"For", " ", "Module"}], " ", "*)"}]}]}]}]], "Input",
  CellChangeTimes->{{3.805553355204584*^9, 3.8055533584471273`*^9}, {
    3.805553452078063*^9, 3.805553464903345*^9}, {3.805553519325335*^9, 
    3.80555356683849*^9}, {3.805553612530596*^9, 3.8055536740317793`*^9}, {
@@ -528,9 +817,14 @@ Cell[BoxData[{
    3.8108414343699408`*^9, 3.810841445045282*^9}, {3.8132488712829647`*^9, 
    3.813249059286503*^9}, {3.813252538796039*^9, 3.81325254331065*^9}, {
    3.8132525772921057`*^9, 3.813252600167701*^9}, {3.813253353205284*^9, 
-   3.813253387975772*^9}, {3.813253506176814*^9, 
-   3.813253541147791*^9}},ExpressionUUID->"1d70d7f2-17a9-4194-b35b-\
-4c46c605723c"],
+   3.813253387975772*^9}, {3.813253506176814*^9, 3.813253541147791*^9}, {
+   3.8134344764004707`*^9, 3.813434484815428*^9}, {3.813434515424827*^9, 
+   3.813434547963606*^9}, {3.813434614177465*^9, 3.813434725646653*^9}, {
+   3.8134347900361137`*^9, 3.813434819121668*^9}, {3.8134348984868393`*^9, 
+   3.813434903792583*^9}, {3.813434970241376*^9, 3.813435072935021*^9}, 
+   3.813435108585457*^9, {3.813435240290491*^9, 3.813435252871086*^9}, {
+   3.813438208929332*^9, 3.813438209380047*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"1d70d7f2-17a9-4194-b35b-4c46c605723c"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
@@ -549,83 +843,86 @@ Cell[BoxData[
        RowBox[{"aren", "'"}], "t", " ", "the", " ", "selected", " ", 
        "value"}]}]}]}], "*)"}], "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"allOthers", "[", 
-    RowBox[{
-    "varsTotal0_", ",", " ", "valsTotal0_", ",", " ", "varSelect0_", ",", " ",
-      "valSelect0_"}], "]"}], " ", ":=", " ", "\[IndentingNewLine]", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"varsTotal", " ", "=", " ", "varsTotal0"}], ",", " ", 
-       RowBox[{"valsTotal", " ", "=", " ", "valsTotal0"}], ",", " ", 
-       RowBox[{"varSelect", " ", "=", " ", "varSelect0"}], ",", " ", 
-       RowBox[{"valSelect", " ", "=", " ", "valSelect0"}], ",", " ", 
-       "checkPosition", ",", " ", "currValues"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "allOthers", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"allOthers", "[", 
      RowBox[{
-      RowBox[{"varL", " ", "=", " ", 
-       RowBox[{"Length", "[", "varsTotal", "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"valL", " ", "=", " ", 
-       RowBox[{"Length", "[", "valsTotal", "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"checkPosition", "=", 
-       RowBox[{"Position", "[", 
-        RowBox[{"varsTotal", ",", "varSelect"}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"(*", " ", 
+     "varsTotal0_", ",", " ", "valsTotal0_", ",", " ", "varSelect0_", ",", 
+      " ", "valSelect0_"}], "]"}], " ", ":=", " ", "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
        RowBox[{
-        RowBox[{"Get", " ", "position", " ", "of", " ", "variable"}], ",", 
-        " ", 
-        RowBox[{
-        "then", " ", "get", " ", "position", " ", "of", " ", "value", " ", 
-         "list"}], ",", " ", 
-        RowBox[{
-        "then", " ", "remove", " ", "selected", " ", "value", " ", "from", 
-         " ", "it"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"varsTotal", " ", "=", " ", "varsTotal0"}], ",", " ", 
+        RowBox[{"valsTotal", " ", "=", " ", "valsTotal0"}], ",", " ", 
+        RowBox[{"varSelect", " ", "=", " ", "varSelect0"}], ",", " ", 
+        RowBox[{"valSelect", " ", "=", " ", "valSelect0"}], ",", " ", 
+        "checkPosition", ",", " ", "currValues"}], "}"}], ",", 
       "\[IndentingNewLine]", 
-      RowBox[{"If", "[", 
-       RowBox[{
+      RowBox[{
+       RowBox[{"varL", " ", "=", " ", 
+        RowBox[{"Length", "[", "varsTotal", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"valL", " ", "=", " ", 
+        RowBox[{"Length", "[", "valsTotal", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"checkPosition", "=", 
+        RowBox[{"Position", "[", 
+         RowBox[{"varsTotal", ",", "varSelect"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
         RowBox[{
-         RowBox[{"Length", "[", "checkPosition", "]"}], ">", "0"}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"position", "=", 
-          RowBox[{
-           RowBox[{"checkPosition", "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "[", 
-           RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{"currValues", " ", "=", " ", 
-          RowBox[{"valsTotal", "[", 
-           RowBox[{"[", "position", "]"}], "]"}]}], ";", 
-         "\[IndentingNewLine]", 
-         RowBox[{"checkPosition", " ", "=", " ", 
-          RowBox[{"Position", "[", 
-           RowBox[{"currValues", ",", " ", "valSelect"}], "]"}]}], ";", 
-         "\[IndentingNewLine]", 
-         RowBox[{"If", "[", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"Length", "[", "checkPosition", "]"}], " ", ">", " ", 
-            "0"}], ",", "\[IndentingNewLine]", 
-           RowBox[{"DeleteCases", "[", 
-            RowBox[{"currValues", ",", " ", "valSelect"}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{"Message", "[", 
-              RowBox[{"allOthers", "::", "invalidvalue"}], "]"}], ";", " ", 
-             "$Failed"}], ")"}]}], "\[IndentingNewLine]", "]"}]}], 
-        "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
-        RowBox[{"(", 
+         RowBox[{"Get", " ", "position", " ", "of", " ", "variable"}], ",", 
+         " ", 
          RowBox[{
-          RowBox[{"Message", "[", 
-           RowBox[{"allOthers", "::", "invalidvar"}], "]"}], ";", " ", 
-          "$Failed"}], ")"}]}], "\[IndentingNewLine]", "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}], " ", 
-   RowBox[{"(*", " ", 
-    RowBox[{"For", " ", "Module"}], " ", "*)"}]}]}]], "Input",
+         "then", " ", "get", " ", "position", " ", "of", " ", "value", " ", 
+          "list"}], ",", " ", 
+         RowBox[{
+         "then", " ", "remove", " ", "selected", " ", "value", " ", "from", 
+          " ", "it"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", "checkPosition", "]"}], ">", "0"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"position", "=", 
+           RowBox[{
+            RowBox[{"checkPosition", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"currValues", " ", "=", " ", 
+           RowBox[{"valsTotal", "[", 
+            RowBox[{"[", "position", "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"checkPosition", " ", "=", " ", 
+           RowBox[{"Position", "[", 
+            RowBox[{"currValues", ",", " ", "valSelect"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "[", "checkPosition", "]"}], " ", ">", " ", 
+             "0"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"DeleteCases", "[", 
+             RowBox[{"currValues", ",", " ", "valSelect"}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"Message", "[", 
+               RowBox[{"allOthers", "::", "invalidvalue"}], "]"}], ";", " ", 
+              "$Failed"}], ")"}]}], "\[IndentingNewLine]", "]"}]}], 
+         "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Message", "[", 
+            RowBox[{"allOthers", "::", "invalidvar"}], "]"}], ";", " ", 
+           "$Failed"}], ")"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}], " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"For", " ", "Module"}], " ", "*)"}]}]}]}]], "Input",
  CellChangeTimes->{
   3.806162575908128*^9, {3.809999526101192*^9, 3.809999643438345*^9}, {
    3.8099997079024973`*^9, 3.809999733265774*^9}, {3.8099997812290373`*^9, 
@@ -634,8 +931,9 @@ Cell[BoxData[
    3.810000284782902*^9}, {3.810000326143755*^9, 3.810000457302286*^9}, {
    3.810000530671315*^9, 3.8100005312800207`*^9}, {3.810000571113098*^9, 
    3.810000647392776*^9}, {3.810000701435439*^9, 3.810000738245434*^9}, {
-   3.810000930480194*^9, 3.810000958589479*^9}},
- CellLabel->"In[12]:=",ExpressionUUID->"3fe60a27-05f9-4de6-b2d8-315e245b7537"],
+   3.810000930480194*^9, 3.810000958589479*^9}, {3.813434557740921*^9, 
+   3.813434561032715*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"3fe60a27-05f9-4de6-b2d8-315e245b7537"],
 
 Cell[BoxData[
  RowBox[{
@@ -643,6 +941,12 @@ Cell[BoxData[
    RowBox[{"Misc", " ", "helper", " ", "rules"}], " ", "*)"}], 
   "\[IndentingNewLine]", 
   RowBox[{
+   RowBox[{
+    RowBox[{"Clear", "[", 
+     RowBox[{
+     "extractingANDEvents", ",", " ", "equalityPair", ",", " ", 
+      "inEqualityPair", ",", " ", "getFirstElement", ",", " ", 
+      "getSecondElement"}], "]"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"extractingANDEvents", " ", "=", " ", 
      RowBox[{
@@ -705,6 +1009,9 @@ Cell[BoxData[
       "terms", " ", "of", " ", "o", " ", "parameters"}]}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"Clear", "[", "unconditionedProbability", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"unconditionedProbability", " ", "=", " ", 
      RowBox[{
       RowBox[{"(", 
@@ -750,8 +1057,9 @@ Cell[BoxData[
   3.810002105459942*^9, 3.81000211034767*^9}, {3.81000266852979*^9, 
   3.8100026725437927`*^9}, {3.8100027230727577`*^9, 3.810002769985693*^9}, {
   3.8100028538582067`*^9, 3.8100028817607737`*^9}, {3.810002919741289*^9, 
-  3.810002919904117*^9}, {3.8132534061014967`*^9, 3.8132534257759247`*^9}},
- CellLabel->"In[13]:=",ExpressionUUID->"f650fa77-fb4f-4f85-902b-c6b9deaa954c"],
+  3.810002919904117*^9}, {3.8132534061014967`*^9, 3.8132534257759247`*^9}, {
+  3.81343456691476*^9, 3.813434599964705*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"f650fa77-fb4f-4f85-902b-c6b9deaa954c"],
 
 Cell[BoxData[
  RowBox[{
@@ -770,30 +1078,34 @@ Cell[BoxData[
      RowBox[{"top", "/", "bottom"}], " ", "parameter", " ", "combination", 
      " ", "is", " ", "invalid"}]}], " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"conditionedProbability", " ", "=", " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{"myCondProb", "[", 
-       RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], ")"}], " ", 
-     "\[RuleDelayed]", " ", 
-     RowBox[{"(", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"oBottom", " ", "=", " ", 
-        RowBox[{
-         RowBox[{"myProb", "[", "b", "]"}], " ", "/.", " ", 
-         "unconditionedProbability"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"all", " ", "=", " ", 
-        RowBox[{"Join", "[", 
+   RowBox[{
+    RowBox[{"Clear", "[", "conditionedProbability", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"conditionedProbability", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], ")"}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"(", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"oBottom", " ", "=", " ", 
          RowBox[{
-          RowBox[{"BooleanVariables", "[", "a", "]"}], ",", " ", 
-          RowBox[{"BooleanVariables", "[", "b", "]"}]}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"oTop", " ", "=", " ", 
-        RowBox[{
-         RowBox[{"myProb", "[", "all", "]"}], " ", "/.", " ", 
-         "unconditionedProbability"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"oTop", " ", "/", " ", "oBottom"}]}], "\[IndentingNewLine]", 
-      ")"}]}]}], ";"}]}]], "Input",
+          RowBox[{"myProb", "[", "b", "]"}], " ", "/.", " ", 
+          "unconditionedProbability"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"all", " ", "=", " ", 
+         RowBox[{"Join", "[", 
+          RowBox[{
+           RowBox[{"BooleanVariables", "[", "a", "]"}], ",", " ", 
+           RowBox[{"BooleanVariables", "[", "b", "]"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"oTop", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"myProb", "[", "all", "]"}], " ", "/.", " ", 
+          "unconditionedProbability"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"oTop", " ", "/", " ", "oBottom"}]}], "\[IndentingNewLine]", 
+       ")"}]}]}], ";"}]}]}]], "Input",
  CellChangeTimes->{{3.8061551688432817`*^9, 3.806155208922847*^9}, {
   3.806155239831521*^9, 3.806155254080759*^9}, {3.806155587393119*^9, 
   3.8061555965076923`*^9}, {3.806158008718431*^9, 3.806158051257649*^9}, {
@@ -802,11 +1114,11 @@ Cell[BoxData[
   3.806158558415496*^9, 3.8061585586793947`*^9}, {3.806158590517363*^9, 
   3.806158635281436*^9}, {3.806158722326847*^9, 3.806158728527026*^9}, {
   3.80615897200758*^9, 3.8061589798182497`*^9}, {3.806168584567019*^9, 
-  3.8061685896118097`*^9}},
- CellLabel->"In[19]:=",ExpressionUUID->"43813ebe-4bf0-4ab3-84e0-1478a62600cc"]
+  3.8061685896118097`*^9}, {3.813434603548477*^9, 3.8134346097416887`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"43813ebe-4bf0-4ab3-84e0-1478a62600cc"]
 },
 WindowSize->{1078, 737},
-WindowMargins->{{Automatic, 146}, {-50, Automatic}},
+WindowMargins->{{Automatic, 153}, {20, Automatic}},
 Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -823,10 +1135,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 24712, 512, 2446, "Input",ExpressionUUID->"1d70d7f2-17a9-4194-b35b-4c46c605723c"],
-Cell[25273, 534, 4626, 103, 514, "Input",ExpressionUUID->"3fe60a27-05f9-4de6-b2d8-315e245b7537"],
-Cell[29902, 639, 4867, 114, 367, "Input",ExpressionUUID->"f650fa77-fb4f-4f85-902b-c6b9deaa954c"],
-Cell[34772, 755, 2412, 50, 199, "Input",ExpressionUUID->"43813ebe-4bf0-4ab3-84e0-1478a62600cc"]
+Cell[558, 20, 39696, 806, 4042, "Input",ExpressionUUID->"1d70d7f2-17a9-4194-b35b-4c46c605723c"],
+Cell[40257, 828, 4856, 107, 535, "Input",ExpressionUUID->"3fe60a27-05f9-4de6-b2d8-315e245b7537"],
+Cell[45116, 937, 5271, 124, 409, "Input",ExpressionUUID->"f650fa77-fb4f-4f85-902b-c6b9deaa954c"],
+Cell[50390, 1063, 2604, 54, 220, "Input",ExpressionUUID->"43813ebe-4bf0-4ab3-84e0-1478a62600cc"]
 }
 ]
 *)
