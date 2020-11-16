@@ -1,0 +1,22 @@
+casetype: "timevariant"
+variables: {X, Y}
+values: {{0, 1}, {0, 1}}
+timesteps: {1, 0}
+numsamples: 10
+
+independence:
+indep[{X[t], X[t-1]}]
+indep[{X[t], Y[t]}]
+
+base:
+P[X[0] = 1]=.5
+
+main:
+P[Y[t] = 1 | X[t-1] = 1] = .6
+P[Y[t] = 1 | X[t-1] = 0] = 0
+P[Y[t]] = .3
+P[X[t] = 0] = .99 * P[X[t-1] = 0]
+
+
+(implicitly being added to main)
+P[X[t-1] = 1]=q1

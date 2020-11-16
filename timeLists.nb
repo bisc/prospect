@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38822,        850]
-NotebookOptionsPosition[     38162,        832]
-NotebookOutlinePosition[     38573,        849]
-CellTagsIndexPosition[     38530,        846]
+NotebookDataLength[     41345,        908]
+NotebookOptionsPosition[     40701,        891]
+NotebookOutlinePosition[     41095,        907]
+CellTagsIndexPosition[     41052,        904]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -281,6 +281,64 @@ Cell[BoxData[
           RowBox[{"i", ",", " ", 
            RowBox[{"Length", "[", "observation", "]"}]}], "}"}]}], "]"}], ";",
         "\[IndentingNewLine]", "pastSubset"}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"timeValPresentExtraction", " ", "Function"}], " ", ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Inputs", ":", " ", 
+       RowBox[{"List", " ", "of", " ", "n", " ", "values", " ", 
+        RowBox[{"(", 
+         RowBox[{"representing", " ", "one", " ", "observation"}], 
+         ")"}]}]}]}], ",", " ", 
+     RowBox[{"list", " ", "of", " ", "n", " ", "booleans", " ", 
+      RowBox[{"(", 
+       RowBox[{"isCurrStep", " ", "list"}], ")"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "checking", " ", "if", " ", "index", " ", "will", " ", "be", " ", 
+       "past", " ", "step", " ", "on", " ", "next", " ", "iteration"}], " ", 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{"List", " ", "of", " ", "k", " ", "values"}]}]}], ",", " ", 
+     RowBox[{"subset", " ", "of", " ", "the", " ", "input"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "where", " ", "each", " ", "value", " ", "corresponds", " ", "to", " ", 
+       "a", " ", "current", " ", "step", " ", "variable"}], " ", ";"}]}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "timeValPresentExtraction", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeValPresentExtraction", "[", 
+     RowBox[{"observation_", ",", " ", "isCurrStep_"}], "]"}], " ", ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"currSubset", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"isCurrStep", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"currSubset", ",", " ", 
+               RowBox[{"observation", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", 
+           RowBox[{"Length", "[", "observation", "]"}]}], "}"}]}], "]"}], ";",
+        "\[IndentingNewLine]", "currSubset"}]}], "\[IndentingNewLine]", 
      "]"}]}]}]}]], "Input",
  CellChangeTimes->{{3.813246925316745*^9, 3.813247163804718*^9}, {
    3.813247254287299*^9, 3.813247265425724*^9}, {3.813247295554369*^9, 
@@ -288,8 +346,9 @@ Cell[BoxData[
    3.813249871239348*^9}, {3.813256707018564*^9, 3.813256749742374*^9}, {
    3.81342438483912*^9, 3.813424428922439*^9}, {3.8134245453801537`*^9, 
    3.813424548961483*^9}, {3.813425174328339*^9, 3.813425175303502*^9}, {
-   3.813425812605719*^9, 3.813425818618465*^9}},
- CellLabel->"In[5]:=",ExpressionUUID->"5ff322ab-fab5-4817-ac0b-5d3567b1245b"],
+   3.813425812605719*^9, 3.813425818618465*^9}, {3.81392205373948*^9, 
+   3.8139221527114887`*^9}},ExpressionUUID->"5ff322ab-fab5-4817-ac0b-\
+5d3567b1245b"],
 
 Cell[BoxData[
  RowBox[{"\[IndentingNewLine]", 
@@ -831,8 +890,7 @@ Cell[BoxData[{
  CellLabel->"In[8]:=",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
 },
 WindowSize->{808, 718},
-WindowMargins->{{Automatic, 233}, {Automatic, 24}},
-Visible->False,
+WindowMargins->{{Automatic, 92}, {Automatic, 23}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"26e1fa24-111d-422f-bfd8-37dadf17c4b4"
@@ -849,9 +907,9 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 9500, 199, 1102, "Input",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"],
-Cell[10061, 221, 3084, 70, 430, "Input",ExpressionUUID->"5ff322ab-fab5-4817-ac0b-5d3567b1245b"],
-Cell[13148, 293, 2428, 51, 262, "Input",ExpressionUUID->"0c9c58d3-197c-4163-9dca-736fb962daf8"],
-Cell[15579, 346, 22579, 484, 2887, "Input",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
+Cell[10061, 221, 5623, 129, 871, "Input",ExpressionUUID->"5ff322ab-fab5-4817-ac0b-5d3567b1245b"],
+Cell[15687, 352, 2428, 51, 262, "Input",ExpressionUUID->"0c9c58d3-197c-4163-9dca-736fb962daf8"],
+Cell[18118, 405, 22579, 484, 2887, "Input",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
 }
 ]
 *)
