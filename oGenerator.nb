@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     53660,       1137]
-NotebookOptionsPosition[     52998,       1119]
-NotebookOutlinePosition[     53410,       1136]
-CellTagsIndexPosition[     53367,       1133]
+NotebookDataLength[     53425,       1132]
+NotebookOptionsPosition[     52763,       1114]
+NotebookOutlinePosition[     53175,       1131]
+CellTagsIndexPosition[     53132,       1128]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1034,12 +1034,6 @@ Cell[BoxData[
          RowBox[{"Map", "[", 
           RowBox[{"getSecondElement", ",", " ", "varValList"}], "]"}]}], ";", 
         "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
-         RowBox[{"IMPORTANT", ":", " ", 
-          RowBox[{
-          "CHANGE", " ", "twoVars", " ", "and", " ", "twoVals", " ", "with", 
-           " ", "name", " ", "of", " ", "global", " ", "variable"}]}], " ", 
-         "*)"}], "\[IndentingNewLine]", 
         RowBox[{"oDist", "[", 
          RowBox[{
          "variables", ",", "values", ",", " ", "testVars", ",", " ", 
@@ -1058,7 +1052,8 @@ Cell[BoxData[
   3.8100026725437927`*^9}, {3.8100027230727577`*^9, 3.810002769985693*^9}, {
   3.8100028538582067`*^9, 3.8100028817607737`*^9}, {3.810002919741289*^9, 
   3.810002919904117*^9}, {3.8132534061014967`*^9, 3.8132534257759247`*^9}, {
-  3.81343456691476*^9, 3.813434599964705*^9}},
+  3.81343456691476*^9, 3.813434599964705*^9}, {3.815073004672797*^9, 
+  3.815073005024789*^9}},
  CellLabel->"In[19]:=",ExpressionUUID->"f650fa77-fb4f-4f85-902b-c6b9deaa954c"],
 
 Cell[BoxData[
@@ -1118,7 +1113,7 @@ Cell[BoxData[
  CellLabel->"In[27]:=",ExpressionUUID->"43813ebe-4bf0-4ab3-84e0-1478a62600cc"]
 },
 WindowSize->{1078, 737},
-WindowMargins->{{Automatic, 153}, {20, Automatic}},
+WindowMargins->{{Automatic, -172}, {1, Automatic}},
 Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -1137,8 +1132,8 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 39696, 806, 4042, "Input",ExpressionUUID->"1d70d7f2-17a9-4194-b35b-4c46c605723c"],
 Cell[40257, 828, 4856, 107, 535, "Input",ExpressionUUID->"3fe60a27-05f9-4de6-b2d8-315e245b7537"],
-Cell[45116, 937, 5271, 124, 409, "Input",ExpressionUUID->"f650fa77-fb4f-4f85-902b-c6b9deaa954c"],
-Cell[50390, 1063, 2604, 54, 220, "Input",ExpressionUUID->"43813ebe-4bf0-4ab3-84e0-1478a62600cc"]
+Cell[45116, 937, 5036, 119, 388, "Input",ExpressionUUID->"f650fa77-fb4f-4f85-902b-c6b9deaa954c"],
+Cell[50155, 1058, 2604, 54, 220, "Input",ExpressionUUID->"43813ebe-4bf0-4ab3-84e0-1478a62600cc"]
 }
 ]
 *)

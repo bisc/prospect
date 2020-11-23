@@ -1,0 +1,379 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14768,        371]
+NotebookOptionsPosition[     14210,        354]
+NotebookOutlinePosition[     14620,        371]
+CellTagsIndexPosition[     14577,        368]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Error", " ", "messages"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"qGen", "::", "unequalarg"}], "=", 
+     "\"\<Lists must be the same size\>\""}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"qGen", " ", "Function"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Input", ":", " ", 
+       RowBox[{
+       "List", " ", "of", " ", "m", " ", "random", " ", "variables"}]}]}], 
+     ",", " ", 
+     RowBox[{
+      RowBox[{
+      "list", " ", "of", " ", "m", " ", "lists", " ", "of", " ", "random", 
+       " ", "variable", " ", "outputs"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{
+       "m", " ", "dimensional", " ", "array", " ", "with", " ", "numbered", 
+        " ", "q", " ", "parameters"}]}], " ", ";"}]}], "\[IndentingNewLine]", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "qGen", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"qGen", "[", 
+     RowBox[{"vars0_", ",", " ", "vals0_"}], "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
+        RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "varL", ",", " ", 
+        "valL", ",", " ", "dimsList", ",", " ", "qArray"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"varL", " ", "=", " ", 
+        RowBox[{"Length", "[", "vars", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"valL", " ", "=", " ", 
+        RowBox[{"Length", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"varL", " ", "\[NotEqual]", " ", "valL"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Message", "[", 
+            RowBox[{"oGen", "::", "unequalarg"}], "]"}], ";", " ", 
+           "$Failed"}], ")"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"dimsList", " ", "=", " ", 
+           RowBox[{"Map", "[", 
+            RowBox[{"Length", ",", " ", "vals"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"qArray", " ", "=", " ", 
+           RowBox[{"Array", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Subscript", "[", 
+               RowBox[{"q", ",", "##"}], "]"}], "&"}], ",", "dimsList"}], 
+            "]"}]}]}]}], "\[IndentingNewLine]", "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"givenEquation", " ", "Function"}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Input", ":", " ", 
+       RowBox[{
+       "n", " ", "dimensional", " ", "array", " ", "for", " ", "the", " ", 
+        "o", " ", "parameters"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+      "where", " ", "n", " ", "is", " ", "the", " ", "number", " ", "of", " ",
+        "variables"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Output", ":", " ", 
+       RowBox[{
+       "A", " ", "single", " ", "equation", " ", "summing", " ", "all", " ", 
+        "o", " ", "parameters", " ", "to", " ", "1"}]}], " ", ";"}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "qOutcomes", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"qOutcomes", "[", "qParams0_", "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", " ", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"qParams", " ", "=", " ", "qParams0"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", "qParams", "]"}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "qDist", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"qDist", "[", 
+      RowBox[{
+      "varsTotal0_", ",", " ", "valsTotal0_", ",", " ", "varsSelect0_", ",", 
+       " ", "valsSelect0_", ",", " ", "dist_"}], "]"}], " ", ":=", " ", 
+     RowBox[{"oDist", "[", 
+      RowBox[{
+      "varsTotal0", ",", " ", "valsTotal0", ",", " ", "varsSelect0", ",", " ",
+        "valsSelect0", ",", " ", "dist"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8150716485237703`*^9, 3.815071721274292*^9}, {
+  3.815072843860776*^9, 3.815072905773543*^9}, {3.815074117670066*^9, 
+  3.815074154523849*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"168a1fd6-992d-4055-b04b-191dcb889d7a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Misc", " ", "helper", " ", "rules", " ", "exclusively", " ", "for", " ", 
+    "q", " ", "parameters"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Clear", "[", 
+     RowBox[{
+     "QextractingANDEvents", ",", " ", "QequalityPair", ",", " ", 
+      "QinEqualityPair", ",", " ", "QgetFirstElement", ",", " ", 
+      "QgetSecondElement"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"QextractingANDEvents", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"myProb", "[", "a_", "]"}], ")"}], " ", "\[RuleDelayed]", " ", 
+      
+      RowBox[{"BooleanVariables", "[", "a", "]"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"QequalityPair", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Equal", "[", 
+        RowBox[{"var_", ",", " ", "val_"}], "]"}], ")"}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"{", 
+       RowBox[{"var", ",", " ", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"{", "val", "}"}], "]"}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Turns", " ", "inequality", " ", "of", " ", "variable", " ", "and", " ", 
+     "value", " ", "into", " ", "equality", " ", "of", " ", "variable", " ", 
+     "and", " ", "set", " ", "of", " ", "values"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"QinEqualityPair", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Unequal", "[", 
+        RowBox[{"var_", ",", " ", "val_"}], "]"}], ")"}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"Equal", "[", 
+       RowBox[{"var", ",", " ", 
+        RowBox[{"allOthers", "[", 
+         RowBox[{
+         "baseStepVars", ",", " ", "values", ",", " ", "var", ",", " ", 
+          "val"}], "]"}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"QgetFirstElement", "[", "l_", "]"}], " ", ":=", " ", 
+     RowBox[{"Part", "[", 
+      RowBox[{"l", ",", " ", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"QgetSecondElement", "[", "l_", "]"}], " ", ":=", " ", 
+     RowBox[{"Part", "[", 
+      RowBox[{"l", ",", " ", "2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Helper", " ", 
+      RowBox[{"rule", ":", " ", 
+       RowBox[{
+       "given", " ", "a", " ", "myProb", " ", "statement", " ", "exclusively",
+         " ", "with", " ", "AND", " ", "intersections"}]}]}], ",", " ", 
+     RowBox[{
+     "returns", " ", "the", " ", "myProb", " ", "statement", " ", "in", " ", 
+      "terms", " ", "of", " ", "o", " ", "parameters"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "QunconditionedProbability", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"QunconditionedProbability", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"myProb", "[", "a_", "]"}], ")"}], " ", "\[RuleDelayed]", " ", 
+      
+      RowBox[{"(", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"varValList", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"myProb", "[", "a", "]"}], " ", "/.", " ", 
+            "QinEqualityPair"}], " ", "/.", " ", "QextractingANDEvents"}], 
+          " ", "/.", " ", "QequalityPair"}]}], ";", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"testVars", " ", "=", " ", 
+         RowBox[{"Map", "[", 
+          RowBox[{"QgetFirstElement", ",", " ", "varValList"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"testVals", " ", "=", " ", 
+         RowBox[{"Map", "[", 
+          RowBox[{"QgetSecondElement", ",", " ", "varValList"}], "]"}]}], ";",
+         "\[IndentingNewLine]", 
+        RowBox[{"qDist", "[", 
+         RowBox[{
+         "baseStepVars", ",", "pastStepValues", ",", " ", "testVars", ",", 
+          " ", "testVals", ",", " ", 
+          RowBox[{"qGen", "[", 
+           RowBox[{"baseStepVars", ",", " ", "pastStepValues"}], "]"}]}], 
+         "]"}]}], "\[IndentingNewLine]", ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "Given", " ", "a", " ", "myCondProb", " ", "statement", " ", 
+      "exclusively", " ", "with", " ", "AND", " ", "intersections"}], ",", 
+     " ", 
+     RowBox[{
+     "returns", " ", "the", " ", "myCondProb", " ", "statement", " ", "in", 
+      " ", "terms", " ", "of", " ", "o", " ", "parameters"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"NEEDED", ":", " ", 
+     RowBox[{"A", " ", "check", " ", "to", " ", "see", " ", "if", " ", 
+      RowBox[{"top", "/", "bottom"}], " ", "parameter", " ", "combination", 
+      " ", "is", " ", "invalid"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "QconditionedProbability", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"QconditionedProbability", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"myCondProb", "[", 
+        RowBox[{"a_", " ", "\[Conditioned]", " ", "b_"}], "]"}], ")"}], " ", 
+      "\[RuleDelayed]", " ", 
+      RowBox[{"(", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"qBottom", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"myProb", "[", "b", "]"}], " ", "/.", " ", 
+          "QunconditionedProbability"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"all", " ", "=", " ", 
+         RowBox[{"Join", "[", 
+          RowBox[{
+           RowBox[{"BooleanVariables", "[", "a", "]"}], ",", " ", 
+           RowBox[{"BooleanVariables", "[", "b", "]"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"qTop", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"myProb", "[", "all", "]"}], " ", "/.", " ", 
+          "QunconditionedProbability"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"qTop", " ", "/", " ", "qBottom"}]}], "\[IndentingNewLine]", 
+       ")"}]}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.815073091962585*^9, 3.815073108611227*^9}, {
+  3.8150732195375843`*^9, 3.815073259169619*^9}, {3.815073318725603*^9, 
+  3.815073351661953*^9}, {3.815073387905367*^9, 3.815073511159213*^9}, {
+  3.815073947296893*^9, 3.815073947425516*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"06fdea81-da8d-401a-9875-d187c19cd498"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"DISTINCT", " ", "FROM", " ", "OGEN"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Input", ":", " ", 
+     RowBox[{"List", " ", "of", " ", "variables"}]}], ",", " ", 
+    RowBox[{"list", " ", "of", " ", "list", " ", "of", " ", "values"}], ",", 
+    " ", 
+    RowBox[{
+     RowBox[{"list", " ", "of", " ", "q", " ", "parameters"}], " ", ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Output", ":", " ", 
+      RowBox[{
+      "List", " ", "of", " ", "equations", " ", "such", " ", "that", " ", "q",
+        " ", "parameter", " ", "equals", " ", "a", " ", "myProb", " ", 
+       "statement"}]}], " ", ";"}]}], "\[IndentingNewLine]", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Clear", "[", "qMyProbs", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"qMyProbs", "[", 
+     RowBox[{"vars0_", ",", " ", "vals0_", ",", " ", "qOutput_"}], "]"}], " ",
+     ":=", " ", "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
+        RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "qL", ",", 
+        "valTuples", ",", " ", "currTuple", ",", " ", "dimsList", ",", " ", 
+        "qArray"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"qL", " ", "=", " ", 
+        RowBox[{"Length", "[", "qOutput", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"valTuples", " ", "=", " ", 
+        RowBox[{"Tuples", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"currTuple", " ", "=", " ", 
+           RowBox[{"valTuples", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "currTuple", "]"}], ";"}], 
+         "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", 
+           RowBox[{"Length", "[", "valTuples", "]"}]}], "}"}]}], "]"}], 
+       ";"}]}], "\[IndentingNewLine]", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.8150751318921347`*^9, 3.815075212436549*^9}, {
+  3.815075365118308*^9, 3.815075455704729*^9}, {3.815075506403496*^9, 
+  3.8150755417347107`*^9}, {3.815075609024762*^9, 3.815075638486506*^9}, {
+  3.815076437552732*^9, 
+  3.815076491407673*^9}},ExpressionUUID->"a5bdfa5f-d03f-479a-a582-\
+c43cafbfd005"]
+},
+WindowSize->{808, 706},
+WindowMargins->{{Automatic, 98}, {23, Automatic}},
+Visible->False,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"62031974-88df-4f8b-9874-f6c58c5dde72"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4729, 115, 703, "Input",ExpressionUUID->"168a1fd6-992d-4055-b04b-191dcb889d7a"],
+Cell[5290, 137, 6408, 156, 682, "Input",ExpressionUUID->"06fdea81-da8d-401a-9875-d187c19cd498"],
+Cell[11701, 295, 2505, 57, 325, "Input",ExpressionUUID->"a5bdfa5f-d03f-479a-a582-c43cafbfd005"]
+}
+]
+*)
+
