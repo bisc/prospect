@@ -2,7 +2,7 @@ casetype: "timevariant"
 variables: {X}
 values: {{0, 1}}
 timesteps: {1}
-numsamples: 2
+numsamples: 6
 
 basecase
 P[X[0] = 1] = .5

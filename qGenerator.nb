@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14768,        371]
-NotebookOptionsPosition[     14210,        354]
-NotebookOutlinePosition[     14620,        371]
-CellTagsIndexPosition[     14577,        368]
+NotebookDataLength[     18738,        451]
+NotebookOptionsPosition[     18196,        435]
+NotebookOutlinePosition[     18589,        451]
+CellTagsIndexPosition[     18546,        448]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -296,8 +296,8 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
-   RowBox[{"DISTINCT", " ", "FROM", " ", "OGEN"}], " ", "*)"}], 
-  "\[IndentingNewLine]", 
+   RowBox[{"DISTINCT", " ", "FROM", " ", "O", " ", "GENERATOR"}], " ", "*)"}],
+   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"Input", ":", " ", 
@@ -326,35 +326,115 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"vars", " ", "=", " ", "vars0"}], ",", " ", 
         RowBox[{"vals", " ", "=", " ", "vals0"}], ",", " ", "qL", ",", 
-        "valTuples", ",", " ", "currTuple", ",", " ", "dimsList", ",", " ", 
-        "qArray"}], "}"}], ",", "\[IndentingNewLine]", 
+        "valTuples", ",", "tupleLength", ",", " ", "currTuple", ",", 
+        "insideFunc", ",", " ", "currBoolean", ",", " ", "tempProb", ",", " ",
+         "addedEquations"}], "}"}], ",", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"qL", " ", "=", " ", 
         RowBox[{"Length", "[", "qOutput", "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"valTuples", " ", "=", " ", 
         RowBox[{"Tuples", "[", "vals", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "Getting", " ", "length", " ", "of", " ", "first", " ", "tuple"}], 
+        " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"tupleLength", "  ", "=", " ", 
+        RowBox[{"Length", "[", 
+         RowBox[{"valTuples", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"addedEquations", " ", "=", " ", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", " ", "Go"}], " ", "through", " ", "all", " ", 
+           "tuples"}], " ", ";", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"-", " ", "Create"}], " ", "a", " ", "myProb", " ", 
+           "statement", " ", "for", " ", "each", " ", "one"}]}], ",", " ", 
+         RowBox[{
+          RowBox[{
+          "set", " ", "it", " ", "equal", " ", "to", " ", "the", " ", 
+           "respective", " ", "q", " ", "parameter"}], " ", ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"-", " ", "Remove"}], " ", "the", " ", "last", " ", 
+           RowBox[{"one", ":", " ", 
+            RowBox[{
+            "using", " ", "it", " ", "will", " ", "mess", " ", "up", " ", 
+             "the", " ", "solver"}]}]}], ";"}]}], "\[IndentingNewLine]", 
+        "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{"Do", "[", "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{
           RowBox[{"currTuple", " ", "=", " ", 
            RowBox[{"valTuples", "[", 
             RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "currTuple", "]"}], ";"}], 
+          RowBox[{"currBoolean", " ", "=", " ", 
+           RowBox[{
+            RowBox[{"vars", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], " ", "\[Equal]", " ", 
+            RowBox[{"currTuple", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", " ", "[", 
+           RowBox[{
+            RowBox[{"tupleLength", " ", ">", " ", "1"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Do", "[", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"insideFunc", "[", "p_", "]"}], " ", ":=", " ", 
+                 RowBox[{
+                  RowBox[{"vars", "[", 
+                   RowBox[{"[", "j", "]"}], "]"}], " ", "\[Equal]", " ", 
+                  "p"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"currBoolean", " ", "=", " ", 
+                 RowBox[{"currBoolean", " ", "&&", " ", 
+                  RowBox[{"insideFunc", "[", 
+                   RowBox[{"currTuple", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}], "]"}]}]}], ";"}], 
+               "\[IndentingNewLine]", ",", 
+               RowBox[{"{", 
+                RowBox[{"j", ",", " ", "2", ",", " ", 
+                 RowBox[{"Length", "[", "currTuple", "]"}]}], "}"}]}], "]"}], 
+             ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"tempProb", " ", "=", " ", 
+           RowBox[{
+            RowBox[{"myProb", "[", "currBoolean", "]"}], " ", "\[Equal]", " ", 
+            RowBox[{"qOutput", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"addedEquations", ",", " ", "tempProb"}], "]"}], ";"}], 
          "\[IndentingNewLine]", ",", 
          RowBox[{"{", 
           RowBox[{"i", ",", " ", 
-           RowBox[{"Length", "[", "valTuples", "]"}]}], "}"}]}], "]"}], 
-       ";"}]}], "\[IndentingNewLine]", "]"}]}]}]}]], "Input",
+           RowBox[{"Length", "[", "valTuples", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "addedEquations", "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"addedEquations", " ", "=", " ", 
+        RowBox[{"Drop", "[", 
+         RowBox[{"addedEquations", ",", " ", 
+          RowBox[{"-", "1"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       "addedEquations"}]}], "\[IndentingNewLine]", "]"}]}]}]}]], "Input",
  CellChangeTimes->{{3.8150751318921347`*^9, 3.815075212436549*^9}, {
   3.815075365118308*^9, 3.815075455704729*^9}, {3.815075506403496*^9, 
   3.8150755417347107`*^9}, {3.815075609024762*^9, 3.815075638486506*^9}, {
-  3.815076437552732*^9, 
-  3.815076491407673*^9}},ExpressionUUID->"a5bdfa5f-d03f-479a-a582-\
+  3.815076437552732*^9, 3.815076491407673*^9}, {3.815076613277561*^9, 
+  3.815076623395658*^9}, {3.815076707906068*^9, 3.815076713822472*^9}, {
+  3.8150767469699783`*^9, 3.815076830482258*^9}, {3.8150768639573183`*^9, 
+  3.815076954507842*^9}, {3.8150773037885857`*^9, 3.815077385967449*^9}, {
+  3.815077419947117*^9, 3.815077537000292*^9}, {3.815145241843639*^9, 
+  3.8151452511675987`*^9}},ExpressionUUID->"a5bdfa5f-d03f-479a-a582-\
 c43cafbfd005"]
 },
 WindowSize->{808, 706},
-WindowMargins->{{Automatic, 98}, {23, Automatic}},
-Visible->False,
+WindowMargins->{{Automatic, 5}, {Automatic, 30}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"62031974-88df-4f8b-9874-f6c58c5dde72"
@@ -372,7 +452,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 4729, 115, 703, "Input",ExpressionUUID->"168a1fd6-992d-4055-b04b-191dcb889d7a"],
 Cell[5290, 137, 6408, 156, 682, "Input",ExpressionUUID->"06fdea81-da8d-401a-9875-d187c19cd498"],
-Cell[11701, 295, 2505, 57, 325, "Input",ExpressionUUID->"a5bdfa5f-d03f-479a-a582-c43cafbfd005"]
+Cell[11701, 295, 6491, 138, 808, "Input",ExpressionUUID->"a5bdfa5f-d03f-479a-a582-c43cafbfd005"]
 }
 ]
 *)

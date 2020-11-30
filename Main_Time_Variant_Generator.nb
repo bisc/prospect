@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35473,        748]
-NotebookOptionsPosition[     35108,        733]
-NotebookOutlinePosition[     35517,        750]
-CellTagsIndexPosition[     35474,        747]
+NotebookDataLength[     42602,        875]
+NotebookOptionsPosition[     42236,        860]
+NotebookOutlinePosition[     42646,        877]
+CellTagsIndexPosition[     42603,        874]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -45,7 +45,9 @@ Cell[BoxData[{
       "oRules", ",", " ", "oFinalRules", ",", "oFinalArray", ",", " ", "oD", 
       ",", " ", "\[IndentingNewLine]", "\[IndentingNewLine]", "underCheck", 
       ",", " ", "baseCase", ",", "nextCase", ",", "currStep", ",", " ", 
-      "condF", ",", " ", 
+      "condF", ",", " ", "subArray", ",", " ", "allCoords", ",", " ", "cD", 
+      ",", "qNew", ",", "qCondition", ",", "tCondition", ",", "nextCondition",
+       ",", " ", 
       RowBox[{"observations", " ", "=", " ", 
        RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
     "\[IndentingNewLine]", 
@@ -412,12 +414,14 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
      RowBox[{
      "Print", "[", "\"\<Adding q equalities to specifications\>\"", "]"}], 
      ";", "\[IndentingNewLine]", 
+     RowBox[{"qAppend", " ", "=", " ", 
+      RowBox[{"qMyProbs", "[", 
+       RowBox[{
+       "pastStepVars", ",", " ", "pastStepValues", ",", " ", "qOutput"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"AppendTo", "[", 
-      RowBox[{"specs", ",", 
-       RowBox[{"qMyProbs", "[", 
-        RowBox[{
-        "pastStepVars", ",", " ", "pastStepValues", ",", " ", "qOutput"}], 
-        "]"}]}], "]"}], ";", " ", "\[IndentingNewLine]", 
+      RowBox[{"specs", ",", "qAppend"}], "]"}], ";", " ", 
+     "\[IndentingNewLine]", 
      RowBox[{"specs", " ", "=", " ", 
       RowBox[{"Flatten", "[", "specs", "]"}]}], ";", " ", 
      "\[IndentingNewLine]", 
@@ -496,14 +500,50 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
        RowBox[{
        "Print", "[", "\"\<Invalid system: solver timed out\>\"", "]"}], ",", 
        " ", 
-       RowBox[{"Print", "[", "oSolve", "]"}]}], "]"}], ";"}]}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{"(*", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"Data", " ", 
-      RowBox[{"Generation", ":", " ", 
-       RowBox[{"Will", " ", "Add", " ", "Back"}]}]}], ";", " ", 
-     "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "oSolve", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"At", " ", "this", " ", "point"}], ",", " ", 
+       RowBox[{
+        RowBox[{"we", " ", "have", " ", "the", " ", 
+         RowBox[{"following", ":"}]}], " ", ";", "\[IndentingNewLine]", "\t", 
+        
+        RowBox[{"-", " ", 
+         RowBox[{"qFinalRules", ":", " ", 
+          RowBox[{
+          "A", " ", "mapping", " ", "of", " ", "q", " ", "parameters", " ", 
+           "to", " ", "the", " ", "base", " ", "case", " ", "values"}]}]}], 
+        " ", ";", "\[IndentingNewLine]", "\t", 
+        RowBox[{"-", " ", 
+         RowBox[{"qParams", ":", " ", 
+          RowBox[{
+          "An", " ", "m", " ", "dimensional", " ", "array", " ", "of", " ", 
+           "q", " ", "parameters"}]}]}], " ", ";", "\[IndentingNewLine]", 
+        "\t", 
+        RowBox[{"-", " ", 
+         RowBox[{"oParams", ":", " ", 
+          RowBox[{
+          "An", " ", "n", " ", "dimensional", " ", "array", " ", "of", " ", 
+           "o", " ", "parameters"}]}]}], " ", ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"After", " ", "getting", " ", "oFinalRules"}]}], ",", " ", 
+       RowBox[{
+        RowBox[{
+        "what", " ", "needs", " ", "to", " ", "happen", " ", "now", " ", "is",
+          " ", "the", " ", "following", " ", 
+         RowBox[{"pattern", ":"}]}], " ", ";", "\[IndentingNewLine]", "\t", 
+        RowBox[{
+         RowBox[{"-", " ", "Replace"}], " ", "the", " ", "q", " ", 
+         "parameters", " ", "in", " ", "oFinalRules", " ", "with", " ", "the",
+          " ", "observed", " ", "q", " ", "values"}], " ", ";", 
+        "\[IndentingNewLine]", "\t", 
+        RowBox[{
+         RowBox[{"-", " ", "Get"}], " ", "the", " ", "conditional", " ", 
+         "distribution", " ", "of", " ", "the", " ", "o", " ", "parameters"}],
+         " ", ";", "\[IndentingNewLine]", "\t", "-"}]}], " ", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", " ", "*)"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{
       "Generating", " ", "data", " ", "by", " ", "placing", " ", "the", " ", 
@@ -590,32 +630,40 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
           RowBox[{"Print", "[", "\"\<Final Array\>\"", "]"}], ";", 
           "\[IndentingNewLine]", 
           RowBox[{"Print", "[", "oFinalArray", "]"}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"oD", " ", "=", " ", 
-           RowBox[{"CategoricalDistribution", "[", 
-            RowBox[{"values", ",", " ", "oFinalArray"}], "]"}]}], ";", 
-          "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
           RowBox[{"(*", " ", 
-           RowBox[{
-            RowBox[{
-            "Function", " ", "that", " ", "takes", " ", "in", " ", "values", 
-             " ", "for", " ", "next", " ", 
-             RowBox[{"step", "'"}], "s", " ", "blanket"}], ",", " ", 
-            RowBox[{
-            "returns", " ", "its", " ", "conditioned", " ", 
-             "distribution"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"condF", " ", "=", " ", 
-           RowBox[{"timeDistsConditional", "[", 
-            RowBox[{
-            "oFinalArray", ",", " ", "isPastStep", ",", " ", "pastStepVars", 
-             ",", " ", "pastStepValues"}], "]"}]}], ";", 
-          "\[IndentingNewLine]", 
+           RowBox[{"Base", " ", "case", " ", "o", " ", "distribution"}], " ", 
+           "*)"}], "\[IndentingNewLine]", 
           RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"subArray", " ", "=", 
+           RowBox[{"oFinalArray", " ", "/.", " ", "qFinalRules"}]}], ";", 
           "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
+          RowBox[{"Print", "[", "\"\<First sub array\>\"", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "subArray", "]"}], ";", "\[IndentingNewLine]",
+           "\[IndentingNewLine]", 
+          RowBox[{"allCoords", " ", "=", " ", 
+           RowBox[{"Tuples", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Range", "[", 
+               RowBox[{"1", ",", "#"}], "]"}], "&"}], "/@", 
+             RowBox[{"Dimensions", "@", "oFinalArray"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"tCondition", " ", "=", " ", 
+           RowBox[{"(", 
+            RowBox[{"t", " ", "\[RuleDelayed]", 
+             RowBox[{"t", "+", "1"}]}], ")"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"qCondition", " ", "=", " ", 
            RowBox[{
-           "Generates", " ", "all", " ", "instances", " ", "of", " ", "the", 
-            " ", "data"}], " ", "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"(", 
+             RowBox[{"Equal", "[", 
+              RowBox[{"q_", ",", " ", "num_"}], "]"}], ")"}], " ", 
+            "\[RuleDelayed]", 
+            RowBox[{"q", " ", "\[RuleDelayed]", " ", "num"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"qNew", " ", "=", " ", "qFinalRules"}], ";", 
+          "\[IndentingNewLine]", 
           RowBox[{"Do", "[", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{
@@ -627,6 +675,10 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
                 RowBox[{"Base", " ", "case"}], " ", "*)"}], 
                "\[IndentingNewLine]", 
                RowBox[{
+                RowBox[{"oD", " ", "=", " ", 
+                 RowBox[{"CategoricalDistribution", "[", 
+                  RowBox[{"values", ",", " ", "subArray"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
                 RowBox[{"nextCase", " ", "=", " ", 
                  RowBox[{"RandomVariate", "[", "oD", "]"}]}], ";", 
                 "\[IndentingNewLine]", 
@@ -636,36 +688,91 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
                 "\[IndentingNewLine]", 
                 RowBox[{"AppendTo", "[", 
                  RowBox[{"observations", ",", " ", "currStep"}], "]"}], ";"}],
-                ",", "\[IndentingNewLine]", 
+                ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
                RowBox[{"(*", " ", 
                 RowBox[{
                 "timeValExtraction", " ", "determines", " ", "the", " ", 
                  "values", " ", "for", " ", "next", " ", 
                  RowBox[{"step", "'"}], "s", " ", "blanket"}], " ", "*)"}], 
-               "\[IndentingNewLine]", 
+               "\[IndentingNewLine]", "\[IndentingNewLine]", 
+               RowBox[{"(*", " ", 
+                RowBox[{
+                "qNew", " ", "is", " ", "a", " ", "list", " ", "of", " ", "q",
+                  " ", "equalities", " ", "that", " ", "will", " ", "hold", 
+                 " ", "for", " ", "the", " ", "next", " ", "distribution"}], 
+                " ", "*)"}], "\[IndentingNewLine]", 
                RowBox[{
+                RowBox[{"qNew", " ", "=", " ", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"qAppend", " ", "/.", " ", "tCondition"}], " ", "/.",
+                    " ", "unconditionedProbability"}], "/.", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"oFinalRules", " ", "/.", " ", "qNew"}], ")"}]}]}],
+                 ";", "\[IndentingNewLine]", 
+                RowBox[{"Do", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"qNew", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], " ", "=", " ", 
+                    RowBox[{"switchEqualsQ", "[", 
+                    RowBox[{"qNew", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";"}], 
+                  "\[IndentingNewLine]", ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", " ", 
+                    RowBox[{"Length", "[", "qNew", "]"}]}], "}"}]}], "]"}], 
+                ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                 "Turns", " ", "qNew", " ", "into", " ", "a", " ", "list", 
+                  " ", "of", " ", "rules"}], " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"qNew", " ", "=", " ", 
+                 RowBox[{"qNew", " ", "/.", " ", "qCondition"}]}], ";", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"subArray", " ", "=", " ", 
+                 RowBox[{"oFinalArray", " ", "/.", " ", "qNew"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"Print", "[", "\"\<Next sub array\>\"", "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"Print", "[", "subArray", "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"nextCondition", " ", "=", " ", 
+                 RowBox[{"timeValExtraction", "[", 
+                  RowBox[{"nextCase", ",", " ", "willBePastStep"}], "]"}]}], 
+                ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"cD", " ", "=", " ", 
+                 RowBox[{"singleConditionalDist", "[", 
+                  RowBox[{
+                  "subArray", ",", " ", "isPastStep", ",", " ", 
+                   "pastStepVars", ",", " ", "pastStepValues", ",", " ", 
+                   "nextCondition", ",", " ", "allCoords"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"cD", " ", "=", " ", 
+                 RowBox[{"CategoricalDistribution", "[", 
+                  RowBox[{"values", ",", " ", "cD"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
                 RowBox[{"nextCase", " ", "=", " ", 
-                 RowBox[{"RandomVariate", "[", 
-                  RowBox[{"condF", "[", 
-                   RowBox[{"timeValExtraction", "[", 
-                    RowBox[{"nextCase", ",", " ", "willBePastStep"}], "]"}], 
-                   "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"RandomVariate", "[", "oD", "]"}]}], ";", 
+                "\[IndentingNewLine]", 
                 RowBox[{"currStep", " ", "=", " ", 
                  RowBox[{"timeValPresentExtraction", "[", 
                   RowBox[{"nextCase", ",", " ", "isCurrStep"}], "]"}]}], ";", 
                 "\[IndentingNewLine]", 
                 RowBox[{"AppendTo", "[", 
                  RowBox[{"observations", ",", " ", "currStep"}], "]"}], 
-                ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
-            "\[IndentingNewLine]", ",", 
+                ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], 
+             ";"}], "\[IndentingNewLine]", ",", 
             RowBox[{"{", 
              RowBox[{"i", ",", " ", "numsamples"}], "}"}]}], "]"}], ";", 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", "observations"}]}], 
-        "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], ",", 
-       "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]",
+           "observations"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        "]"}], ",", "\[IndentingNewLine]", 
        RowBox[{
        "Print", "[", "\"\<Invalid system: solver timed out\>\"", "]"}]}], 
-      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "*)"}], 
+      "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}]}], "Input",
  CellChangeTimes->{{3.810838578830367*^9, 3.8108385831947412`*^9}, {
    3.810838619699106*^9, 3.810838686918848*^9}, {3.810842604989357*^9, 
@@ -728,11 +835,31 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.815078456016217*^9}, 3.815078517435824*^9, {3.815078581124666*^9, 
    3.815078588464703*^9}, {3.815078674311303*^9, 3.815078687453329*^9}, {
    3.815079691179637*^9, 3.8150797296322803`*^9}, {3.815080266473957*^9, 
-   3.815080275270442*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
+   3.815080275270442*^9}, {3.815702140830305*^9, 3.8157021568181562`*^9}, {
+   3.815702191778056*^9, 3.815702207854185*^9}, {3.815702261511229*^9, 
+   3.815702347322259*^9}, {3.815702385298731*^9, 3.815702463337612*^9}, 
+   3.815703390261694*^9, {3.815703481203186*^9, 3.815703490063868*^9}, {
+   3.815703522410717*^9, 3.815703623366171*^9}, {3.815703920090452*^9, 
+   3.8157039676522007`*^9}, {3.815704015549644*^9, 3.815704019492774*^9}, {
+   3.815704091802277*^9, 3.815704190938665*^9}, {3.81570428327003*^9, 
+   3.815704299623212*^9}, {3.8157044929892406`*^9, 3.8157045163780107`*^9}, {
+   3.8157045626484003`*^9, 3.815704630957464*^9}, {3.815704662874473*^9, 
+   3.815704710896862*^9}, {3.815704839617886*^9, 3.815704842091982*^9}, {
+   3.815708526857463*^9, 3.8157086195261374`*^9}, {3.8157086827756853`*^9, 
+   3.815708698826984*^9}, {3.815708826979998*^9, 3.815708863853655*^9}, {
+   3.8157089133743343`*^9, 3.815709000203615*^9}, {3.815709207238501*^9, 
+   3.815709380326006*^9}, {3.8157094287396307`*^9, 3.815709505066785*^9}, 
+   3.815709548786797*^9, {3.815709595609558*^9, 3.8157096517540073`*^9}, {
+   3.815709718374106*^9, 3.815709720489437*^9}, {3.8157097638603487`*^9, 
+   3.815709804567603*^9}, {3.815709841149952*^9, 3.8157099657793503`*^9}, 
+   3.815710037027356*^9, {3.815710072928677*^9, 3.815710147204665*^9}, {
+   3.815710256894725*^9, 3.81571025727527*^9}, {3.815710338723607*^9, 
+   3.8157103470170517`*^9}, {3.815710403363319*^9, 
+   3.815710462168812*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
 84c70916ed19"]
 },
 WindowSize->{901, 706},
-WindowMargins->{{Automatic, 24}, {Automatic, 6}},
+WindowMargins->{{Automatic, 209}, {Automatic, 9}},
 Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -749,7 +876,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 34546, 711, 4651, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+Cell[558, 20, 41674, 838, 5491, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 }
 ]
 *)
