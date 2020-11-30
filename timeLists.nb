@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     41436,        910]
-NotebookOptionsPosition[     40775,        892]
-NotebookOutlinePosition[     41186,        909]
-CellTagsIndexPosition[     41143,        906]
+NotebookDataLength[     41804,        917]
+NotebookOptionsPosition[     41145,        899]
+NotebookOutlinePosition[     41554,        916]
+CellTagsIndexPosition[     41511,        913]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -538,7 +538,12 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"-", " ", "List"}], " ", "of", " ", "m", " ", "values", " ", 
       "that", " ", "represent", " ", "the", " ", "condition"}], " ", ";", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"-", " ", "Set"}], " ", "of", " ", "tuples", " ", 
+      "representing", " ", "all", " ", "possible", " ", "index", " ", 
+      "variations", " ", "of", " ", "past", " ", "step", " ", "values"}], " ",
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"Output", ":", " ", 
       RowBox[{
       "A", " ", "conditional", " ", "distribution", " ", "based", " ", "on", 
@@ -887,11 +892,13 @@ Cell[BoxData[{
    3.81344503803433*^9, 3.8134450740338383`*^9}, {3.813445118325265*^9, 
    3.8134451186100082`*^9}, {3.8134451676639137`*^9, 3.813445248907247*^9}, {
    3.813445280957438*^9, 3.813445283174057*^9}, {3.8134453467341146`*^9, 
-   3.813445387999689*^9}, {3.813445747656971*^9, 3.813445788095005*^9}},
+   3.813445387999689*^9}, {3.813445747656971*^9, 3.813445788095005*^9}, {
+   3.815703887551592*^9, 3.815703911627776*^9}, {3.815704103519609*^9, 
+   3.815704104112422*^9}},
  CellLabel->"In[10]:=",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
 },
 WindowSize->{808, 718},
-WindowMargins->{{Automatic, 101}, {Automatic, 24}},
+WindowMargins->{{Automatic, 0}, {42, Automatic}},
 Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -911,7 +918,7 @@ Notebook[{
 Cell[558, 20, 9552, 200, 1102, "Input",ExpressionUUID->"cf9ceaeb-dbb2-4cc6-b56a-56b50997435f"],
 Cell[10113, 222, 5644, 129, 871, "Input",ExpressionUUID->"5ff322ab-fab5-4817-ac0b-5d3567b1245b"],
 Cell[15760, 353, 2428, 51, 262, "Input",ExpressionUUID->"0c9c58d3-197c-4163-9dca-736fb962daf8"],
-Cell[18191, 406, 22580, 484, 2887, "Input",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
+Cell[18191, 406, 22950, 491, 2908, "Input",ExpressionUUID->"382117d4-43c1-4fc6-a505-127cd1b4746d"]
 }
 ]
 *)
