@@ -1,0 +1,11 @@
+casetype: "static"
+variables: {X, Y}
+values: {{"X1", "X2", "X3"}, {"Y1", "Y2"}}
+numsamples: 10
+
+main
+P[Y = "Y1" | X = "X2"] = .75
+P[Y = "Y1" | X = "X1"] = .4
+P[Y = "Y1" | X = "X3"] = .2
+P[X = "X1"] = .3
+P[X = "X2"] = .6

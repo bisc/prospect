@@ -1,0 +1,19 @@
+casetype: "static"
+variables: {X, Y, Z}
+values: {{"X1", "X2", "X3"}, {"Y1", "Y2"}, {"Z1", "Z2"}}
+numsamples: 10
+
+independence
+indep[{X, Z}]
+
+main
+P[X = "X1"] = 1/3
+P[X = "X2"] = 1/3
+P[Y = "Y1" | X = "X2"] = 1/2
+P[Y = "Y1" | X = "X1"] = 1/2
+P[Y = "Y1" | X = "X3"] = 1/2
+P[Z = "Z1"] = 1/2
+P[X = "X1" && Y = "Y1" && Z = "Z2"] = 1/12
+P[X = "X2" && Y = "Y2" && Z = "Z1"] = 1/12
+P[X = "X3" && Y = "Y1" && Z = "Z1"] = 1/12
+
