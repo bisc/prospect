@@ -19,7 +19,8 @@ base // Only in timevariant case
 (PROBABILITY SPECIFICATIONS LINE BY LINE: Equations with left and right hand sides that utilize inputs of the form P[event] or P[event | event])
 - These equations can only contain variables from time steps less than t
 - NOT, OR, AND boolean operations supported. Variable equality is also supported (ex. P[X = Y]) if X and Y have the same values
-*blank line*  
+*blank line*
+main
 (PROBABILITY SPECIFICATIONS LINE BY LINE: Equations with left and right hand sides that utilize inputs of the form P[event] or P[event | event])
 - NOT, OR, AND boolean operations supported. Variable equality is also supported (ex. P[X = Y]) if X and Y have the same values.
 
