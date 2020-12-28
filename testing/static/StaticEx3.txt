@@ -3,8 +3,10 @@ variables: {X, Y, Z}
 values: {{"his", "her"}, {"big", "small"}, {"cat", "dog"}}
 numsamples: 30
 
+independence
 indep[{X, Y}]
 
+main
 P[X = "his"] = .3
 P[Y = "big"] = .4
 P[Z = "cat"] = .5

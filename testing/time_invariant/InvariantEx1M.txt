@@ -1,0 +1,24 @@
+casetype: "timeinvariant"
+variables: {T, B}
+values: {{0, 1}, {0, 1}}
+timesteps: {2, 1}
+numsamples: 10
+
+indep[{T[t], B[t]}]
+
+main
+P[T[t] = 1 | T[t-1] = 1 && T[t-2] = 1] = .2
+P[T[t] = 1 | T[t-1] = 0 && T[t-2] = 0] = .8
+P[T[t] = 1 | (T[t-1] = 0 || T[t-2] = 0) && (T[t-1] = 1 || T[t-2] = 1)] = .5
+P[T[t] = 0 | T[t-1] = 0 && T[t-2] = 1] = .5
+
+P[T[t] = 0 | B[t-1] = 1] = P[T[t] = 0]
+P[T[t] = 0 | B[t-1] = 0] = .7
+
+P[B[t] = 0 | P[B[t-1] = 0] = 1
+P[B[t] = 0 | P[B[t-1] = 1] = .2
+
+
+
+
+

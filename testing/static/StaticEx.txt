@@ -3,8 +3,10 @@ variables: {A, B}
 values: {{1, 2, 3}, {"red", "blue"}}
 numsamples: 10
 
+independence
 indep[{A, B}]
 
+main
 P[B = "red"] = .3
 P[B = "red"] + P[A = 1 | B = "blue"] = .9
 P[A = 2 && B = "blue"] = .2

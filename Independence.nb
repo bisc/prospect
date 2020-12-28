@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     22161,        484]
-NotebookOptionsPosition[     21505,        466]
-NotebookOutlinePosition[     21917,        483]
-CellTagsIndexPosition[     21874,        480]
+NotebookDataLength[     26875,        583]
+NotebookOptionsPosition[     26234,        566]
+NotebookOutlinePosition[     26630,        582]
+CellTagsIndexPosition[     26587,        579]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -441,32 +441,131 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{
         RowBox[{"a", " ", "=", " ", "a0"}], ",", " ", 
-        RowBox[{"b", " ", "=", " ", "b0"}], " ", ",", " ", "addCondition"}], 
-       "}"}], ",", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"addCondition", " ", "=", " ", 
-        RowBox[{
-         RowBox[{"(", 
-          RowBox[{"myProb", "[", "c_", "]"}], ")"}], " ", "\[RuleDelayed]", 
+        RowBox[{"b", " ", "=", " ", "b0"}], " ", ",", " ", "originalIndep", 
+        ",", " ", "addCondition", ",", "insideFunc", ",", " ", "valList", ",",
          " ", 
-         RowBox[{"myCondProb", "[", 
-          RowBox[{"c", " ", "\[Conditioned]", " ", "b"}], "]"}]}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"indep", "[", "a", "]"}], " ", "/.", " ", 
-        "addCondition"}]}]}], "\[IndentingNewLine]", "]"}]}], 
-   ";"}]}]], "Input",
+        RowBox[{"allVals", " ", "=", " ", 
+         RowBox[{"{", "}"}]}], ",", " ", 
+        RowBox[{"tuples", " ", "=", " ", 
+         RowBox[{"{", "}"}]}], ",", " ", 
+        RowBox[{"retList", " ", "=", " ", 
+         RowBox[{"{", "}"}]}], ",", " ", "tempCond"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"originalIndep", " ", "=", " ", 
+        RowBox[{"indep", "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Get", " ", "lists", " ", "of", " ", "all", " ", "values"}], 
+        " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"insideFunc", "[", "p_", "]"}], " ", ":=", " ", 
+           RowBox[{
+            RowBox[{"b", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], " ", "\[Equal]", " ", "p"}]}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{"valList", " ", "=", " ", 
+           RowBox[{"acquireValList", "[", 
+            RowBox[{"variables", ",", " ", "values", ",", " ", 
+             RowBox[{"b", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"valList", " ", "=", " ", 
+           RowBox[{"Map", "[", 
+            RowBox[{"insideFunc", ",", " ", "valList"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"allVals", ",", " ", "valList"}], "]"}], ";"}], 
+         "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", 
+           RowBox[{"Length", "[", "b", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "tuples", " ", "has", " ", "all", " ", "combinations", " ", "of", " ",
+          "input", " ", "values"}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"tuples", " ", "=", " ", 
+        RowBox[{"Tuples", "[", "allVals", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Getting", " ", "the", " ", "overall", " ", "condition"}], 
+         " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Do", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"r", " ", "\[Equal]", " ", "1"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"tempCond", " ", "=", " ", 
+                 RowBox[{
+                  RowBox[{"tuples", "[", 
+                   RowBox[{"[", "k", "]"}], "]"}], "[", 
+                  RowBox[{"[", "r", "]"}], "]"}]}], ";"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"tempCond", " ", "=", " ", 
+                 RowBox[{"tempCond", " ", "&&", " ", 
+                  RowBox[{
+                   RowBox[{"tuples", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "[", 
+                   RowBox[{"[", "r", "]"}], "]"}]}]}], ";"}]}], 
+              "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+            RowBox[{"{", 
+             RowBox[{"r", ",", " ", 
+              RowBox[{"Length", "[", 
+               RowBox[{"tuples", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"addCondition", " ", "=", " ", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"myProb", "[", "c_", "]"}], ")"}], " ", "\[RuleDelayed]",
+             " ", 
+            RowBox[{"myCondProb", "[", 
+             RowBox[{"c", " ", "\[Conditioned]", " ", "tempCond"}], "]"}]}]}],
+           ";", "\[IndentingNewLine]", 
+          RowBox[{"Do", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"retList", ",", 
+               RowBox[{
+                RowBox[{"originalIndep", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], " ", "/.", " ", 
+                "addCondition"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", ",", 
+            RowBox[{"{", 
+             RowBox[{"k", ",", " ", 
+              RowBox[{"Length", "[", "originalIndep", "]"}]}], "}"}]}], "]"}],
+           ";"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", " ", 
+           RowBox[{"Length", "[", "tuples", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", "retList"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}]}]], "Input",
  CellChangeTimes->{{3.806428918911614*^9, 3.8064289233582067`*^9}, {
    3.8064289660635757`*^9, 3.806429022037458*^9}, {3.806429052611615*^9, 
    3.806429083708643*^9}, {3.806429145597082*^9, 3.806429182068141*^9}, {
    3.8064532905229387`*^9, 3.8064532948326073`*^9}, {3.806453359008803*^9, 
    3.806453464480947*^9}, {3.806453769238413*^9, 3.806453783146984*^9}, 
-   3.808519820658066*^9, {3.808519963325786*^9, 3.80851996555807*^9}},
- CellLabel->"In[8]:=",ExpressionUUID->"7e5022a4-9beb-41eb-9fbd-93fe15d9cfdb"]
+   3.808519820658066*^9, {3.808519963325786*^9, 3.80851996555807*^9}, {
+   3.81809779295418*^9, 3.8180978048251657`*^9}, {3.818101787797492*^9, 
+   3.818101830121376*^9}, {3.818101892364587*^9, 3.818101951982712*^9}, {
+   3.81810219802457*^9, 3.8181022542*^9}, {3.8181022926389933`*^9, 
+   3.818102448004427*^9}, {3.818103079795356*^9, 3.818103110288849*^9}, {
+   3.818103188620749*^9, 3.8181032494074783`*^9}, {3.818103290425447*^9, 
+   3.8181033486567163`*^9}, {3.818103495979751*^9, 3.8181037565727987`*^9}},
+ CellLabel->"In[99]:=",ExpressionUUID->"7e5022a4-9beb-41eb-9fbd-93fe15d9cfdb"]
 },
 WindowSize->{1025, 735},
-WindowMargins->{{178, Automatic}, {Automatic, 23}},
-Visible->False,
+WindowMargins->{{Automatic, 166}, {Automatic, 22}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"5ad4fa68-0286-493f-83bd-ef1c3fe3ef71"
@@ -485,7 +584,7 @@ Notebook[{
 Cell[558, 20, 4143, 96, 472, "Input",ExpressionUUID->"0565d137-be2d-4c57-9880-2b3ed968f2c6"],
 Cell[4704, 118, 14696, 294, 1228, "Input",ExpressionUUID->"1b505532-62d8-441c-9bcb-778cec54d12f"],
 Cell[19403, 414, 448, 10, 52, "Input",ExpressionUUID->"07ab5aec-c629-4aa3-8b29-802d4fbb8f02"],
-Cell[19854, 426, 1647, 38, 157, "Input",ExpressionUUID->"7e5022a4-9beb-41eb-9fbd-93fe15d9cfdb"]
+Cell[19854, 426, 6376, 138, 724, "Input",ExpressionUUID->"7e5022a4-9beb-41eb-9fbd-93fe15d9cfdb"]
 }
 ]
 *)

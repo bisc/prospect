@@ -3,7 +3,9 @@ variables: {A, B}
 values: {{1, 2}, {"red", "blue"}}
 numsamples: 50
 
+independence
 indep[{A, B}]
 
+main
 P[B = "red"] = .3
 P[A = 1] = .4
