@@ -1,0 +1,14 @@
+casetype: "timeinvariant"
+variables: {latency, ping}
+values: {{"low", "high"}, {"low", "high"}}
+timesteps: {0, 1}
+numsamples: 10
+
+independence
+condindep[{latency[t], ping[t-1]}, {ping[t]}]
+
+main
+P[ping[t] = "high" | ping[t-1] = "high"] = .7
+P[ping[t] = "low" | ping[t-1] = "low"] = .65
+P[latency[t] = "low"] = .8
+P[ping[t] = "high" | latency[t] = "high"] = .6

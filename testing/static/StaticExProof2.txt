@@ -11,9 +11,10 @@ P[detection = "detected" | time = "day"] = .75
 P[detection = "detected" | time = "twilight"] = .4
 P[detection = "detected" | time = "night"] = .2
 P[time = "day"] = .6
-P[time = "twilight"] = .3
+P[time = "twilight"] = P[time = "night"]
 P[lane = "out"] = .2
 P[detection = "detected" | lane = "in"] = .6
+
 
 
 
