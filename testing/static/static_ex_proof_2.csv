@@ -1,0 +1,1001 @@
+row,time,detection,lane
+1,night,detected,in
+2,day,detected,in
+3,day,detected,in
+4,night,not detected,in
+5,day,detected,in
+6,night,not detected,out
+7,twilight,not detected,in
+8,day,detected,in
+9,day,detected,out
+10,day,detected,out
+11,night,not detected,in
+12,day,detected,out
+13,night,detected,in
+14,day,detected,in
+15,day,detected,in
+16,twilight,not detected,in
+17,day,detected,in
+18,night,not detected,in
+19,day,detected,out
+20,day,detected,in
+21,night,not detected,in
+22,night,not detected,in
+23,day,not detected,out
+24,night,not detected,out
+25,day,detected,in
+26,day,detected,in
+27,day,not detected,in
+28,twilight,not detected,out
+29,night,not detected,in
+30,day,detected,out
+31,twilight,not detected,in
+32,twilight,not detected,in
+33,day,detected,in
+34,day,detected,in
+35,twilight,not detected,in
+36,night,not detected,in
+37,day,detected,in
+38,day,detected,in
+39,day,not detected,in
+40,day,detected,in
+41,night,not detected,in
+42,day,detected,in
+43,night,detected,in
+44,day,detected,in
+45,day,not detected,in
+46,night,not detected,in
+47,twilight,not detected,in
+48,twilight,detected,in
+49,day,not detected,in
+50,day,detected,in
+51,twilight,not detected,in
+52,night,not detected,out
+53,twilight,detected,in
+54,day,not detected,in
+55,twilight,not detected,in
+56,night,not detected,in
+57,day,detected,in
+58,night,detected,out
+59,day,detected,in
+60,day,detected,in
+61,night,not detected,in
+62,day,detected,in
+63,night,detected,in
+64,twilight,not detected,in
+65,twilight,detected,in
+66,night,not detected,in
+67,day,detected,in
+68,day,detected,in
+69,twilight,not detected,out
+70,day,detected,in
+71,twilight,detected,in
+72,day,detected,out
+73,twilight,not detected,in
+74,day,detected,out
+75,day,detected,in
+76,day,detected,in
+77,day,detected,in
+78,day,detected,in
+79,day,detected,in
+80,day,detected,in
+81,night,not detected,in
+82,night,not detected,in
+83,night,not detected,in
+84,night,detected,in
+85,day,detected,in
+86,twilight,not detected,in
+87,twilight,not detected,in
+88,day,detected,in
+89,day,detected,in
+90,day,not detected,in
+91,twilight,not detected,out
+92,twilight,detected,in
+93,day,not detected,in
+94,twilight,not detected,out
+95,night,not detected,in
+96,day,not detected,in
+97,night,not detected,in
+98,day,detected,in
+99,day,detected,in
+100,day,not detected,in
+101,day,not detected,in
+102,day,not detected,out
+103,night,not detected,in
+104,day,detected,in
+105,day,detected,out
+106,twilight,not detected,in
+107,day,detected,in
+108,day,detected,in
+109,twilight,not detected,out
+110,twilight,detected,in
+111,day,detected,in
+112,day,not detected,in
+113,day,detected,in
+114,night,not detected,in
+115,night,not detected,in
+116,day,detected,in
+117,day,detected,out
+118,day,detected,out
+119,day,detected,in
+120,twilight,not detected,in
+121,twilight,not detected,in
+122,day,not detected,in
+123,day,detected,in
+124,night,not detected,out
+125,twilight,not detected,in
+126,twilight,detected,out
+127,day,detected,in
+128,day,detected,in
+129,day,detected,in
+130,day,not detected,in
+131,day,detected,in
+132,twilight,not detected,in
+133,day,detected,in
+134,day,detected,in
+135,night,not detected,in
+136,day,detected,in
+137,twilight,not detected,out
+138,night,not detected,out
+139,day,not detected,out
+140,night,not detected,in
+141,day,detected,out
+142,day,not detected,in
+143,twilight,not detected,out
+144,twilight,not detected,in
+145,day,not detected,out
+146,twilight,not detected,in
+147,day,detected,out
+148,day,detected,in
+149,twilight,not detected,in
+150,day,detected,in
+151,night,not detected,out
+152,day,not detected,in
+153,night,not detected,out
+154,day,not detected,out
+155,day,not detected,in
+156,night,detected,in
+157,day,detected,in
+158,day,detected,out
+159,night,not detected,in
+160,day,not detected,in
+161,day,not detected,out
+162,day,detected,in
+163,twilight,detected,in
+164,day,detected,in
+165,night,not detected,in
+166,day,detected,in
+167,day,not detected,out
+168,day,detected,in
+169,night,not detected,out
+170,day,detected,out
+171,night,not detected,in
+172,day,detected,in
+173,day,detected,in
+174,twilight,detected,in
+175,day,detected,in
+176,night,not detected,in
+177,twilight,detected,in
+178,day,detected,in
+179,day,detected,in
+180,day,detected,in
+181,day,detected,in
+182,twilight,not detected,out
+183,day,detected,in
+184,night,not detected,in
+185,twilight,detected,in
+186,day,detected,out
+187,twilight,not detected,in
+188,day,detected,in
+189,night,not detected,in
+190,night,not detected,in
+191,day,detected,out
+192,twilight,not detected,out
+193,day,detected,in
+194,day,detected,in
+195,twilight,not detected,in
+196,day,not detected,in
+197,day,detected,in
+198,day,not detected,in
+199,day,not detected,in
+200,day,not detected,in
+201,day,detected,in
+202,day,not detected,in
+203,day,detected,in
+204,day,detected,in
+205,day,detected,in
+206,day,detected,in
+207,day,not detected,in
+208,day,detected,in
+209,twilight,not detected,in
+210,day,detected,in
+211,day,not detected,out
+212,twilight,not detected,in
+213,day,detected,in
+214,night,not detected,out
+215,night,not detected,out
+216,day,detected,in
+217,day,detected,in
+218,day,not detected,out
+219,night,detected,in
+220,day,not detected,in
+221,day,not detected,in
+222,twilight,not detected,in
+223,day,detected,in
+224,day,not detected,in
+225,twilight,not detected,in
+226,day,detected,in
+227,day,detected,out
+228,day,detected,in
+229,day,detected,in
+230,day,detected,in
+231,day,detected,in
+232,day,detected,in
+233,day,not detected,out
+234,twilight,detected,in
+235,day,detected,in
+236,night,not detected,in
+237,day,detected,in
+238,twilight,detected,in
+239,night,not detected,in
+240,twilight,not detected,out
+241,day,detected,in
+242,day,detected,in
+243,day,not detected,in
+244,night,not detected,in
+245,day,detected,in
+246,day,detected,out
+247,twilight,detected,in
+248,day,detected,in
+249,night,not detected,in
+250,day,not detected,in
+251,day,detected,in
+252,day,detected,in
+253,day,not detected,in
+254,twilight,detected,in
+255,day,detected,in
+256,day,detected,in
+257,twilight,not detected,out
+258,night,not detected,in
+259,night,not detected,in
+260,day,not detected,in
+261,day,detected,in
+262,day,detected,in
+263,twilight,detected,in
+264,night,not detected,in
+265,day,detected,in
+266,twilight,detected,in
+267,twilight,detected,in
+268,day,detected,in
+269,twilight,detected,out
+270,day,not detected,in
+271,day,detected,in
+272,day,detected,in
+273,day,detected,in
+274,twilight,not detected,in
+275,twilight,not detected,out
+276,day,detected,out
+277,day,not detected,in
+278,day,not detected,out
+279,twilight,detected,in
+280,day,detected,in
+281,day,not detected,in
+282,day,not detected,in
+283,day,detected,out
+284,night,not detected,in
+285,day,detected,in
+286,day,detected,in
+287,day,detected,in
+288,night,not detected,in
+289,day,detected,in
+290,day,detected,in
+291,night,not detected,in
+292,day,detected,out
+293,twilight,detected,in
+294,twilight,not detected,in
+295,day,not detected,out
+296,night,not detected,in
+297,day,detected,in
+298,twilight,not detected,in
+299,day,not detected,in
+300,day,detected,in
+301,twilight,detected,in
+302,twilight,detected,out
+303,night,detected,in
+304,day,detected,in
+305,night,not detected,in
+306,twilight,detected,in
+307,twilight,detected,in
+308,day,detected,in
+309,day,not detected,out
+310,night,not detected,in
+311,day,detected,out
+312,night,not detected,in
+313,night,detected,out
+314,twilight,detected,in
+315,day,detected,in
+316,day,detected,in
+317,night,detected,in
+318,twilight,not detected,in
+319,day,detected,in
+320,day,detected,in
+321,day,detected,in
+322,day,detected,out
+323,day,detected,in
+324,day,detected,in
+325,twilight,not detected,in
+326,twilight,not detected,in
+327,day,detected,in
+328,day,detected,in
+329,night,not detected,out
+330,day,not detected,in
+331,day,detected,out
+332,day,detected,in
+333,day,detected,out
+334,twilight,detected,in
+335,night,not detected,in
+336,twilight,not detected,out
+337,twilight,detected,in
+338,night,not detected,in
+339,day,not detected,in
+340,day,not detected,in
+341,day,not detected,in
+342,day,detected,in
+343,night,not detected,in
+344,day,not detected,in
+345,twilight,not detected,in
+346,twilight,detected,in
+347,day,detected,in
+348,twilight,detected,in
+349,twilight,detected,in
+350,day,detected,in
+351,twilight,detected,in
+352,day,detected,in
+353,day,detected,in
+354,day,detected,in
+355,day,detected,in
+356,day,detected,in
+357,night,not detected,out
+358,night,detected,in
+359,day,detected,out
+360,day,detected,in
+361,day,detected,in
+362,night,not detected,out
+363,twilight,not detected,in
+364,day,not detected,out
+365,twilight,detected,in
+366,day,detected,in
+367,day,detected,in
+368,twilight,detected,in
+369,twilight,not detected,in
+370,day,detected,out
+371,day,detected,in
+372,day,detected,in
+373,day,detected,in
+374,night,not detected,in
+375,day,detected,in
+376,day,detected,in
+377,day,detected,out
+378,night,not detected,out
+379,day,detected,in
+380,day,detected,in
+381,day,detected,in
+382,day,not detected,in
+383,night,detected,in
+384,day,detected,in
+385,day,detected,out
+386,day,detected,in
+387,day,not detected,out
+388,twilight,not detected,in
+389,night,not detected,in
+390,day,detected,in
+391,twilight,detected,in
+392,day,detected,in
+393,day,not detected,in
+394,twilight,not detected,out
+395,twilight,not detected,in
+396,day,not detected,in
+397,day,not detected,out
+398,day,detected,in
+399,night,not detected,in
+400,night,not detected,in
+401,night,not detected,out
+402,day,not detected,in
+403,twilight,detected,in
+404,day,detected,out
+405,twilight,not detected,in
+406,twilight,not detected,in
+407,twilight,not detected,in
+408,day,detected,in
+409,day,detected,in
+410,day,detected,in
+411,day,detected,in
+412,day,not detected,out
+413,day,detected,in
+414,twilight,not detected,out
+415,night,not detected,in
+416,twilight,not detected,in
+417,night,detected,in
+418,night,not detected,out
+419,day,not detected,in
+420,day,detected,in
+421,day,detected,in
+422,night,not detected,in
+423,day,not detected,in
+424,day,detected,in
+425,night,detected,out
+426,night,not detected,in
+427,night,detected,in
+428,day,not detected,in
+429,day,not detected,in
+430,night,not detected,in
+431,twilight,not detected,in
+432,day,detected,in
+433,day,detected,in
+434,day,detected,in
+435,day,detected,out
+436,day,detected,out
+437,day,detected,in
+438,day,not detected,out
+439,twilight,detected,in
+440,night,not detected,in
+441,night,detected,in
+442,twilight,not detected,out
+443,day,not detected,out
+444,day,detected,in
+445,day,not detected,out
+446,day,detected,in
+447,night,not detected,in
+448,day,detected,in
+449,day,detected,in
+450,day,detected,in
+451,day,detected,in
+452,day,detected,in
+453,twilight,detected,in
+454,day,detected,out
+455,twilight,detected,in
+456,day,detected,in
+457,twilight,detected,in
+458,day,detected,in
+459,twilight,detected,in
+460,twilight,detected,in
+461,night,not detected,in
+462,day,detected,out
+463,twilight,detected,out
+464,day,detected,in
+465,night,not detected,in
+466,day,detected,in
+467,day,detected,in
+468,twilight,not detected,in
+469,twilight,detected,out
+470,night,not detected,out
+471,night,detected,out
+472,night,not detected,in
+473,day,detected,in
+474,day,detected,in
+475,day,detected,in
+476,twilight,not detected,in
+477,day,detected,out
+478,day,detected,in
+479,twilight,not detected,out
+480,day,not detected,in
+481,day,detected,in
+482,day,not detected,in
+483,day,detected,in
+484,day,detected,in
+485,day,detected,out
+486,day,detected,in
+487,night,not detected,in
+488,day,not detected,in
+489,day,detected,out
+490,day,detected,in
+491,twilight,not detected,in
+492,day,detected,out
+493,day,detected,in
+494,twilight,detected,in
+495,day,detected,in
+496,night,not detected,in
+497,day,detected,out
+498,day,detected,in
+499,night,not detected,out
+500,twilight,not detected,in
+501,twilight,not detected,in
+502,day,detected,in
+503,day,detected,out
+504,night,not detected,in
+505,twilight,detected,in
+506,night,not detected,in
+507,day,detected,out
+508,day,detected,in
+509,day,detected,in
+510,day,detected,in
+511,night,not detected,in
+512,night,not detected,in
+513,day,detected,in
+514,twilight,detected,in
+515,twilight,detected,in
+516,day,detected,in
+517,day,not detected,in
+518,day,detected,in
+519,twilight,not detected,out
+520,night,detected,in
+521,day,detected,out
+522,day,detected,in
+523,day,detected,in
+524,night,not detected,out
+525,night,not detected,in
+526,day,not detected,in
+527,day,detected,in
+528,twilight,detected,in
+529,day,detected,in
+530,night,not detected,in
+531,day,detected,in
+532,day,detected,in
+533,night,not detected,in
+534,twilight,detected,out
+535,day,detected,in
+536,twilight,not detected,in
+537,day,detected,in
+538,twilight,not detected,out
+539,day,detected,in
+540,day,detected,in
+541,day,not detected,out
+542,day,detected,in
+543,twilight,detected,in
+544,day,detected,in
+545,twilight,not detected,in
+546,twilight,detected,in
+547,day,detected,in
+548,day,detected,in
+549,night,not detected,in
+550,twilight,detected,in
+551,night,not detected,in
+552,twilight,detected,in
+553,night,not detected,in
+554,night,not detected,in
+555,day,detected,in
+556,day,detected,in
+557,day,not detected,in
+558,night,not detected,in
+559,day,detected,in
+560,day,detected,in
+561,twilight,not detected,in
+562,day,detected,in
+563,day,detected,in
+564,day,detected,in
+565,day,not detected,in
+566,night,not detected,in
+567,day,detected,in
+568,twilight,not detected,out
+569,day,detected,in
+570,day,detected,in
+571,night,detected,in
+572,day,detected,in
+573,twilight,not detected,in
+574,twilight,not detected,in
+575,night,not detected,in
+576,twilight,not detected,in
+577,day,detected,out
+578,twilight,not detected,in
+579,day,detected,in
+580,day,detected,out
+581,day,detected,in
+582,day,detected,in
+583,day,detected,in
+584,day,detected,in
+585,twilight,detected,in
+586,day,detected,in
+587,twilight,not detected,in
+588,day,detected,out
+589,day,detected,in
+590,day,detected,in
+591,day,not detected,in
+592,twilight,detected,in
+593,day,detected,in
+594,night,not detected,out
+595,night,not detected,in
+596,day,detected,in
+597,day,detected,in
+598,day,not detected,out
+599,night,not detected,in
+600,night,not detected,in
+601,day,detected,in
+602,day,detected,in
+603,day,not detected,in
+604,twilight,not detected,in
+605,day,not detected,out
+606,night,detected,out
+607,day,detected,in
+608,day,detected,in
+609,day,detected,in
+610,day,detected,out
+611,day,not detected,in
+612,day,not detected,out
+613,night,not detected,in
+614,day,detected,out
+615,day,detected,in
+616,day,detected,in
+617,twilight,not detected,out
+618,night,not detected,in
+619,day,detected,in
+620,day,detected,in
+621,day,detected,out
+622,day,detected,in
+623,day,detected,out
+624,day,detected,in
+625,day,detected,in
+626,night,not detected,in
+627,night,not detected,in
+628,night,not detected,out
+629,day,detected,in
+630,day,not detected,in
+631,twilight,not detected,out
+632,day,detected,in
+633,day,detected,in
+634,twilight,not detected,out
+635,day,detected,out
+636,day,detected,in
+637,day,not detected,in
+638,day,detected,in
+639,twilight,not detected,out
+640,twilight,not detected,in
+641,day,detected,in
+642,twilight,not detected,in
+643,twilight,not detected,in
+644,twilight,not detected,in
+645,night,detected,in
+646,day,detected,in
+647,day,not detected,in
+648,day,detected,in
+649,day,detected,in
+650,day,detected,in
+651,day,not detected,in
+652,day,detected,out
+653,day,not detected,out
+654,day,not detected,in
+655,night,not detected,in
+656,night,detected,in
+657,twilight,detected,in
+658,twilight,not detected,in
+659,night,not detected,in
+660,twilight,not detected,in
+661,day,detected,in
+662,day,detected,in
+663,day,detected,out
+664,night,not detected,in
+665,day,detected,in
+666,night,not detected,in
+667,twilight,detected,in
+668,day,detected,in
+669,day,not detected,in
+670,day,detected,in
+671,day,detected,in
+672,day,detected,in
+673,day,detected,out
+674,day,not detected,out
+675,night,not detected,out
+676,day,detected,in
+677,day,not detected,in
+678,night,not detected,in
+679,day,detected,out
+680,twilight,detected,in
+681,night,not detected,out
+682,day,detected,in
+683,day,detected,out
+684,twilight,detected,in
+685,day,detected,in
+686,twilight,not detected,in
+687,day,detected,in
+688,night,not detected,in
+689,day,detected,in
+690,night,not detected,in
+691,night,detected,in
+692,twilight,not detected,in
+693,day,detected,out
+694,day,not detected,in
+695,day,not detected,out
+696,day,detected,out
+697,day,detected,in
+698,day,not detected,in
+699,twilight,detected,in
+700,day,detected,in
+701,twilight,detected,out
+702,day,not detected,in
+703,night,not detected,in
+704,twilight,not detected,in
+705,day,detected,in
+706,day,detected,in
+707,twilight,detected,in
+708,night,not detected,out
+709,day,detected,in
+710,day,not detected,out
+711,day,detected,in
+712,day,detected,in
+713,night,not detected,in
+714,day,detected,in
+715,day,not detected,in
+716,day,detected,in
+717,night,not detected,out
+718,night,not detected,out
+719,day,detected,out
+720,twilight,not detected,in
+721,night,not detected,out
+722,twilight,not detected,in
+723,day,detected,in
+724,day,detected,in
+725,day,detected,in
+726,night,not detected,in
+727,day,detected,in
+728,day,detected,in
+729,day,detected,in
+730,day,detected,in
+731,day,not detected,in
+732,day,not detected,in
+733,night,detected,out
+734,day,detected,in
+735,day,detected,in
+736,night,not detected,in
+737,night,not detected,in
+738,day,detected,in
+739,night,not detected,in
+740,day,detected,in
+741,day,detected,in
+742,day,detected,in
+743,day,detected,in
+744,night,not detected,in
+745,day,detected,in
+746,day,detected,out
+747,night,detected,in
+748,night,detected,in
+749,day,detected,in
+750,twilight,not detected,in
+751,day,detected,in
+752,night,not detected,in
+753,day,detected,in
+754,night,not detected,in
+755,night,not detected,in
+756,twilight,detected,out
+757,twilight,not detected,in
+758,day,detected,in
+759,twilight,detected,out
+760,night,not detected,out
+761,day,detected,in
+762,day,not detected,in
+763,day,detected,out
+764,day,detected,out
+765,day,detected,in
+766,day,not detected,in
+767,night,not detected,in
+768,day,not detected,in
+769,day,detected,in
+770,day,not detected,out
+771,day,not detected,in
+772,day,detected,in
+773,day,detected,in
+774,twilight,detected,in
+775,day,not detected,out
+776,day,not detected,out
+777,day,detected,in
+778,day,detected,in
+779,twilight,not detected,in
+780,day,not detected,in
+781,day,detected,in
+782,day,detected,in
+783,day,detected,in
+784,twilight,detected,in
+785,day,detected,in
+786,night,not detected,in
+787,night,not detected,out
+788,day,detected,in
+789,twilight,not detected,in
+790,day,detected,in
+791,day,not detected,in
+792,twilight,not detected,out
+793,twilight,not detected,in
+794,twilight,not detected,in
+795,day,detected,in
+796,day,detected,in
+797,day,detected,in
+798,night,not detected,in
+799,day,detected,in
+800,night,not detected,in
+801,twilight,not detected,in
+802,day,detected,in
+803,day,not detected,out
+804,day,detected,out
+805,twilight,detected,in
+806,night,not detected,out
+807,night,not detected,in
+808,night,detected,in
+809,twilight,detected,in
+810,day,detected,in
+811,day,detected,in
+812,day,detected,in
+813,day,detected,in
+814,day,detected,out
+815,night,detected,in
+816,night,detected,in
+817,day,detected,in
+818,twilight,not detected,in
+819,day,detected,in
+820,night,not detected,out
+821,day,detected,out
+822,day,detected,in
+823,twilight,not detected,out
+824,day,not detected,in
+825,night,not detected,in
+826,twilight,detected,in
+827,day,detected,out
+828,day,detected,out
+829,day,not detected,in
+830,twilight,not detected,in
+831,day,not detected,out
+832,day,not detected,in
+833,day,detected,out
+834,day,detected,in
+835,day,detected,in
+836,day,detected,in
+837,twilight,detected,in
+838,night,not detected,in
+839,day,not detected,in
+840,day,detected,in
+841,day,not detected,out
+842,day,detected,in
+843,day,not detected,in
+844,twilight,not detected,in
+845,day,detected,out
+846,day,detected,in
+847,day,detected,in
+848,day,not detected,in
+849,day,detected,in
+850,night,not detected,in
+851,day,not detected,out
+852,night,detected,out
+853,day,not detected,in
+854,twilight,detected,in
+855,day,detected,out
+856,day,not detected,in
+857,night,not detected,out
+858,day,not detected,out
+859,day,detected,in
+860,night,not detected,out
+861,day,detected,in
+862,night,not detected,in
+863,twilight,not detected,in
+864,night,not detected,in
+865,twilight,detected,in
+866,day,detected,in
+867,day,detected,in
+868,night,not detected,in
+869,day,detected,in
+870,twilight,detected,in
+871,day,detected,in
+872,twilight,not detected,out
+873,night,not detected,in
+874,night,not detected,out
+875,twilight,not detected,in
+876,day,detected,in
+877,day,detected,in
+878,twilight,detected,in
+879,night,not detected,in
+880,twilight,not detected,in
+881,night,not detected,in
+882,twilight,not detected,in
+883,twilight,not detected,in
+884,day,detected,out
+885,night,not detected,out
+886,twilight,not detected,out
+887,twilight,not detected,in
+888,twilight,detected,in
+889,night,not detected,in
+890,day,not detected,in
+891,day,not detected,in
+892,day,detected,out
+893,day,detected,in
+894,twilight,detected,in
+895,day,detected,in
+896,day,not detected,in
+897,night,not detected,in
+898,day,detected,out
+899,day,detected,in
+900,day,detected,in
+901,day,detected,in
+902,day,not detected,out
+903,twilight,not detected,in
+904,day,not detected,in
+905,day,detected,in
+906,twilight,not detected,in
+907,day,detected,in
+908,night,not detected,in
+909,twilight,detected,out
+910,twilight,not detected,in
+911,day,detected,in
+912,day,detected,out
+913,twilight,detected,in
+914,day,detected,out
+915,night,not detected,out
+916,day,not detected,in
+917,twilight,detected,in
+918,night,not detected,in
+919,night,not detected,out
+920,day,not detected,out
+921,twilight,not detected,in
+922,day,not detected,in
+923,night,not detected,out
+924,twilight,not detected,in
+925,twilight,not detected,in
+926,twilight,detected,in
+927,day,detected,in
+928,day,detected,in
+929,day,not detected,in
+930,night,not detected,in
+931,day,detected,in
+932,day,detected,in
+933,twilight,not detected,in
+934,night,not detected,in
+935,night,detected,in
+936,day,not detected,in
+937,day,detected,in
+938,day,detected,in
+939,twilight,not detected,out
+940,day,detected,in
+941,day,not detected,in
+942,twilight,not detected,in
+943,day,detected,in
+944,day,detected,in
+945,twilight,not detected,out
+946,twilight,detected,in
+947,day,detected,in
+948,twilight,detected,in
+949,day,detected,in
+950,day,not detected,in
+951,day,detected,out
+952,day,detected,in
+953,night,not detected,out
+954,day,detected,out
+955,night,not detected,in
+956,night,not detected,in
+957,night,not detected,in
+958,night,not detected,out
+959,night,not detected,in
+960,day,detected,out
+961,day,not detected,out
+962,day,not detected,out
+963,twilight,detected,in
+964,twilight,detected,in
+965,day,not detected,in
+966,day,detected,out
+967,day,detected,out
+968,day,detected,in
+969,night,not detected,in
+970,day,detected,out
+971,twilight,not detected,out
+972,night,not detected,out
+973,night,not detected,out
+974,day,detected,in
+975,day,not detected,in
+976,day,detected,in
+977,day,detected,in
+978,night,not detected,in
+979,day,detected,in
+980,day,detected,in
+981,day,not detected,in
+982,day,detected,in
+983,twilight,detected,in
+984,day,not detected,in
+985,twilight,detected,in
+986,day,detected,out
+987,night,not detected,in
+988,day,detected,in
+989,day,detected,in
+990,day,not detected,out
+991,day,detected,out
+992,day,not detected,in
+993,night,not detected,in
+994,night,detected,in
+995,day,detected,in
+996,day,detected,in
+997,day,detected,in
+998,night,not detected,in
+999,day,detected,in
+1000,day,detected,in
