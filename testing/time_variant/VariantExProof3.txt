@@ -2,16 +2,16 @@ casetype: "timevariant"
 variables: {X, Y}
 values: {{0, 1}, {0, 1}}
 timesteps: {1, 0}
-numsamples: 2
+numsamples: 30
 
 independence
 indep[{Y[t], X[t-1]}]
 
 basecase
-P[X[0] = 1] = .1
+P[X[0] = 1] = .9
 
 main
 P[X[t] = 0 | X[t-1] = 0] = 1
-P[Y[t] = 1] = .8
+P[Y[t] = 1] = P[X[t-1] = 1]
 P[X[t] = 1] = P[X[t-1] = 1]-.1*P[X[t-1] = 1]
 P[Y[t] = 1 && X[t] = 1] = .95*P[Y[t] = 1 && X[t-1] = 1]

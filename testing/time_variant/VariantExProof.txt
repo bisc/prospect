@@ -5,8 +5,8 @@ timesteps: {1}
 numsamples: 40
 
 basecase
-P[X[0] = 1] = .2
+P[X[0] = 1] = .6
 
 main
-P[X[t] = 1] = P[X[t-1] = 1]-.01*P[X[t-1] = 1]
+P[X[t] = 1] = P[X[t-1] = 1]-.05*P[X[t-1] = 1]
 P[X[t] = 0 | X[t-1] = 0] = 1

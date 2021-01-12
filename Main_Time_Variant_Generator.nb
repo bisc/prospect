@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38995,        794]
-NotebookOptionsPosition[     38629,        779]
-NotebookOutlinePosition[     39039,        796]
-CellTagsIndexPosition[     38996,        793]
+NotebookDataLength[     39009,        794]
+NotebookOptionsPosition[     38658,        780]
+NotebookOutlinePosition[     39053,        796]
+CellTagsIndexPosition[     39010,        793]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -665,7 +665,7 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
                   RowBox[{"values", ",", " ", "cD"}], "]"}]}], ";", 
                 "\[IndentingNewLine]", 
                 RowBox[{"nextCase", " ", "=", " ", 
-                 RowBox[{"RandomVariate", "[", "oD", "]"}]}], ";", 
+                 RowBox[{"RandomVariate", "[", "cD", "]"}]}], ";", 
                 "\[IndentingNewLine]", 
                 RowBox[{"currStep", " ", "=", " ", 
                  RowBox[{"timeValPresentExtraction", "[", 
@@ -774,12 +774,12 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.818122470746161*^9, 3.818122474432106*^9}, {3.8181225142763977`*^9, 
    3.8181225229158*^9}, {3.818122614933468*^9, 3.818122627205742*^9}, {
    3.818122679467738*^9, 3.818122679751622*^9}, {3.818122733355116*^9, 
-   3.8181227367961617`*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+   3.8181227367961617`*^9}, {3.819286871187936*^9, 
+   3.819286871330634*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
+84c70916ed19"]
 },
 WindowSize->{901, 706},
-WindowMargins->{{128, Automatic}, {4, Automatic}},
-Visible->False,
+WindowMargins->{{Automatic, 147}, {Automatic, 33}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"50813b37-84b8-4c03-8cc2-e66934cf56d6"
@@ -795,7 +795,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 38067, 757, 4819, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+Cell[558, 20, 38096, 758, 4819, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 }
 ]
 *)
