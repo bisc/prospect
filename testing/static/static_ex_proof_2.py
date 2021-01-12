@@ -1,12 +1,13 @@
 import torch
 import pyro
 import sys
+import csv
 
 # command line takes one argument for number of samples
 if len(sys.argv) >= 2:
     num_samples = int(sys.argv[1])
 else:
-    print('In the command-line, please specify number of samples\n')
+    print('In the command line, please specify number of samples\n')
     sys.exit()
 
 def static_ex():
@@ -54,9 +55,10 @@ def static_ex():
     else:
         lane = 'out'
         
-    return time, detection, lane
+    return [time, detection, lane]
 
-for i in range(num_samples):
-    print('Sample ' + str(i + 1) + ': ')
-    print(static_ex())
-    print('\n')
+with open('static_ex_proof_2.csv', 'w') as file:
+    writer = csv.writer(file)
+    writer.writerow(['row', 'time', 'detection', 'lane'])
+    for i in range(1, num_samples + 1):
+        writer.writerow([i] + static_ex())
