@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     29858,        629]
-NotebookOptionsPosition[     29450,        613]
-NotebookOutlinePosition[     29902,        631]
-CellTagsIndexPosition[     29859,        628]
+NotebookDataLength[     30455,        644]
+NotebookOptionsPosition[     30063,        629]
+NotebookOutlinePosition[     30499,        646]
+CellTagsIndexPosition[     30456,        643]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -38,11 +38,12 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{"Clear", "[", 
       RowBox[{
-      "variables", ",", " ", "values", ",", "timesteps", ",", "classes", ",", 
-       " ", "indepspecs", ",", " ", "specs", ",", " ", "basespecs", ",", " ", 
-       "casetype", ",", " ", "retInput", ",", " ", "isPastStep", ",", " ", 
-       "isCurrStep", ",", " ", "willBePastStep", ",", " ", "pastStepVars", 
-       ",", " ", "pastStepValues"}], "]"}], ";", "\[IndentingNewLine]", 
+      "variables", ",", "seed", ",", " ", "values", ",", "timesteps", ",", 
+       "classes", ",", " ", "indepspecs", ",", " ", "specs", ",", " ", 
+       "basespecs", ",", " ", "casetype", ",", " ", "retInput", ",", " ", 
+       "isPastStep", ",", " ", "isCurrStep", ",", " ", "willBePastStep", ",", 
+       " ", "pastStepVars", ",", " ", "pastStepValues"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
      RowBox[{"timesteps", " ", "=", " ", "Null"}], ";", "\[IndentingNewLine]", 
      RowBox[{"input", "=", 
       RowBox[{"Import", "[", 
@@ -241,7 +242,21 @@ Cell[BoxData[{
          RowBox[{"timeVarVals", "[", 
           RowBox[{"timesteps", ",", " ", "variables", ",", " ", "values"}], 
           "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{"If", " ", "seeded"}], ",", " ", 
+       RowBox[{"then", " ", "set", " ", "it"}]}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"seed", " ", "===", " ", "Null"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"SeedRandom", "[", "]"}], ";"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"SeedRandom", "[", "seed", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
      RowBox[{"(*", " ", "Independence", " ", "*)"}], "\[IndentingNewLine]", 
      RowBox[{"indepspecs", " ", "=", " ", 
       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
@@ -608,12 +623,12 @@ Cell[BoxData[{
    3.8181118810759077`*^9}, {3.8181119408714848`*^9, 3.81811194876715*^9}, {
    3.818112052851405*^9, 3.818112077922496*^9}, {3.81811211298932*^9, 
    3.8181121530828543`*^9}, 3.818112259668371*^9, {3.818112408546139*^9, 
-   3.818112448778098*^9}},ExpressionUUID->"bf1aace9-6417-4e22-8ab8-\
+   3.818112448778098*^9}, {3.819972585055085*^9, 
+   3.8199726688383503`*^9}},ExpressionUUID->"bf1aace9-6417-4e22-8ab8-\
 6a3e84ff7c63"]
 },
 WindowSize->{1143, 577},
-WindowMargins->{{Automatic, 143}, {47, Automatic}},
-Visible->False,
+WindowMargins->{{Automatic, 48}, {105, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -630,7 +645,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 28888, 591, 2719, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
+Cell[558, 20, 29501, 607, 2824, "Input",ExpressionUUID->"bf1aace9-6417-4e22-8ab8-6a3e84ff7c63"]
 }
 ]
 *)

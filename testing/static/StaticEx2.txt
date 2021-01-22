@@ -2,6 +2,7 @@ casetype: "static"
 variables: {A, B}
 values: {{1, 2}, {"red", "blue"}}
 numsamples: 50
+seed: 10
 
 independence
 indep[{A, B}]
