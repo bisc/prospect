@@ -28,27 +28,17 @@ def invariant_ex(num_steps):
     prob_lat_hi_given_t_hi = prob_t_hi_given_lat_hi * (1 - prob_lat_lo) / prob_t_hi
     prob_lat_hi_given_t_lo = (1 - prob_t_hi_given_lat_hi) * (1 - prob_lat_lo) / (1 - prob_t_hi)
 
-    return_list = [['row', 'latency', 'ping']] # add results from each iteration to this list
+    return_list = [['latency', 'ping']] # add results from each iteration to this list
 
     # sample initial ping value from marginal prob
-    ping_curr = pyro.sample('ping_prev', pyro.distributions.Bernoulli(prob_t_hi))
+    ping_prev = pyro.sample('ping_prev', pyro.distributions.Bernoulli(prob_t_hi))
 
-    if (ping_curr.item() == 1.0):
-        ping_curr = 'high'
-        lat_curr = pyro.sample('lat_curr', pyro.distributions.Bernoulli(prob_lat_hi_given_t_hi))
+    if (ping_prev.item() == 1.0):
+        ping_prev = 'high'
     else:
-        ping_curr = 'low'
-        lat_curr = pyro.sample('lat_curr', pyro.distributions.Bernoulli(prob_lat_hi_given_t_lo))
+        ping_prev = 'low'
 
-    if (lat_curr.item() == 1.0):
-        lat_curr = 'high'
-    else:
-        lat_curr = 'low'
-
-    return_list.append([1, lat_curr, ping_curr])
-    ping_prev = ping_curr
-
-    for x in range(2, num_steps + 1):
+    for x in range(num_steps):
         if (ping_prev == 'high'):
             ping_curr = pyro.sample('ping_curr', pyro.distributions.Bernoulli(prob_t_hi_given_tmin1_hi))
         else:
@@ -63,7 +53,7 @@ def invariant_ex(num_steps):
             lat_curr = 'high'
         else:
             lat_curr = 'low'
-        return_list.append([x, lat_curr, ping_curr])
+        return_list.append([lat_curr, ping_curr])
         ping_prev = ping_curr
     return return_list
 
