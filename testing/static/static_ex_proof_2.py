@@ -59,6 +59,6 @@ def static_ex():
 
 with open('static_ex_proof_2.csv', 'w') as file:
     writer = csv.writer(file)
-    writer.writerow(['row', 'time', 'detection', 'lane'])
-    for i in range(1, num_samples + 1):
-        writer.writerow([i] + static_ex())
+    writer.writerow(['time', 'detection', 'lane'])
+    for i in range(num_samples):
+        writer.writerow(static_ex())
