@@ -2,7 +2,7 @@ casetype: "timevariant"
 variables: {tool, operation}
 values: {{"broken", "functional"}, {"fails", "succeeds"}}
 timesteps: {1, 0}
-numsamples: 10
+numsamples: 100
 
 independence
 indep[{operation[t], tool[t-1]}]
