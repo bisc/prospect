@@ -1,0 +1,17 @@
+casetype: "timevariant"
+variables: {tool, operation}
+values: {{"broken", "functional"}, {"fails", "succeeds"}}
+timesteps: {1, 0}
+numsamples: 100
+
+independence
+indep[{operation[t], tool[t-1]}]
+
+basecase
+P[tool[0] = "functional"] = .9
+
+main
+P[tool[t] = "broken" | tool[t-1] = "broken"] = 1
+P[operation[t] = "succeeds"] = .8
+P[tool[t] = "functional"] = P[tool[t-1] = "functional"]-.1*P[tool[t-1] = "functional"]
+P[operation[t] = "succeeds" && tool[t] = "functional"] = .95*P[operation[t] = "succeeds" && tool[t-1] = "functional"]

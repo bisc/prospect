@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     39009,        794]
-NotebookOptionsPosition[     38658,        780]
-NotebookOutlinePosition[     39053,        796]
-CellTagsIndexPosition[     39010,        793]
+NotebookDataLength[     39827,        819]
+NotebookOptionsPosition[     39461,        804]
+NotebookOutlinePosition[     39871,        821]
+CellTagsIndexPosition[     39828,        818]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -153,10 +153,12 @@ Cell[BoxData[{
          "eventsToDNFExtRule"}], "  ", "//.", " ", "myProbAdjustEquals"}], 
        " ", "//.", " ", "myProbAdjustUnequals"}]}], ";", 
      "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "\"\<After for Base\>\"", "]"}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "basespecs", "]"}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", "\"\<After for Base\>\"", "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "basespecs", "]"}], ";"}], "*)"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{"baseStepVars", ":", " ", 
        RowBox[{
@@ -173,8 +175,10 @@ Cell[BoxData[{
        RowBox[{"Q", " ", "GENERATION"}], " ", ";"}], " ", 
       "\[IndentingNewLine]", "*)"}], " ", "\[IndentingNewLine]", 
      "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "\"\<Generating base case\>\"", "]"}], ";", 
-     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", "\"\<Generating base case\>\"", "]"}], ";"}], 
+      "*)"}], "\[IndentingNewLine]", 
      RowBox[{"qParams", " ", "=", " ", 
       RowBox[{"qGen", "[", 
        RowBox[{"pastStepVars", ",", " ", "pastStepValues"}], "]"}]}], ";", 
@@ -191,8 +195,10 @@ Cell[BoxData[{
       RowBox[{"qEquations", ",", " ", 
        RowBox[{"givenEquation", "[", "qParams", "]"}]}], "]"}], ";", 
      "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "qEquations", "]"}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", "qEquations", "]"}], ";"}], "*)"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"qConstraints", "=", 
       RowBox[{
        RowBox[{
@@ -297,8 +303,10 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
             RowBox[{
              RowBox[{"{", "x_", "}"}], "\[RuleDelayed]", "x"}]}]}], ";", 
           "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "qFinalRules", "]"}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", "qFinalRules", "]"}], ";"}], "*)"}], 
           "\[IndentingNewLine]", 
           RowBox[{"(*", " ", 
            RowBox[{
@@ -321,9 +329,11 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
        "Print", "[", "\"\<Invalid system: solver timed out\>\"", "]"}]}], 
       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
      "\[IndentingNewLine]", 
-     RowBox[{
-     "Print", "[", "\"\<Adding q equalities to specifications\>\"", "]"}], 
-     ";", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+       "Print", "[", "\"\<Adding q equalities to specifications\>\"", "]"}], 
+       ";"}], "*)"}], "\[IndentingNewLine]", 
      RowBox[{"qAppend", " ", "=", " ", 
       RowBox[{"qMyProbs", "[", 
        RowBox[{
@@ -335,8 +345,10 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
      RowBox[{"specs", " ", "=", " ", 
       RowBox[{"Flatten", "[", "specs", "]"}]}], ";", " ", 
      "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "specs", "]"}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", "specs", "]"}], ";"}], "*)"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"specs", "  ", "=", " ", 
       RowBox[{
        RowBox[{
@@ -351,11 +363,14 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
           " ", "//.", " ", "eventsToDNFExtRule"}], "  ", "//.", " ", 
         "myProbAdjustEquals"}], " ", "//.", " ", "myProbAdjustUnequals"}]}], 
      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "\"\<After for Main\>\"", "]"}], ";", 
+     RowBox[{"(*", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "\"\<After for Main\>\"", "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "specs", "]"}], ";"}], "\[IndentingNewLine]", 
+      "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
      "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "specs", "]"}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{
       "Parameterizing", " ", "the", " ", "specifications", " ", "with", " ", 
@@ -380,8 +395,10 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
       RowBox[{"oEquations", ",", " ", 
        RowBox[{"givenEquation", "[", "oParams", "]"}]}], "]"}], ";", 
      "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"Print", "[", "oEquations", "]"}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{"Print", "[", "oEquations", "]"}], ";"}], " ", "*)"}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{
       "Solving", " ", "the", " ", "probability", " ", "system", " ", "based", 
@@ -537,9 +554,11 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
           RowBox[{"oFinalArray", " ", "=", " ", 
            RowBox[{"oParams", " ", "/.", " ", "oFinalRules"}]}], ";", 
           "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "\"\<Final Array\>\"", "]"}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "oFinalArray", "]"}], ";", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Print", "[", "\"\<Final Array\>\"", "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", "oFinalArray", "]"}], ";"}], "*)"}], 
           "\[IndentingNewLine]", "\[IndentingNewLine]", 
           RowBox[{"(*", " ", 
            RowBox[{"Base", " ", "case", " ", "o", " ", "distribution"}], " ", 
@@ -548,10 +567,12 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
           RowBox[{"subArray", " ", "=", 
            RowBox[{"oFinalArray", " ", "/.", " ", "qFinalRules"}]}], ";", 
           "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "\"\<First sub array\>\"", "]"}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "subArray", "]"}], ";", "\[IndentingNewLine]",
-           "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"Print", "[", "\"\<First sub array\>\"", "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", "subArray", "]"}], ";"}], "*)"}], 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
           RowBox[{"allCoords", " ", "=", " ", 
            RowBox[{"Tuples", "[", 
             RowBox[{
@@ -645,9 +666,11 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
                 RowBox[{"subArray", " ", "=", " ", 
                  RowBox[{"oFinalArray", " ", "/.", " ", "qNew"}]}], ";", 
                 "\[IndentingNewLine]", 
-                RowBox[{"Print", "[", "\"\<Next sub array\>\"", "]"}], ";", 
-                "\[IndentingNewLine]", 
-                RowBox[{"Print", "[", "subArray", "]"}], ";", 
+                RowBox[{"(*", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "\"\<Next sub array\>\"", "]"}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"Print", "[", "subArray", "]"}], ";"}], "*)"}], 
                 "\[IndentingNewLine]", 
                 RowBox[{"nextCondition", " ", "=", " ", 
                  RowBox[{"timeValExtraction", "[", 
@@ -774,12 +797,14 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.818122470746161*^9, 3.818122474432106*^9}, {3.8181225142763977`*^9, 
    3.8181225229158*^9}, {3.818122614933468*^9, 3.818122627205742*^9}, {
    3.818122679467738*^9, 3.818122679751622*^9}, {3.818122733355116*^9, 
-   3.8181227367961617`*^9}, {3.819286871187936*^9, 
-   3.819286871330634*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
-84c70916ed19"]
+   3.8181227367961617`*^9}, {3.819286871187936*^9, 3.819286871330634*^9}, {
+   3.820533203109145*^9, 3.820533250006682*^9}, {3.820533352248981*^9, 
+   3.820533379006504*^9}, {3.820533453259391*^9, 3.8205334634510098`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 },
 WindowSize->{901, 706},
-WindowMargins->{{Automatic, 147}, {Automatic, 33}},
+WindowMargins->{{215, Automatic}, {Automatic, 9}},
+Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"50813b37-84b8-4c03-8cc2-e66934cf56d6"
@@ -795,7 +820,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 38096, 758, 4819, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+Cell[558, 20, 38899, 782, 4840, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 }
 ]
 *)
