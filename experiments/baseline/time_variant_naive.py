@@ -51,9 +51,9 @@ def variant_ex(num_steps):
         prob_tool_func_given_toolmin1_func = (prob_tool_func - (prob_tool_func_given_toolmin1_broken * prob_toolmin1_broken)) / prob_toolmin1_func
 
         # compute current step probabilities
-        prob_op_ok_and_tool_func = .95 * prob_op_ok * prob_toolmin1_func # use independence fact to split RHS
-        prob_op_ok_given_tool_func = prob_op_ok_and_tool_func / prob_tool_func
-        prob_op_ok_given_tool_broken = (prob_op_ok - prob_op_ok_and_tool_func) / prob_tool_broken
+        # prob_op_ok_and_tool_func = .95 * prob_op_ok * prob_toolmin1_func # use independence fact to split RHS
+        # prob_op_ok_given_tool_func = prob_op_ok_and_tool_func / prob_tool_func
+        # prob_op_ok_given_tool_broken = (prob_op_ok - prob_op_ok_and_tool_func) / prob_tool_broken
 
         # sample tool_curr given tool_prev
         if (tool_prev == 'func'):
@@ -61,13 +61,16 @@ def variant_ex(num_steps):
         else:
             tool_curr = pyro.sample('tool_curr', pyro.distributions.Bernoulli(prob_tool_func_given_toolmin1_broken))
 
-        # label tool_curr and sample op_curr given tool_curr
+        # label tool_curr
         if (tool_curr.item() == 1.0):
             tool_curr = 'func'
-            op_curr = pyro.sample('op_curr', pyro.distributions.Bernoulli(prob_op_ok_given_tool_func))
+            # op_curr = pyro.sample('op_curr', pyro.distributions.Bernoulli(prob_op_ok_given_tool_func))
         else:
             tool_curr = 'broken'
-            op_curr = pyro.sample('op_curr', pyro.distributions.Bernoulli(prob_op_ok_given_tool_broken))
+            # op_curr = pyro.sample('op_curr', pyro.distributions.Bernoulli(prob_op_ok_given_tool_broken))
+
+        # sample op_curr from marginal probability
+        op_curr = pyro.sample('op_curr', pyro.distributions.Bernoulli(prob_op_ok))
 
         # label op_curr
         if (op_curr.item() == 1.0):
@@ -85,7 +88,7 @@ def variant_ex(num_steps):
         return_lists = [return_tool_list, return_op_list]
     return return_lists
 
-with open('time_variant_baseline_var_tool_accurate.csv', 'w') as tool_file, open('time_variant_baseline_var_op_accurate.csv', 'w') as op_file:
+with open('time_variant_baseline_var_tool_naive.csv', 'w') as tool_file, open('time_variant_baseline_var_op_naive.csv', 'w') as op_file:
     tool_writer = csv.writer(tool_file)
     op_writer = csv.writer(op_file)
     if (num_instances_arg >= 1):
