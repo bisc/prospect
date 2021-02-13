@@ -49,12 +49,12 @@ def static_ex():
         lane = 'out'
 
     # This method uses the assumption that lane and detection are independent, but this is not necessarily true based on the specifications.
-    # More calculation is needed to compute conditional probabilities as detailed in the static_ex_proof_2.py.
+    # More calculation is needed to compute conditional probabilities as detailed in the static.py.
         
     return [time, detection, lane]
 
-with open('static_ex_proof_2_naive.csv', 'w') as file:
+with open('static_baseline_naive.csv', 'w') as file:
     writer = csv.writer(file)
-    writer.writerow(['time', 'detection', 'lane'])
+    # writer.writerow(['time', 'detection', 'lane'])
     for i in range(1, num_samples + 1):
         writer.writerow(static_ex())

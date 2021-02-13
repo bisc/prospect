@@ -57,8 +57,8 @@ def static_ex():
         
     return [time, detection, lane]
 
-with open('static_ex_proof_2.csv', 'w') as file:
+with open('static_baseline_accurate.csv', 'w') as file:
     writer = csv.writer(file)
-    writer.writerow(['time', 'detection', 'lane'])
+    # writer.writerow(['time', 'detection', 'lane'])
     for i in range(num_samples):
         writer.writerow(static_ex())
