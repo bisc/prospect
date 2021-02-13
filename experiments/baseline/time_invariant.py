@@ -30,7 +30,7 @@ def invariant_ex(num_steps):
     prob_lat_hi_given_t_lo = (1 - prob_t_hi_given_lat_hi) * (1 - prob_lat_lo) / (1 - prob_t_hi)
 
     # add results from each iteration to this list
-    return_list = [['latency', 'ping']] 
+    return_list = [] 
 
     # sample initial ping value from marginal prob
     ping_prev = pyro.sample('ping_prev', pyro.distributions.Bernoulli(prob_t_hi))
