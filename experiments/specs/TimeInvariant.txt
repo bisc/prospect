@@ -2,7 +2,7 @@ casetype: "timeinvariant"
 variables: {latency, ping}
 values: {{"low", "high"}, {"low", "high"}}
 timesteps: {0, 1}
-numsamples: 1000
+numsamples: 10000
 
 independence
 condindep[{latency[t], ping[t-1]}, {ping[t]}]
