@@ -5,7 +5,7 @@ Prospect generates time-series data from probabilistic constraints and independe
 
 A valid Prospect file is a txt of the following form, containing three sections separated by blank lines:
 
-casetype: <one of "static", "timeinvariant", or "timevariant">  
+```casetype: <one of "static", "timeinvariant", or "timevariant">  
 variables: <list of variable name here>  
 values: <list of value lists for each variable>  
 timesteps: <list of time steps for the Markov blanket shape for each variable> // Not in static case  
@@ -21,12 +21,12 @@ base // only in time-variant case
 - These equations can only contain variables with absolute time steps
 - Events are predicates over variables taking values. NOT, OR, AND boolean operations supported. Variable equality is also supported (ex. P[X = Y]) if X and Y have the same value set>
 
-
 main
 
 < probability specifications line-by-line: algebraic equations with left- and right-hand sides over terms P[event] or P[event | event]  
 - These equations can only contain variables with relative times and no earlier than those at t-max(timesteps for that variable)
 - NOT, OR, AND boolean operations supported. Variable equality is also supported (ex. P[X = Y]) if X and Y have the same value set.>
+```
 
 
 ## Running Prospect
