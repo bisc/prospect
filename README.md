@@ -34,3 +34,10 @@ main
 2) When prompted to enter file name for input, select a valid input file from the same directory as the Request_input.nb notebook. In the comments of the file exist several examples that can be copied/pasted to observe the functionality.
 
 TBA script instructions
+
+## Running Baseline Pyro Scripts
+Included in this repository are a collection of scripts written in Pyro v1.5.1 (based on Python v3.8.5). They may be found in experiments -> baseline. The "accurate" baseline scripts imperatively generate data from several example specifications found in experiments -> specs. The "naive" scripts highlight potential pitfalls of imperatively coding the specifications in this way. You can run the scripts using the follow steps.
+1) Install Python and Pyro using the instructions here: https://pyro.ai/. Download the desired Pyro script(s).
+2) In your terminal, navigate to the directory containing the script(s).
+3) For the static and time-invariant scripts, type "python <filename.py> <# of time steps desired>". For the time-variant scripts, type "python <filename.py> <# of time steps desired> <# of time series desired>".
+4) After running a script, one or more .csv files with the generated data will appear in your directory. In the time-variant case, each file represents data for a variable, each table row is a time series, and each column is a time step.
