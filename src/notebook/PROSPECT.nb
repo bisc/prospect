@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13517,        312]
-NotebookOptionsPosition[     13071,        297]
-NotebookOutlinePosition[     13467,        313]
-CellTagsIndexPosition[     13424,        310]
+NotebookDataLength[     13717,        315]
+NotebookOptionsPosition[     13271,        300]
+NotebookOutlinePosition[     13667,        316]
+CellTagsIndexPosition[     13624,        313]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -210,9 +210,8 @@ Cell[BoxData[
    3.8223495678688374`*^9}, {3.8223496887901487`*^9, 
    3.8223497028739967`*^9}, {3.822350836674179*^9, 3.822350876219935*^9}, 
    3.822351171372563*^9, {3.82235127172628*^9, 3.822351271977057*^9}, {
-   3.822351457649384*^9, 
-   3.822351466870699*^9}},ExpressionUUID->"a1917d02-e626-423b-a9fb-\
-31c977d521a5"],
+   3.822351457649384*^9, 3.822351466870699*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
 
 Cell[BoxData[{
  RowBox[{
@@ -259,7 +258,11 @@ Cell[BoxData[{
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Export", "[", 
-   RowBox[{"\"\<output.csv\>\"", ",", " ", 
+   RowBox[{
+    RowBox[{"StringJoin", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<output.csv\>\""}], 
+     "]"}], ",", " ", 
     RowBox[{"generateData", "[", "]"}], ",", " ", "\"\<CSV\>\"", ",", 
     RowBox[{"TextDelimiters", "\[Rule]", "\"\<\>\""}]}], "]"}], 
   ";"}], "\[IndentingNewLine]", 
@@ -291,12 +294,12 @@ Cell[BoxData[{
    3.8221801981614122`*^9}, 3.822349521068981*^9, {3.822349790730967*^9, 
    3.8223498165680313`*^9}, {3.822349911665032*^9, 3.822349915235408*^9}, {
    3.822350861291244*^9, 3.8223508614918423`*^9}, {3.8223513227238207`*^9, 
-   3.822351328025009*^9}, {3.822351427890576*^9, 
-   3.82235144329278*^9}},ExpressionUUID->"1cd59673-3e99-4b87-b750-\
-b53e960cf43b"]
+   3.822351328025009*^9}, {3.822351427890576*^9, 3.82235144329278*^9}, {
+   3.822351927625201*^9, 3.822351932258718*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
 },
 WindowSize->{1036, 748},
-WindowMargins->{{Automatic, 186}, {27, Automatic}},
+WindowMargins->{{Automatic, 142}, {28, Automatic}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"53a246bf-ac3b-41f7-8734-d2adc3c71f2c"
@@ -312,8 +315,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 8571, 194, 514, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
-Cell[9132, 216, 3935, 79, 325, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
+Cell[558, 20, 8589, 193, 514, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
+Cell[9150, 215, 4117, 83, 325, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
 }
 ]
 *)
