@@ -1,8 +1,8 @@
-# Prospect tool for probability specification and data generation
-Prospect (a PRObability SPECification Tool) generates time-series data from probabilistic constraints and independence specifications.
+# PROSPECT tool for probability specification and data generation
+PROSPECT (a PRObability SPECification Tool) generates time-series data from probabilistic constraints and independence specifications.
 
 
-## Running Prospect
+## Running PROSPECT
 
 Requirements: Wolfram Mathematica, version 12.1+
 
@@ -14,7 +14,7 @@ The experiment specs can be found in experiments/specs, and the data is in exper
 
 ## Specification File Format
 
-A valid Prospect file is a txt of the following form, containing three sections separated by blank lines:
+A valid PROSPECT file is a txt of the following form, containing three sections separated by blank lines:
 
 ```casetype: <one of "static", "timeinvariant", or "timevariant">  
 variables: <list of variable name here>  
