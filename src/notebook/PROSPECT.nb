@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21728,        527]
-NotebookOptionsPosition[     20548,        501]
-NotebookOutlinePosition[     20943,        517]
-CellTagsIndexPosition[     20900,        514]
+NotebookDataLength[     13517,        312]
+NotebookOptionsPosition[     13071,        297]
+NotebookOutlinePosition[     13467,        313]
+CellTagsIndexPosition[     13424,        310]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -55,10 +55,6 @@ Cell[BoxData[
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
          "\"\<Helper/oGenerator.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{"(*", " ", 
-    RowBox[{"NOTE", ":", " ", 
-     RowBox[{"MODIFIED", " ", "INPUT", " ", "READ"}]}], " ", "*)"}], 
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"NotebookEvaluate", "[", 
@@ -144,7 +140,6 @@ Cell[BoxData[
     RowBox[{"Pre", "-", 
      RowBox[{"made", " ", "files", " ", "to", " ", 
       RowBox[{"Test", ":"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
      RowBox[{"testing", "/", "static"}], "/", 
@@ -158,12 +153,21 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"testing", "/", "static"}], "/", 
      RowBox[{"StaticExNot", ".", "txt"}]}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
-     RowBox[{"testing", "/", "timeinvariant"}], "/", 
+     RowBox[{"testing", "/", "time_invariant"}], "/", 
      RowBox[{"InvariantEx1", ".", "txt"}]}], " ", "*)"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"testing", "/", "time_variant"}], "/", 
+     RowBox[{"VariantEx2", ".", "txt"}]}], " ", "*)"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", 
+     RowBox[{"filename", ",", " ", "generateData"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"generateData", "::", "invalidCase"}], "=", 
@@ -203,11 +207,12 @@ Cell[BoxData[
    3.820516170553018*^9, 3.820516203597842*^9}, {3.822137411011894*^9, 
    3.82213746386825*^9}, {3.822349385995739*^9, 3.8223494583026447`*^9}, {
    3.822349491578434*^9, 3.822349506482945*^9}, {3.8223495447772818`*^9, 
-   3.8223495678688374`*^9}},
- CellLabel->
-  "In[212]:=",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
-
-Cell[CellGroupData[{
+   3.8223495678688374`*^9}, {3.8223496887901487`*^9, 
+   3.8223497028739967`*^9}, {3.822350836674179*^9, 3.822350876219935*^9}, 
+   3.822351171372563*^9, {3.82235127172628*^9, 3.822351271977057*^9}, {
+   3.822351457649384*^9, 
+   3.822351466870699*^9}},ExpressionUUID->"a1917d02-e626-423b-a9fb-\
+31c977d521a5"],
 
 Cell[BoxData[{
  RowBox[{
@@ -252,22 +257,19 @@ Cell[BoxData[{
          RowBox[{"generateData", "::", "invalidCase"}], "]"}], ";", " ", 
         "$Failed"}]}], "\[IndentingNewLine]", "]"}]}]}], 
    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
- RowBox[{" ", 
-  RowBox[{"generateData", "[", "]"}], " ", "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{
-    RowBox[{"Export", "[", 
-     RowBox[{"\"\<staticoutput.csv\>\"", ",", " ", 
-      RowBox[{"generateData", "[", "]"}], ",", " ", "\"\<CSV\>\"", ",", 
-      RowBox[{"TextDelimiters", "\[Rule]", "\"\<\>\""}]}], "]"}], ";"}], " ", 
-   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<output.csv\>\"", ",", " ", 
+    RowBox[{"generateData", "[", "]"}], ",", " ", "\"\<CSV\>\"", ",", 
+    RowBox[{"TextDelimiters", "\[Rule]", "\"\<\>\""}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"generateData", "[", "]"}], " ", "*)"}], " ", 
   RowBox[{"(*", " ", 
    RowBox[{
-    RowBox[{"Export", "[", 
-     RowBox[{"\"\<timeinvariantoutput.csv\>\"", ",", " ", 
-      RowBox[{"generateData", "[", "]"}], ",", " ", "\"\<CSV\>\"", ",", 
-      RowBox[{"TextDelimiters", "\[Rule]", "\"\<\>\""}]}], "]"}], ";"}], " ", 
+   "Uncomment", " ", "to", " ", "have", " ", "the", " ", "data", " ", 
+    "output", " ", "in", " ", "the", " ", "notebook"}], " ", 
    "*)"}]}]}], "Input",
  CellChangeTimes->{{3.80683581907298*^9, 3.8068359010600348`*^9}, {
    3.80683593386444*^9, 3.8068359535379596`*^9}, {3.806836068638945*^9, 
@@ -286,221 +288,15 @@ Cell[BoxData[{
    3.8200665881244783`*^9, 3.820066589125525*^9}, {3.82032584821449*^9, 
    3.820325875624761*^9}, {3.820325982255807*^9, 3.8203259887840147`*^9}, {
    3.822138868204743*^9, 3.822138913203144*^9}, {3.822180195038066*^9, 
-   3.8221801981614122`*^9}, 3.822349521068981*^9},
- CellLabel->
-  "In[224]:=",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["\<\"Before\"\>"], "Print",
- CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
-   3.82234957550782*^9},
- CellLabel->
-  "During evaluation of \
-In[224]:=",ExpressionUUID->"41c7a599-ca7b-4db0-bdc7-e0fd238972b2"],
-
-Cell[BoxData["\<\"After\"\>"], "Print",
- CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
-   3.82234957551245*^9},
- CellLabel->
-  "During evaluation of \
-In[224]:=",ExpressionUUID->"2ed49cf1-9f81-49bf-814a-102ce0f67a1f"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{"B", "\[Equal]", "\<\"T\"\>"}], "]"}], "\[Equal]", "0.5`"}], ",", 
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{"A", "\[NotEqual]", "1"}], "]"}], "\[Equal]", "0.5`"}], ",", 
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{"A", "\[Equal]", "2"}], "]"}], "\[Equal]", "0.3`"}], ",", 
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{"A", "\[Equal]", "1"}], "&&", 
-      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}]}], "]"}], "\[Equal]", 
-    RowBox[{
-     RowBox[{"myProb", "[", 
-      RowBox[{"A", "\[Equal]", "1"}], "]"}], " ", 
-     RowBox[{"myProb", "[", 
-      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}], "]"}]}]}], ",", 
-   RowBox[{
-    RowBox[{"myProb", "[", 
-     RowBox[{
-      RowBox[{"A", "\[Equal]", "2"}], "&&", 
-      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}]}], "]"}], "\[Equal]", 
-    RowBox[{
-     RowBox[{"myProb", "[", 
-      RowBox[{"A", "\[Equal]", "2"}], "]"}], " ", 
-     RowBox[{"myProb", "[", 
-      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}], "]"}]}]}]}], "}"}]], "Print",
- CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
-   3.822349575516176*^9},
- CellLabel->
-  "During evaluation of \
-In[224]:=",ExpressionUUID->"3fcd870f-d582-4d40-9083-84163ffa80f3"]
-}, Open  ]],
-
-Cell[BoxData[
- TemplateBox[{
-  "Solve", "ratnz", 
-   "\"Solve was unable to solve the system with inexact coefficients. The \
-answer was obtained by solving a corresponding exact system and numericizing \
-the result.\"", 2, 225, 11, 30473148819099194424, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{{3.822349525856333*^9, 3.822349535503539*^9}, 
-   3.8223495755550117`*^9},
- CellLabel->
-  "During evaluation of \
-In[224]:=",ExpressionUUID->"b903e8e7-f8aa-4b53-af4a-5a572d52b401"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{
-    SubscriptBox["o", 
-     RowBox[{"1", ",", "1"}]], "\[Rule]", "0.25`"}], ",", 
-   RowBox[{
-    SubscriptBox["o", 
-     RowBox[{"1", ",", "2"}]], "\[Rule]", "0.25`"}], ",", 
-   RowBox[{
-    SubscriptBox["o", 
-     RowBox[{"2", ",", "1"}]], "\[Rule]", "0.15`"}], ",", 
-   RowBox[{
-    SubscriptBox["o", 
-     RowBox[{"2", ",", "2"}]], "\[Rule]", "0.15`"}], ",", 
-   RowBox[{
-    SubscriptBox["o", 
-     RowBox[{"3", ",", "1"}]], "\[Rule]", "0.1`"}], ",", 
-   RowBox[{
-    SubscriptBox["o", 
-     RowBox[{"3", ",", "2"}]], "\[Rule]", "0.1`"}]}], "}"}]], "Print",
- CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
-   3.822349575571329*^9},
- CellLabel->
-  "During evaluation of \
-In[224]:=",ExpressionUUID->"257090ab-8a15-417c-a31c-12461013efd5"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{"2", ",", "\<\"H\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "\<\"T\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"3", ",", "\<\"T\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "\<\"T\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "\<\"H\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"3", ",", "\<\"H\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "\<\"H\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "\<\"H\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"2", ",", "\<\"H\"\>"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "\<\"T\"\>"}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{{3.8223495258826027`*^9, 3.8223495355312*^9}, 
-   3.8223495755745487`*^9},
- CellLabel->
-  "Out[225]=",ExpressionUUID->"a0578aa1-570b-4527-bd51-e3c7ac36e3b7"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"(*", " ", 
-   RowBox[{
-   "For", " ", "time", " ", "variant", " ", "data", " ", "generation"}], " ", 
-   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{"Clear", "[", 
-     RowBox[{
-     "fileCheck", ",", " ", "runResult", ",", " ", "FTL", ",", " ", "FOL", 
-      ",", " ", "TTL", ",", " ", "TOL"}], "]"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"fileCheck", "=", "\"\<experiments/specs/TimeVariant.txt\>\""}], 
-    ";", "\[IndentingNewLine]", 
-    RowBox[{"parse", "[", "fileCheck", "]"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"FTL", " ", "=", " ", 
-     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"FOL", " ", "=", " ", 
-     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"run", " ", "=", " ", "1"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"Do", "[", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"Print", "[", "i", "]"}], ";", "\[IndentingNewLine]", 
-       RowBox[{"TTL", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"TOL", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"runResult", " ", "=", " ", 
-        RowBox[{"variantGenerate", "[", "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"Do", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"AppendTo", "[", 
-           RowBox[{"TTL", ",", " ", 
-            RowBox[{
-             RowBox[{"runResult", "[", 
-              RowBox[{"[", "j", "]"}], "]"}], "[", 
-             RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"AppendTo", "[", 
-           RowBox[{"TOL", ",", " ", 
-            RowBox[{
-             RowBox[{"runResult", "[", 
-              RowBox[{"[", "j", "]"}], "]"}], "[", 
-             RowBox[{"[", "2", "]"}], "]"}]}], "]"}], ";"}], 
-         "\[IndentingNewLine]", ",", 
-         RowBox[{"{", 
-          RowBox[{"j", ",", 
-           RowBox[{"Length", "[", "runResult", "]"}]}], "}"}]}], "]"}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"AppendTo", "[", 
-        RowBox[{"FTL", ",", " ", "TTL"}], "]"}], ";", "\[IndentingNewLine]", 
-       RowBox[{"AppendTo", "[", 
-        RowBox[{"FOL", ",", " ", "TOL"}], "]"}], ";"}], "\[IndentingNewLine]",
-       ",", 
-      RowBox[{"{", 
-       RowBox[{"i", ",", " ", "10000"}], "}"}]}], "]"}], ";"}], "*)"}], 
-  "\[IndentingNewLine]", "\n", 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{"Export", "[", 
-     RowBox[{
-     "\"\<time_variant_ours_var_tool.csv\>\"", ",", " ", "FTL", ",", " ", 
-      "\"\<CSV\>\"", ",", 
-      RowBox[{"TextDelimiters", "\[Rule]", "\"\<\>\""}]}], "]"}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"Export", "[", 
-     RowBox[{
-     "\"\<time_variant_ours_var_op.csv\>\"", ",", " ", "FOL", ",", " ", 
-      "\"\<CSV\>\"", ",", 
-      RowBox[{"TextDelimiters", "\[Rule]", "\"\<\>\""}]}], "]"}], ";"}], 
-   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{{3.820533588432623*^9, 3.820533720720147*^9}, {
-   3.820533801943844*^9, 3.82053394373062*^9}, {3.8205339889370337`*^9, 
-   3.820534009019919*^9}, {3.820534131249363*^9, 3.820534131432088*^9}, {
-   3.82111859162573*^9, 3.821118603783149*^9}, {3.822137345622463*^9, 
-   3.822137371288044*^9}, {3.822137477434494*^9, 3.822137480507258*^9}, {
-   3.822180202317189*^9, 3.822180206838943*^9}, {3.822180237575734*^9, 
-   3.822180287287859*^9}, 3.8222192262966557`*^9, 3.8222192826076508`*^9, {
-   3.822223347991452*^9, 3.822223413886673*^9}, {3.822239576650508*^9, 
-   3.822239586835209*^9}},
- CellLabel->
-  "In[226]:=",ExpressionUUID->"c588483f-1246-4343-88c6-b18c18ce0352"]
+   3.8221801981614122`*^9}, 3.822349521068981*^9, {3.822349790730967*^9, 
+   3.8223498165680313`*^9}, {3.822349911665032*^9, 3.822349915235408*^9}, {
+   3.822350861291244*^9, 3.8223508614918423`*^9}, {3.8223513227238207`*^9, 
+   3.822351328025009*^9}, {3.822351427890576*^9, 
+   3.82235144329278*^9}},ExpressionUUID->"1cd59673-3e99-4b87-b750-\
+b53e960cf43b"]
 },
 WindowSize->{1036, 748},
-WindowMargins->{{Automatic, 158}, {Automatic, 0}},
+WindowMargins->{{Automatic, 186}, {27, Automatic}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"53a246bf-ac3b-41f7-8734-d2adc3c71f2c"
@@ -516,19 +312,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 8288, 187, 556, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
-Cell[CellGroupData[{
-Cell[8871, 211, 3877, 79, 346, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"],
-Cell[CellGroupData[{
-Cell[12773, 294, 237, 5, 24, "Print",ExpressionUUID->"41c7a599-ca7b-4db0-bdc7-e0fd238972b2"],
-Cell[13013, 301, 236, 5, 24, "Print",ExpressionUUID->"2ed49cf1-9f81-49bf-814a-102ce0f67a1f"],
-Cell[13252, 308, 1301, 36, 44, "Print",ExpressionUUID->"3fcd870f-d582-4d40-9083-84163ffa80f3"]
-}, Open  ]],
-Cell[14568, 347, 505, 11, 24, "Message",ExpressionUUID->"b903e8e7-f8aa-4b53-af4a-5a572d52b401"],
-Cell[15076, 360, 812, 25, 27, "Print",ExpressionUUID->"257090ab-8a15-417c-a31c-12461013efd5"],
-Cell[15891, 387, 900, 26, 34, "Output",ExpressionUUID->"a0578aa1-570b-4527-bd51-e3c7ac36e3b7"]
-}, Open  ]],
-Cell[16806, 416, 3738, 83, 535, "Input",ExpressionUUID->"c588483f-1246-4343-88c6-b18c18ce0352"]
+Cell[558, 20, 8571, 194, 514, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
+Cell[9132, 216, 3935, 79, 325, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
 }
 ]
 *)

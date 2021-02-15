@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20509,        433]
-NotebookOptionsPosition[     20142,        418]
-NotebookOutlinePosition[     20553,        435]
-CellTagsIndexPosition[     20510,        432]
+NotebookDataLength[     20583,        435]
+NotebookOptionsPosition[     20217,        420]
+NotebookOutlinePosition[     20627,        437]
+CellTagsIndexPosition[     20584,        434]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -43,28 +43,28 @@ Cell[BoxData[{
       "nextCase", ",", "currStep", ",", " ", "condF", ",", " ", 
       RowBox[{"observations", " ", "=", " ", 
        RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", 
-    RowBox[{"(*", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"Print", "[", "\"\<Adjust Lists\>\"", "]"}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "classes", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "variables", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "values", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{
-      "Print", "[", "\"\<Other specifications for Generation:\>\"", "]"}], 
-      ";", "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "isPastStep", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "isCurrStep", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "willBePastStep", "]"}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "pastStepVars", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "pastStepValues", "]"}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", "]"}], ";"}], "\[IndentingNewLine]", "*)"}], 
     "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{
+     RowBox[{"Print", "[", "\"\<Adjust Lists\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "specs", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "classes", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "variables", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "values", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+     "Print", "[", "\"\<Other specifications for Generation:\>\"", "]"}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "isPastStep", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "isCurrStep", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "willBePastStep", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "pastStepVars", "]"}], ";", "\[IndentingNewLine]", 
+     
+     RowBox[{"Print", "[", "pastStepValues", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"testAdjust", " ", "=", " ", 
       RowBox[{
        RowBox[{"(", 
@@ -413,11 +413,13 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.8134463592465878`*^9, 3.81344664216779*^9}, {3.813922174755107*^9, 
    3.813922251922176*^9}, {3.818111953290959*^9, 3.818111960682979*^9}, {
    3.818112183690324*^9, 3.81811222715875*^9}, {3.818112289820025*^9, 
-   3.818112294749495*^9}, {3.818112470223925*^9, 3.818112470936275*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+   3.818112294749495*^9}, {3.818112470223925*^9, 3.818112470936275*^9}, 
+   3.82235053082825*^9, {3.822350714293723*^9, 
+   3.8223507164624443`*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
+84c70916ed19"]
 },
 WindowSize->{901, 706},
-WindowMargins->{{259, Automatic}, {Automatic, 16}},
+WindowMargins->{{Automatic, 28}, {Automatic, 34}},
 Visible->False,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -434,7 +436,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 19580, 396, 2383, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+Cell[558, 20, 19655, 398, 2404, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 }
 ]
 *)
