@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13717,        315]
-NotebookOptionsPosition[     13271,        300]
-NotebookOutlinePosition[     13667,        316]
-CellTagsIndexPosition[     13624,        313]
+NotebookDataLength[     13846,        318]
+NotebookOptionsPosition[     13400,        303]
+NotebookOutlinePosition[     13796,        319]
+CellTagsIndexPosition[     13753,        316]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -211,7 +211,7 @@ Cell[BoxData[
    3.8223497028739967`*^9}, {3.822350836674179*^9, 3.822350876219935*^9}, 
    3.822351171372563*^9, {3.82235127172628*^9, 3.822351271977057*^9}, {
    3.822351457649384*^9, 3.822351466870699*^9}},
- CellLabel->"In[16]:=",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
+ CellLabel->"In[91]:=",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
 
 Cell[BoxData[{
  RowBox[{
@@ -226,6 +226,7 @@ Cell[BoxData[{
      RowBox[{"filename", "=", 
       RowBox[{"InputString", "[", "\"\<Type file name here\>\"", "]"}]}], ";",
       "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "filename", "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"If", "[", 
       RowBox[{
        RowBox[{"FileExistsQ", "[", 
@@ -295,11 +296,13 @@ Cell[BoxData[{
    3.8223498165680313`*^9}, {3.822349911665032*^9, 3.822349915235408*^9}, {
    3.822350861291244*^9, 3.8223508614918423`*^9}, {3.8223513227238207`*^9, 
    3.822351328025009*^9}, {3.822351427890576*^9, 3.82235144329278*^9}, {
-   3.822351927625201*^9, 3.822351932258718*^9}},
- CellLabel->"In[29]:=",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
+   3.822351927625201*^9, 3.822351932258718*^9}, {3.822352123229857*^9, 
+   3.822352128914853*^9}},
+ CellLabel->
+  "In[104]:=",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
 },
 WindowSize->{1036, 748},
-WindowMargins->{{Automatic, 142}, {28, Automatic}},
+WindowMargins->{{Automatic, 165}, {23, Automatic}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"53a246bf-ac3b-41f7-8734-d2adc3c71f2c"
@@ -316,7 +319,7 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 8589, 193, 514, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
-Cell[9150, 215, 4117, 83, 325, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
+Cell[9150, 215, 4246, 86, 346, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"]
 }
 ]
 *)
