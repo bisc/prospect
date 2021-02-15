@@ -6,9 +6,9 @@ Prospect (a PRObability SPECification Tool) generates time-series data from prob
 
 Requirements: Wolfram Mathematica, version 12.1+
 
-1) Open the src/notebook/PROSPECT.nb notebook, and run all it (Ctrl+A, Shift+Enter)
+1) Open the src/notebook/PROSPECT.nb notebook, and run all it (Ctrl+A, Shift+Enter).
 2) When prompted to enter a file name for input, enter either the name of a valid specification file's from the same directory as the PROSPECT.nb notebook, or an absolute path to the file. (In the comments of the file exist several examples that can be copied/pasted to observe the functionality.)
-3) Mathematica will print the sampled data at the bottom of the notebook
+3) Mathematica will print the sampled data at the bottom of the notebook and generate output.csv in the same folder.
 
 The experiment specs can be found in experiments/specs, and the data is in experiments/generated_data.
 
@@ -40,7 +40,7 @@ main
 ```
 
 ## Running Baseline Pyro Scripts
-Included in this repository are a collection of scripts written in Pyro v1.5.1 (based on Python v3.8.5). They may be found in experiments -> baseline. The "accurate" baseline scripts imperatively generate data from several example specifications found in experiments -> specs. The "naive" scripts highlight potential pitfalls of imperatively coding the specifications in this way. You can run the scripts using the follow steps.
+Included in this repository are a collection of scripts written in Pyro v1.5.1 (based on Python v3.8.5). They can be found in experiments -> baseline. The "accurate" baseline scripts imperatively generate data from several example specifications found in experiments -> specs. The "naive" scripts highlight potential pitfalls of imperatively coding the specifications in this way. You can run the scripts using the follow steps.
 1) Install Python and Pyro using the instructions here: https://pyro.ai/.
 2) In your terminal, navigate to the directory containing the script(s).
 3) For the static and time-invariant scripts, type "python <filename.py> <# of time steps desired>". For the time-variant scripts, type "python <filename.py> <# of time steps desired> <# of time series desired>".
