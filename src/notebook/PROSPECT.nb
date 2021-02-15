@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16570,        382]
-NotebookOptionsPosition[     16028,        366]
-NotebookOutlinePosition[     16423,        382]
-CellTagsIndexPosition[     16380,        379]
+NotebookDataLength[     21728,        527]
+NotebookOptionsPosition[     20548,        501]
+NotebookOutlinePosition[     20943,        517]
+CellTagsIndexPosition[     20900,        514]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,7 +33,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<prob-rules.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/prob-rules.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -43,7 +43,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<Independence.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/Independence.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -53,7 +53,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<oGenerator.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/oGenerator.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
@@ -67,7 +67,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<Parsing_input_modified.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/Parsing_input_modified.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -77,7 +77,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<Equality_Casing.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/Equality_Casing.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -87,7 +87,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<Main_Static_Generator.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/Main_Static_Generator.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -97,7 +97,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<timeLists.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/timeLists.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -107,7 +107,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<Main_Time_Invariant_Generator.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/Main_Time_Invariant_Generator.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -117,7 +117,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<Stationary.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/Stationary.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -127,7 +127,7 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<Main_Time_Variant_Generator.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/Main_Time_Variant_Generator.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
@@ -137,26 +137,32 @@ Cell[BoxData[
        RowBox[{"StringJoin", "[", 
         RowBox[{
          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
-         "\"\<qGenerator.nb\>\""}], "]"}], ",", 
+         "\"\<Helper/qGenerator.nb\>\""}], "]"}], ",", 
        RowBox[{"Visible", "\[Rule]", " ", "False"}]}], "]"}], "]"}], ";"}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
-    RowBox[{"Files", " ", "to", " ", 
-     RowBox[{"Test", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"Pre", "-", 
+     RowBox[{"made", " ", "files", " ", "to", " ", 
+      RowBox[{"Test", ":"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
-     RowBox[{"experiments", "/", "specs"}], "/", 
-     RowBox[{"Static", ".", "txt"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"testing", "/", "static"}], "/", 
+     RowBox[{"StaticEx", ".", "txt"}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
-     RowBox[{"experiments", "/", "specs"}], "/", 
-     RowBox[{"TimeInvariant", ".", "txt"}]}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+     RowBox[{"testing", "/", "static"}], "/", 
+     RowBox[{"StaticEx3", ".", "txt"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   
    RowBox[{"(*", " ", 
     RowBox[{
-     RowBox[{"experiments", "/", "specs"}], "/", 
-     RowBox[{"TimeVariant", ".", "txt"}]}], " ", "*)"}], 
+     RowBox[{"testing", "/", "static"}], "/", 
+     RowBox[{"StaticExNot", ".", "txt"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"testing", "/", "timeinvariant"}], "/", 
+     RowBox[{"InvariantEx1", ".", "txt"}]}], " ", "*)"}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
@@ -195,56 +201,59 @@ Cell[BoxData[
    3.819041794593951*^9, 3.81904181481874*^9}, {3.819972458737029*^9, 
    3.819972470688539*^9}, {3.819972520978738*^9, 3.8199725211736183`*^9}, {
    3.820516170553018*^9, 3.820516203597842*^9}, {3.822137411011894*^9, 
-   3.82213746386825*^9}},
- CellLabel->"In[15]:=",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
+   3.82213746386825*^9}, {3.822349385995739*^9, 3.8223494583026447`*^9}, {
+   3.822349491578434*^9, 3.822349506482945*^9}, {3.8223495447772818`*^9, 
+   3.8223495678688374`*^9}},
+ CellLabel->
+  "In[212]:=",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{
-   RowBox[{"generateData", "[", "]"}], " ", ":=", " ", "\[IndentingNewLine]", 
-   
-   RowBox[{"Module", "[", " ", 
+  RowBox[{"generateData", "[", "]"}], " ", ":=", " ", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"filename", ",", " ", 
+      RowBox[{"result", " ", "=", " ", 
+       RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"{", 
-      RowBox[{"filename", ",", " ", 
-       RowBox[{"result", " ", "=", " ", 
-        RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"filename", "=", 
-       RowBox[{"InputString", "[", "\"\<Type file name here\>\"", "]"}]}], 
-      ";", "\[IndentingNewLine]", 
-      RowBox[{"If", "[", 
+     RowBox[{"filename", "=", 
+      RowBox[{"InputString", "[", "\"\<Type file name here\>\"", "]"}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"FileExistsQ", "[", 
+        RowBox[{"StringJoin", "[", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], ",", "filename"}], "]"}], 
+        "]"}], ",", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"FileExistsQ", "[", 
-         RowBox[{"StringJoin", "[", 
-          RowBox[{
-           RowBox[{"NotebookDirectory", "[", "]"}], ",", "filename"}], "]"}], 
-         "]"}], ",", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"parse", "[", "filename", "]"}], ";"}]}], 
-       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Switch", "[", 
+        RowBox[{"parse", "[", "filename", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Switch", "[", 
+      RowBox[{
+      "casetype", ",", "\[IndentingNewLine]", "\"\<static\>\"", ",", " ", 
        RowBox[{
-       "casetype", ",", "\[IndentingNewLine]", "\"\<static\>\"", ",", " ", 
-        RowBox[{
-         RowBox[{"result", " ", "=", " ", 
-          RowBox[{"staticGenerate", "[", "]"}]}], ";", " ", "result"}], ",", 
-        "\[IndentingNewLine]", "\"\<timeinvariant\>\"", ",", " ", 
-        RowBox[{
-         RowBox[{"result", " ", "=", " ", 
-          RowBox[{"invariantGenerate", "[", "]"}]}], ";", " ", "result"}], 
-        ",", "\[IndentingNewLine]", "\"\<timevariant\>\"", ",", " ", 
-        RowBox[{
-         RowBox[{"result", " ", "=", " ", 
-          RowBox[{"variantGenerate", "[", "]"}]}], ";", " ", "result"}], ",", 
-        "\[IndentingNewLine]", "_", ",", " ", 
-        RowBox[{
-         RowBox[{"Message", "[", 
-          RowBox[{"generateData", "::", "invalidCase"}], "]"}], ";", " ", 
-         "$Failed"}]}], "\[IndentingNewLine]", "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{"generateData", "[", "]"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"result", " ", "=", " ", 
+         RowBox[{"staticGenerate", "[", "]"}]}], ";", " ", "result"}], ",", 
+       "\[IndentingNewLine]", "\"\<timeinvariant\>\"", ",", " ", 
+       RowBox[{
+        RowBox[{"result", " ", "=", " ", 
+         RowBox[{"invariantGenerate", "[", "]"}]}], ";", " ", "result"}], ",",
+        "\[IndentingNewLine]", "\"\<timevariant\>\"", ",", " ", 
+       RowBox[{
+        RowBox[{"result", " ", "=", " ", 
+         RowBox[{"variantGenerate", "[", "]"}]}], ";", " ", "result"}], ",", 
+       "\[IndentingNewLine]", "_", ",", " ", 
+       RowBox[{
+        RowBox[{"Message", "[", 
+         RowBox[{"generateData", "::", "invalidCase"}], "]"}], ";", " ", 
+        "$Failed"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{"generateData", "[", "]"}], " ", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{"Export", "[", 
@@ -277,8 +286,133 @@ Cell[BoxData[{
    3.8200665881244783`*^9, 3.820066589125525*^9}, {3.82032584821449*^9, 
    3.820325875624761*^9}, {3.820325982255807*^9, 3.8203259887840147`*^9}, {
    3.822138868204743*^9, 3.822138913203144*^9}, {3.822180195038066*^9, 
-   3.8221801981614122`*^9}},
- CellLabel->"In[27]:=",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"],
+   3.8221801981614122`*^9}, 3.822349521068981*^9},
+ CellLabel->
+  "In[224]:=",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Before\"\>"], "Print",
+ CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
+   3.82234957550782*^9},
+ CellLabel->
+  "During evaluation of \
+In[224]:=",ExpressionUUID->"41c7a599-ca7b-4db0-bdc7-e0fd238972b2"],
+
+Cell[BoxData["\<\"After\"\>"], "Print",
+ CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
+   3.82234957551245*^9},
+ CellLabel->
+  "During evaluation of \
+In[224]:=",ExpressionUUID->"2ed49cf1-9f81-49bf-814a-102ce0f67a1f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{"B", "\[Equal]", "\<\"T\"\>"}], "]"}], "\[Equal]", "0.5`"}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{"A", "\[NotEqual]", "1"}], "]"}], "\[Equal]", "0.5`"}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{"A", "\[Equal]", "2"}], "]"}], "\[Equal]", "0.3`"}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{"A", "\[Equal]", "1"}], "&&", 
+      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}]}], "]"}], "\[Equal]", 
+    RowBox[{
+     RowBox[{"myProb", "[", 
+      RowBox[{"A", "\[Equal]", "1"}], "]"}], " ", 
+     RowBox[{"myProb", "[", 
+      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}], "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"myProb", "[", 
+     RowBox[{
+      RowBox[{"A", "\[Equal]", "2"}], "&&", 
+      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}]}], "]"}], "\[Equal]", 
+    RowBox[{
+     RowBox[{"myProb", "[", 
+      RowBox[{"A", "\[Equal]", "2"}], "]"}], " ", 
+     RowBox[{"myProb", "[", 
+      RowBox[{"B", "\[Equal]", "\<\"H\"\>"}], "]"}]}]}]}], "}"}]], "Print",
+ CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
+   3.822349575516176*^9},
+ CellLabel->
+  "During evaluation of \
+In[224]:=",ExpressionUUID->"3fcd870f-d582-4d40-9083-84163ffa80f3"]
+}, Open  ]],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Solve", "ratnz", 
+   "\"Solve was unable to solve the system with inexact coefficients. The \
+answer was obtained by solving a corresponding exact system and numericizing \
+the result.\"", 2, 225, 11, 30473148819099194424, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.822349525856333*^9, 3.822349535503539*^9}, 
+   3.8223495755550117`*^9},
+ CellLabel->
+  "During evaluation of \
+In[224]:=",ExpressionUUID->"b903e8e7-f8aa-4b53-af4a-5a572d52b401"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    SubscriptBox["o", 
+     RowBox[{"1", ",", "1"}]], "\[Rule]", "0.25`"}], ",", 
+   RowBox[{
+    SubscriptBox["o", 
+     RowBox[{"1", ",", "2"}]], "\[Rule]", "0.25`"}], ",", 
+   RowBox[{
+    SubscriptBox["o", 
+     RowBox[{"2", ",", "1"}]], "\[Rule]", "0.15`"}], ",", 
+   RowBox[{
+    SubscriptBox["o", 
+     RowBox[{"2", ",", "2"}]], "\[Rule]", "0.15`"}], ",", 
+   RowBox[{
+    SubscriptBox["o", 
+     RowBox[{"3", ",", "1"}]], "\[Rule]", "0.1`"}], ",", 
+   RowBox[{
+    SubscriptBox["o", 
+     RowBox[{"3", ",", "2"}]], "\[Rule]", "0.1`"}]}], "}"}]], "Print",
+ CellChangeTimes->{{3.822349525844397*^9, 3.822349535489922*^9}, 
+   3.822349575571329*^9},
+ CellLabel->
+  "During evaluation of \
+In[224]:=",ExpressionUUID->"257090ab-8a15-417c-a31c-12461013efd5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "\<\"T\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\<\"T\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "\<\"T\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "\<\"H\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "\<\"T\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.8223495258826027`*^9, 3.8223495355312*^9}, 
+   3.8223495755745487`*^9},
+ CellLabel->
+  "Out[225]=",ExpressionUUID->"a0578aa1-570b-4527-bd51-e3c7ac36e3b7"]
+}, Open  ]],
 
 Cell[BoxData[
  RowBox[{
@@ -361,11 +495,12 @@ Cell[BoxData[
    3.822180202317189*^9, 3.822180206838943*^9}, {3.822180237575734*^9, 
    3.822180287287859*^9}, 3.8222192262966557`*^9, 3.8222192826076508`*^9, {
    3.822223347991452*^9, 3.822223413886673*^9}, {3.822239576650508*^9, 
-   3.822239586835209*^9}},ExpressionUUID->"c588483f-1246-4343-88c6-\
-b18c18ce0352"]
+   3.822239586835209*^9}},
+ CellLabel->
+  "In[226]:=",ExpressionUUID->"c588483f-1246-4343-88c6-b18c18ce0352"]
 },
 WindowSize->{1036, 748},
-WindowMargins->{{Automatic, 44}, {Automatic, 27}},
+WindowMargins->{{Automatic, 158}, {Automatic, 0}},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"53a246bf-ac3b-41f7-8734-d2adc3c71f2c"
@@ -381,9 +516,19 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 7825, 178, 472, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
-Cell[8386, 200, 3923, 80, 346, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"],
-Cell[12312, 282, 3712, 82, 535, "Input",ExpressionUUID->"c588483f-1246-4343-88c6-b18c18ce0352"]
+Cell[558, 20, 8288, 187, 556, "Input",ExpressionUUID->"a1917d02-e626-423b-a9fb-31c977d521a5"],
+Cell[CellGroupData[{
+Cell[8871, 211, 3877, 79, 346, "Input",ExpressionUUID->"1cd59673-3e99-4b87-b750-b53e960cf43b"],
+Cell[CellGroupData[{
+Cell[12773, 294, 237, 5, 24, "Print",ExpressionUUID->"41c7a599-ca7b-4db0-bdc7-e0fd238972b2"],
+Cell[13013, 301, 236, 5, 24, "Print",ExpressionUUID->"2ed49cf1-9f81-49bf-814a-102ce0f67a1f"],
+Cell[13252, 308, 1301, 36, 44, "Print",ExpressionUUID->"3fcd870f-d582-4d40-9083-84163ffa80f3"]
+}, Open  ]],
+Cell[14568, 347, 505, 11, 24, "Message",ExpressionUUID->"b903e8e7-f8aa-4b53-af4a-5a572d52b401"],
+Cell[15076, 360, 812, 25, 27, "Print",ExpressionUUID->"257090ab-8a15-417c-a31c-12461013efd5"],
+Cell[15891, 387, 900, 26, 34, "Output",ExpressionUUID->"a0578aa1-570b-4527-bd51-e3c7ac36e3b7"]
+}, Open  ]],
+Cell[16806, 416, 3738, 83, 535, "Input",ExpressionUUID->"c588483f-1246-4343-88c6-b18c18ce0352"]
 }
 ]
 *)
