@@ -3,6 +3,9 @@ Prospect (a PRObability SPECification Tool) generates time-series data from prob
 
 
 ## Running Prospect
+
+Requirements: Wolfram Mathematica, version 12.1+
+
 1) Open the Request_input.nb notebook, and run it
 2) When prompted to enter file name for input, select a valid input file from the same directory as the Request_input.nb notebook. In the comments of the file exist several examples that can be copied/pasted to observe the functionality.
 3) The experiment files can be found in experiments/specs/
