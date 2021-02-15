@@ -1,0 +1,14 @@
+casetype: "timevariant"
+variables: {X}
+values: {{0, 1}}
+timesteps: {1}
+numsamples: 2
+
+independence
+indep[{X[t], X[t-1]}]
+
+basecase
+P[X[0] = 1] = .5
+
+main
+P[X[t] = 1] = -Log[(P[X[t-1] = 1])]
