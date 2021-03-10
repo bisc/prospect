@@ -6,10 +6,12 @@ BeginPackage["ParsingInput`"]
 parse::usage="Parsing input files"
 variables::usage= "Global variable for variable classes"
 values::usage="Global variable for variable values"
+numsamples::usage="Global variable for number of samples"
 specs::usage="Global variable for system specifications"
 
 
-Needs["Independence`"]
+(*Import["Independence.wl"];*)
+Needs["Independence`"];
 
 
 Begin["`Private`"];
@@ -114,10 +116,11 @@ Print["functioning"];
 i = Position[input, "main"][[1]][[1]] + 1;
 While[i<=Length[input],
 Module[{expr=ToExpression[StringReplace[input[[i]]," ="->" =="]]},
-Print[FullForm@expr];
+AppendTo[specs,expr/.(P[e_]:>(If[StringContainsQ[ToString[e]," | "],myCondProb[Conditioned@@e],myProb[e]]))];
+(*Print[FullForm@expr];
 expr = (P[A] /. (P[e_]:>(If[StringContainsQ[ToString[e]," | "],myCondProb[Conditioned@@e],myProb[e]])));
 Print[FullForm@expr];
-AppendTo[specs, expr];
+AppendTo[specs, expr];*)
 i++
 ];
 ];

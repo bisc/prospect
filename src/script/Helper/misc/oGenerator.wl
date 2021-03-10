@@ -26,6 +26,9 @@ allOthers::invalidvalue="Value must coordinate with the variable";
 allOthers::invalidvar="Variable must exist in list";
 
 
+Needs["Independence`"]
+
+
 Begin["`Private`"];
 
 

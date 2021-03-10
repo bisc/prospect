@@ -9,13 +9,13 @@ staticGenerate::usage="staticgen1"
 Needs["ProbRules`"];
 Needs["oGenerator`"];
 Needs["EqualityCasing`"];
-Import["ParsingInput.wl"];
+(*Import["ParsingInput.wl"];
+Import["Independence.wl"];*)
+Needs["Independence`"];
+Needs["ParsingInput`"];
 
 
 Begin["`Private`"];
-
-
-
 
 
 Clear[staticGenerate]; 
