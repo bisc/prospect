@@ -4,6 +4,27 @@ PROSPECT (a PRObability SPECification Tool) generates time-series data from prob
 
 ## Running PROSPECT
 
+### Script
+The prospect script PROSPECT.wls can be run in the command line. It takes in the following arguments:
+
+1) The relative path for a valid specification file
+2) (Optional) A number 1 or 0. Typing 1 indicates that all debug messages should be printed during the run, 0 indicates only the result should be printed. 0 by default.
+
+The output will be the sampled data in a csv format. For example, if the command line is in the script directory, the following command can be run:
+```
+./PROSPECT.wls testing/static/Static.txt
+```
+This will print the data to be generated per the specifications in the Static.txt text file. This is equivalent to typing
+```
+./PROSPECT.wls testing/static/Static.txt 0
+```
+Furthermore, by typing the following command instead:
+```
+./PROSPECT.wls testing/static/Static.txt > output.csv
+```
+The output will be saved to an output.csv file created in the same directory.
+
+### Notebook
 Requirements: Wolfram Mathematica, version 12.1+
 
 1) Open the src/notebook/PROSPECT.nb notebook, and run all it (Ctrl+A, Shift+Enter).
