@@ -5,7 +5,7 @@ PROSPECT (a PRObability SPECification Tool) generates time-series data from prob
 ## Running PROSPECT
 
 ### Script
-The prospect script PROSPECT.wls can be run in the command line. It takes in the following arguments:
+The PROSPECT script PROSPECT.wls can be run in the command line. It takes in the following arguments:
 
 1) The relative path for a valid specification file
 2) (Optional) A number 1 or 0. Typing 1 indicates that all debug messages should be printed during the run, 0 indicates only the result should be printed. 0 by default.
