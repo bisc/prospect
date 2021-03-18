@@ -9,6 +9,11 @@ invariantGenerate::usage="Generating examples of case type time invariant"
 variantGenerate::usage="Generating examples of case type time variant"
 
 
+Clear[variables, seed, values, timesteps, classes, indepspecs, 
+specs, basespecs, casetype, retInput, isPastStep, isCurrStep, 
+willBePastStep, pastStepVars, pastStepValues];
+
+
 (* Parse functions/global variables *)
 parse::usage="Parsing input files"
 variables::usage= "Global variable for variable classes"
@@ -16,6 +21,7 @@ values::usage="Global variable for variable values"
 numsamples::usage="Global variable for number of samples"
 specs::usage="Global variable for system specifications"
 casetype::usage="Global variable for casetype"
+classes::usage="Global variable for classes"
 
 
 (* Parse global variables for time cases *)
@@ -60,7 +66,6 @@ Clear[timeVarVals];
 timeVarVals[steps0_, vars0_, vals0_] :=
 Module[{steps = steps0, vars = vars0, vals = vals0, varL, valL, stepL, varsR = {}, valsR = {}, 
 isPastStep = {}, isCurrStep = {}, willBePastStep = {}, pastStepVars = {}, pastStepValues = {}},
-Print["Running this"];
 varL = Length[vars];
 valL = Length[vals];
 stepL = Length[steps];
@@ -126,6 +131,8 @@ switchEqualsQ::usage="Switch equals signs on q parameters"
 (* Stationary functions *)
 acquireEquations::usage="Acquiring a single equation for the stationary assumption"
 stationary::usage="Performing the stationary assumption"
+stationaryAll::usage="Getting all stationary equations, should not be used"
+classRule::usage="Decrementing time step of variables in class"
 
 
 (* TimeLists functions *)
@@ -140,12 +147,29 @@ valFix::usage="Helper function to put values in list"
 
 
 generateData::usage="Generates the data"
+debugP::usage="Debug number"
 
 
 Begin["`Private`"];
 
 
-(* BEGINNING OF INDEPENDENCE NOTEBOOK *)
+(*
+*
+*
+*
+*
+*
+*
+*)
+(* BEGINNING OF INDEPENDENCE FUNCTIONS *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 (* Error messages *)
@@ -177,9 +201,13 @@ a = a0,inc = 2, finalInc = 0, adjustedVals = {},
 result = {}, tempVar, tempList, insideFunc, 
 droppedTemp, finalTemp,subsetsSizeT, currentEvents, 
 currentSubset, tempVarPos, allPerms, currPerm, leftHalf, rightHalf},
+
+If[debugP == 1,
 Print[varsTotal];
 Print[valsTotal];
 Print[a];
+];
+
 finalInc = Length[a];
 If[finalInc < 2, 
 (Message[indepSetToProb::invalidAmount]; $Failed),
@@ -276,25 +304,42 @@ retList
 ];
 
 
+(*
+*
+*
+*
+*
+*
+*
+*)
 (* END OF INDEPENDENCE NOTEBOOK *)
 (* BEGINNING OF PARSE NOTEBOOK *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 Clear[parse];
 (* Parse text input given file name *)
 parse[s_]:=Module[{name=s,input,i,j,strassoc},
-Clear[variables, seed, values, timesteps, classes, indepspecs, 
-specs, basespecs, casetype, retInput, isPastStep, isCurrStep, 
-willBePastStep, pastStepVars, pastStepValues];
 timesteps = Null;
 input=Import[name, "Lines"];
+If[debugP == 1,
 Print[input];
+];
 retInput = input;
 (* Process the configs (not specs) *)
 i = 1;
 While[StringMatchQ[ToString[input[[i]]],__~~": "~~__],
 ToExpression[StringReplace[ToString[input[[i]]],": " ->"="]]; (* sets each config attribute to a value *)
+If[debugP == 1,
 Print[ToString[input[[i]]]];
+];
 i++
 ];
 
@@ -310,15 +355,18 @@ ToExpression[strassoc];
 i++;(* skip filler line *)
 (* Process the specs *)
 
-Print["Here are the timesteps"];
-Print[timesteps];
-
 (* If not static case, adjust variables accordingly *)
 If[timesteps === Null,
-Print["Timesteps don't exist"];,
-Print["Timesteps exist"];
-classes = variables;
+If[debugP == 1,
+Print["Timesteps don't exist"];
+]
+,
 
+If[debugP==1,
+Print["Timesteps exist"];
+];
+
+classes = variables;
 (* Generates several important variables required for solving/generating: ;
 
 variables/values: The relevant variables and their corresponding values in the problem ;
@@ -340,9 +388,8 @@ USED FOR GENERATING;
 pastStepValues: List of the values for the current past step variables ;
 - Length m \[LessEqual] n ;
 USED FOR GENERATING;
-
  *)
-
+ 
 {variables, values, isPastStep, isCurrStep, willBePastStep, pastStepVars, pastStepValues} = timeVarVals[timesteps, variables, values];
 ];
 
@@ -378,7 +425,9 @@ i++
 
 specs = {};
 If[Length[Position[input, "main"]] != 0,
+If[debugP == 1,
 Print["functioning"];
+];
 i = Position[input, "main"][[1]][[1]] + 1;
 While[i<=Length[input],
 Module[{expr=ToExpression[StringReplace[input[[i]]," ="->" =="]]},
@@ -419,13 +468,30 @@ i++
 ];
 ];
 *)
-
+If[debugP == 1,
 Print[specs]
+];
 ]
 
 
-(* END OF PARSE NOTEBOOK *)
-(* BEGINNING OF STATIC GENERATION NOTEBOOK *)
+(*
+*
+*
+*
+*
+*
+*
+*)
+(* END OF PARSE FUNCTIONS *)
+(* BEGINNING OF STATIC GENERATION FUNCTIONS *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 Clear[staticGenerate]; 
@@ -434,8 +500,10 @@ Clear[staticGenerate];
 staticGenerate[]:=Module[{equalityAdjust,inequalityAdjust,  myProbAdjustEquals,myProbAdjustUnequals, oParams, 
 oOutput, oEquations, oConstraints, oSolve, oRules, oFinalRules, oD, underCheck, sampleResult = {}},
 
+If[debugP == 1,
 Print["Before"];
 Print[specs];
+];
 (* Removing all the OR operations in the myProb and myCondProb statements *)
 equalityAdjust = (Equal[test1_, test2_]) :> switchEquals[Equal[test1, test2],variables, values];
 inequalityAdjust = (Unequal[test1_, test2_]) :> switchUnequals[Unequal[test1, test2],variables, values];
@@ -443,8 +511,10 @@ myProbAdjustEquals= myProb[test3_] :> myProb[ test3 /. equalityAdjust];
 myProbAdjustUnequals= myProb[test3_] :> myProb[ test3 /. inequalityAdjust];
 specs = specs //. myProbAdjustEquals //. myProbAdjustUnequals //.definizeRule //.eventsToDNFExtRule //. myProbAdjustEquals //. myProbAdjustUnequals;
 
+If[debugP == 1,
 Print["After"];
 Print[specs];
+];
 
 (* Parameterizing the specifications with generated o parameters *)
 oParams = oGen[ variables, values];
@@ -461,7 +531,9 @@ If[FailureQ[oSolve],Print["Invalid system: solver timed out"]];
 (* Generating data by placing the solution into a categorical distribution *)
 If[!FailureQ[oSolve],
 If[Length[oSolve] != 1 || Length[oSolve[[1]]] != Length[oOutput], 
+If[debugP == 1,
 Print[oSolve];
+];
 underCheck = TimeConstrained[FindInstance[Join[oEquations,oConstraints],oOutput,Reals, 1],60,$Failed];
 Which[FailureQ[underCheck],Print["Invalid system: distribution either underspecified or conflicting"]
 ,
@@ -474,7 +546,9 @@ $Failed,
 oRules = oSolve[[1]];
 (* Editing the rules such that they map to probabilities and not a list w/single probability *)
 oFinalRules = oRules//.{x_}:>x;
+If[debugP == 1,
 Print[oFinalRules];
+];
 (* A distribution mapping the values and their probabilities *)
 oD = CategoricalDistribution[values, oParams /. oFinalRules];
 
@@ -489,8 +563,24 @@ Print["Invalid system: solver timed out"]
 ]
 
 
+(*
+*
+*
+*
+*
+*
+*
+*)
 (* END OF STATIC GENERATION NOTEBOOK *)
 (* BEGINNING OF O GENERATION NOTEBOOK *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 Clear[oGen];
@@ -708,8 +798,24 @@ oTop / oBottom
 );
 
 
+(*
+*
+*
+*
+*
+*
+*
+*)
 (* END OF O GENERATION NOTEBOOK *)
 (* BEGINNING OF EQUALS NOTEBOOK *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 Clear[switchEquals, switchUnequals, switchEqualsQ];
@@ -846,8 +952,24 @@ retParam
 ]
 
 
-(* END OF EQUALS NOTEBOOK *)
-(* BEGINNING OF TIME LISTS NOTEBOOK *)
+(*
+*
+*
+*
+*
+*
+*
+*)
+(* END OF EQUALS FUNCTIONS *)
+(* BEGINNING OF TIME LISTS FUNCTIONS *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 (*timeVarVals::unequalarg="Lists must be the same size";
@@ -1075,8 +1197,24 @@ finalCoord
 ]
 
 
+(*
+*
+*
+*
+*
+*
+*
+*)
 (* END OF TIME LISTS PACKAGE *)
 (* BEGINNING OF STATIONARY PACKAGE *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 (* Error messages *)
@@ -1118,11 +1256,17 @@ Furthermore, the lists are of equal length. Must be held in main function.
 *)
 Clear[acquireEquations];
 acquireEquations[varsTotal0_, valsTotal0_, t10_, t20_] := 
-Module[{varsTotal = varsTotal0, valsTotal = valsTotal0, t1 = t10,t2 = t20, tempList,tempVar, insideFuncL, insideFuncR, currTuple, tupleLength, currBooleanL, currBooleanR, tempProb, adjustedVals, totalTuples, addedEquations},
+Module[{varsTotal = varsTotal0, valsTotal = valsTotal0, t1 = t10,
+t2 = t20, tempList,tempVar, insideFuncL, insideFuncR, currTuple, 
+tupleLength, currBooleanL, currBooleanR, tempProb, adjustedVals, totalTuples, addedEquations},
 addedEquations = {};
 tempList = {};
 adjustedVals = {};
 
+(*Print["What the heck are these"];
+Print[t1];
+Print[t2];
+*)
 (* Creates list of adjusted values *)
 Do[
 tempList = acquireValList[varsTotal, valsTotal, t1[[i]]];
@@ -1131,7 +1275,10 @@ AppendTo[adjustedVals, tempList]
 
 (* Note: Each tuple is the length of the varLists t1 and t2 *)
 totalTuples = Tuples[adjustedVals];
-
+If[debugP == 1,
+Print["total tuples"];
+Print[totalTuples];
+];
 (* Make myProb equations for all tuples *)
 Do[
 (* Acquire current tuple *)
@@ -1147,11 +1294,19 @@ currBooleanL = currBooleanL && insideFuncL[currTuple[[j]]];
 currBooleanR = currBooleanR && insideFuncR[currTuple[[j]]];
 ,{j,2, Length[currTuple]}];
 ];
+(*Print["Curr Bool L"];
+Print[currBooleanL];
+Print["Curr Bool R"];
+Print[currBooleanR];*)
 tempProb = myProb[currBooleanL] == myProb[currBooleanR];
+(*Print["Something to put in"];
+Print[tempProb];*)
 AppendTo[addedEquations, tempProb];
 ,{i, Length[totalTuples]}]; (* End of check *)
 
 addedEquations = Drop[addedEquations, -1];
+(*Print["Added equations from allEquations"];
+Print[addedEquations];*)
 addedEquations
 ]
 
@@ -1160,7 +1315,9 @@ Input: Classes of variables, list of variables, list of lists of values;
 Output: List of equations matching stationary assumption
 *)
 Clear[stationary];
-stationary[classTotal0_, varsTotal0_, valsTotal0_ ] := Module[{addedEquations = {}, classTotal = classTotal0, varsTotal = varsTotal0, valsTotal = valsTotal0, pSet, allRules = {}, tempRule, tempSetShift, tempSetNorm},
+stationary[classTotal0_, varsTotal0_, valsTotal0_ ] := Module[{addedEquations = {}, classTotal = classTotal0, 
+varsTotal = varsTotal0, valsTotal = valsTotal0, pSet, 
+allRules = {}, tempRule, tempSetShift, tempSetNorm},
 pSet = Subsets[varsTotal];
 
 (* Remove empty set from list, no reason to check this *)
@@ -1172,32 +1329,6 @@ tempRule = classRule[classTotal[[i]]];
 AppendTo[allRules, tempRule];
 ,{i, Length[classTotal]}];
 
-(* 
-UNOPTIMIZED;
-For each subset S in pSet: ;
-	1. Create a normal and shift set;
-	2. Check if the shifted set is in pSet;
-		a. If so, then apply acquireEquations on both the normal and shift set; 
-*)
-
-(*
-Do[
-tempSetShift = pSet[[i]];
-tempSetNorm = pSet[[i]];
-
-(* Apply all the shift rules *)
-Do[
-tempSetShift = tempSetShift /. allRules[[j]];
-,{j, Length[allRules]}];
-
-If[MemberQ[pSet, tempSetShift],
-AppendTo[addedEquations, acquireEquations[varsTotal, valsTotal, tempSetNorm, tempSetShift]];
-];
-,{i, Length[pSet]}];
-
-Flatten[addedEquations]
-*)
-
 (*
 OPTIMIZED;
 Go in reverse order on subsets in pSet ;
@@ -1207,7 +1338,6 @@ Go in reverse order on subsets in pSet ;
 		b. Set addedEquations to the result and break out;
 *)
 
-
 Do[
 tempSetShift = pSet[[i]];
 tempSetNorm = pSet[[i]];
@@ -1217,6 +1347,10 @@ Do[
 tempSetShift = tempSetShift /. allRules[[j]];
 ,{j, Length[allRules]}];
 
+(*Print["the temp sets"];
+Print[tempSetNorm];
+Print[tempSetShift];*)
+
 (* If the greatest shift is found, set added equations to it, and break *)
 If[MemberQ[pSet, tempSetShift],
 addedEquations = acquireEquations[varsTotal, valsTotal, tempSetNorm, tempSetShift];
@@ -1224,6 +1358,8 @@ Break[]
 ];
 ,{i, Length[pSet], 1, -1}];
 
+(*Print["Added equations from stationary"];
+Print[addedEquations];*)
 addedEquations
 
 ];
@@ -1271,8 +1407,24 @@ Flatten[addedEquations]
 ];
 
 
-(* END OF STATIONARY PACKAGE *)
-(* BEGINNING OF TIME INVARIANT GENERATOR PACKAGE *)
+(*
+*
+*
+*
+*
+*
+*
+*)
+(* END OF STATIONARY FUNCTIONS *)
+(* BEGINNING OF TIME INVARIANT GENERATOR FUNCTIONS *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 Clear[invariantGenerate];
@@ -1284,7 +1436,7 @@ invariantGenerate[]:=Module[{ equalityAdjust,inequalityAdjust,  myProbAdjustEqua
 
  underCheck, baseCase,nextCase,currStep, condF, observations = {}},
 
-
+If[debugP == 1,
 Print["Adjust Lists"];
 Print[specs];
 Print[classes];
@@ -1298,7 +1450,7 @@ Print[willBePastStep];
 Print[pastStepVars];
 Print[pastStepValues];
 Print[];
-
+];
 
 testAdjust = (Equal[test1_, test2_]) :> test1;
 
@@ -1308,25 +1460,29 @@ inequalityAdjust = (Unequal[test1_, test2_]) :> switchUnequals[Unequal[test1, te
 myProbAdjustEquals= myProb[test3_] :> myProb[ test3 //. equalityAdjust];
 myProbAdjustUnequals= myProb[test3_] :> myProb[ test3 //. inequalityAdjust];
 
-
+If[debugP == 1,
 Print["Added Stationary Assumption"];
+];
 (* Adds equations assumed by the stationary assumption in the specifications *)
 AppendTo[specs,stationary[classes, variables, values]]; 
 specs = Flatten[specs]; 
+If[debugP == 1,
 Print[specs];
-
+];
 (* Modify the specifications to have equal signs in the right places/turn conditional distributions into marginal ones/put everything in proper forms *)
 specs  = specs //. myProbAdjustEquals  //.definizeRule //. eventsToDNFExtRule //. myProbAdjustUnequals //.definizeRule //. eventsToDNFExtRule  //. myProbAdjustEquals //. myProbAdjustUnequals;
 
+If[debugP == 1,
 Print["After"];
 Print[specs];
-
+];
 (* Parameterizing the specifications with generated o parameters *)
 oParams = oGen[ variables, values];
 oOutput = oOutcomes[oParams];
 oEquations= specs /. unconditionedProbability /. conditionedProbability;
 (* Print[oEquations]; *)
 AppendTo[oEquations, givenEquation[oParams]];
+
 
 (* Solving the probability system based on the specifications and constraints *)
 oConstraints=#\[Element]Interval[{0,1}]&/@oOutput;
@@ -1354,12 +1510,13 @@ oFinalRules = oRules//.{x_}:>x;
 
 (* A distribution mapping the values and their probabilities *)
 oFinalArray = oParams /. oFinalRules;
+If[debugP == 1,
 Print["Final Array"];
 Print[oFinalArray];
+];
 oD = CategoricalDistribution[values, oFinalArray];
 (* Function that takes in values for next step's blanket, returns its conditioned distribution *)
 condF = timeDistsConditional[oFinalArray, isPastStep, pastStepVars, pastStepValues];
-Print[];
 
 (* Generates all instances of the data *)
 Do[
@@ -1383,8 +1540,24 @@ Print["Invalid system: solver timed out"]
 ]
 
 
-(* END OF TIME INVARIANT GENERATOR *)
-(* BEGINNING OF Q GENERATOR *)
+(*
+*
+*
+*
+*
+*
+*
+*)
+(* END OF TIME INVARIANT GENERATOR FUNCTIONS *)
+(* BEGINNING OF Q GENERATOR FUNCTIONS *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 (* Error messages *)
@@ -1480,14 +1653,32 @@ currBoolean = currBoolean && insideFunc[currTuple[[j]]];
 tempProb = myProb[currBoolean] == qOutput[[i]];
 AppendTo[addedEquations, tempProb];
 ,{i, Length[valTuples]}];
+If[debugP == 1,
 Print[addedEquations];
+];
 addedEquations = Drop[addedEquations, -1];
 addedEquations
 ]
 
 
-(* END OF Q GENERATOR *)
-(* BEGINNING OF TIME VARIANT GENERATOR *)
+(*
+*
+*
+*
+*
+*
+*
+*)
+(* END OF Q GENERATOR FUNCTIONS *)
+(* BEGINNING OF TIME VARIANT GENERATOR FUNCTIONS *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 Clear[variantGenerate];
@@ -1502,7 +1693,7 @@ oParams, oOutput, oEquations, oConstraints, oSolve, oRules, oFinalRules,oFinalAr
 underCheck, baseCase,nextCase,currStep, condF, subArray, allCoords, cD,qNew,qCondition,tCondition,nextCondition, observations = {}},
 
 
-(*
+If[debugP == 1,
 Print["Adjust Lists"];
 Print[classes];
 Print[variables];
@@ -1519,7 +1710,7 @@ Print[willBePastStep];
 Print[pastStepVars];
 Print[pastStepValues];
 Print[];
-*)
+];
 
 testAdjust = (Equal[test1_, test2_]) :> test1;
 
@@ -1534,8 +1725,10 @@ myProbAdjustUnequals= myProb[test3_] :> myProb[ test3 //. inequalityAdjust];
 (* TODO: Add relevant independence specifications to basespecs *)
 basespecs  = basespecs //. myProbAdjustEquals  //.definizeRule //. eventsToDNFExtRule //. myProbAdjustUnequals //.definizeRule //. eventsToDNFExtRule  //. myProbAdjustEquals //. myProbAdjustUnequals;
 
-(*Print["After for Base"];
-Print[basespecs];*)
+If[debugP == 1,
+Print["After for Base"];
+Print[basespecs];
+];
 
 (* baseStepVars: pastStepVars where the t equation is replaced with base case value *)
 baseStepVars = pastStepVars /. t -> Max[timesteps];
@@ -1544,12 +1737,16 @@ baseStepVars = pastStepVars /. t -> Max[timesteps];
 Q GENERATION ; 
 *) 
 
-(*Print["Generating base case"];*)
+If[debugP == 1,
+Print["Generating base case"];
+];
 qParams = qGen[pastStepVars, pastStepValues];
 qOutput = qOutcomes[qParams];
 qEquations= basespecs /. QunconditionedProbability /. QconditionedProbability;
 AppendTo[qEquations, givenEquation[qParams]];
-(*Print[qEquations];*)
+If[debugP == 1,
+Print[qEquations];
+];
 
 qConstraints=#\[Element]Interval[{0,1}]&/@qOutput;
 qSolve = TimeConstrained[Solve[Join[qEquations,qConstraints],qOutput,Reals],60,$Failed];
@@ -1573,8 +1770,10 @@ UNSURE IF NEEDED, BUT HERE IT IS *)
 qRules = qSolve[[1]];
 (* Editing the rules such that they map to probabilities and not a list w/single probability *)
 qFinalRules = qRules//.{x_}:>x;
-(*Print[];
-Print[qFinalRules];*)
+If[debugP == 1,
+Print[];
+Print[qFinalRules];
+];
 (* A distribution mapping the values and their probabilities *)
 qD = CategoricalDistribution[pastStepValues, qParams /. qFinalRules];
 
@@ -1590,15 +1789,17 @@ Print["Invalid system: solver timed out"]
 qAppend = qMyProbs[pastStepVars, pastStepValues, qOutput];
 AppendTo[specs,qAppend]; 
 specs = Flatten[specs]; 
-(*Print[specs];*)
+If[debugP == 1,
+Print[specs];
+];
 
 specs  = specs //. myProbAdjustEquals  //.definizeRule //. eventsToDNFExtRule //. myProbAdjustUnequals //.definizeRule //. eventsToDNFExtRule  //. myProbAdjustEquals //. myProbAdjustUnequals;
 
-(*
+If[debugP == 1,
 Print[];
 Print["After for Main"];
 Print[specs];
-*)
+];
 
 
 (* Parameterizing the specifications with generated o parameters *)
@@ -1614,7 +1815,12 @@ AppendTo[oEquations, givenEquation[oParams]];
 (* Solving the probability system based on the specifications and constraints *)
 oConstraints=#\[Element]Interval[{0,1}]&/@oOutput;
 oSolve = TimeConstrained[Solve[Join[oEquations,oConstraints],oOutput,Reals],120,$Failed];
-If[FailureQ[oSolve],Print["Invalid system: solver timed out"], Print[oSolve]];
+If[FailureQ[oSolve],
+Print["Invalid system: solver timed out"], 
+If[debugP == 1,
+Print[oSolve];
+];
+];
 
 (* 
 At this point, we have the following: ;
@@ -1653,10 +1859,11 @@ oFinalArray = oParams /. oFinalRules;
 Print[oFinalArray];*)
 
 (* Base case o distribution *)
-Print[];
 subArray =oFinalArray /. qFinalRules;
-(*Print["First sub array"];
-Print[subArray];*)
+If[debugP == 1,
+Print["First sub array"];
+Print[subArray];
+];
 
 allCoords = Tuples[Range[1,#]&/@Dimensions@oFinalArray];
 
@@ -1683,8 +1890,10 @@ qNew[[i]] = switchEqualsQ[qNew[[i]]];
 qNew = qNew /. qCondition;
 
 subArray = oFinalArray /. qNew;
-(*Print["Next sub array"];
-Print[subArray];*)
+If[debugP == 1,
+Print["Next sub array"];
+Print[subArray];
+];
 nextCondition = timeValExtraction[nextCase, willBePastStep];
 
 cD = singleConditionalDist[subArray, isPastStep, pastStepVars, pastStepValues, nextCondition, allCoords];
@@ -1707,16 +1916,35 @@ Print["Invalid system: solver timed out"]
 ]
 
 
+(*
+*
+*
+*
+*
+*
+*
+*)
 (* FINAL GENERATING FUNCTION *)
+(*
+*
+*
+*
+*
+*
+*
+*)
 
 
 (* Generate data function *)
 generateData::invalidCase="No such case exists";
 Clear[generateData];
-generateData[filename_] := Module[ {result = {}},
+generateData[filename_, debug1_] := Module[ {result = {}},
+debugP = debug1;
 parse[filename];
+If[debugP == 1,
 Print["casetype here:"];
 Print[casetype];
+];
 Switch[casetype,
 "static", result = staticGenerate[]; result,
 "timeinvariant", result = invariantGenerate[]; result,

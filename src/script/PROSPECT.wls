@@ -28,7 +28,18 @@ DirectoryName[$InputFileName] <> "Helper/AllTesting.wl"];
 If[$FrontEnd \[Equal] Null,*)
 
 
-Print[$ScriptCommandLine]
+(*Print[$ScriptCommandLine]*)
+
+
+debug = 0
+Quiet[
+If[$ScriptCommandLine[[3]]== "1",
+debug = 1,
+debug = 0]
+];
+
+
+(*debug = 1*)
 
 
 Clear[filename];
@@ -36,20 +47,29 @@ filename = None;
 If[$FrontEnd === Null, 
 filename = DirectoryName[$Input] <> $ScriptCommandLine[[2]],
 filename = NotebookDirectory[] <> 
-(*"testing/static/StaticEx.txt" (* Change line for other tests *)*)
-(*"testing/time_invariant/InvariantEx1.txt"*)
+(*"testing/static/StaticEx.txt"*) (* Change line for other tests *)
+"testing/time_invariant/InvariantEx1.txt"
 (*"testing/time_invariant/TimeInvariant.txt"*)
 (*"testing/static/StaticEx2.txt"*)
 (*"testing/time_variant/VariantEx2.txt"*)
-"testing/time_variant/TimeVariant.txt"
+(*"testing/time_variant/TimeVariant.txt"*)
 ];
 
 
+If[debug==1,
 Print[filename]
+]
 
 
-results = generateData[filename]
-Print[results];
+(*debug = 1*)
+
+
+results = None;
+If[debug == 1,
+results = generateData[filename, debug];,
+results = Quiet[generateData[filename, debug]];
+];
+Print[ExportString[results, "csv", TextDelimiters->""]];
 
 
 (*parse[filename]*)
