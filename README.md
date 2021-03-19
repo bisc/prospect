@@ -1,14 +1,34 @@
 # PROSPECT tool for probability specification and data generation
 PROSPECT (a PRObability SPECification Tool) generates time-series data from probabilistic constraints and independence specifications.
 
+## Using PROSPECT
 
-## Running PROSPECT
+PROSPECT is implemented in two forms: as a script and as a computational notebook -- both based on the Wolfram platform. 
 
-### Script
-The PROSPECT script PROSPECT.wls can be run in the command line. It takes in the following arguments:
+### Script implementation
 
-1) The relative path for a valid specification file
-2) (Optional) A number 1 or 0. Typing 1 indicates that all debug messages should be printed during the run, 0 indicates only the result should be printed. 0 by default.
+The script-based implementation of PROSPECT is the easiest to use, featuring a simple command-line interface. 
+
+Requirements: [Wolfram Script](https://www.wolfram.com/wolframscript/) version 1.5+. 
+
+#### Installing Wolfram Script
+
+To run the script version of PROSPECT, you need to dowload and install a free version of the Wolfram Engine: 
+
+1) Download and install the [Wolfram Engine](https://www.wolfram.com/engine/) for your OS. 
+2) Create a Wolfram ID account (if you do not have one). 
+3) Accept the terms of the [free license](https://www.wolfram.com/engine/free-license)
+4) Run "wolframscript" in your command line
+5) Input your Wolfram ID and password into the prompt
+
+#### Running the PROSPECT script
+
+The PROSPECT script PROSPECT.wls can be run in the command line: It takes in the following arguments: ```
+./PROSPECT.wls <filename> <debug-mode> ```
+
+The arguments are as follows: 
+1) ```<filename>``` is a relative path for a valid specification file. 
+2) (Optional) ``` <debug-mode> ``` is a flag for the debug mode: 1 or 0. Typing 1 indicates that all debug messages should be printed during the run, 0 indicates only the result should be printed. 0 by default.
 
 The output will be the sampled data in a csv format. For example, if the command line is in the script directory, the following command can be run:
 ```
@@ -24,8 +44,10 @@ Furthermore, by typing the following command instead:
 ```
 The output will be saved to an output.csv file created in the same directory.
 
-### Notebook
-Requirements: Wolfram Mathematica, version 12.1+
+### Notebook implementation
+The notebook-based implementation of PROSPECT is most suitable development and debugging. 
+
+Requirements: [Wolfram Mathematica](https://www.wolfram.com/mathematica/), version 12.1+. You can obtain a [free trial](https://www.wolfram.com/mathematica/trial/) or you may be at a university with an [academic license](https://www.wolfram.com/mathematica/pricing/colleges-universities/).
 
 1) Open the src/notebook/PROSPECT.nb notebook, and run all it (Ctrl+A, Shift+Enter).
 2) When prompted to enter a file name for input, enter either the name of a valid specification file's from the same directory as the PROSPECT.nb notebook, or an absolute path to the file. (In the comments of the file exist several examples that can be copied/pasted to observe the functionality.)
