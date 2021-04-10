@@ -47,7 +47,7 @@ The output will be saved to an output.csv file created in the same directory.
 ### Notebook implementation
 The notebook-based implementation of PROSPECT is most suitable development and debugging. 
 
-Requirements: [Wolfram Mathematica](https://www.wolfram.com/mathematica/), version 12.1+. You can obtain a [free trial](https://www.wolfram.com/mathematica/trial/) or you may be at a university with an [academic license](https://www.wolfram.com/mathematica/pricing/colleges-universities/).
+Requirements: [Wolfram Mathematica](https://www.wolfram.com/mathematica/), version 12.1+. You can obtain a [free trial](https://www.wolfram.com/mathematica/trial/) or you may be at a university with an [academic license](https://www.wolfram.com/mathematica/pricing/colleges-universities/). For read-only access, you can download a free [Wolfram Player](https://www.wolfram.com/player/). 
 
 1) Open the src/notebook/PROSPECT.nb notebook, and run all it (Ctrl+A, Shift+Enter).
 2) When prompted to enter a file name for input, enter either the name of a valid specification file's from the same directory as the PROSPECT.nb notebook, or an absolute path to the file. (In the comments of the file exist several examples that can be copied/pasted to observe the functionality.)
