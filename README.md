@@ -1,5 +1,7 @@
-# PROSPECT tool for probability specification and data generation
+# PROSPECT tool for probability specification and sampling
 PROSPECT (a PRObability SPECification Tool) generates time-series data from probabilistic constraints and independence specifications.
+
+The [technical supplement](technical_supplement.pdf) accompanying the original paper on PROSPECT is available at the root of the master branch.
 
 ## Using PROSPECT
 
