@@ -1,0 +1,14 @@
+casetype: "timeinvariant"
+variables: {X, Y}
+values: {{0, 1}, {0, 1}}
+timesteps: {0, 1}
+numsamples: 2
+
+independence
+condindep[{X[t], Y[t-1]}, {Y[t]}]
+
+main
+P[Y[t] = 1 | Y[t-1] = 1] = .7
+P[Y[t] = 0 | Y[t-1] = 0] = .65
+P[X[t] = 0] = .8
+P[Y[t] = 1 | X[t] = 1] = .6
