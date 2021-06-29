@@ -1,0 +1,26 @@
+body {
+  background: url(web_bg_output-5.jpeg);
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  font-family: "Open sans", sans-serif;
+  min-height: 100vh;
+}
+
+textarea {
+  width: 100vh;
+  height: 45vh;
+  font-size: 2vh;
+  padding: 1vh;
+}
+
+.App {
+  text-align: center;
+}
+
+.btn-group {
+  text-align: center;
+}
+
+.btn-group button {
+  display:inline-block;
+}

@@ -55,7 +55,7 @@ app.post('/run',function(req,res){
    var command = './PROSPECT.wls demo.txt'
    var output_text = shell.exec(command)
 
-  const part1 = "<!DOCTYPE html> \r <html> \r <body> \r <h1>Running Headline</h1> \r <p>";
+  const part1 = "<!DOCTYPE html> \r <html> \r <body> \r <h1>Running Headline</h1> \r <p><pre>";
 
 //   const part2 = "</p> \
 //   <p><a href="/">Return to home</a></p> \
@@ -63,7 +63,7 @@ app.post('/run',function(req,res){
 //   </body> \
 //   </html>";
 
-  const part2 = "</p> \r <p><a href=\"/\">Return to home</a></p> \r </body> \r </html>";
+  const part2 = "</pre></p> \r <p><a href=\"/\">Return to home</a></p> \r </body> \r </html>";
 
   // const all_html_m = part1.concat(allText);
   const all_html_m = part1.concat(output_text);
