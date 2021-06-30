@@ -1,0 +1,47 @@
+diff --git a/src/webpage/HTML/home.html b/src/webpage/HTML/home.html
+index c826d6d..ee67be6 100644
+--- a/src/webpage/HTML/home.html
++++ b/src/webpage/HTML/home.html
+@@ -3,13 +3,11 @@
+ <body>
+ 
+ <h1>Main Page!</h1>
+-<p><a href="/run">Run the script</a></p>
+-<form method="post" action = "/run">
++<p><a href="run">Run the script</a></p>
++<form method="post" action = "run">
+ <textarea id="inspec" name="inspec" rows="4" cols="50">This will be a place to put PROSPECT input specs</textarea>
+ <br></br>
+-<a href="/run">
+ <input type="submit" value="Submit">
+-</a>
+ </form>
+ 
+ </body>
+diff --git a/src/webpage/HTML/run_custom.html b/src/webpage/HTML/run_custom.html
+index 27aacf5..3ab9401 100644
+--- a/src/webpage/HTML/run_custom.html
++++ b/src/webpage/HTML/run_custom.html
+@@ -3,6 +3,6 @@
+  <body> 
+  <h1>Running Headline</h1> 
+  <p>No specs were given as input!</p> 
+- <p><a href="/">Return to home</a></p> 
++ <p><a href=".">Return to home</a></p> 
+  </body> 
+- </html>
+\ No newline at end of file
++ </html>
+diff --git a/src/webpage/Main.js b/src/webpage/Main.js
+index 6280b8a..e2475cb 100644
+--- a/src/webpage/Main.js
++++ b/src/webpage/Main.js
+@@ -63,7 +63,7 @@ app.post('/run',function(req,res){
+ //   </body> \
+ //   </html>";
+ 
+-  const part2 = "</p> \r <p><a href=\"/\">Return to home</a></p> \r </body> \r </html>";
++  const part2 = "</p> \r <p><a href=\".\">Return to home</a></p> \r </body> \r </html>";
+ 
+   // const all_html_m = part1.concat(allText);
+   const all_html_m = part1.concat(output_text);
