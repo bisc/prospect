@@ -24,3 +24,7 @@ textarea {
 .btn-group button {
   display:inline-block;
 }
+
+.Intro img {
+  width: 20vh;
+}
