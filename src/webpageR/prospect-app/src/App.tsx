@@ -6,15 +6,12 @@ import Forms from './components/Forms';
 function App() {
   return (
     <StoreProvider store={store}>
-    <div className="App">
-    <div className="Intro">
-    <a href="https://precise.seas.upenn.edu/">
-    <img src="/precise.logo_bg-white_txt-blue_126x25_transparent.png" />
-    </a>
-      <h1>PROSPECT Application</h1>
-    </div>
-      <Forms />
-    </div>
+      <div className="App">
+        <div className="Intro">
+          <h1><a href="/">PROSPECT Application</a></h1>
+        </div>
+        <Forms />
+      </div>
     </StoreProvider>
   );
 }

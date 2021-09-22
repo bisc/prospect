@@ -1,6 +1,5 @@
 import { Action } from 'easy-peasy';
 
-
 export interface ProspectModel {
     textIn: string;
     setInText: Action<ProspectModel, string>;

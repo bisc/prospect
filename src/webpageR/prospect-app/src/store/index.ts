@@ -2,6 +2,7 @@ import { createStore, action, createTypedHooks } from "easy-peasy";
 import {ProspectModel} from './model';
 import { staticExample, timeInvariantExample, timeVariantExample } from "./constText";
 import { setConstantValue } from "typescript";
+import ProspectRun from "../script/PROSPECTRun";
 
 export const store = createStore<ProspectModel>({
     textIn: "",
@@ -19,7 +20,8 @@ export const store = createStore<ProspectModel>({
     }),  
     textOut: "",
     setOutText: action((state, payload) => {
-        state.textOut = payload;
+        var tempString : string = payload
+        state.textOut = ProspectRun(tempString);
     })
 });
 

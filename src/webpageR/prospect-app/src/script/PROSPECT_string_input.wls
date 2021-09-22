@@ -44,7 +44,12 @@ debug = 0]
 
 
 Clear[filename];
-filename = None;
+stringName = None;
+If[$FrontEnd === Null, 
+	stringName = $ScriptCommandLine[[2]],
+	stringName = "casetype: \"static\"\nvariables: {time, detection, lane}\nvalues: {{\"day\", \"twilight\", \"night\"}, {\"detected\", \"not detected\"}, {\"out\", \"in\"}}\nnumsamples: 100\n\nindependence\ncondindep[{time, lane}, {detection}]\n\nmain\nP[detection = \"detected\" | time = \"day\"] = .75\nP[detection = \"detected\" | time = \"twilight\"] = .4\nP[detection = \"detected\" | time = \"night\"] = .2\nP[time = \"day\"] = .6\nP[time = \"twilight\"] = P[time = \"night\"]\nP[lane = \"out\"] = .2\nP[detection = \"detected\" | lane = \"in\"] = .6"
+];
+(*filename = None;
 If[$FrontEnd === Null, 
 filename = DirectoryName[$Input] <> $ScriptCommandLine[[2]],
 filename = NotebookDirectory[] <> 
@@ -54,11 +59,11 @@ filename = NotebookDirectory[] <>
 (*"testing/static/StaticEx2.txt"*)
 (*"testing/time_variant/VariantEx2.txt"*)
 (*"testing/time_variant/TimeVariant.txt"*)
-];
+];*)
 
 
 If[debug==1,
-Print[filename]
+Print[stringName]
 ]
 
 
@@ -67,8 +72,8 @@ Print[filename]
 
 results = None;
 If[debug == 1,
-results = generateData[filename, debug];,
-results = Quiet[generateData[filename, debug]];
+results = generateDataS[stringName, debug];,
+results = Quiet[generateDataS[stringName, debug]];
 ];
 Print[ExportString[results, "csv", TextDelimiters->""]];
 

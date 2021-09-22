@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import {StoreProvider} from 'easy-peasy';
+import { StoreProvider } from 'easy-peasy';
 
 ReactDOM.render(
   <React.StrictMode>
