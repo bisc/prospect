@@ -1,9 +1,0 @@
-casetype: "static"
-variables: {A, B}
-values: {{"H", "T"}, {"H", "T"}}
-numsamples: 10
-
-main
-P[B = "T"] = .5
-P[A = "T"] = .5
-P[A = "T" || B = "T"] = .75
