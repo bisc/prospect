@@ -1,0 +1,10 @@
+casetype: "timeinvariant"
+variables: {X}
+values: {{1, 2, 3}}
+timesteps: {1}
+numsamples: 10
+
+P[X[t] = 1] = .5
+P[X[t-1] = 2] = .25
+P[T[t] = 1 | T[t-1] = 1 && T[t-2] = 0] = .5
+P[T[t] = 1 | T[t-1] = 0 && T[t-2] = 1] = .5
