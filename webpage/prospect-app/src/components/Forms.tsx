@@ -15,8 +15,6 @@ function Forms() {
         axios.get("api/prospect",
             { params: { input: input } }
         ).then((response) => {
-            console.log("Here");
-            console.log(response.data);
             setTextOut(response.data);
         });
     }

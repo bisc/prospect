@@ -480,7 +480,7 @@ Clear[parseS];
 (* Parse text input given file name *)
 parseS[s_]:=Module[{name=s,input,i,j,strassoc},
 timesteps = Null;
-Print[s];
+(*Print[s];*)
 If[$FrontEnd === Null, 
 	name = StringReplace[name, "\\n" -> "\n"];(* Added line to test *)
 ];
