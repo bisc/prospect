@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20583,        435]
-NotebookOptionsPosition[     20217,        420]
-NotebookOutlinePosition[     20627,        437]
-CellTagsIndexPosition[     20584,        434]
+NotebookDataLength[     21080,        444]
+NotebookOptionsPosition[     20716,        429]
+NotebookOutlinePosition[     21124,        446]
+CellTagsIndexPosition[     21081,        443]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -178,6 +178,14 @@ Cell[BoxData[{
       RowBox[{"oEquations", ",", " ", 
        RowBox[{"givenEquation", "[", "oParams", "]"}]}], "]"}], ";", 
      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "\"\<O Parameters\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "oParams", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "\"\<O Equations\>\"", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "oEquations", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{
       "Solving", " ", "the", " ", "probability", " ", "system", " ", "based", 
@@ -290,7 +298,7 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
           RowBox[{"oFinalArray", " ", "=", " ", 
            RowBox[{"oParams", " ", "/.", " ", "oFinalRules"}]}], ";", 
           "\[IndentingNewLine]", 
-          RowBox[{"Print", "[", "\"\<Final Array\>\"", "]"}], ";", 
+          RowBox[{"Print", "[", "\"\<Solved O Parameters\>\"", "]"}], ";", 
           "\[IndentingNewLine]", 
           RowBox[{"Print", "[", "oFinalArray", "]"}], ";", 
           "\[IndentingNewLine]", 
@@ -414,14 +422,15 @@ conflicting\>\"", "]"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]",
    3.813922251922176*^9}, {3.818111953290959*^9, 3.818111960682979*^9}, {
    3.818112183690324*^9, 3.81811222715875*^9}, {3.818112289820025*^9, 
    3.818112294749495*^9}, {3.818112470223925*^9, 3.818112470936275*^9}, 
-   3.82235053082825*^9, {3.822350714293723*^9, 
-   3.8223507164624443`*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
+   3.82235053082825*^9, {3.822350714293723*^9, 3.8223507164624443`*^9}, {
+   3.846330874418396*^9, 3.84633090614501*^9}, {3.8463311571768923`*^9, 
+   3.846331160262403*^9}},ExpressionUUID->"71af5f76-0a7f-475a-9ea0-\
 84c70916ed19"]
 },
 WindowSize->{901, 706},
 WindowMargins->{{Automatic, 28}, {Automatic, 34}},
 Visible->False,
-FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (March 18, 2020)",
+FrontEndVersion->"12.3 for Mac OS X ARM (64-bit) (July 9, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"1f2bddd3-45fd-4d1e-b6ad-5bf513510436"
 ]
@@ -436,7 +445,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 19655, 398, 2404, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
+Cell[558, 20, 20154, 407, 2545, "Input",ExpressionUUID->"71af5f76-0a7f-475a-9ea0-84c70916ed19"]
 }
 ]
 *)

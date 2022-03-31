@@ -9,7 +9,6 @@ Print["END OF PRINTS"]*)
 
 
 (*Import[StringJoin[NotebookDirectory[], "/Helper/AllTesting.wl"]]*)
-(*Import["/Users/alanismaiel/Documents/GitHub/datagen/src/script/Helper/AllTesting.wl"]*)
 (*Import["Helper/AllTesting.wl"]*)
 (*Print[$InputFileName]
 Print["Front End"]
@@ -84,9 +83,6 @@ _, Message[generateData::invalidCase]; $Failed
 
 
 (*Print[DirectoryName[$Input] <> $ScriptCommandLine[[2]]]*)
-
-
-(*parse["/Users/alanismaiel/Documents/GitHub/datagen/testing/static/StaticEx.txt"]*)
 
 
 (*staticGenerate[]*)
