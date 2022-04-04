@@ -1,7 +1,7 @@
 # PROSPECT tool for probability specification and sampling
 PROSPECT (a PRObability SPECification Tool) generates time-series data from probabilistic constraints and independence specifications.
 
-The [technical supplement](technical_supplement.pdf) accompanying the original paper on PROSPECT is available at the root of the master branch.
+The paper *Data Generation with PROSPECT: a Probability Specification Tool* was published in the procedings of the [2021 Winter Simulation Conference](https://meetings.informs.org/wordpress/wsc2021/), and was disnguished as the Best Contributed Theoretical Paper of the conference. The original paper can be found [here](https://dl.acm.org/doi/abs/10.5555/3522802.3522966), and [technical supplement](technical_supplement.pdf) accompanying it is available at the root of the master branch. Furthermore, a web application running the PROSPECT script is hosted by the University of Pennsylvania [here](https://prospect.precise.seas.upenn.edu).
 
 ## Using PROSPECT
 
